@@ -39,7 +39,7 @@ const config: Config = {
       }
       addUtilities(newUtilities)
     },
-    require('tailwindcss-animated')
+    require("daisyui"), require('tailwindcss-animated')
   ],
 
 }
