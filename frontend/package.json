@@ -10,11 +10,18 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
+    "@radix-ui/react-accordion": "^1.1.2",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "daisyui": "^4.6.0",
     "heroicons": "^2.1.1",
+    "lucide-react": "^0.311.0",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-animated": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
