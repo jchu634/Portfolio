@@ -64,10 +64,10 @@ export default function SideNav() {
         
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="flex_outline" className="w-[3rem] h-[3rem]">
+            <Button variant="invert_outline" className="w-[3rem] h-[3rem]">
               <div className="flex relative-center items-center">
-                <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 transition-all dark:-rotate-90 dark:hidden" />
-                <MoonIcon className="h-[1.2rem] w-[1.2rem] rotate-90 transition-all dark:rotate-0 hidden dark:block"/>
+                <SunIcon className="h-[1.5rem] w-[1.5rem] stroke-2 rotate-0 transition-all dark:-rotate-90 text-zinc-200 dark:hidden" />
+                <MoonIcon className="h-[1.2rem] w-[1.2rem] stroke-2 rotate-90 transition-all dark:rotate-0 hidden dark:block"/>
               </div>
               <span className="sr-only">Toggle theme</span>
             </Button>
