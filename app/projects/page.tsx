@@ -33,13 +33,15 @@ const projects = [
   {
     name: 'CodeCritters Flutter App', type: 'Application',
     technologies_and_frameworks: ['Flutter', 'Dart'],
-    description: 'This is an sister android camera application for CodeCritters which allows users to take photos and get inference results via a local TensorFlowLite model.',
+    description: 'This is an sister android camera application for CodeCritters which allows users to take photos and get inference results via a local TensorFlowLite model.\n'+
+    "This app is fully functional, and although it was never publicly visible on the Google Play Store, it is still available for download via Github releases.",
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp',
   },
   {
     name: 'Fakman', type: 'Game',
     technologies_and_frameworks:['Unity', 'C#'], 
-    description: 'This is a Pacman clone made as a learning project for Unity and C#.',
+    description: 'This is a Pacman clone made as a learning project for Unity and C#.\n'+
+    "This game has a playable windows build and a webGL build which can be played from the link above.",
     github:'https://github.com/jchu634/fakman',
     website:"/projects/games/Fakman",
   },
@@ -47,21 +49,37 @@ const projects = [
     name:'Loopy-Desktop',
     type:'Application',
     technologies_and_frameworks:['Electron','HTML','CSS', 'VanillaJS'],
-    description:'This is an Electron application which allows users to create and save flowcharts.',
+    description:
+      'This is a Electron wrapper for Loopy, an open source web application which allows users to visualise systems.\n'+
+      'Additionally, this fork adds the ability to create and save GIFs of the visualisations.',
     github:'https://github.com/jchu634/loopy-desktop'
   },
+  { 
+    name: 'Portfolio Website', type: 'Website',
+    technologies_and_frameworks:['Next.JS', 'TailwindCSS'],
+    github:'https://github.com/jchu634/portfolio',
+    website:'/',
+    description: 'This very website you are on right now! This website is built using Next.JS and TailwindCSS.',
+  },
+];
+const minor_projects = [
   {
     name:'Shorts Redirector',
     type:'Application',
     technologies_and_frameworks:['HTML','CSS', 'VanillaJS'],
-    
+    description:'A Chrome Extension which automatically redirects YouTube Shorts from the Shorts player to the General YouTube player.\n'+
+    "This was never published to the Chrome Web Store as I found there existed an already published extension which did the same thing after I finished this.",
+    github:'https://github.com/jchu634/ShortsRedirector'
   },
-  { 
-    name: 'Portfolio', type: 'Website',
-    technologies_and_frameworks:['Next.JS', 'TailwindCSS'],
-    description: 'Lorem Ipsum'
+  {
+    name:'Brookshear Machine Simulator',
+    type:'Application',
+    technologies_and_frameworks:['VB','Python'],
+    description:'A Brookshear Machine Simulator built using Visual Basic and Python.',
+    github:'https://github.com/Keshuac/BrookShear-Machine-Emulator-.py-and-.vb',
   },
 ];
+
 function exportProjectsAsString(technologies_and_frameworks: string[]){
   let technologies_and_frameworks_string = ' ';
 
@@ -76,51 +94,60 @@ function exportProjectsAsString(technologies_and_frameworks: string[]){
 
 }
 
+function mapProject(project:any, index:number){
+  return (
+    <Accordion type="single" key={`${project.name}`} collapsible>
+      <AccordionItem value={`item-${index + 1}`}>
+        <AccordionTrigger> <p className="font-bold text-blue-900 dark:text-slate-200">{project.name}</p></AccordionTrigger>
+        <AccordionContent>
+          <p className="text-indigo-950 dark:text-sky-50"><b>Project Type: </b>{project.type}</p>
+          <p className="text-indigo-950 dark:text-sky-50"><b>Project Technologies: </b>
+          {
+            project.technologies_and_frameworks && (
+              <>{exportProjectsAsString(project.technologies_and_frameworks)}</>
+            )
+          }
+          </p>
+          <div className="flex flex-row items-center justify-start space-x-2">
+            {
+            project.github && (
+              <Link
+              href={project.github}
+              >
+                <FontAwesomeIcon icon={faGithub} size="2x"/>
+              </Link>
+              
+            )
+          }
+          {
+            project.website && (
+              <Link
+              href={project.website}
+              >
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2x"/>
+              </Link>
+            )
+          }
+          </div>
+          <p className="text-indigo-950 dark:text-sky-50 whitespace-pre-wrap"><b>Project Description: </b> {project.description}</p>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}
+
 export default function Page(){
   return (
     <main>
-      { projects.map((project, index) => {
-            return (
-              <Accordion type="single" key={`${index}`} collapsible>
-                <AccordionItem value={`item-${index + 1}`}>
-                  <AccordionTrigger> <p className="font-bold text-blue-900 dark:text-slate-200">{project.name}</p></AccordionTrigger>
-                  <AccordionContent>
-                    <p className="text-indigo-950 dark:text-sky-50"><b>Project Type: </b>{project.type}</p>
-                    <p className="text-indigo-950 dark:text-sky-50"><b>Project Technologies: </b>
-                    {
-                      project.technologies_and_frameworks && (
-                        <>{exportProjectsAsString(project.technologies_and_frameworks)}</>
-                      )
-                    }
-                    </p>
-                    <div className="flex flex-row items-center justify-start space-x-2">
-                      {
-                      project.github && (
-                        <Link
-                        href={project.github}
-                        >
-                          <FontAwesomeIcon icon={faGithub} size="2x"/>
-                        </Link>
-                        
-                      )
-                    }
-                    {
-                      project.website && (
-                        <Link
-                        href={project.website}
-                        >
-                          <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2x"/>
-                        </Link>
-                      )
-                    }
-                    </div>
-                    
-                    <p className="text-indigo-950 dark:text-sky-50 whitespace-pre-wrap"><b>Project Description: </b> {project.description}</p>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            );
-          })}
+      <h1 className="text-3xl font-bold text-blue-900 dark:text-slate-200">Major Projects</h1>
+        { projects.map((project, index) => {
+          return (mapProject(project, index));
+        })}
+        <br></br><h1 className="text-3xl font-bold text-blue-900 dark:text-slate-200">Minor Projects</h1>
+        { minor_projects.map((project, index) => {
+          return (mapProject(project, index));
+        }
+        )}
     </main>
   )
 }
