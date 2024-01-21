@@ -43,6 +43,19 @@ const projects = [
     github:'https://github.com/jchu634/fakman',
     website:"/projects/games/Fakman",
   },
+  {
+    name:'Loopy-Desktop',
+    type:'Application',
+    technologies_and_frameworks:['Electron','HTML','CSS', 'VanillaJS'],
+    description:'This is an Electron application which allows users to create and save flowcharts.',
+    github:'https://github.com/jchu634/loopy-desktop'
+  },
+  {
+    name:'Shorts Redirector',
+    type:'Application',
+    technologies_and_frameworks:['HTML','CSS', 'VanillaJS'],
+    
+  },
   { 
     name: 'Portfolio', type: 'Website',
     technologies_and_frameworks:['Next.JS', 'TailwindCSS'],
@@ -68,7 +81,7 @@ export default function Page(){
     <main>
       { projects.map((project, index) => {
             return (
-              <Accordion type="single" collapsible>
+              <Accordion type="single" key={`${index}`} collapsible>
                 <AccordionItem value={`item-${index + 1}`}>
                   <AccordionTrigger> <p className="font-bold text-blue-900 dark:text-slate-200">{project.name}</p></AccordionTrigger>
                   <AccordionContent>
