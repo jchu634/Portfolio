@@ -24,6 +24,9 @@ export default function Fakman() {
     }
 
     return <Fragment>
+        <h1 className="text-3xl font-bold text-blue-900 dark:text-slate-200">
+            NOTE: This game may not work on mobile devices, as it is not supported by Unity WebGL.
+        </h1>
         <Unity unityProvider={unityProvider} style={{ width: 800, height: 600 }}/>
         <div className="flex flex-row space-x-5">
             <h1>
