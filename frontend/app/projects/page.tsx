@@ -41,6 +41,7 @@ const projects = [
     technologies_and_frameworks:['Unity', 'C#'], 
     description: 'This is a Pacman clone made as a learning project for Unity and C#.',
     github:'https://github.com/jchu634/fakman',
+    website:"/projects/games/Fakman",
   },
   { 
     name: 'Portfolio', type: 'Website',
@@ -58,7 +59,6 @@ function exportProjectsAsString(technologies_and_frameworks: string[]){
       technologies_and_frameworks_string += technology + ', ';
     }
   })
-  
   return technologies_and_frameworks_string;
 
 }
