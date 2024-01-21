@@ -33,7 +33,7 @@ export default function SideNav() {
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
       <div
-        className="mb-2 h-20 flex items-end justify-end rounded-md bg-blue-600 p-4 md:h-40"
+        className="mb-2 h-20 flex items-end justify-start rounded-md bg-blue-600 p-4 md:h-40"
       >
         <Link
           href="mailto:jchu634@keshuac.com"
