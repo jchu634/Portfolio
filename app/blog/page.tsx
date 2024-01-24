@@ -11,8 +11,8 @@ export default function Page(){
             <ul>
                 { allPostsData.map(({ id, date, title, description }) => (
                     <Link
-                    href={`/blog/${id}`}>
-                        <div className="mb-4" >
+                    href={`/blog/${id}`} key={id}>
+                        <div className="mb-4" key={id}>
                             <li key={id} className="mb-4">
                                 {/* <p>{id}</p> */}
                                 <h2 className="text-2xl font-bold">{title.toString()}</h2>
