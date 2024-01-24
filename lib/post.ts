@@ -17,7 +17,7 @@ export function getSortedPostsData() {
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
-
+    
     // Combine the data with the id
     return {
       id,
@@ -58,13 +58,13 @@ export function getPostByName(name:string){
 
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
-
   // Combine the data with the id
   return {
     name,
     date:String,
     title:String,
     description:String,
+    content:matterResult.content,
     ...matterResult.data,
   };
 }
