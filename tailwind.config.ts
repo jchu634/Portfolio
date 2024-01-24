@@ -103,7 +103,9 @@ const config = {
       }
       addUtilities(newUtilities)
     },
-    require('tailwindcss-animated'),require("tailwindcss-animate")
+    require('tailwindcss-animated'),
+    require("tailwindcss-animate"),
+    require('@tailwindcss/typography'),
   ],
 } satisfies Config
 

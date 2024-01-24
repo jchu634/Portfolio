@@ -22,24 +22,13 @@ export default function Page({params}: {params: {slug: string}}) {
   const sanitisedHTML = purify.sanitize(post.content);
   
   return (
-    <div>
-      <h1 className="text-5xl font-bold text-blue-900 dark:text-slate-200"> {post.title.toString()} </h1>
-      <p className="text-1xl font-bold text-blue-900 dark:text-slate-200"> Published: {post.date.toString()}</p>
-      <p > {post.description.toString()} </p><br></br>
-      <div dangerouslySetInnerHTML={{ __html: sanitisedHTML }} />
-
-      
+    <div>      
+      <article className="prose prose-xl prose-stone dark:prose-invert">
+        <h1> {post.title.toString()} </h1>
+        <h4> Published: {post.date.toString()}</h4>
+        <blockquote> {post.description.toString()} </blockquote>
+      </article>
+      <article className="prose prose-xl prose-stone dark:prose-invert" dangerouslySetInnerHTML={{ __html: sanitisedHTML }} />
     </div>
   )
 }
-// export async function generateStaticParams() {
-//   const posts = await (getSortedPostsData)\;
-
- 
-//   return posts.map((post) => ({
-//     slug: post.slug,
-//   }))
-// }
-// export default function Page({ params }: { params: { slug: string } }) {
-//   return <div>My Post: {params.slug}</div>
-// }
