@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 export default function Page(){
     const allPostsData = getSortedPostsData();
-    console.log(getAllPostNames());
     return (
         <div>
             <h1 className="text-3xl font-bold text-blue-900 dark:text-slate-200">Blog</h1><br></br>
