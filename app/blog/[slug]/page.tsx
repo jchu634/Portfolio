@@ -28,7 +28,7 @@ export default function Page({params}: {params: {slug: string}}) {
         <h4> Published: {post.date.toString()}</h4>
         <blockquote> {post.description.toString()} </blockquote>
       </article>
-      <article className="prose prose-xl prose-stone dark:prose-invert" dangerouslySetInnerHTML={{ __html: sanitisedHTML }} />
+      <article className="prose prose-xl prose-rosestone dark:prose-invert" dangerouslySetInnerHTML={{ __html: sanitisedHTML }} />
     </div>
   )
 }
