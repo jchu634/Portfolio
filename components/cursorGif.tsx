@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
+import Image from 'next/image';
 
-export default function customCursorGif() {
+function RenderGif() {
   const [gifPosition, setGifPosition] = useState({ top: 0, left: 0 });
   const [lastPosition, setLastPosition] = useState({ top: 0, left: 0 });
   const [isFlipped, setIsFlipped] = useState(false);
@@ -34,9 +35,12 @@ export default function customCursorGif() {
 
   return (
     <div>
-      <img
+      <Image
         src="/pacman.gif"
-        className="w-10 h-10 lg:visible invisible"
+        width={10}
+        height={10}
+        alt="Pacman"
+        className="lg:visible invisible"
         style={{ top: `calc(${gifPosition.top}px - 20px)`,
                  left: `calc(${gifPosition.left}px - 20px)`, 
                  position: 'absolute',
@@ -45,4 +49,11 @@ export default function customCursorGif() {
       />
     </div>
   );
+}
+export default function CustomCursorGif(){
+  return (
+    <div>
+      <RenderGif />
+    </div>
+  )
 }

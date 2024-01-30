@@ -6,7 +6,7 @@ type Cursor = {
   key: number;
 };
 
-export default function customCursorTrail() {
+function RenderCursorTrail() {
   const [cursors, setCursors] = useState<Cursor[]>([]);
   const lastCursor = useRef<Cursor | null>(null);
 
@@ -54,4 +54,11 @@ export default function customCursorTrail() {
       ))}
     </div>
   );
+}
+export default function customCursorTrail(){
+  return (
+    <div>
+      <RenderCursorTrail />
+    </div>
+  )
 }
