@@ -47,7 +47,7 @@ export default function customCursorTrail() {
           key={cursor.key}
           className='
             w-5 h-5 rounded-full absolute pointer-events-none
-            dark:bg-white bg-black
+            dark:bg-white bg-black invisible lg:visible
             '
           style={{ top: cursor.top, left: cursor.left, position: 'absolute' }}
         />

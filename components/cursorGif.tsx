@@ -36,7 +36,7 @@ export default function customCursorGif() {
     <div>
       <img
         src="/pacman.gif"
-        className="w-10 h-10"
+        className="w-10 h-10 lg:visible invisible"
         style={{ top: `calc(${gifPosition.top}px - 20px)`,
                  left: `calc(${gifPosition.left}px - 20px)`, 
                  position: 'absolute',
