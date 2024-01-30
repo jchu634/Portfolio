@@ -6,12 +6,12 @@ type Cursor = {
   key: number;
 };
 
-export default function customCursor() {
+export default function customCursorTrail() {
   const [cursors, setCursors] = useState<Cursor[]>([]);
   const lastCursor = useRef<Cursor | null>(null);
 
+  const cursorMinDistance = 100;    // Change this value to adjust the distance between cursors
   const cursorTimeOut = 500;        // Change this value to adjust how long each div stays on the screen
-  const cursorMinDistance = 1000;    // Change this value to adjust the distance between cursors
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
@@ -23,13 +23,13 @@ export default function customCursor() {
         : Infinity;
 
       // Only add the new cursor if the distance is greater than the threshold
-      if (distance > 50) { // Change this value to adjust the distance between cursors
+      if (distance > cursorMinDistance) { // Change this value to adjust the distance between cursors
         setCursors((prevCursors) => [...prevCursors, newCursor]);
         lastCursor.current = newCursor;
 
         setTimeout(() => {
           setCursors((prevCursors) => prevCursors.filter((cursor) => cursor.key !== newCursor.key));
-        }, 500); // Change this value to adjust how long each div stays on the screen
+        }, cursorTimeOut); // Change this value to adjust how long each div stays on the screen
       }
     };
 
@@ -45,7 +45,10 @@ export default function customCursor() {
       {cursors.map((cursor) => (
         <div
           key={cursor.key}
-          className='cursor bg-transparent'
+          className='
+            w-5 h-5 rounded-full absolute pointer-events-none
+            dark:bg-white bg-black
+            '
           style={{ top: cursor.top, left: cursor.left, position: 'absolute' }}
         />
       ))}
