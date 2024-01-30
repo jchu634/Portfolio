@@ -3,8 +3,8 @@ title: 'Down the rabbit-hole: VHS Digitisation'
 date: '2024-01-26'
 description: 'My brief look into the insane world of VHS digitisation'
 ---
-
 <p>It all started with a simple project: to digitise and back up some of my childhood moments which recorded through VHS.</p>
+
 <h3>Mini Background</h3>
 <ul>
     <li>VHS tapes are very much a legacy medium, and as they age, both the tapes and the players are gradually breaking down.</li>

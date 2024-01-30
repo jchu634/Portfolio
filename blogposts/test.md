@@ -1,22 +1,41 @@
 ---
 title: 'test'
 date: '2024-01-25'
-description: 'test'
+description: 'Please Ignore Me'
 ---
-
-<p>We recommend using <strong>Static Generation</strong> (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.</p>
-
-<p>You can use Static Generation for many types of pages, including:</p>
+<p>
+  This is a test Blog Post to check <strong>that </strong>
+</p>
 
 <ul>
-  <li>Marketing pages</li>
-  <li>Blog posts</li>
-  <li>E-commerce product listings</li>
-  <li>Help and documentation</li>
+  <li>Rendering</li>
+  <li>works</li>
+  <li>properly</li>
 </ul>
 
-<p>You should ask yourself: "Can I pre-render this page <strong>ahead</strong> of a user's request?" If the answer is yes, then you should choose Static Generation.</p>
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<th>Heading t</th>
 
-<p>On the other hand, Static Generation is <strong>not</strong> a good idea if you cannot pre-render a page ahead of a user's request. Maybe your page shows frequently updated data, and the page content changes on every request.</p>
-
-<p>In that case, you can use <strong>Server-Side Rendering</strong>. It will be slower, but the pre-rendered page will always be up-to-date. Or you can skip pre-rendering and use client-side JavaScript to populate data.</p>
+<blockquote>Blockquote</blockquote>
+<code>code</code>
+<table>
+  <thead>
+    <tr>
+      <th>Table</th>
+      <th>Heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Table</td>
+      <td>Body</td>
+    </tr>
+  </tbody>
+</table>
+<!-- NOTE: Video is not working as it does not render -->
+<video>
+  <source src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" type="video/mp4">
+</video>
