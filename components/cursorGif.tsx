@@ -37,8 +37,8 @@ function RenderGif() {
     <div>
       <Image
         src="/pacman.gif"
-        width={10}
-        height={10}
+        width={40}
+        height={40}
         alt="Pacman"
         className="lg:visible invisible"
         style={{ top: `calc(${gifPosition.top}px - 20px)`,
