@@ -29,14 +29,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-row h-screen">
-            <div className="flex flex-row md:flex-row md:overflow-hidden">
-              <div className="w-full flex-none md:w-64">
+          <div className="flex flex-col-reverse md:flex-row h-screen">
+            <div className="w-full md:w-64 fixed bottom-0 z-10 bg-gray-50 dark:bg-black md:relative">
                 <SideNav />
-              </div>
             </div>
-            <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
-          </div>  
+            <div className="flex-grow p-6 pb-48 overflow-y-auto md:p-12">{children}</div>
+          </div>
         </ThemeProvider>
         
 

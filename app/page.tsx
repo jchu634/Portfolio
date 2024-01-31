@@ -1,56 +1,203 @@
-import Image from 'next/image'
+"use client"
 import React from 'react';
+import CustomCursorTrail from '@/components/cursorTrail';
+import CustomCursorGif from '@/components/cursorGif';
+
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {Alert, AlertTitle, AlertDescription} from "@/components/ui/alert";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faArrowUpRightFromSquare, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
+
+const projects = [
+  { 
+    name: 'CodeCritters', type: 'Hybrid Application and Website', 
+    technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
+    description: 
+    "A project for Landcare research for the detection of pest detection.\nIt uses Machine Learning to find what insect is in an image.",
+
+    github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
+    image: "True",
+    image_dark: "/codecritters_dark.png",
+    image_light: "/codecritters_light.png",
+    image_alt: "CodeCritters Screenshot",
+    link:'https://codecritters.live/'
+  },
+  {
+    name: 'Fakman', type: 'Game',
+    technologies_and_frameworks:['Unity', 'C#'], 
+    description: "A Pacman clone made as a learning project for Unity and C#.",
+    github:'https://github.com/jchu634/fakman',
+    link:"/projects/games/Fakman",
+    image: "True",
+    image_dark: "/Fakman.png",
+    image_light: "/Fakman.png",
+    image_alt: "Fakman Screenshot",
+    website:"/projects/games/Fakman"
+  },
+  {
+    name:'Loopy-Desktop',
+    type:'Application',
+    technologies_and_frameworks:['Electron','HTML','CSS', 'VanillaJS'],
+    description:
+      "An local Electron desktop port with extra features for Loopy, an open source web application which allows users to visualise systems.",
+    github:'https://github.com/jchu634/loopy-desktop',
+    link:'https://github.com/jchu634/loopy-desktop',
+    image: "True",
+    image_dark: "/Loopy.png",
+    image_light: "/Loopy.png",
+    image_alt: "Loopy Desktop Screenshot",
+  },
+  { 
+    name: 'CodeCritters App', type: 'Hybrid Application and Website', 
+    technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
+    description: 
+    "A sister project for Codecritters.\nA camera app which identifies insects in photos using a local machine learning model.",
+    image: "True",
+    image_dark: "/codecrittersapp.jpg",
+    image_light: "/codecrittersapp.jpg",
+    image_alt: "CodeCritters App Screenshot",
+    github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
+    link:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters'
+  },
+  { 
+    name: 'Portfolio Website', type: 'Website',
+    technologies_and_frameworks:['Next.JS', 'TailwindCSS'],
+    github:'https://github.com/jchu634/portfolio',
+    link:'/',
+    description: 'This very website you are on right now!\nThis website is built using Next.JS and TailwindCSS.',
+  }
+];
+
+function mapProjects(project:any, index:number){
+  return (
+    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+      <div className="p-1">
+          <Card className="group bg-slate-200 dark:bg-sky-950 dark:bg-opacity-40">
+            <CardContent className="relative flex aspect-square items-center justify-center p-6 group-hover:bg-opacity-50 dark:group-hover:bg-opacity-20 dark:group-hover:bg-gray-100 group-hover:bg-gray-800">
+              <div className="flex flex-col gap-y-2">
+                <span className="text-2xl font-semibold">{project.name}</span>
+                {                
+                  project.image && (
+                    <div className="group-hover:filter dark:group-hover:grayscale-0 group-hover:brightness-50">
+                      <Image
+                        className="hidden dark:block max-h-52 w-auto group-hover:bg-gray-100 group-hover:bg-opacity-50"
+                        src={project.image_dark}
+                        width={200}
+                        height={200}
+                        alt={project.image_alt}
+                      ></Image>
+                      <Image
+                      className="block dark:hidden max-h-52 w-auto"
+                        src={project.image_light}
+                        width={200}
+                        height={200}
+                        alt={project.image_alt}
+                      ></Image>
+                    </div>
+                  )
+                }
+                <p className="whitespace-pre-wrap text-m">{project.description}</p>
+              </div>
+              <div className="hidden absolute inset-0 group-hover:flex items-center justify-center gap-x-2">
+              {                
+                  project.github && (
+                    <Link href={project.github}>
+                      <Button className="bg-gray-700 dark:bg-gray-100">
+                          <FontAwesomeIcon icon={faGithub} size="2x"/>
+                      </Button>
+                    </Link> 
+                  )
+                } 
+                <Link href={project.link}>
+                 <Button className="bg-gray-700 dark:bg-gray-100">
+                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2x"/>
+                  </Button> 
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+      </div>
+    </CarouselItem>
+  )
+}
 
 export default function Home() {  
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main>
+      <CustomCursorTrail />
+      <CustomCursorGif />
+      <h1 className="text-3xl font-bold text-black dark:text-slate-200">Hi, I&apos;m Joshua</h1><br></br>
+      <h2 className="text-2xl font-bold text-black dark:text-slate-200">About</h2><br></br>
+      <ul className="pl-5 text-xl text-black dark:text-slate-200 whitespace-pre-wrap list-disc">
+        <li>
+          Final year Computer Science Student at the University of Auckland.<br />
+        </li>
+        <li>
+          FullStack Developer who prefers backend development
+        </li>
+      </ul><br/>
+      <h2 className="text-2xl font-bold text-black dark:text-slate-200">Contact</h2><br></br>
+      <div className="flex flex-col md:flex-row justify-start gap-3">
+        <Link href="https://github.com/jchu634">
+          <Button className="h-12 gap-2 bg-blue-600 dark:hover:bg-sky-900">
+            <FontAwesomeIcon className="dark:text-slate-200" icon={faGithubSquare} size="3x"/>
+            <p className="text-lg dark:text-slate-200">@jchu634</p>
+          </Button>
+        </Link>
+        <Link href="https://www.linkedin.com/in/jchu634/">
+          <Button className="h-12 gap-2 bg-blue-600 dark:hover:bg-sky-900">
+            <FontAwesomeIcon className="dark:text-slate-200" icon={faLinkedin} size="3x"/>
+            <p className="text-lg dark:text-slate-200">@jchu634</p>
+          </Button>
+        </Link>
+        <Link href="mailto:jchu634@keshuac.com">
+          <Button className="h-12 gap-2 bg-blue-600 dark:hover:bg-sky-900">
+            <FontAwesomeIcon className="dark:text-slate-200" icon={faEnvelopeSquare} size="3x"/>
+            <p className="text-lg dark:text-slate-200">jchu634@keshuac.com</p>
+          </Button>
+        </Link>
+      </div><br/>
+      <h1 className="text-2xl font-bold text-black dark:text-slate-200">Here are a couple of projects I worked on:</h1><br></br>
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        className="w-full sm:max-w-screen-xs lg:max-w-screen-lg xl:max-w-screen-xl"
+      >
+        <CarouselContent>
+          { projects.map((project, index) => {
+            return (mapProjects(project, index));
+          })}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+      <Alert className="w-60">
+        <AlertTitle>More Projects:</AlertTitle>
+        <div className="flex flex-row items-center gap-4">
+          <AlertDescription>
+            See more projects at:
+          </AlertDescription>
+          <Link href="/projects">
+            <Button className="w-10 h-10 bg-blue-600 dark:hover:bg-sky-900">
+                <FontAwesomeIcon className="dark:text-slate-200" icon={faArrowUpRightFromSquare} size="2x"/>
+            </Button>
+          </Link>
         </div>
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </Alert>
     </main>
   )
 }
-// export default function Page() {
-//   return <p> Dashboard Page</p>
-// }
