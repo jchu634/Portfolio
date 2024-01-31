@@ -154,7 +154,7 @@ export default function Home() {
       <CustomCursorTrail />
       <CustomCursorGif />
       <h1 className="text-3xl font-bold text-blue-900 dark:text-slate-200">Hi,</h1><br></br>
-      <h1 className="text-2xl font-bold text-blue-900 dark:text-slate-200">I'm Joshua, a FullStack Developer who prefers backend development</h1><br></br>
+      <h1 className="text-2xl font-bold text-blue-900 dark:text-slate-200">I&apos;m Joshua, a FullStack Developer who prefers backend development</h1><br></br>
       <Carousel
         opts={{
           align: "start",
