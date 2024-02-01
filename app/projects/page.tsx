@@ -21,7 +21,7 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, } from "@fortawesome/free-brands-svg-icons";
 
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare, faDownload } from "@fortawesome/free-solid-svg-icons";
 
 const projects = [
   { 
@@ -36,12 +36,14 @@ const projects = [
 
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
     website:'https://codecritters.live/',
+    download_link:"https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters/releases/tag/v1.2.4",
     images: [
       '/projects/codecritters/codecritters_light.png','/projects/codecritters/codecritters_dark.png',
       '/projects/codecritters/codecritters_upload_light.png','/projects/codecritters/codecritters_upload_dark.png',
       '/projects/codecritters/codecritters_predictions_light.png','/projects/codecritters/codecritters_predictions_dark.png',
       '/projects/codecritters/codecritters_predictions_about_light.png','/projects/codecritters/codecritters_predictions_about_dark.png',
-    ]
+    ],
+    
   },
   {
     name: 'CodeCritters Flutter App', type: 'Application',
@@ -49,6 +51,7 @@ const projects = [
     description: 'This is an sister android camera application for CodeCritters which allows users to take photos and get inference results via a local TensorFlowLite model.\n'+
     "This app is fully functional, and although it was never publicly visible on the Google Play Store, it is still available for download via Github releases.",
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp',
+    download_link:"https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp/releases/tag/v1.0.0",
     images:['/projects/codecrittersapp/codecrittersapp.jpg','/projects/codecrittersapp/codecrittersapp_prediction.png']
   },
   {
@@ -68,6 +71,7 @@ const projects = [
       'This is a Electron wrapper for Loopy, an open source web application which allows users to visualise systems.\n'+
       'Additionally, this fork adds the ability to create and save GIFs of the visualisations.',
     github:'https://github.com/jchu634/loopy-desktop',
+    download_link:"https://github.com/jchu634/loopy-desktop/releases/tag/v1.2.1",
     images:['/projects/loopy/Loopy.png', '/projects/loopy/loopy_output.gif','/projects/loopy/loopy_example.png']
   },
   { 
@@ -142,6 +146,15 @@ function mapProject(project:any, index:number){
                 href={project.website}
                 >
                   <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2x"/>
+                </Link>
+              )
+            }
+            {
+              project.download_link && (
+                <Link
+                href={project.download_link}
+                >
+                  <FontAwesomeIcon icon={faDownload} size="2x"/>
                 </Link>
               )
             }
