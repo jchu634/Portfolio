@@ -29,8 +29,8 @@ const projects = [
 
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
     image: "True",
-    image_dark: "/codecritters_dark.png",
-    image_light: "/codecritters_light.png",
+    image_dark: "/projects/codecritters/codecritters_dark.png",
+    image_light: "/projects/codecritters/codecritters_light.png",
     image_alt: "CodeCritters Screenshot",
     link:'https://codecritters.live/'
   },
@@ -55,8 +55,8 @@ const projects = [
     github:'https://github.com/jchu634/loopy-desktop',
     link:'https://github.com/jchu634/loopy-desktop',
     image: "True",
-    image_dark: "/Loopy.png",
-    image_light: "/Loopy.png",
+    image_dark: "/projects/loopy/Loopy.png",
+    image_light: "/projects/loopy/Loopy.png",
     image_alt: "Loopy Desktop Screenshot",
   },
   { 
@@ -65,8 +65,8 @@ const projects = [
     description: 
     "A sister project for Codecritters.\nA camera app which identifies insects in photos using a local machine learning model.",
     image: "True",
-    image_dark: "/codecrittersapp.jpg",
-    image_light: "/codecrittersapp.jpg",
+    image_dark: "/projects/codecrittersapp/codecrittersapp.jpg",
+    image_light: "/projects/codecrittersapp/codecrittersapp.jpg",
     image_alt: "CodeCritters App Screenshot",
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
     link:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters'
