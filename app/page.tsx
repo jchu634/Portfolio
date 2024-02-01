@@ -41,8 +41,8 @@ const projects = [
     github:'https://github.com/jchu634/fakman',
     link:"/projects/games/Fakman",
     image: "True",
-    image_dark: "/Fakman.png",
-    image_light: "/Fakman.png",
+    image_dark: "/projects/fakman/Fakman.png",
+    image_light: "/projects/fakman/Fakman.png",
     image_alt: "Fakman Screenshot",
     website:"/projects/games/Fakman"
   },
