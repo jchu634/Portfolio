@@ -139,7 +139,7 @@ export default function Home() {
       <CustomCursorTrail />
       <CustomCursorGif />
       <h1 className="text-3xl font-bold text-black dark:text-slate-200">Hi, I&apos;m Joshua</h1><br></br>
-      <h2 className="text-2xl font-bold text-black dark:text-slate-200">About</h2><br></br>
+      <h2 className="text-2xl font-bold text-black dark:text-slate-200">About Me:</h2><br></br>
       <ul className="pl-5 text-xl text-black dark:text-slate-200 whitespace-pre-wrap list-disc">
         <li>
           Final year Computer Science Student at the University of Auckland.<br />
@@ -148,7 +148,7 @@ export default function Home() {
           FullStack Developer who prefers backend development
         </li>
       </ul><br/>
-      <h2 className="text-2xl font-bold text-black dark:text-slate-200">Contact</h2><br></br>
+      <h2 className="text-2xl font-bold text-black dark:text-slate-200">Contact Methods:</h2><br></br>
       <div className="flex flex-col md:flex-row justify-start gap-3">
         <Link href="https://github.com/jchu634">
           <Button className="h-12 gap-2 bg-blue-600 dark:hover:bg-sky-900">
