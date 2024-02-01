@@ -29,8 +29,8 @@ const projects = [
 
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
     image: "True",
-    image_dark: "/codecritters_dark.png",
-    image_light: "/codecritters_light.png",
+    image_dark: "/projects/codecritters/codecritters_dark.png",
+    image_light: "/projects/codecritters/codecritters_light.png",
     image_alt: "CodeCritters Screenshot",
     link:'https://codecritters.live/'
   },
@@ -41,8 +41,8 @@ const projects = [
     github:'https://github.com/jchu634/fakman',
     link:"/projects/games/Fakman",
     image: "True",
-    image_dark: "/Fakman.png",
-    image_light: "/Fakman.png",
+    image_dark: "/projects/fakman/Fakman.png",
+    image_light: "/projects/fakman/Fakman.png",
     image_alt: "Fakman Screenshot",
     website:"/projects/games/Fakman"
   },
@@ -55,8 +55,8 @@ const projects = [
     github:'https://github.com/jchu634/loopy-desktop',
     link:'https://github.com/jchu634/loopy-desktop',
     image: "True",
-    image_dark: "/Loopy.png",
-    image_light: "/Loopy.png",
+    image_dark: "/projects/loopy/Loopy.png",
+    image_light: "/projects/loopy/Loopy.png",
     image_alt: "Loopy Desktop Screenshot",
   },
   { 
@@ -65,8 +65,8 @@ const projects = [
     description: 
     "A sister project for Codecritters.\nA camera app which identifies insects in photos using a local machine learning model.",
     image: "True",
-    image_dark: "/codecrittersapp.jpg",
-    image_light: "/codecrittersapp.jpg",
+    image_dark: "/projects/codecrittersapp/codecrittersapp.jpg",
+    image_light: "/projects/codecrittersapp/codecrittersapp.jpg",
     image_alt: "CodeCritters App Screenshot",
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
     link:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters'
@@ -139,7 +139,7 @@ export default function Home() {
       <CustomCursorTrail />
       <CustomCursorGif />
       <h1 className="text-3xl font-bold text-black dark:text-slate-200">Hi, I&apos;m Joshua</h1><br></br>
-      <h2 className="text-2xl font-bold text-black dark:text-slate-200">About</h2><br></br>
+      <h2 className="text-2xl font-bold text-black dark:text-slate-200">About Me:</h2><br></br>
       <ul className="pl-5 text-xl text-black dark:text-slate-200 whitespace-pre-wrap list-disc">
         <li>
           Final year Computer Science Student at the University of Auckland.<br />
@@ -148,7 +148,7 @@ export default function Home() {
           FullStack Developer who prefers backend development
         </li>
       </ul><br/>
-      <h2 className="text-2xl font-bold text-black dark:text-slate-200">Contact</h2><br></br>
+      <h2 className="text-2xl font-bold text-black dark:text-slate-200">Contact Methods:</h2><br></br>
       <div className="flex flex-col md:flex-row justify-start gap-3">
         <Link href="https://github.com/jchu634">
           <Button className="h-12 gap-2 bg-blue-600 dark:hover:bg-sky-900">
