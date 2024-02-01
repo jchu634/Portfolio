@@ -167,6 +167,7 @@ function mapProject(project:any, index:number){
                       <Card className="bg-slate-200 dark:bg-sky-950 dark:bg-opacity-40">
                         <CardContent className="flex p-6 justify-center">
                           <Image
+                            unoptimized
                             src={images}
                             width={400}
                             height={400}
