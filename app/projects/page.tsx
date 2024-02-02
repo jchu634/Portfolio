@@ -61,7 +61,7 @@ const projects = [
     "This game has a playable windows build and a webGL build which can be played from the link above.",
     github:'https://github.com/jchu634/fakman',
     website:"/projects/games/Fakman",
-    images:['/projects/fakman/fakman.png']
+    images:['/projects/fakman/Fakman.png']
   },
   {
     name:'Loopy-Desktop',
