@@ -189,7 +189,7 @@ export default function Home() {
         <AlertTitle>More Projects:</AlertTitle>
         <div className="flex flex-row items-center gap-4">
           <AlertDescription>
-            See more projects at:
+            See more projects, and get more details at:
           </AlertDescription>
           <Link href="/projects">
             <Button className="w-10 h-10 bg-blue-600 dark:hover:bg-sky-900">
