@@ -80,6 +80,10 @@ const projects = [
     github:'https://github.com/jchu634/portfolio',
     website:'/',
     description: 'This very website you are on right now! This website is built using Next.JS and TailwindCSS.',
+    images:['/projects/portfolio/blog_dark.png','/projects/portfolio/blog_light.png',
+    '/projects/portfolio/home_dark.png','/projects/portfolio/home_light.png',
+    '/projects/portfolio/projects_dark.png','/projects/portfolio/projects_light.png',
+    '/projects/portfolio/mobile_dark.png','/projects/portfolio/mobile_light.png']
   },
 ];
 const minor_projects = [
