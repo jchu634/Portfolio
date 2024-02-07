@@ -74,9 +74,13 @@ const projects = [
   { 
     name: 'Portfolio Website', type: 'Website',
     technologies_and_frameworks:['Next.JS', 'TailwindCSS'],
+    description: 'This very website you are on right now!\nThis website is built using Next.JS and TailwindCSS.',
+    image:"True",
+    image_light:"/projects/portfolio/home_light.png",
+    image_dark:"/projects/portfolio/home_dark.png",
     github:'https://github.com/jchu634/portfolio',
     link:'/',
-    description: 'This very website you are on right now!\nThis website is built using Next.JS and TailwindCSS.',
+    
   }
 ];
 
