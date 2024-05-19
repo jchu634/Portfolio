@@ -103,11 +103,11 @@ let components = {
   Table,
 }
 
-export function generateStaticParams() {
+function generateStaticParams() {
   return getAllPostNames();
 }
 
-export function CustomMDX(props) {
+function CustomMDX(props) {
   return (
     <MDXRemote
       {...props}
@@ -122,7 +122,6 @@ export default function Page({params}: {params: {slug: string}}) {
   if (!post){
     return notFound();
   }
-  console.log(slug)
   
   const window = new JSDOM('').window;
   const purify = createDOMPurify(window);
