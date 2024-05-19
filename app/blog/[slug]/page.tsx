@@ -3,7 +3,7 @@ import { getAllPostNames, getPostByName } from '@/lib/post'
 import { notFound } from 'next/navigation'
 import { JSDOM } from 'jsdom';
 import createDOMPurify from 'dompurify';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote/rsc'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 import Link from 'next/link'
 import Image from 'next/image'
 import { highlight } from 'sugar-high'
