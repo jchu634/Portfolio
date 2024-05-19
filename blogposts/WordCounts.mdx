@@ -1,0 +1,467 @@
+---
+title: 'Word Counts are a mess'
+date: '2024-05-07'
+description: 'Why are word counts different between different software'
+---
+
+### Background
+Recently I had to submit a 'correct' word count along with a university assignment.\
+
+This proved very difficult and particularly annoying as each software I used gave entirely different word counts from each other, and there was no way I was going to try manually count a roughly 600 word document\
+
+So I decided to do a test and check how accurate many word counts are.
+
+### How I tested.
+
+I first started with a warm-up: a simple DOCX document with a 100 word story.\
+This acted as a litmus test to check if there weren't any significant issues with the software.
+
+Then came the benchmark: a DOCX document with every feature I could think of which has a word count of 219 (counted manually).
+This DOCX document was then converted into a DOC document to see if there were any significant differences.
+
+### Limitations and Expectations:
+Any word count generated from the benchmark will be wrong.
+This is by design as the document contains many tricks to try and trip up word count software.
+The main point is to find the differences in how different software measures word counts through a stress test.
+
+That being said, let me list and explain some certain unknowns (things that should (maybe) count as a word, but are entirely reasonable that don't as long as it is consistent).
+
+They include
+- Bullet points (& Numbered lists): Should the bullet or the number count as a word?
+- Headers and footers: Should they be counted once or for each page?
+- Do words/separated/by/slashes/count as separate words or one big word?
+- Do words.separated.by.dots.count as separate words or one big word?
+    - The slashes and dots may seem simply pedantic, but they are important as they signify if URLs or Acroynms count as a single word or multiple.
+
+## Results
+What were the actual results:
+
+- Word (Desktop App)(Office 365 Enterprise): 170
+- Word (Website): 126
+- Libre: 187
+- Google Docs: 135
+- Apple Pages: 154
+
+#### .DOC
+- Word (Desktop App)(Office 365 Enterprise): 166
+- Word (Website): Not Supported at all
+- Libre: 187
+- Google Docs: 131
+- Apple Pages: 154
+
+Let's talk about these figures:
+
+
+### Word (Desktop + Online)
+
+#### Notable Behaviours
+1. Word (Desktop+Online) don't count words from headers and footers
+2. Word (Desktop+Online) since Word 2003 has counted bullets as a separate word ([Source](https://answers.microsoft.com/en-us/msoffice/forum/all/exclude-bullet-points-from-word-count/e3f69a7b-3a7e-4219-93b4-a84b67809bc5))
+3. Word Online does not count words in equations, captions, WordArt, and textboxes.
+
+#### Notes
+Right off the bat, there was a significant descrepancy between Word (Desktop) and Word (Online).\
+I had expected it already, as this was one of the problems for my uni assignment.\
+A quick Google search corroborates my testing on Word Online as apparently Word online does not count words in text boxes, headers, footers and SmartArt ([Source](https://answers.microsoft.com/en-us/msoffice/forum/all/differences-in-word-count-in-word-online-and-word/0370e8af-8873-4d52-acfc-c64890bf7c7b)).
+
+During the testing, I found a strange quirk in Word Online:\
+Inexplicably, Word Online doesn't counts bullets from bulletpoints, but it does count numbers from numbered lists.\
+This is quite likely to be a bug, but it is quite peculiar, as given this behaviour, I am not sure if algorithm was intended to count list markers or not.
+
+### Libre Office
+#### Notable Behaviours
+1. Almost everything that count count towards an word count is counted
+2. The sole exception I could find were equations
+
+#### Notes
+From my testing, Libre Office counts almost everything in the document, which is quite impressive, it even counted the textbox in the Header.
+I only found 3 flaws in its counting.
+- Words in equations were not counted.
+- Citation marks were counted.
+- The page number is counted.
+
+To clarify what I meant by Citation marks, it is the number next to a text (e.g. study<sup>1</sup>).\
+This behaviour along with counting page numbers is unique among all the software tested and in my personal opinion is incorrect as I consider those punctuation.
+
+Finally,
+Although Libre Office counts the most out of all software, it has a rather annoying bug where the word count is not counted when undoing an operation/
+, the word count after an undo is only updated after some other thing is updated.
+This was a rather major annoyance in testing Libre.
+
+### Google Docs
+#### Notable Behaviours
+- Bullets/Numbers, Headers/Footers, Foot/Endnotes are not counted
+- Slash and Dot separated words are counted separately
+- Words in drawings are not counted.
+
+#### Notes
+Google Docs is rather unique in that it seems the most removed from any other software tested\
+i.e. Google Docs seems to do its own thing and how it handles compatibility with .DOCX is different from everything else.
+
+Some of the ways it handles .DOCX differently are
+- Textboxes and WordArt are imported as a 'Drawing', a construct unique to Google Docs afaik.
+- Captions are not imported.
+- Tables nested in Textboxes are not imported and are missing.
+
+Now the quirks in its wordcounts:
+- Similar to the Word suite, it doesn't count header/footers.
+- Uniquely, it doesn't count words in foot/Endnotes
+
+And the kicker:
+It counts links and Acroynms as separate words, this link: [https://www.youtube.com/watch?v=dQw4w9WgXcQ](https://www.youtube.com/watch?v=dQw4w9WgXcQ) counts as 7 words.\
+This is highly disruptive as this would massively mess with anyone writing documents in word and working with another person on Google Docs.\
+This is especially annoying as all the software counts words in Bibliographies, any documents with links cited would suddenly show up with an inflated wordcount.
+
+### Apple Pages
+#### Notable Behaviours
+- Bullets/Numbers, Headers/Footers are not counted
+- Equations are not counted
+- A lot of jank
+
+### Notes
+In comparison to Google Docs, Apple Pages seems much tamer in how it imports elements from .DOCX documents.\
+The only issue I had with imports were tables nested in textboxes, which imported the table as a text representation.\
+This is rather minor, given that Pages gives an warning in advance.
+
+What is rather egregious is the janky quirks.
+- For some reason, text in textboxes inside the header is counted, despite any words in the header not being counted.
+- The title in a table in a table of contents is counted, but the table directory isn't.
+- Links and Acroynms are counted separately (similar to Google Docs)
+- Uniquely, Emoji are counted as words, and not as a char as with the other software
+    - What this means is that 🥡🦪 🐈‍⬛ is counted as 3 words with Apple pages and 2 words in other software.
+- Finally Apple Pages simply doesn't count mathematical symbols as words, but it does count Greek letters as symbols
+    - (This one is a bit more minor)
+
+## Conclusion
+Now that this exercise is finished, I don't know what to feel about the results.
+It is great that the differences in word count is finally quantifiable and tested
+
+
+## Appendix
+
+### AP 1.1: Footnote: .DOC
+I had intended to write about .DOC as I had expected there to be a significant discrepancy between .DOC and .DOCX, but that has not materialised in my testing.\
+The only difference is in the conversion, equations are transformed into an image.\
+So all the wordcounts are offset by the 4 words in the equations.\
+The sole application with no change to word count (Libre Office) only has no difference because it never supported equations in word counts.
+
+The only quirk I found with .DOC compatibility was with Google Docs, \
+Unlike with .DOCX, it managed to import the picture caption, but it imported it incorrectly as shown below (And yes, it was distorted in the document too).
+<img src='../BlogImages/WordCountImage3.png'> </img>
+
+
+### AP 1.2: Results Table:
+#### AP 1.2.1: .DOCX
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Header/Footer</th>
+            <th>Textbox in Header</th>
+            <th>Headings</th>
+            <th>Text</th>
+            <th>List</th>
+            <th>Numbered list</th>
+            <th>Table Of Contents</th>
+            <th>Tables</th>
+            <th>Citation Mark</th>
+            <th>Equations</th>
+            <th>Links</th>
+            <th>SlashSeperatedWords</th>
+            <th>Acroynms</th>
+            <th>Bibliographies</th>
+            <th>Captions</th>
+            <th>Footnotes</th>
+            <th>EndNotes</th>
+            <th>WordArt</th>
+            <th>Textbox</th>
+            <th>Comments</th>
+            <th>Page Numbers</th>
+            <th>Sub/SuperScript</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Word (Desktop)</th>
+            <td>❌</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>One Word</td>
+            <td>One Word</td>
+            <td>One Word</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>One Word</td>
+        </tr>
+        <tr>
+            <th>Word (Online)</th>
+            <td>❌</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>One Word</td>
+            <td>One Word</td>
+            <td>One Word</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>One Word</td>
+        </tr>
+        <tr>
+            <th>Libre</th>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>One Word</td>
+            <td>One Word</td>
+            <td>One Word</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>One Word</td>
+        </tr>
+        <tr>
+            <th>Google Docs</th>
+            <td>❌</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️ (Bullets Don&#39;t Count)</td>
+            <td>✔️ (Bullets Don&#39;t Count)</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>Separate</td>
+            <td>Separate</td>
+            <td>Separate</td>
+            <td>✔️</td>
+            <td>❌ (Not Imported)</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌ (imported as drawing)</td>
+            <td>❌ (imported as drawing)</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>One Word</td>
+        </tr>
+        <tr>
+            <th>Apple Pages</th>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️ (Bullets Don&#39;t Count)</td>
+            <td>✔️ (Bullets Don&#39;t Count)</td>
+            <td>✔️/❌ (Title counts, but not the table)</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>Separate</td>
+            <td>Separate</td>
+            <td>Separate</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>One Word</td>
+        </tr>
+    </tbody>
+</table>
+#### AP 1.2.2: .DOC
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Header/Footer</th>
+            <th>Textbox in Header</th>
+            <th>Headings</th>
+            <th>Text</th>
+            <th>List</th>
+            <th>Numbered list</th>
+            <th>Table Of Contents</th>
+            <th>Tables</th>
+            <th>Citation Mark</th>
+            <th>Equations</th>
+            <th>Links</th>
+            <th>SlashSeperatedWords</th>
+            <th>Acroynms</th>
+            <th>Bibliographies</th>
+            <th>Captions</th>
+            <th>Footnotes</th>
+            <th>EndNotes</th>
+            <th>WordArt</th>
+            <th>Textbox</th>
+            <th>Comments</th>
+            <th>Page Numbers</th>
+            <th>SubScript</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Word (Desktop)</th>
+            <td>❌</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>N.A.</td>
+            <td>One Word</td>
+            <td>One Word</td>
+            <td>One Word</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <th>Word (Online)</th>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+            <td>N.A.</td>
+        </tr>
+        <tr>
+            <th>Libre</th>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>N.A.</td>
+            <td>One Word</td>
+            <td>One Word</td>
+            <td>One Word</td>
+            <td></td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <th>Google Docs</th>
+            <td>❌</td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️ (Bullets Don&#39;t Count)</td>
+            <td>✔️  (Bullets Don&#39;t Count)</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>N.A.</td>
+            <td>Separate</td>
+            <td>Separate</td>
+            <td>Separate</td>
+            <td>✔️</td>
+            <td>❌ (Imported, But with a quirk)</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌ (imported as drawing)</td>
+            <td>❌ (imported as drawing)</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <th>Apple Pages</th>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️ (Bullets Don&#39;t Count)</td>
+            <td>✔️ (Bullets Don&#39;t Count)</td>
+            <td>✔️/❌ (Title counts, but not the table)</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>Separate</td>
+            <td>Separate</td>
+            <td>Separate</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>One Word</td>
+        </tr>
+    </tbody>
+</table>
