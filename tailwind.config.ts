@@ -88,6 +88,11 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       typography: (theme: PluginAPI["theme"]) => ({
+        DEFAULT: {
+          css: {
+            maxWidth: '100ch',
+          }
+        },
         pink: {
           css: {
             '--tw-prose-body': theme('colors.pink[800]'),
