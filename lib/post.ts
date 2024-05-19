@@ -9,7 +9,7 @@ export function getSortedPostsData() {
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, '');
+    const id = fileName.replace(/\.mdx?$/, '');
 
     // Read markdown file as string
     const fullPath = path.join(postsDirectory, fileName);
@@ -24,6 +24,7 @@ export function getSortedPostsData() {
       date:String,
       title:String,
       description:String,
+      lastUpdate:String,
       ...matterResult.data,
     };
   });
@@ -41,7 +42,7 @@ export function getAllPostNames(){
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, '');
+    const id = fileName.replace(/\.mdx?$/, '');
     return {id};
   });
   // Sort posts by date
@@ -50,9 +51,12 @@ export function getAllPostNames(){
 
 export function getPostByName(name:string){
   // Read markdown file as string
-  const fullPath = path.join(postsDirectory, `${name}.md`);
+  let fullPath = path.join(postsDirectory, `${name}.mdx`);
   if (!fs.existsSync(fullPath)) {
-    return null;
+    fullPath = path.join(postsDirectory, `${name}.md`);
+    if (!fs.existsSync(fullPath)) {
+      return null;
+    }
   }
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -64,6 +68,7 @@ export function getPostByName(name:string){
     date:String,
     title:String,
     description:String,
+    lastUpdate:String,
     content:matterResult.content,
     ...matterResult.data,
   };
