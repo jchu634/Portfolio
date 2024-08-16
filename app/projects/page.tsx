@@ -25,7 +25,8 @@ import { faArrowUpRightFromSquare, faDownload } from "@fortawesome/free-solid-sv
 
 const projects = [
   { 
-    name: 'CodeCritters', type: 'Hybrid Application and Website', 
+    name: 'CodeCritters',
+    type: 'Hybrid Application and Website', 
     technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
     description: 
     
@@ -46,7 +47,8 @@ const projects = [
     
   },
   {
-    name: 'CodeCritters Flutter App', type: 'Application',
+    name: 'CodeCritters Flutter App',
+    type: 'Application',
     technologies_and_frameworks: ['Flutter', 'Dart'],
     description: 'This is an sister android camera application for CodeCritters which allows users to take photos and get inference results via a local TensorFlowLite model.\n'+
     "This app is fully functional, and although it was never publicly visible on the Google Play Store, it is still available for download via Github releases.",
@@ -55,7 +57,8 @@ const projects = [
     images:['/projects/codecrittersapp/codecrittersapp.jpg','/projects/codecrittersapp/codecrittersapp_prediction.png']
   },
   {
-    name: 'Fakman', type: 'Game',
+    name: 'Fakman',
+    type: 'Game',
     technologies_and_frameworks:['Unity', 'C#'], 
     description: 'This is a Pacman clone made as a learning project for Unity and C#.\n'+
     "This game has a playable windows build and a webGL build which can be played from the link above.",
@@ -75,7 +78,17 @@ const projects = [
     images:['/projects/loopy/Loopy.png', '/projects/loopy/loopy_output.gif','/projects/loopy/loopy_example.png']
   },
   { 
-    name: 'Portfolio Website', type: 'Website',
+    name: 'Ryzen AI Subtitles',
+    type: 'Application',
+    technologies_and_frameworks:['Next.JS', 'TailwindCSS', 'Python', 'Ryzen AI Software', 'Whisper'],
+    github:'https://github.com/jchu634/SubtitleProject',
+    website:'https://www.hackster.io/jchu634/ryzen-ai-subtitling-5ead7f',
+    description: 'An subtitling program which uses Whisper on a Ryzen AI NPU to generate real-time subtitles for an audio source.\n A Submission for the AMD Pervasive AI Developer Challenge.',
+
+  },
+  { 
+    name: 'Portfolio Website',
+    type: 'Website',
     technologies_and_frameworks:['Next.JS', 'TailwindCSS'],
     github:'https://github.com/jchu634/portfolio',
     website:'/',
@@ -85,6 +98,7 @@ const projects = [
     '/projects/portfolio/projects_dark.png','/projects/portfolio/projects_light.png',
     '/projects/portfolio/mobile_dark.png','/projects/portfolio/mobile_light.png']
   },
+  
 ];
 const minor_projects = [
   {
