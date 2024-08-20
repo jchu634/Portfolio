@@ -28,10 +28,12 @@ const aleo = Aleo({subsets:['latin']});
 
 export default function SideNav() {
   const { setTheme } = useTheme()
-  const [showCursor, setShowCursor] = useState(() => {
+  const [showCursor, setShowCursor] = useState<boolean | null>(null)
+
+  useEffect(() => {
     const storedValue = localStorage.getItem('showCursor');
-    return storedValue !== null ? JSON.parse(storedValue) : true;
-  });
+    setShowCursor(storedValue !== null ? JSON.parse(storedValue) : true);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('showCursor', JSON.stringify(showCursor));
