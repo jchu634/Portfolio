@@ -59,7 +59,7 @@ export default function SideNav() {
           <NavLinks />
         </div>
 
-        <div className="flex space-x-5 pl-2 pb-5 align-middle"> {/* Socials */}
+        <div className="flex space-x-5 pl-4 pb-5 align-middle"> {/* Socials */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button className="w-[2rem] h-[2rem]">
@@ -101,7 +101,7 @@ export default function SideNav() {
           </Button>
     
           <Link href="mailto:jchu634@keshuac.com" className='pl-5'>
-            <Mail className="w-8 h-8 text-white"/>
+            <Mail className="w-8 h-8 text-black dark:text-white"/>
           </Link>
           
           <Link href="https://www.linkedin.com/in/jchu634/">
@@ -109,7 +109,7 @@ export default function SideNav() {
           </Link>
           
           <Link href="https://github.com/jchu634">
-            <SiGithub className="w-8 h-8 text-white"/> 
+            <SiGithub className="w-8 h-8 text-black dark:text-white"/> 
           </Link>
 
           <Link href="https://www.printables.com/@Keshuac_2081737">
