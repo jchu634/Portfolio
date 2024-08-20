@@ -7,8 +7,8 @@ import { SiGithub, SiGithubHex, SiLinkedin, SiLinkedinHex, SiPrintables, SiPrint
 
 import { useState, useEffect} from 'react';
 
-import PacmanEnabledSVG from './SVGs/pacman_enabled';
-import PacmanDisabledSVG from './SVGs/pacman_disabled';
+import PacmanEnabledSVGDark, { PacmanEnabledSVGLight } from './SVGs/pacman_enabled';
+import PacmanDisabledSVGDark, { PacmanDisabledSVGLight } from './SVGs/pacman_disabled';
 
 import Link from 'next/link';
 import NavLinks from '@/components/sidebar/nav-links';
@@ -86,10 +86,16 @@ export default function SideNav() {
           <Button onClick={() => setShowCursor(!showCursor)} className="w-8 h-8">
             <div className="flex relative-center items-center">
               { showCursor && (
-                <PacmanEnabledSVG className="w-6 h-6" />
+                <div>
+                  <PacmanEnabledSVGDark className="w-6 h-6 hidden dark:block" />
+                  <PacmanEnabledSVGLight className="w-6 h-6 block dark:hidden" />
+                </div>
               )}
               { !showCursor && (
-                <PacmanDisabledSVG className="w-6 h-6" />
+                <div>
+                  <PacmanDisabledSVGDark className="w-6 h-6 hidden dark:block" />
+                  <PacmanDisabledSVGLight className="w-6 h-6 block dark:hidden" />
+                </div>
               )}
             </div>
           </Button>
