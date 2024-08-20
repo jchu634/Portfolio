@@ -83,7 +83,7 @@ export default function SideNav() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Button onClick={() => setShowCursor(!showCursor)} className="w-8 h-8">
+          <Button onClick={() => setShowCursor(!showCursor)} className="w-8 h-8" aria-label='Toggle button to disable/enable Pacman cursor following feature'>
             <div className="flex relative-center items-center">
               { showCursor && (
                 <div>
