@@ -14,23 +14,22 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faArrowUpRightFromSquare, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
+import { Link as LinkIcon, Download, ExternalLink } from "lucide-react";
+import { SiGithub, SiGithubHex } from '@icons-pack/react-simple-icons';
 
 const projects = [
   { 
     name: 'CodeCritters', type: 'Hybrid Application and Website', 
     technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
     description: 
-    "A project for Landcare research for the detection of pest detection.\nIt uses Machine Learning to find what insect is in an image.",
-
+    "My team's capstone project: A website/application that uses machine learning to identify insects pests for Landcare research.",
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
+    link:'https://codecritters.live/',
+    download:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters/releases/latest',
     image: "True",
     image_dark: "/projects/codecritters/codecritters_dark.png",
     image_light: "/projects/codecritters/codecritters_light.png",
     image_alt: "CodeCritters Screenshot",
-    link:'https://codecritters.live/'
   },
   {
     name: 'Fakman', type: 'Game',
@@ -49,9 +48,9 @@ const projects = [
     type:'Application',
     technologies_and_frameworks:['Electron','HTML','CSS', 'VanillaJS'],
     description:
-      "An local Electron desktop port with extra features for Loopy, an open source web application which allows users to visualise systems.",
+      "An Electron desktop client with extra features for Loopy, an open source web application which allows users to visualise systems.",
     github:'https://github.com/jchu634/loopy-desktop',
-    link:'https://github.com/jchu634/loopy-desktop',
+    download:'https://github.com/jchu634/loopy-desktop/releases/latest',
     image: "True",
     image_dark: "/projects/loopy/Loopy.png",
     image_light: "/projects/loopy/Loopy.png",
@@ -62,122 +61,114 @@ const projects = [
     technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
     description: 
     "A sister project for Codecritters.\nA camera app which identifies insects in photos using a local machine learning model.",
+    github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp',
+    download:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp/releases/latest',
     image: "True",
     image_dark: "/projects/codecrittersapp/codecrittersapp.jpg",
     image_light: "/projects/codecrittersapp/codecrittersapp.jpg",
     image_alt: "CodeCritters App Screenshot",
-    github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
-    link:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters'
   },
-  { 
-    name: 'Portfolio Website', type: 'Website',
-    technologies_and_frameworks:['Next.JS', 'TailwindCSS'],
-    description: 'This very website you are on right now!\nThis website is built using Next.JS and TailwindCSS.',
-    image:"True",
-    image_light:"/projects/portfolio/home_light.png",
-    image_dark:"/projects/portfolio/home_dark.png",
-    github:'https://github.com/jchu634/portfolio',
-    link:'/',
-    
-  }
 ];
 
-function mapProjects(project:any, index:number){
+function mapProjects(project:any){
   return (
-    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-      <div className="p-1">
-          <Card className="group bg-slate-200 dark:bg-sky-950 dark:bg-opacity-40">
-            <CardContent className="relative flex aspect-square items-center justify-center p-6 group-hover:bg-opacity-50 dark:group-hover:bg-opacity-20 dark:group-hover:bg-gray-100 group-hover:bg-gray-800">
-              <div className="flex flex-col gap-y-2">
-                <span className="text-2xl font-semibold">{project.name}</span>
-                {                
-                  project.image && (
-                    <div className="group-hover:filter dark:group-hover:grayscale-0 group-hover:brightness-50">
-                      <Image
-                        className="hidden dark:block max-h-52 w-auto group-hover:bg-gray-100 group-hover:bg-opacity-50"
-                        src={project.image_dark}
-                        width={200}
-                        height={200}
-                        alt={project.image_alt}
-                      ></Image>
-                      <Image
-                      className="block dark:hidden max-h-52 w-auto"
-                        src={project.image_light}
-                        width={200}
-                        height={200}
-                        alt={project.image_alt}
-                      ></Image>
-                    </div>
-                  )
-                }
-                <p className="whitespace-pre-wrap text-m">{project.description}</p>
-              </div>
-              <div className="hidden absolute inset-0 group-hover:flex items-center justify-center gap-x-2">
-              {                
-                  project.github && (
-                    <Link href={project.github}>
-                      <Button className="bg-gray-700 dark:bg-gray-100">
-                          <FontAwesomeIcon icon={faGithub} size="2x"/>
-                      </Button>
-                    </Link> 
-                  )
-                } 
-                <Link href={project.link}>
-                 <Button className="bg-gray-700 dark:bg-gray-100">
-                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2x"/>
-                  </Button> 
+    <Card className="bg-slate-200 dark:bg-fuchsia-400 dark:bg-opacity-40 w-auto">
+      <CardContent>
+        <div className="flex items-start">
+          {project.image && (
+            <div className="group-hover:filter dark:group-hover:grayscale-0 group-hover:brightness-50">
+              <Image
+                className="hidden dark:block"
+                src={project.image_dark}
+                width={200}
+                height={200}
+                alt={project.image_alt}
+              />
+              <Image
+                className="block dark:hidden"
+                src={project.image_light}
+                width={200}
+                height={200}
+                alt={project.image_alt}
+              />
+            </div>
+          )}
+          <div className="pl-5">
+            <span className="text-2xl font-bold text-cyan-200">{project.name}</span>
+            <p className="whitespace-pre-wrap text-m">{project.description}</p>
+            <div className="space-x-2 pt-2">
+              { project.github && (
+                <Link href={project.github}>
+                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300">
+                    <SiGithub className="w-8 h-8 text-white hover:text-blue-600"/>
+                  </Button>
                 </Link>
-              </div>
-            </CardContent>
-          </Card>
-      </div>
-    </CarouselItem>
+              )}
+              { project.link && (
+                <Link href={project.link}>
+                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300">
+                    <LinkIcon className="w-8 h-8 text-white hover:text-blue-600"/>
+                  </Button>
+                </Link>
+              )}
+              { project.download && (
+                <Link href={project.download}>
+                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300">
+                    <Download className="w-8 h-8 text-white hover:text-blue-600"/>
+                  </Button>
+                </Link>
+              )}
+            </div>
+            <div className="space-x-2 pt-2">
+              {project.technologies_and_frameworks && (
+                project.technologies_and_frameworks.map((technologies_and_frameworks: string) => {
+                  return (
+                    <span className="text-xs font-bold bg-[#2B382E] dark:bg-black  text-[#62FDBF] p-1 px-2 rounded-md">
+                      {technologies_and_frameworks}
+                    </span>
+                  );
+                })
+                )}
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 
 export default function Home() {  
   return (
     <main>
-      <h1 className="text-3xl font-bold text-black dark:text-slate-200">Hi, I&apos;m Joshua</h1><br></br>
       <h2 className="text-2xl font-bold text-black dark:text-slate-200">About Me:</h2><br></br>
-      <ul className="pl-5 text-xl text-black dark:text-slate-200 whitespace-pre-wrap list-disc">
-        <li>
-          Final year Computer Science Student at the University of Auckland.<br />
-        </li>
-        <li>
-          FullStack Developer who prefers backend development
-        </li>
-      </ul><br/>
+      <h3 className="text-xl text-black dark:text-slate-200">
+        Hi, I'm a new graduate from the University of Auckland (BSc in Computer Science)<br/>
+        I really like making stuff and trying out new technologies.<br/>
+        <br/>
+        Currently I am working on a couple of projects I didn't have time to start while studying.<br/>
+        I am currently interested in Machine Learning, hardware Video encode/decode.<br/>
+        <br/>
+        Also looking for work.<br/>
+      </h3>
+      <br/>
       
-      <h1 className="text-2xl font-bold text-black dark:text-slate-200">Here are a couple of projects I worked on:</h1><br></br>
-      <Carousel
-        opts={{
-          align: "start",
-          loop: true,
-        }}
-        className="w-full sm:max-w-screen-xs lg:max-w-screen-lg xl:max-w-screen-xl"
-      >
-        <CarouselContent>
-          { projects.map((project, index) => {
-            return (mapProjects(project, index));
-          })}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-      <Alert className="w-60">
-        <AlertTitle>More Projects:</AlertTitle>
-        <div className="flex flex-row items-center gap-4">
-          <AlertDescription>
-            See more projects, and get more details at:
-          </AlertDescription>
-          <Link href="/projects">
-            <Button className="w-10 h-10 bg-blue-600 dark:hover:bg-sky-900">
-                <FontAwesomeIcon className="dark:text-slate-200" icon={faArrowUpRightFromSquare} size="2x"/>
-            </Button>
-          </Link>
-        </div>
-      </Alert>
+      <h2 className="text-2xl font-bold text-black dark:text-slate-200">
+        Featured Projects:
+      </h2><br/>
+      <div className="space-y-4">
+        { 
+          projects.map((project, index) => {
+            return (mapProjects(project));
+          })
+        }
+      </div>
+      
+      <Link href="/projects">
+        <Button variant="link" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg pt-8">
+          <p>View Complete Project Archive</p>
+          <ExternalLink className="w-6 h-6 text-white hover:text-blue-600"/>
+        </Button>
+      </Link>
     </main>
   )
 }
