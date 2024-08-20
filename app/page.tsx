@@ -98,22 +98,22 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
             <p className="whitespace-pre-wrap text-m">{project.description}</p>
             <div className="space-x-2 pt-2">
               { project.github && (
-                <Link href={project.github}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300">
+                <Link href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
+                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Github link button for ${project.name}`}>
                     <SiGithub className="w-8 h-8 text-white hover:text-blue-600"/>
                   </Button>
                 </Link>
               )}
               { project.link && (
-                <Link href={project.link}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300">
+                <Link href={project.link} aria-label={`Go to website for ${project.name}`}>
+                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Link button to ${project.name}`}>
                     <LinkIcon className="w-8 h-8 text-white hover:text-blue-600"/>
                   </Button>
                 </Link>
               )}
               { project.download && (
-                <Link href={project.download}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300">
+                <Link href={project.download} aria-label={`Go to download page for ${project.name}`}>
+                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Download link button for ${project.name}`}>
                     <Download className="w-8 h-8 text-white hover:text-blue-600"/>
                   </Button>
                 </Link>
