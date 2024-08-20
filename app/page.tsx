@@ -121,9 +121,9 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
             </div>
             <div className="space-x-2 pt-2">
               {project.technologies_and_frameworks && (
-                project.technologies_and_frameworks.map((technologies_and_frameworks: string) => {
+                project.technologies_and_frameworks.map((technologies_and_frameworks: string, index:number) => {
                   return (
-                    <span className="text-xs font-bold bg-[#2B382E] dark:bg-black  text-[#62FDBF] p-1 px-2 rounded-md">
+                    <span className="text-xs font-bold bg-[#2B382E] dark:bg-black  text-[#62FDBF] p-1 px-2 rounded-md" key={index}>
                       {technologies_and_frameworks}
                     </span>
                   );
@@ -142,10 +142,10 @@ export default function Home() {
     <main>
       <h2 className="text-2xl font-bold text-black dark:text-slate-200">About Me:</h2><br></br>
       <h3 className="text-xl text-black dark:text-slate-200">
-        Hi, I'm a new graduate from the University of Auckland (BSc in Computer Science)<br/>
+        Hi, I&apos; m a new graduate from the University of Auckland (BSc in Computer Science)<br/>
         I really like making stuff and trying out new technologies.<br/>
         <br/>
-        Currently I am working on a couple of projects I didn't have time to start while studying.<br/>
+        Currently I am working on a couple of projects I didn&apos;t have time to start while studying.<br/>
         I am currently interested in Machine Learning, hardware Video encode/decode.<br/>
         <br/>
         Also looking for work.<br/>
