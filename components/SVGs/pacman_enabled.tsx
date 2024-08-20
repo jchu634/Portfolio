@@ -1,5 +1,7 @@
 import * as React from "react"
 import { SVGProps } from "react"
+
+// Generated with https://react-svgr.com/playground/
 const PacmanEnabledSVG = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
