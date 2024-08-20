@@ -72,7 +72,7 @@ const projects = [
 
 function mapProjects(project:any, index:number){ // Index is here to stop the warning about needing a key
   return (
-    <Card className="bg-slate-200 dark:bg-fuchsia-900 dark:bg-opacity-40 w-auto" key={index}>
+    <Card className="bg-slate-200 dark:bg-fuchsia-950 dark:bg-opacity-40 w-auto" key={index}>
       <CardContent>
         <div className="flex items-start">
           {project.image && (
