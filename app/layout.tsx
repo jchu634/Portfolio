@@ -1,5 +1,4 @@
 import type { Metadata} from 'next'
-import Link from 'next/link';
 import { Inter } from 'next/font/google'
 import '@/app/globals.css'
 import SideNav from '../components/sidenav';'@/app/ui/dashboard/sidenav.css';
@@ -19,8 +18,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {
-      }
       <head />
       <body>
         <ThemeProvider
@@ -29,16 +26,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col-reverse md:flex-row h-screen [background:radial-gradient(200%_140%_at_0%_10%,#FFF_50%,#701a75_100%)] dark:[background:radial-gradient(200%_140%_at_0%_10%,#000_50%,#701a75_100%)]">
-            <div className="w-full md:w-64 fixed bottom-0 z-10 md:relative">
-                <SideNav />
+          <div className="flex flex-col-reverse md:flex-row h-screen dark:bg-slate-900">
+            <div className="md:w-40% fixed bottom-0 z-10 md:relative flex-shrink-0">
+              <SideNav />
             </div>
-            <div className="flex-grow p-6 pb-48 overflow-y-auto md:p-12">{children}</div>
+            <div className="p-6 pb-48 overflow-y-auto md:p-12 flex-grow">
+              {children}
+            </div>
           </div>
         </ThemeProvider>
-        
-
       </body>
     </html>
-  )
+  );
 }

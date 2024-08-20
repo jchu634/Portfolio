@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@heroicons/react": "^2.1.1",
+    "@icons-pack/react-simple-icons": "^10.0.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.3",
@@ -36,6 +37,7 @@
     "next": "^14.2.3",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.2.1",
+    "portfolio": "file:",
     "react": "^18",
     "react-dom": "^18",
     "react-unity-webgl": "^9.5.0",
@@ -45,6 +47,7 @@
     "tailwindcss-animated": "^1.0.1"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20",
     "@types/react": "^18",

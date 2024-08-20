@@ -180,6 +180,9 @@ const config = {
         '.shadow-big-white': {
           boxShadow: '0 0 15px 5px rgba(255, 255, 255, 0.5)',
         },
+        '.shadow-big-blue': {
+          boxShadow: '0 0 5px 5px rgba(0, 0, 40, 0.5)',
+        },
       }
       addUtilities(newUtilities)
     },

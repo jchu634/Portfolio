@@ -45,7 +45,8 @@ function RenderGif() {
         style={{ top: `calc(${gifPosition.top}px - 20px)`,
                  left: `calc(${gifPosition.left}px - 20px)`, 
                  position: 'absolute',
-                 transform: isFlipped ? 'scaleX(-1)' : 'scaleX(1)'
+                 transform: isFlipped ? 'scaleX(-1)' : 'scaleX(1)',
+                 pointerEvents: 'none'
                 }}
       />
     </div>
