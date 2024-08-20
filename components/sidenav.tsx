@@ -5,7 +5,7 @@ import { Aleo } from 'next/font/google';
 import { Moon, Sun, Mail } from "lucide-react";
 import { SiGithub, SiGithubHex, SiLinkedin, SiLinkedinHex, SiPrintables, SiPrintablesHex } from '@icons-pack/react-simple-icons';
 
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 
 import PacmanEnabledSVG from './SVGs/pacman_enabled';
 import PacmanDisabledSVG from './SVGs/pacman_disabled';
@@ -28,8 +28,15 @@ const aleo = Aleo({subsets:['latin']});
 
 export default function SideNav() {
   const { setTheme } = useTheme()
-  const [showCursor, setShowCursor] = useState(true);
-  
+  const [showCursor, setShowCursor] = useState(() => {
+    const storedValue = localStorage.getItem('showCursor');
+    return storedValue !== null ? JSON.parse(storedValue) : true;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('showCursor', JSON.stringify(showCursor));
+  }, [showCursor]);
+
   return (
     <main className={`${aleo.className} h-screen`}>
       { showCursor && (
