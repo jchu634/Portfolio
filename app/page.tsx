@@ -1,7 +1,5 @@
 "use client"
 import React from 'react';
-import CustomCursorTrail from '@/components/cursorTrail';
-import CustomCursorGif from '@/components/cursorGif';
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -140,8 +138,6 @@ function mapProjects(project:any, index:number){
 export default function Home() {  
   return (
     <main>
-      <CustomCursorTrail />
-      <CustomCursorGif />
       <h1 className="text-3xl font-bold text-black dark:text-slate-200">Hi, I&apos;m Joshua</h1><br></br>
       <h2 className="text-2xl font-bold text-black dark:text-slate-200">About Me:</h2><br></br>
       <ul className="pl-5 text-xl text-black dark:text-slate-200 whitespace-pre-wrap list-disc">
@@ -152,27 +148,7 @@ export default function Home() {
           FullStack Developer who prefers backend development
         </li>
       </ul><br/>
-      <h2 className="text-2xl font-bold text-black dark:text-slate-200">Contact Methods:</h2><br></br>
-      <div className="flex flex-col md:flex-row justify-start gap-3">
-        <Link href="https://github.com/jchu634">
-          <Button className="h-12 gap-2 bg-blue-600 dark:hover:bg-sky-900">
-            <FontAwesomeIcon className="dark:text-slate-200" icon={faGithubSquare} size="3x"/>
-            <p className="text-lg dark:text-slate-200">@jchu634</p>
-          </Button>
-        </Link>
-        <Link href="https://www.linkedin.com/in/jchu634/">
-          <Button className="h-12 gap-2 bg-blue-600 dark:hover:bg-sky-900">
-            <FontAwesomeIcon className="dark:text-slate-200" icon={faLinkedin} size="3x"/>
-            <p className="text-lg dark:text-slate-200">@jchu634</p>
-          </Button>
-        </Link>
-        <Link href="mailto:jchu634@keshuac.com">
-          <Button className="h-12 gap-2 bg-blue-600 dark:hover:bg-sky-900">
-            <FontAwesomeIcon className="dark:text-slate-200" icon={faEnvelopeSquare} size="3x"/>
-            <p className="text-lg dark:text-slate-200">jchu634@keshuac.com</p>
-          </Button>
-        </Link>
-      </div><br/>
+      
       <h1 className="text-2xl font-bold text-black dark:text-slate-200">Here are a couple of projects I worked on:</h1><br></br>
       <Carousel
         opts={{
