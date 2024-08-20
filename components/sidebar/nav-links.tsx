@@ -1,10 +1,4 @@
-'use client';
-
-import {
-  UserGroupIcon,
-  HomeIcon,
-  DocumentDuplicateIcon,
-} from '@heroicons/react/24/outline';
+import { Newspaper, Home, SquareGantt} from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
@@ -12,37 +6,36 @@ import clsx from 'clsx';
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
-  { name: 'Home', href: '/', icon: HomeIcon },
+  { name: 'Home', href: '/', icon: Home },
   {
-    name: 'Projects',
-    href: '/projects',
-    icon: DocumentDuplicateIcon,
-  },
-  { name: 'Blog', href: '/blog', icon: UserGroupIcon },
+    name: 'Projects', href: '/projects', icon: SquareGantt,},
+  { name: 'Blog', href: '/blog', icon: Newspaper },
 ];
 
 export default function NavLinks() {
   const pathname = usePathname();
   return (
     <>
-      {links.map((link) => {
-        const LinkIcon = link.icon;
-        return (
-          <Link
-            key={link.name}
-            href={link.href}
-            className={clsx(
-              "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 dark:bg-zinc-950 p-3 text-sm font-bold hover:bg-sky-200 hover:text-blue-600 dark:hover:text-blue-400 dark:hover:shadow-big-white md:flex-none md:justify-start md:p-2 md:px-3 outline-style: solid",
-              {
-                'bg-sky-200 dark:bg-zinc-400 text-blue-600 dark:text-blue-400': pathname === link.href,
-              }
-            )}
-          >
-            <LinkIcon className="w-6" />
-            <p className="hidden md:block">{link.name}</p>
-          </Link>
-        );
-      })}
+      <div className="space-y-5 pb-6">
+        {links.map((link) => {
+          const LinkIcon = link.icon;
+          return (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={clsx(
+                "flex h-[48px] grow items-center justify-center gap-2 rounded-md font-bold hover:bg-slate-800 dark:hover:bg-blue-200 hover:text-blue-200 dark:hover:text-blue-600 dark:hover:shadow-big-white hover:shadow-big-blue md:justify-start md:p-4",
+                {
+                  'text-blue-600 dark:text-blue-400': pathname === link.href,
+                }
+              )}
+            >
+              <LinkIcon className="w-6" />
+              <p className="hidden md:block">{link.name}</p>
+            </Link>
+          );
+        })}
+      </div>
     </>
   );
 }
