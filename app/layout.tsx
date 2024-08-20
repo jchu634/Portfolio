@@ -18,8 +18,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {
-      }
       <head />
       <body>
         <ThemeProvider
@@ -29,15 +27,15 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col-reverse md:flex-row h-screen dark:bg-slate-900">
-            <div className="md:w-40% fixed bottom-0 z-10 md:relative">
-                <SideNav />
+            <div className="md:w-40% fixed bottom-0 z-10 md:relative flex-shrink-0">
+              <SideNav />
             </div>
-            <div className="flex-grow p-6 pb-48 overflow-y-auto md:p-12">{children}</div>
+            <div className="p-6 pb-48 overflow-y-auto md:p-12 flex-grow">
+              {children}
+            </div>
           </div>
         </ThemeProvider>
-        
-
       </body>
     </html>
-  )
+  );
 }
