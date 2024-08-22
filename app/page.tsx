@@ -94,7 +94,7 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
             </div>
           )}
           <div className="pl-5">
-            <span className="text-2xl font-bold text-cyan-200">{project.name}</span>
+            <span className="text-2xl font-bold text-cyan-900 dark:text-cyan-200">{project.name}</span>
             <p className="whitespace-pre-wrap text-m">{project.description}</p>
             <div className="space-x-2 pt-2">
               { project.github && (
