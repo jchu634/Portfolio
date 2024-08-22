@@ -22,7 +22,7 @@ const projects = [
     name: 'CodeCritters', type: 'Hybrid Application and Website', 
     technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
     description: 
-    "My team's capstone project: A website/application that uses machine learning to identify insects pests for Landcare research.",
+    "My team's University capstone project: A website/application that uses machine learning to identify insects pests for Landcare research.",
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
     link:'https://codecritters.live/',
     download:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters/releases/latest',
