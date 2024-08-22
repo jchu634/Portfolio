@@ -156,14 +156,14 @@ export default function Page({params}: {params: {slug: string}}) {
   
   return (
     <div>      
-      <article className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl prose-stone dark:prose-invert max-auto">
+      <article className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl prose-stone dark:prose-invert">
         <h1> {post.title.toString()} </h1>
         <h4> First Published: {post.date.toString()}, Last Updated: {post.lastUpdate.toString()}</h4>
         <blockquote> {post.description.toString()}</blockquote>
         <text>{"\n"}</text>
       </article>
-      <article className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl prose-rosestone dark:prose-invert max-auto">
-        <CustomMDX source={post.content} />
+      <article className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl prose-rosestone dark:prose-invert max-w-full">
+        <CustomMDX source={sanitisedHTML} />
       </article>
     </div>
   )
