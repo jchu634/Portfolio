@@ -3,16 +3,8 @@ import React from 'react';
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {Alert, AlertTitle, AlertDescription} from "@/components/ui/alert";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 import { Link as LinkIcon, Download, ExternalLink } from "lucide-react";
 import { SiGithub, SiGithubHex } from '@icons-pack/react-simple-icons';
