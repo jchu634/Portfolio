@@ -13,7 +13,18 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area"
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -26,7 +37,8 @@ import { faArrowUpRightFromSquare, faDownload } from "@fortawesome/free-solid-sv
 const projects = [
   { 
     name: 'CodeCritters',
-    type: 'Hybrid Application and Website', 
+    timeframe:'2023',
+    type: ['Application','Website'], 
     technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
     description: 
     
@@ -37,7 +49,7 @@ const projects = [
 
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
     website:'https://codecritters.live/',
-    download_link:"https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters/releases/tag/v1.2.4",
+    download:"https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters/releases/tag/v1.2.4",
     images: [
       '/projects/codecritters/codecritters_light.png','/projects/codecritters/codecritters_dark.png',
       '/projects/codecritters/codecritters_upload_light.png','/projects/codecritters/codecritters_upload_dark.png',
@@ -48,17 +60,19 @@ const projects = [
   },
   {
     name: 'CodeCritters Flutter App',
-    type: 'Application',
+    timeframe:'2023',
+    type: ['Application'],
     technologies_and_frameworks: ['Flutter', 'Dart'],
     description: 'This is an sister android camera application for CodeCritters which allows users to take photos and get inference results via a local TensorFlowLite model.\n'+
     "This app is fully functional, and although it was never publicly visible on the Google Play Store, it is still available for download via Github releases.",
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp',
-    download_link:"https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp/releases/tag/v1.0.0",
+    download:"https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp/releases/tag/v1.0.0",
     images:['/projects/codecrittersapp/codecrittersapp.jpg','/projects/codecrittersapp/codecrittersapp_prediction.png']
   },
   {
     name: 'Fakman',
-    type: 'Game',
+    type: ['Game'],
+    timeframe:'2021',
     technologies_and_frameworks:['Unity', 'C#'], 
     description: 'This is a Pacman clone made as a learning project for Unity and C#.\n'+
     "This game has a playable windows build and a webGL build which can be played from the link above.",
@@ -67,19 +81,21 @@ const projects = [
     images:['/projects/fakman/Fakman.png']
   },
   {
-    name:'Loopy-Desktop',
-    type:'Application',
-    technologies_and_frameworks:['Electron','HTML','CSS', 'VanillaJS'],
+    name: 'Loopy-Desktop',
+    type: ['Application'],
+    timeframe: '2022 - Early 2023',
+    technologies_and_frameworks: ['Electron','HTML','CSS', 'VanillaJS'],
     description:
       'This is a Electron wrapper for Loopy, an open source web application which allows users to visualise systems.\n'+
       'Additionally, this fork adds the ability to create and save GIFs of the visualisations.',
-    github:'https://github.com/jchu634/loopy-desktop',
-    download_link:"https://github.com/jchu634/loopy-desktop/releases/tag/v1.2.1",
-    images:['/projects/loopy/Loopy.png', '/projects/loopy/loopy_output.gif','/projects/loopy/loopy_example.png']
+    github: 'https://github.com/jchu634/loopy-desktop',
+    download: "https://github.com/jchu634/loopy-desktop/releases/tag/v1.2.1",
+    images: ['/projects/loopy/Loopy.png', '/projects/loopy/loopy_output.gif','/projects/loopy/loopy_example.png']
   },
   { 
     name: 'Ryzen AI Subtitles',
-    type: 'Application',
+    type: ['Application'],
+    timeframe:'2024',
     technologies_and_frameworks:['Next.JS', 'TailwindCSS', 'Python', 'Ryzen AI Software', 'Whisper'],
     github:'https://github.com/jchu634/SubtitleProject',
     website:'https://www.hackster.io/jchu634/ryzen-ai-subtitling-5ead7f',
@@ -88,7 +104,8 @@ const projects = [
   },
   { 
     name: 'Portfolio Website',
-    type: 'Website',
+    type: ['Website'],
+    timeframe:'2023-2024',
     technologies_and_frameworks:['Next.JS', 'TailwindCSS'],
     github:'https://github.com/jchu634/portfolio',
     website:'/',
@@ -98,23 +115,22 @@ const projects = [
     '/projects/portfolio/projects_dark.png','/projects/portfolio/projects_light.png',
     '/projects/portfolio/mobile_dark.png','/projects/portfolio/mobile_light.png']
   },
-  
-];
-const minor_projects = [
   {
-    name:'Shorts Redirector',
-    type:'Application',
-    technologies_and_frameworks:['HTML','CSS', 'VanillaJS'],
-    description:'A Chrome Extension which automatically redirects YouTube Shorts from the Shorts player to the General YouTube player.\n'+
+    name: 'Shorts Redirector',
+    type: ['Application'],
+    timeframe: '2023',
+    technologies_and_frameworks: ['HTML','CSS', 'VanillaJS'],
+    description: 'A Chrome Extension which automatically redirects YouTube Shorts from the Shorts player to the General YouTube player.\n'+
     "This was never published to the Chrome Web Store as I found there existed an already published extension which did the same thing after I finished this.",
-    github:'https://github.com/jchu634/ShortsRedirector'
+    github: 'https://github.com/jchu634/ShortsRedirector'
   },
   {
-    name:'Brookshear Machine Simulator',
-    type:'Application',
-    technologies_and_frameworks:['VB','Python'],
-    description:'A Brookshear Machine Simulator built using Visual Basic and Python.',
-    github:'https://github.com/Keshuac/BrookShear-Machine-Emulator-.py-and-.vb',
+    name: 'Brookshear Machine Simulator',
+    type: ['Application'],
+    timeframe: '2019',
+    technologies_and_frameworks: ['VB','Python'],
+    description: 'A Brookshear Machine Simulator built using Visual Basic and Python.',
+    github: 'https://github.com/Keshuac/BrookShear-Machine-Emulator-.py-and-.vb',
   },
 ];
 
