@@ -29,10 +29,8 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, } from "@fortawesome/free-brands-svg-icons";
-
-import { faArrowUpRightFromSquare, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { Link as LinkIcon, Download, ExternalLink } from "lucide-react";
+import { SiGithub, SiGithubHex } from '@icons-pack/react-simple-icons';
 
 const projects = [
   { 
@@ -150,112 +148,88 @@ function exportProjectsAsString(technologies_and_frameworks: string[]){
 
 function mapProject(project:any, index:number){
   return (
-    <Accordion type="single" key={`${project.name}`} collapsible>
-      <AccordionItem value={`item-${index + 1}`}>
-        <AccordionTrigger> <p className="font-bold text-blue-900 dark:text-slate-200">{project.name}</p></AccordionTrigger>
-        <AccordionContent className="flex flex-col lg:flex-row justify-between last:md:pr-10">
-          <div>
-            <p className="text-indigo-950 dark:text-sky-50"><b>Project Type: </b>{project.type}</p>
-            <p className="text-indigo-950 dark:text-sky-50"><b>Project Technologies: </b>
-            {
-              project.technologies_and_frameworks && (
-                <>{exportProjectsAsString(project.technologies_and_frameworks)}</>
-              )
-            }
-            </p>
-            <div className="flex flex-row items-center justify-start space-x-2">
-              {
-              project.github && (
-                <Link
-                href={project.github}
-                >
-                  <FontAwesomeIcon icon={faGithub} size="2x"/>
-                </Link>
-            
-              )
-            }
-            {
-              project.website && (
-                <Link
-                href={project.website}
-                >
-                  <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2x"/>
-                </Link>
-              )
-            }
-            {
-              project.download_link && (
-                <Link
-                href={project.download_link}
-                >
-                  <FontAwesomeIcon icon={faDownload} size="2x"/>
-                </Link>
-              )
-            }
-            </div>
-            <p className="text-indigo-950 dark:text-sky-50 whitespace-pre-wrap"><b>Project Description: </b> {project.description}</p>
-          </div>
-
-          {
-            project.images && (
-            <div className="lg:w-1/3 md:pl-10">
-              <Carousel
-                opts={{
-                  align: "start",
-                  loop: true,
-                }}
-                className="w-full sm:max-w-fit lg:max-w-fit xl:max-w-fit max-h-fit "
-              >
-              <CarouselContent>
-                {project.images.map((images:any,index:number) => {
-                  return (
-                  <CarouselItem key={index}>
-                    <div className="p-1">
-                      <Card className="bg-slate-200 dark:bg-sky-950 dark:bg-opacity-40">
-                        <CardContent className="flex p-6 justify-center">
-                          <Image
-                            unoptimized
-                            src={images}
-                            width={400}
-                            height={400}
-                            alt="CodeCritters Homepage"
-                          />
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                  )
-                  })
-                }
-              
-              </CarouselContent>
-              
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
-            </div>
-            )
+      <TableRow key={`${project.name}`}>
+        <TableCell>{project.timeframe}</TableCell>
+        <TableCell className="text-lg font-bold">{project.name}</TableCell>
+        <TableCell className="space-x-2">
+          { project.type && (
+              project.type.map((type: string, index:number) => {
+                return (
+                  <span className="text-xs font-bold bg-[#2B382E] dark:bg-gray-900 text-white p-1 px-2 rounded-md" key={index}>
+                    {type}
+                  </span>
+                );
+              }))
           }
-          
+        </TableCell>
+        <TableCell className="space-x-2 gap-y-3 flex flex-wrap">
+          { project.technologies_and_frameworks && (
+              project.technologies_and_frameworks.map((technologies_and_frameworks: string, index:number) => {
+                return (
+                  <span className="text-xs font-bold bg-[#2B382E] dark:bg-emerald-950  text-lime-200 p-1 px-2 rounded-md" key={index}>
+                    {technologies_and_frameworks}
+                  </span>
+                );
+              }))
+          }
+        </TableCell>
+        <TableCell className="space-x-2">
+          { project.github ? (
+              <Link href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
+                <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Github link button for ${project.name}`}>
+                  <SiGithub className="w-8 h-8 text-white hover:text-blue-600"/>
+                </Button>
+              </Link>
+            ) : ( <Button size="icon" variant="link"></Button> )
+          }
+          { project.website ? (
+              <Link href={project.website} aria-label={`Go to website for ${project.name}`}>
+              <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Link button to ${project.name}`}>
+                <LinkIcon className="w-8 h-8 text-white hover:text-blue-600"/>
+              </Button>
+            </Link>
+            ) : ( <Button size="icon" variant="link"></Button> )
+          }
+        
+          { project.download ? (
+            <Link href={project.download} aria-label={`Go to download page for ${project.name}`}>
+              <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Download link button for ${project.name}`}>
+                <Download className="w-8 h-8 text-white hover:text-blue-600"/>
+              </Button>
+            </Link>
+            ) : ( <Button size="icon" variant="link"></Button> )
+          }
+        </TableCell>
 
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+      </TableRow>
+    
   )
 }
+
 
 export default function Page(){
   return (
     <main>
-      <h1 className="text-3xl font-bold text-blue-900 dark:text-slate-200">Major Projects</h1>
-        { projects.map((project, index) => {
-          return (mapProject(project, index));
-        })}
-        <br></br><h1 className="text-3xl font-bold text-blue-900 dark:text-slate-200">Minor Projects</h1>
-        { minor_projects.map((project, index) => {
-          return (mapProject(project, index));
-        }
-        )}
+      <h1 className="text-3xl font-bold text-blue-900 dark:text-slate-200">Projects</h1>
+        <ScrollArea className="h-full w-full rounded-md border p-4">
+          <Table>
+            <TableCaption>A list of projects I have done.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">Timeframe</TableHead>
+                <TableHead className="w-[300px]">Name</TableHead>
+                <TableHead className="w-[250px]">Type</TableHead>
+                <TableHead className="w-[400px]">Built with</TableHead>
+                <TableHead className="w-[150px]">Links</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              { projects.map((project, index) => {
+                return (mapProject(project, index));
+              })}            
+            </TableBody>
+          </Table>
+        </ScrollArea>
     </main>
   )
 }
