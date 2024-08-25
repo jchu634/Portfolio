@@ -1,3 +1,4 @@
+'use client';
 import {
   Accordion,
   AccordionContent,
@@ -31,6 +32,8 @@ import Image from 'next/image';
 
 import { Link as LinkIcon, Download, ExternalLink } from "lucide-react";
 import { SiGithub, SiGithubHex } from '@icons-pack/react-simple-icons';
+
+import { useState } from 'react';
 
 const projects = [
   { 
@@ -132,23 +135,9 @@ const projects = [
   },
 ];
 
-function exportProjectsAsString(technologies_and_frameworks: string[]){
-  let technologies_and_frameworks_string = ' ';
-
-  technologies_and_frameworks.map((technology, i, row) => {
-    if (i + 1 === row.length){
-      technologies_and_frameworks_string += technology;    
-    } else {
-      technologies_and_frameworks_string += technology + ', ';
-    }
-  })
-  return technologies_and_frameworks_string;
-
-}
-
-function mapProject(project:any, index:number){
+function mapProject(project: any, index: number, handleProjectClick: (project: any) => void) {
   return (
-      <TableRow key={`${project.name}`}>
+      <TableRow key={`${project.name}`} onClick={() => handleProjectClick(project)}>
         <TableCell>{project.timeframe}</TableCell>
         <TableCell className="text-lg font-bold">{project.name}</TableCell>
         <TableCell className="space-x-2">
@@ -200,33 +189,48 @@ function mapProject(project:any, index:number){
             ) : ( <Button size="icon" variant="link"></Button> )
           }
         </TableCell>
-
       </TableRow>
-    
   )
 }
 
-
 export default function Page(){
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
+  const handleProjectClick = (project:any) => {
+    setSelectedProject(project);
+  };
+
   return (
     <main>
-      <h1 className="text-3xl font-bold text-blue-900 dark:text-slate-200">Projects</h1>
-        <ScrollArea className="h-full w-full rounded-md border p-4">
+      <h1 className="text-5xl font-bold text-blue-900 dark:text-slate-200">Projects</h1>
+        {selectedProject && (
+          <div className="mt-5 p-4 border rounded-md">
+            <h2 className="text-3xl font-bold">{selectedProject.name}</h2>
+            <p className="mt-2">{selectedProject.description}</p>
+            {/* Add more details as needed */}
+          </div>
+          )
+        }
+  	    
+        <ScrollArea className="h-full w-full rounded-md border p-4 mt-8">
           <Table>
             <TableCaption>A list of projects I have done.</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Timeframe</TableHead>
-                <TableHead className="w-[300px]">Name</TableHead>
-                <TableHead className="w-[250px]">Type</TableHead>
+                <TableHead className="w-[250px]">Name</TableHead>
+                <TableHead className="w-[150px]">Type</TableHead>
                 <TableHead className="w-[400px]">Built with</TableHead>
                 <TableHead className="w-[150px]">Links</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              { projects.map((project, index) => {
-                return (mapProject(project, index));
-              })}            
+              {
+                projects.map((project, index) => 
+                  mapProject(project, index, handleProjectClick)
+              )
+              }
+
             </TableBody>
           </Table>
         </ScrollArea>
