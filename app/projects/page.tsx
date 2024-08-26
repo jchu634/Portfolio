@@ -311,11 +311,11 @@ export default function Page(){
                 <TableCaption>A list of projects I have done.</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[100px]">Timeframe</TableHead>
-                    <TableHead className="w-[250px]">Name</TableHead>
-                    <TableHead className="w-[150px]">Type</TableHead>
-                    <TableHead className="w-[400px]">Built with</TableHead>
-                    <TableHead className="w-[150px]">Links</TableHead>
+                    <TableHead className="w-[100px] text-blue-900 dark:text-white text-base font-bold">Timeframe</TableHead>
+                    <TableHead className="w-[250px] text-blue-900 dark:text-white text-base font-bold">Name</TableHead>
+                    <TableHead className="w-[150px] text-blue-900 dark:text-white text-base font-bold">Type</TableHead>
+                    <TableHead className="w-[400px] text-blue-900 dark:text-white text-base font-bold">Built with</TableHead>
+                    <TableHead className="w-[150px] text-blue-900 dark:text-white text-base font-bold">Links</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -326,7 +326,7 @@ export default function Page(){
           ) : (
             <div className="flex space-x-5">
               <ScrollArea className="h-[700px] w-72 flex-shrink-0 rounded-md border space-y-2 p-4 mt-8">
-                <h2 className="mb-4 text-lg font-bold leading-none">Projects</h2>
+                <h2 className="mb-4 text-lg font-bold leading-none text-blue-900 dark:text-white">Projects</h2>
                 { projects.map((project, index) => (
                   <div key={index} className={`text-m py-2 cursor-pointer hover:font-bold ${selectedProject === project ? 'font-bold' : ''}`} onClick={() => handleProjectClick(project)} onMouseOver={() => handleProjectHover(project)} onMouseOut={() => handleProjectHover(null)}>
                     {project.name}
