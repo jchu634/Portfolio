@@ -28,7 +28,7 @@ import Image from 'next/image';
 import { Link as LinkIcon, Download, ExternalLink } from "lucide-react";
 import { SiGithub, SiGithubHex } from '@icons-pack/react-simple-icons';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const projects = [
   { 
@@ -136,8 +136,16 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
     // <TableRow key={`${project.name}`} onClick={() => handleProjectClick(project)}>
     <TableRow key={`${project.name}`}>
       <TableCell>{project.timeframe}</TableCell>
-      <TableCell className="text-lg font-bold">{project.name}</TableCell>
-      <TableCell className="space-x-2">
+      <TableCell className="text-lg font-bold">
+          <Link className="flex xl:hidden" href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
+            {project.name}
+            <ExternalLink className="pl-1"/>  
+          </Link>
+          <p className="hidden xl:block">
+            {project.name}
+          </p>
+      </TableCell>
+      <TableCell className="space-x-2 hidden xl:table-cell">
         { project.type && (
           project.type.map((type: string, index:number) => {
             return (
@@ -148,7 +156,7 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
           }))
         }
       </TableCell>
-      <TableCell className="space-x-2 gap-y-3 flex flex-wrap">
+      <TableCell className="space-x-2 gap-y-3 hidden xl:flex flex-wrap">
         { project.technologies_and_frameworks && (
           project.technologies_and_frameworks.map((technologies_and_frameworks: string, index:number) => {
             return (
@@ -159,7 +167,7 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
           }))
         }
       </TableCell>
-      <TableCell className="space-x-2">
+      <TableCell className="space-x-2 hidden xl:table-cell">
         { project.github ? (
           <Link href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
             <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Github link button for ${project.name}`}>
@@ -243,7 +251,7 @@ function renderProject(selectedProject:any){
       </div>
       <div>
         { selectedProject.images && (
-          <Carousel className="relative w-full sm:max-w-fit lg:max-w-fit xl:max-w-fit max-h-fit px-8"
+          <Carousel className="relative w-full sm:max-w-fit xl:max-w-fit xl:max-w-fit max-h-fit px-8"
             opts={{
               align: "start",
               loop: false,
@@ -296,12 +304,35 @@ export default function Page(){
     setTempSelectedProject(project);
   };
 
+  useEffect(() => {
+    // Set initial mode based on screen size
+    if (window.innerWidth < 1024) {
+      setIsSimpleMode(true);
+    }
+  
+    const handleResize = () => {
+      if (window.innerWidth < 1024 && !isSimpleMode) {
+        setIsSimpleMode(true);
+      } else if (window.innerWidth >= 1024 && isSimpleMode) {
+        setIsSimpleMode(false);
+      }
+    };
+  
+    // Add event listener to handle window resize
+    window.addEventListener('resize', handleResize);
+  
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <main>
       <h1 className="text-5xl font-bold text-blue-900 dark:text-slate-200">Projects</h1>
-        <div className="flex items-center space-x-2 pt-7">
+        <div className="flex items-center space-x-2 pt-7 hidden xl:block">
           <Label htmlFor="mode-switcher">Complex Mode</Label>
-          <Switch id="mode-switcher" aria-label={`Switch page into complex or simple mode`} onCheckedChange={setIsSimpleMode} className="data-[state=unchecked]:bg-cyan-800"/>
+          <Switch id="mode-switcher" aria-label={`Switch page into complex or simple mode`} checked={isSimpleMode} onCheckedChange={setIsSimpleMode} className="data-[state=unchecked]:bg-cyan-800"/>
           <Label htmlFor="mode-switcher">Simple Table Mode</Label>
         </div>
         { 
@@ -313,9 +344,9 @@ export default function Page(){
                   <TableRow>
                     <TableHead className="w-[100px] text-blue-900 dark:text-white text-base font-bold">Timeframe</TableHead>
                     <TableHead className="w-[250px] text-blue-900 dark:text-white text-base font-bold">Name</TableHead>
-                    <TableHead className="w-[150px] text-blue-900 dark:text-white text-base font-bold">Type</TableHead>
-                    <TableHead className="w-[400px] text-blue-900 dark:text-white text-base font-bold">Built with</TableHead>
-                    <TableHead className="w-[150px] text-blue-900 dark:text-white text-base font-bold">Links</TableHead>
+                    <TableHead className="w-[150px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Type</TableHead>
+                    <TableHead className="w-[400px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Built with</TableHead>
+                    <TableHead className="w-[150px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Links</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>

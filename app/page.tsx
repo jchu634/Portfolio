@@ -52,7 +52,7 @@ const projects = [
     name: 'CodeCritters App', type: 'Hybrid Application and Website', 
     technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
     description: 
-    "A sister project for Codecritters.\nA camera app which identifies insects in photos using a local machine learning model.",
+    "A sister project for Codecritters.\n A camera app which identifies insects in photos using a local machine learning model.",
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp',
     download:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp/releases/latest',
     image: "True",
@@ -67,17 +67,17 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
     <Card className="bg-slate-200 dark:bg-fuchsia-950 dark:bg-opacity-40 w-auto" key={index}>
       <CardContent>
         <div className="flex items-start">
-          {project.image && (
+          { project.image && (
             <div className="group-hover:filter dark:group-hover:grayscale-0 group-hover:brightness-50">
               <Image
-                className="hidden dark:block"
+                className="hidden lg:block pr-5"
                 src={project.image_dark}
                 width={200}
                 height={200}
                 alt={project.image_alt}
               />
               <Image
-                className="block dark:hidden"
+                className="hidden lg:block dark:hidden pr-5"
                 src={project.image_light}
                 width={200}
                 height={200}
@@ -85,9 +85,9 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
               />
             </div>
           )}
-          <div className="pl-5">
+          <div>
             <span className="text-2xl font-bold text-cyan-900 dark:text-cyan-200">{project.name}</span>
-            <p className="whitespace-pre-wrap text-m">{project.description}</p>
+            <p className="whitespace-pre-wrap text-m text-wrap">{project.description}</p>
             <div className="space-x-2 pt-2">
               { project.github && (
                 <Link href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
@@ -111,7 +111,7 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
                 </Link>
               )}
             </div>
-            <div className="space-x-2 pt-2">
+            <div className="space-x-2 pt-2 flex flex-wrap gap-y-2">
               {project.technologies_and_frameworks && (
                 project.technologies_and_frameworks.map((technologies_and_frameworks: string, index:number) => {
                   return (
@@ -132,9 +132,15 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
 export default function Home() {  
   return (
     <main>
+      <div className="block md:hidden">
+      <h1 className="text-5xl font-bold text-black dark:text-violet-200">Hi, I&apos;m Joshua</h1><br/>
+      <h2 className="text-2xl font-bold text-black dark:text-violet-300">Graduate FullStack Developer</h2><br/>
+      <h3 className="text-xl text-black dark:text-slate-200">I like making stuff.</h3><br/>
+      </div>
+      
       <h2 className="text-2xl font-bold text-black dark:text-slate-200">About Me:</h2><br></br>
       <h3 className="text-xl text-black dark:text-slate-200">
-        Hi, I&apos; m a new graduate from the University of Auckland (BSc in Computer Science)<br/>
+        Hi, I&apos;m a new graduate from the University of Auckland (BSc in Computer Science)<br/>
         I really like making stuff and trying out new technologies.<br/>
         <br/>
         Currently I am working on a couple of projects I didn&apos;t have time to start while studying.<br/>
