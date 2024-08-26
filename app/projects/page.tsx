@@ -136,7 +136,15 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
     // <TableRow key={`${project.name}`} onClick={() => handleProjectClick(project)}>
     <TableRow key={`${project.name}`}>
       <TableCell>{project.timeframe}</TableCell>
-      <TableCell className="text-lg font-bold">{project.name}</TableCell>
+      <TableCell className="text-lg font-bold">
+          <Link className="flex md:hidden" href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
+            {project.name}
+            <ExternalLink className="md:hidden pl-1"/>  
+          </Link>
+          <p className="hidden md:block">
+            {project.name}
+          </p>
+      </TableCell>
       <TableCell className="space-x-2 hidden lg:table-cell">
         { project.type && (
           project.type.map((type: string, index:number) => {
