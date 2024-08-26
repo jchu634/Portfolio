@@ -23,8 +23,6 @@ export default function Page(){
                             <Separator></Separator>
                         </div>
                     </Link>
-                
-                
                 ))}
                 
             </ul>

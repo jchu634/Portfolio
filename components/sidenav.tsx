@@ -100,16 +100,16 @@ export default function SideNav() {
             </div>
           </Button>
     
-          <Link href="mailto:jchu634@keshuac.com" className='pl-5' aria-label="Open link to email Joshua">
-            <Mail className="w-8 h-8 text-black dark:text-white"/>
-          </Link>
-          
-          <Link href="https://www.linkedin.com/in/jchu634/" aria-label="Open link to view Linkedin profile">
+          <Link className='pl-5' href="https://www.linkedin.com/in/jchu634/" aria-label="Open link to view Linkedin profile">
             <SiLinkedin className="w-8 h-8" style={{color:SiLinkedinHex}}/>
           </Link>
-          
+
           <Link href="https://github.com/jchu634" aria-label="Open link to view Github profile">
             <SiGithub className="w-8 h-8 text-black dark:text-white"/> 
+          </Link>
+
+          <Link href="mailto:jchu634@keshuac.com" aria-label="Open link to email Joshua">
+            <Mail className="w-8 h-8 text-black dark:text-white"/>
           </Link>
 
           <Link href="https://www.printables.com/@Keshuac_2081737" aria-label="Open link to view Printables profile">

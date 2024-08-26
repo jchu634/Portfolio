@@ -3,16 +3,8 @@ import React from 'react';
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {Alert, AlertTitle, AlertDescription} from "@/components/ui/alert";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 import { Link as LinkIcon, Download, ExternalLink } from "lucide-react";
 import { SiGithub, SiGithubHex } from '@icons-pack/react-simple-icons';
@@ -22,7 +14,7 @@ const projects = [
     name: 'CodeCritters', type: 'Hybrid Application and Website', 
     technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
     description: 
-    "My team's capstone project: A website/application that uses machine learning to identify insects pests for Landcare research.",
+    "My team's University capstone project: A website/application that uses machine learning to identify insects pests for Landcare research.",
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters',
     link:'https://codecritters.live/',
     download:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters/releases/latest',
@@ -94,7 +86,7 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
             </div>
           )}
           <div className="pl-5">
-            <span className="text-2xl font-bold text-cyan-200">{project.name}</span>
+            <span className="text-2xl font-bold text-cyan-900 dark:text-cyan-200">{project.name}</span>
             <p className="whitespace-pre-wrap text-m">{project.description}</p>
             <div className="space-x-2 pt-2">
               { project.github && (
