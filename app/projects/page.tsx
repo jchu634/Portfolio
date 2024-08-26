@@ -301,7 +301,7 @@ export default function Page(){
       <h1 className="text-5xl font-bold text-blue-900 dark:text-slate-200">Projects</h1>
         <div className="flex items-center space-x-2 pt-7">
           <Label htmlFor="mode-switcher">Complex Mode</Label>
-          <Switch id="mode-switcher" onCheckedChange={setIsSimpleMode} className="data-[state=unchecked]:bg-cyan-800"/>
+          <Switch id="mode-switcher" aria-label={`Switch page into complex or simple mode`} onCheckedChange={setIsSimpleMode} className="data-[state=unchecked]:bg-cyan-800"/>
           <Label htmlFor="mode-switcher">Simple Table Mode</Label>
         </div>
         { 
@@ -326,7 +326,7 @@ export default function Page(){
           ) : (
             <div className="flex space-x-5">
               <ScrollArea className="h-[700px] w-72 flex-shrink-0 rounded-md border space-y-2 p-4 mt-8">
-                <h4 className="mb-4 text-lg font-bold leading-none">Projects</h4>
+                <h2 className="mb-4 text-lg font-bold leading-none">Projects</h2>
                 { projects.map((project, index) => (
                   <div key={index} className={`text-m py-2 cursor-pointer hover:font-bold ${selectedProject === project ? 'font-bold' : ''}`} onClick={() => handleProjectClick(project)} onMouseOver={() => handleProjectHover(project)} onMouseOut={() => handleProjectHover(null)}>
                     {project.name}
