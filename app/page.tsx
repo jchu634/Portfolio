@@ -67,17 +67,17 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
     <Card className="bg-slate-200 dark:bg-fuchsia-950 dark:bg-opacity-40 w-auto" key={index}>
       <CardContent>
         <div className="flex items-start">
-          {project.image && (
+          { project.image && (
             <div className="group-hover:filter dark:group-hover:grayscale-0 group-hover:brightness-50">
               <Image
-                className="hidden dark:block"
+                className="hidden md:block pr-5"
                 src={project.image_dark}
                 width={200}
                 height={200}
                 alt={project.image_alt}
               />
               <Image
-                className="block dark:hidden"
+                className="hidden md:block dark:hidden pr-5"
                 src={project.image_light}
                 width={200}
                 height={200}
@@ -85,7 +85,7 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
               />
             </div>
           )}
-          <div className="pl-5">
+          <div>
             <span className="text-2xl font-bold text-cyan-900 dark:text-cyan-200">{project.name}</span>
             <p className="whitespace-pre-wrap text-m">{project.description}</p>
             <div className="space-x-2 pt-2">
@@ -132,6 +132,13 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
 export default function Home() {  
   return (
     <main>
+      <Image
+          className="hidden md:block"
+          src="/projects/fakman/Fakman.png"
+          width={200}
+          height={200}
+          alt="test"
+        />
       <h2 className="text-2xl font-bold text-black dark:text-slate-200">About Me:</h2><br></br>
       <h3 className="text-xl text-black dark:text-slate-200">
         Hi, I&apos; m a new graduate from the University of Auckland (BSc in Computer Science)<br/>
