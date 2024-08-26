@@ -16,7 +16,7 @@ export default function NavLinks() {
   const pathname = usePathname();
   return (
     <>
-      <div className="space-y-5 pb-6">
+      <div className="md:space-y-5 pb-6 flex md:block">
         {links.map((link) => {
           const LinkIcon = link.icon;
           return (
