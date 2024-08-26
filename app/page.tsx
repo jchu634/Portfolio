@@ -132,9 +132,15 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
 export default function Home() {  
   return (
     <main>
+      <div className="block md:hidden">
+      <h1 className="text-5xl font-bold text-black dark:text-violet-200">Hi, I&apos;m Joshua</h1><br/>
+      <h2 className="text-2xl font-bold text-black dark:text-violet-300">Graduate FullStack Developer</h2><br/>
+      <h3 className="text-xl text-black dark:text-slate-200">I like making stuff.</h3><br/>
+      </div>
+      
       <h2 className="text-2xl font-bold text-black dark:text-slate-200">About Me:</h2><br></br>
       <h3 className="text-xl text-black dark:text-slate-200">
-        Hi, I&apos; m a new graduate from the University of Auckland (BSc in Computer Science)<br/>
+        Hi, I&apos;m a new graduate from the University of Auckland (BSc in Computer Science)<br/>
         I really like making stuff and trying out new technologies.<br/>
         <br/>
         Currently I am working on a couple of projects I didn&apos;t have time to start while studying.<br/>

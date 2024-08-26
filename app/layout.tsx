@@ -27,7 +27,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col-reverse md:flex-row h-screen dark:bg-slate-900">
-            <div className="md:w-40% fixed bottom-0 z-10 md:relative flex-shrink-0">
+            <div className="w-full sm:w-[20rem] lg:w-[25rem] fixed bottom-0 z-10 md:relative flex-shrink-0">
               <SideNav />
             </div>
             <div className="p-6 pb-48 overflow-y-auto md:p-12 flex-grow">
