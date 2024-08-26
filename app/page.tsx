@@ -52,7 +52,7 @@ const projects = [
     name: 'CodeCritters App', type: 'Hybrid Application and Website', 
     technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
     description: 
-    "A sister project for Codecritters.\nA camera app which identifies insects in photos using a local machine learning model.",
+    "A sister project for Codecritters.\n A camera app which identifies insects in photos using a local machine learning model.",
     github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp',
     download:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp/releases/latest',
     image: "True",
@@ -87,7 +87,7 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
           )}
           <div>
             <span className="text-2xl font-bold text-cyan-900 dark:text-cyan-200">{project.name}</span>
-            <p className="whitespace-pre-wrap text-m">{project.description}</p>
+            <p className="whitespace-pre-wrap text-m text-wrap">{project.description}</p>
             <div className="space-x-2 pt-2">
               { project.github && (
                 <Link href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
@@ -111,7 +111,7 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
                 </Link>
               )}
             </div>
-            <div className="space-x-2 pt-2">
+            <div className="space-x-2 pt-2 flex flex-wrap gap-y-2">
               {project.technologies_and_frameworks && (
                 project.technologies_and_frameworks.map((technologies_and_frameworks: string, index:number) => {
                   return (
