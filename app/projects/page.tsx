@@ -166,7 +166,7 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
               <SiGithub className="w-8 h-8 text-white hover:text-blue-600"/>
             </Button>
           </Link>
-          ) : ( <Button size="icon" variant="link"></Button> 
+          ) : ( <Button size="icon" variant="link" aria-label="Placeholder button"></Button> 
         )}
         { project.website ? (
             <Link href={project.website} aria-label={`Go to website for ${project.name}`}>
@@ -174,7 +174,7 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
               <LinkIcon className="w-8 h-8 text-white hover:text-blue-600"/>
             </Button>
           </Link>
-          ) : ( <Button size="icon" variant="link"></Button> 
+          ) : ( <Button size="icon" variant="link" aria-label="Placeholder button"></Button> 
         )}
         { project.download ? (
           <Link href={project.download} aria-label={`Go to download page for ${project.name}`}>
@@ -182,7 +182,7 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
               <Download className="w-8 h-8 text-white hover:text-blue-600"/>
             </Button>
           </Link>
-          ) : ( <Button size="icon" variant="link"></Button> 
+          ) : ( <Button size="icon" variant="link" aria-label="Placeholder button"></Button> 
         )}
       </TableCell>
     </TableRow>
