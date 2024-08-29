@@ -23,6 +23,20 @@ const projects = [
     image_light: "/projects/codecritters/codecritters_light.png",
     image_alt: "CodeCritters Screenshot",
   },
+  { 
+    name: 'Ryzen AI Subtitles',
+    type: ['Application'],
+    timeframe:'2024',
+    technologies_and_frameworks:['Next.JS', 'TailwindCSS', 'Python', 'Ryzen AI Software', 'Whisper'],
+    github:'https://github.com/jchu634/SubtitleProject',
+    website:'https://www.hackster.io/jchu634/ryzen-ai-subtitling-5ead7f',
+    description: 'An subtitling program which uses Whisper on a Ryzen AI NPU to generate real-time subtitles for an audio source.\n A Submission for the AMD Pervasive AI Developer Challenge.',
+    image: "True",
+    image_light: '/projects/ryzensubtitles/simple_light.png',
+    image_dark: '/projects/ryzensubtitles/simple_dark.png',
+    image_alt: 'Ryzen AI Subtitles Screenshot',
+    
+  },
   {
     name: 'Fakman', type: 'Game',
     technologies_and_frameworks:['Unity', 'C#'], 
@@ -48,18 +62,6 @@ const projects = [
     image_light: "/projects/loopy/Loopy.png",
     image_alt: "Loopy Desktop Screenshot",
   },
-  { 
-    name: 'CodeCritters App', type: 'Hybrid Application and Website', 
-    technologies_and_frameworks: ['Python',"PyInstaller", 'InnoSetup', 'FastAPI', 'React', 'TensorFlow', 'PyTorch', 'PyWebView'],
-    description: 
-    "A sister project for Codecritters.\n A camera app which identifies insects in photos using a local machine learning model.",
-    github:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp',
-    download:'https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters-flutterapp/releases/latest',
-    image: "True",
-    image_dark: "/projects/codecrittersapp/codecrittersapp.jpg",
-    image_light: "/projects/codecrittersapp/codecrittersapp.jpg",
-    image_alt: "CodeCritters App Screenshot",
-  },
 ];
 
 function mapProjects(project:any, index:number){ // Index is here to stop the warning about needing a key
@@ -72,15 +74,15 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
               <Image
                 className="hidden lg:block pr-5"
                 src={project.image_dark}
-                width={200}
-                height={200}
+                width={250}
+                height={250}
                 alt={project.image_alt}
               />
               <Image
                 className="hidden lg:block dark:hidden pr-5"
                 src={project.image_light}
-                width={200}
-                height={200}
+                width={250}
+                height={250}
                 alt={project.image_alt}
               />
             </div>

@@ -39,6 +39,12 @@ const projects = [
     github:'https://github.com/jchu634/SubtitleProject',
     website:'https://www.hackster.io/jchu634/ryzen-ai-subtitling-5ead7f',
     description: 'An subtitling program which uses Whisper on a Ryzen AI NPU to generate real-time subtitles for an audio source.\n A Submission for the AMD Pervasive AI Developer Challenge.',
+    images:[
+      '/projects/ryzensubtitles/simple_light.png',
+      '/projects/ryzensubtitles/simple_dark.png',
+      '/projects/ryzensubtitles/complex_light.png',
+      '/projects/ryzensubtitles/complex_dark.png',
+    ]
   },
   { 
     name: 'CodeCritters',
