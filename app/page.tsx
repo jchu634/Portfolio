@@ -151,11 +151,18 @@ export default function Home() {
         Also looking for work.<br/>
       </h3>
       <br/>
+
+      <Link href="/CV.pdf">
+        <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
+          <p>View CV</p>
+          <ExternalLink className="w-6 text-white hover:text-blue-600"/>
+        </Button>
+      </Link>
       
-      <h2 className="text-2xl font-bold text-black dark:text-slate-200">
+      <h2 className="text-2xl font-bold text-black dark:text-slate-200 pt-2">
         Featured Projects:
       </h2><br/>
-      <div className="space-y-4">
+      <div className="space-y-4 pb-4">
         { 
           projects.map((project, index) => {
             return (mapProjects(project, index));
@@ -164,9 +171,9 @@ export default function Home() {
       </div>
       
       <Link href="/projects">
-        <Button variant="link" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg pt-8">
+        <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
           <p>View Complete Project Archive</p>
-          <ExternalLink className="w-6 h-6 text-white hover:text-blue-600"/>
+          <ExternalLink className="w-6 text-white hover:text-blue-600"/>
         </Button>
       </Link>
     </main>
