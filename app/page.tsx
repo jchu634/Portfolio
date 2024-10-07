@@ -66,13 +66,13 @@ const projects = [
 
 function mapProjects(project:any, index:number){ // Index is here to stop the warning about needing a key
   return (
-    <Card className="bg-slate-200 dark:bg-fuchsia-950 dark:bg-opacity-40 w-auto" key={index}>
+    <Card className="bg-slate-300 dark:bg-fuchsia-950 dark:bg-opacity-40 w-auto" key={index}>
       <CardContent>
         <div className="flex items-start">
           { project.image && (
             <div className="group-hover:filter dark:group-hover:grayscale-0 group-hover:brightness-50">
               <Image
-                className="hidden lg:block pr-5"
+                className="hidden dark:block dark:lg:block pr-5"
                 src={project.image_dark}
                 width={250}
                 height={250}
