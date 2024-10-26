@@ -176,7 +176,7 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
       <TableCell className="space-x-2 hidden xl:table-cell">
         { project.github ? (
           <Link href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
-            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Github link button for ${project.name}`}>
+            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Github link for ${project.name}`} aria-label={`Github link button for ${project.name}`}>
               <SiGithub className="w-8 h-8 text-white hover:text-blue-600"/>
             </Button>
           </Link>
@@ -184,7 +184,7 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
         )}
         { project.website ? (
             <Link href={project.website} aria-label={`Go to website for ${project.name}`}>
-            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Link button to ${project.name}`}>
+            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Link to ${project.name}`} aria-label={`Link button to ${project.name}`}>
               <LinkIcon className="w-8 h-8 text-white hover:text-blue-600"/>
             </Button>
           </Link>
@@ -192,7 +192,7 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
         )}
         { project.download ? (
           <Link href={project.download} aria-label={`Go to download page for ${project.name}`}>
-            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Download link button for ${project.name}`}>
+            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Download link for ${project.name}`} aria-label={`Download link button for ${project.name}`}>
               <Download className="w-8 h-8 text-white hover:text-blue-600"/>
             </Button>
           </Link>
@@ -235,21 +235,21 @@ function renderProject(selectedProject:any){
       <div className="space-x-2 pt-2">
         { selectedProject.github && (
           <Link href={selectedProject.github} aria-label={`Go to Github repository for ${selectedProject.name}`}>
-            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Github link button for ${selectedProject.name}`}>
+            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Github link for ${selectedProject.name}`} aria-label={`Github link button for ${selectedProject.name}`}>
               <SiGithub className="w-8 h-8 text-white hover:text-blue-600"/>
             </Button>
           </Link>
         )}
         { selectedProject.website && (
           <Link href={selectedProject.website} aria-label={`Go to website for ${selectedProject.name}`}>
-            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Link button to ${selectedProject.name}`}>
+            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Link to ${selectedProject.name}`} aria-label={`Link button to ${selectedProject.name}`}>
               <ExternalLink className="w-8 h-8 text-white hover:text-blue-600"/>
             </Button>
           </Link>
         )}
         { selectedProject.download && (
           <Link href={selectedProject.download} aria-label={`Go to download page for ${selectedProject.name}`}>
-            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Download link button for ${selectedProject.name}`}>
+            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Download link for ${selectedProject.name}`} aria-label={`Download link button for ${selectedProject.name}`}>
               <Download className="w-8 h-8 text-white hover:text-blue-600"/>
             </Button>
           </Link>
