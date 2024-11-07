@@ -35,7 +35,7 @@ const projects = [
     name: 'Ryzen AI Subtitles',
     type: ['Application'],
     timeframe:'2024',
-    technologies_and_frameworks:['Next.JS', 'TailwindCSS', 'Python', 'Ryzen AI Software', 'Whisper'],
+    technologies_and_frameworks:['Next.JS', 'TailwindCSS', 'Python', 'Ryzen AI Software', 'PyWebView', 'Whisper'],
     github:'https://github.com/jchu634/SubtitleProject',
     website:'https://www.hackster.io/jchu634/ryzen-ai-subtitling-5ead7f',
     description: 'An subtitling program which uses Whisper on a Ryzen AI NPU to generate real-time subtitles for an audio source.\n A Submission for the AMD Pervasive AI Developer Challenge.',
@@ -47,9 +47,6 @@ const projects = [
       '/projects/ryzensubtitles/complex_dark.png',
     ],
     cert:'https://keshuac.com/projects/ryzensubtitles/Certificates for the Winning Team.pdf',
-    pdf:[
-      '/projects/ryzensubtitles/Certificates for the Winning Team.pdf'
-    ]
   },
   { 
     name: 'CodeCritters',
@@ -312,7 +309,7 @@ function renderProject(selectedProject:any){
 export default function Page(){
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [tempSelectedProject, setTempSelectedProject] = useState<typeof projects[0] | null>(null);
-  const [isSimpleMode, setIsSimpleMode] = useState<boolean>(false);
+  const [isComplexMode, setIsComplexMode] = useState<boolean>(false);
   const [maxImageHeight, setMaxImageHeight] = useState<number>(0);
 
   const handleProjectClick = (project:any) => {
@@ -326,14 +323,14 @@ export default function Page(){
   useEffect(() => {
     // Set initial mode based on screen size
     if (window.innerWidth < 1024) {
-      setIsSimpleMode(true);
+      setIsComplexMode(true);
     }
   
     const handleResize = () => {
-      if (window.innerWidth < 1024 && !isSimpleMode) {
-        setIsSimpleMode(true);
-      } else if (window.innerWidth >= 1024 && isSimpleMode) {
-        setIsSimpleMode(false);
+      if (window.innerWidth < 1024 && !isComplexMode) {
+        setIsComplexMode(true);
+      } else if (window.innerWidth >= 1024 && isComplexMode) {
+        setIsComplexMode(false);
       }
     };
   
@@ -350,30 +347,12 @@ export default function Page(){
     <main>
       <h1 className="text-5xl font-bold text-blue-900 dark:text-slate-200">Projects</h1>
         <div className="flex items-center space-x-2 pt-7 hidden xl:block">
-          <Label htmlFor="mode-switcher">Complex Mode</Label>
-          <Switch id="mode-switcher" aria-label={`Switch page into complex or simple mode`} checked={isSimpleMode} onCheckedChange={setIsSimpleMode} className="data-[state=unchecked]:bg-cyan-800"/>
-          <Label htmlFor="mode-switcher">Simple Table Mode</Label>
+          <Label htmlFor="mode-switcher">Table View</Label>
+          <Switch id="mode-switcher" aria-label={`Switch page into complex or simple mode`} checked={isComplexMode} onCheckedChange={setIsComplexMode} className="data-[state=unchecked]:bg-cyan-800"/>
+          <Label htmlFor="mode-switcher"> Interactive View</Label>
         </div>
         { 
-          isSimpleMode ? (
-            <ScrollArea className="h-[700px] w-full rounded-md border p-4 mt-8">
-              <Table>
-                <TableCaption>A list of projects I have done.</TableCaption>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-[100px] text-blue-900 dark:text-white text-base font-bold">Timeframe</TableHead>
-                    <TableHead className="w-[250px] text-blue-900 dark:text-white text-base font-bold">Name</TableHead>
-                    <TableHead className="w-[150px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Type</TableHead>
-                    <TableHead className="w-[400px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Built with</TableHead>
-                    <TableHead className="w-[180px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Links</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  { projects.map((project, index) => mapProject(project, index, handleProjectClick)) }
-                </TableBody>
-              </Table>
-            </ScrollArea>
-          ) : (
+          isComplexMode ? (
             <div className="flex space-x-5">
               <ScrollArea className="h-[700px] w-72 flex-shrink-0 rounded-md border space-y-2 p-4 mt-8">
                 <h2 className="mb-4 text-lg font-bold leading-none text-blue-900 dark:text-white">Projects</h2>
@@ -394,7 +373,7 @@ export default function Page(){
                           renderProject(tempSelectedProject)
                         ) : (
                           <div className="flex items-center justify-center h-full">
-                            <div className="text-lg font-bold">Select a project to view more details.</div>
+                            <div className="text-lg font-bold">Select or Hover over a project to view more details.</div>
                           </div>
                         )
                       }
@@ -402,6 +381,25 @@ export default function Page(){
                 )}
               </div>
             </div>
+          ) : (
+            <ScrollArea className="h-[700px] w-full rounded-md border p-4 mt-8">
+              <Table>
+                <TableCaption>A list of projects I have done.</TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[100px] text-blue-900 dark:text-white text-base font-bold">Timeframe</TableHead>
+                    <TableHead className="w-[250px] text-blue-900 dark:text-white text-base font-bold">Name</TableHead>
+                    <TableHead className="w-[150px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Type</TableHead>
+                    <TableHead className="w-[400px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Built with</TableHead>
+                    <TableHead className="w-[180px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Links</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  { projects.map((project, index) => mapProject(project, index, handleProjectClick)) }
+                </TableBody>
+              </Table>
+            </ScrollArea>
+            
           )
         }
     </main>
