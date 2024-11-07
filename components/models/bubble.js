@@ -111,4 +111,4 @@ export function BubbleModel(props) {
   );
 }
 
-useGLTF.preload('/Bubble.gltf');
+useGLTF.preload('/BubbleBig.gltf');
