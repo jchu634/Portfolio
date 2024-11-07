@@ -1,10 +1,15 @@
 "use client"
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useTheme } from 'next-themes';
 import Image from "next/image";
 import Link from "next/link";
+
+import { Canvas } from '@react-three/fiber';
+import { OrthographicCamera } from '@react-three/drei';
+import { BubbleModel } from '@/components/models/bubble';
 
 import { Link as LinkIcon, Download, ExternalLink } from "lucide-react";
 import { SiGithub, SiGithubHex } from '@icons-pack/react-simple-icons';
@@ -93,21 +98,21 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
             <div className="space-x-2 pt-2">
               { project.github && (
                 <Link href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Github link button for ${project.name}`}>
+                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Github link for ${project.name}`} aria-label={`Github link button for ${project.name}`}>
                     <SiGithub className="w-8 h-8 text-white hover:text-blue-600"/>
                   </Button>
                 </Link>
               )}
               { project.link && (
                 <Link href={project.link} aria-label={`Go to website for ${project.name}`}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Link button to ${project.name}`}>
+                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Link to ${project.name}`} aria-label={`Link button to ${project.name}`}>
                     <LinkIcon className="w-8 h-8 text-white hover:text-blue-600"/>
                   </Button>
                 </Link>
               )}
               { project.download && (
                 <Link href={project.download} aria-label={`Go to download page for ${project.name}`}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" aria-label={`Download link button for ${project.name}`}>
+                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Download link for ${project.name}`} aria-label={`Download link button for ${project.name}`}>
                     <Download className="w-8 h-8 text-white hover:text-blue-600"/>
                   </Button>
                 </Link>
@@ -132,50 +137,69 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
 }
 
 export default function Home() {  
+  const { theme } = useTheme();
   return (
-    <main>
-      <div className="block md:hidden">
-      <h1 className="text-5xl font-bold text-black dark:text-violet-200">Hi, I&apos;m Joshua</h1><br/>
-      <h2 className="text-2xl font-bold text-black dark:text-violet-300">Graduate FullStack Developer</h2><br/>
-      <h3 className="text-xl text-black dark:text-slate-200">I like making stuff.</h3><br/>
-      </div>
-      
-      <h2 className="text-2xl font-bold text-black dark:text-slate-200">About Me:</h2><br></br>
-      <h3 className="text-xl text-black dark:text-slate-200">
-        Hi, I&apos;m a new graduate from the University of Auckland (BSc in Computer Science)<br/>
-        I really like making stuff and trying out new technologies.<br/>
-        <br/>
-        Currently I am working on a couple of projects I didn&apos;t have time to start while studying.<br/>
-        I am currently interested in Machine Learning, hardware Video encode/decode.<br/>
-        <br/>
-        Also looking for work.<br/>
-      </h3>
-      <br/>
+    
+    <main className="relative w-full h-full">
+      <div className="absolute inset-0 z-0 pointer-events-none xl:block hidden">
+        <Suspense fallback={<span>loading...</span>}>
+          <Canvas style={{ zIndex: 1 }}>
+            <OrthographicCamera makeDefault zoom={50} />
+            <BubbleModel position={[10,4.5,0]}/>
 
-      <Link href="/CV.pdf">
-        <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
-          <p>View CV</p>
-          <ExternalLink className="w-6 text-white hover:text-blue-600"/>
-        </Button>
-      </Link>
-      
-      <h2 className="text-2xl font-bold text-black dark:text-slate-200 pt-2">
-        Featured Projects:
-      </h2><br/>
-      <div className="space-y-4 pb-4">
-        { 
-          projects.map((project, index) => {
-            return (mapProjects(project, index));
-          })
-        }
+            { theme === 'light' && (
+              <ambientLight intensity={0.3} />    
+            )}
+            <directionalLight position={[-10, -5, 10]} color="white" />
+          </Canvas>
+        </Suspense>
       </div>
-      
-      <Link href="/projects">
-        <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
-          <p>View Complete Project Archive</p>
-          <ExternalLink className="w-6 text-white hover:text-blue-600"/>
-        </Button>
-      </Link>
+      <div className="relative z-10">
+        <div className="block md:hidden">
+        <h1 className="text-5xl font-bold text-black dark:text-violet-200">Hi, I&apos;m Joshua</h1><br/>
+        <h2 className="text-2xl font-bold text-black dark:text-violet-300">Graduate FullStack Developer</h2><br/>
+        <h3 className="text-xl text-black dark:text-slate-200">I like making stuff.</h3><br/>
+        </div>
+        
+        <h2 className="text-2xl font-bold text-black dark:text-slate-200">About Me:</h2><br></br>
+        <h3 className="text-xl text-black dark:text-slate-200">
+          Hi, I&apos;m a new graduate from the University of Auckland (BSc in Computer Science)<br/>
+          I really like making stuff and trying out new technologies.<br/>
+          <br/>
+          Currently I am working on a couple of projects I didn&apos;t have time to start while studying.<br/>
+          I am currently interested in Machine Learning, hardware Video encode/decode.<br/>
+          <br/>
+          Also looking for work.<br/>
+        </h3>
+        <br/>
+
+        <Link href="/CV.pdf">
+          <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
+            <p>View CV</p>
+            <ExternalLink className="w-6 text-white hover:text-blue-600"/>
+          </Button>
+        </Link>
+        
+        <h2 className="text-2xl font-bold text-black dark:text-slate-200 pt-2">
+          Featured Projects:
+        </h2><br/>
+        <div className="space-y-4 pb-4">
+          { 
+            projects.map((project, index) => {
+              return (mapProjects(project, index));
+            })
+          }
+        </div>
+        
+        <Link href="/projects">
+          <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
+            <p>View Complete Project Archive</p>
+            <ExternalLink className="w-6 text-white hover:text-blue-600"/>
+          </Button>
+        </Link>
+        <br />
+      </div>
     </main>
+    
   )
 }
