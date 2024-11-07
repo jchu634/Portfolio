@@ -25,7 +25,7 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { Link as LinkIcon, Download, ExternalLink } from "lucide-react";
+import { Link as LinkIcon, Download, ExternalLink, FileText } from "lucide-react";
 import { SiGithub, SiGithubHex } from '@icons-pack/react-simple-icons';
 
 import { useState, useEffect } from 'react';
@@ -40,10 +40,15 @@ const projects = [
     website:'https://www.hackster.io/jchu634/ryzen-ai-subtitling-5ead7f',
     description: 'An subtitling program which uses Whisper on a Ryzen AI NPU to generate real-time subtitles for an audio source.\n A Submission for the AMD Pervasive AI Developer Challenge.',
     images:[
+      '/projects/ryzensubtitles/Certificates for the Winning Team.jpg',
       '/projects/ryzensubtitles/simple_light.png',
       '/projects/ryzensubtitles/simple_dark.png',
       '/projects/ryzensubtitles/complex_light.png',
       '/projects/ryzensubtitles/complex_dark.png',
+    ],
+    cert:'https://keshuac.com/projects/ryzensubtitles/Certificates for the Winning Team.pdf',
+    pdf:[
+      '/projects/ryzensubtitles/Certificates for the Winning Team.pdf'
     ]
   },
   { 
@@ -194,6 +199,14 @@ function mapProject(project: any, index: number, handleProjectClick: (project: a
           <Link href={project.download} aria-label={`Go to download page for ${project.name}`}>
             <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Download link for ${project.name}`} aria-label={`Download link button for ${project.name}`}>
               <Download className="w-8 h-8 text-white hover:text-blue-600"/>
+            </Button>
+          </Link>
+          ) : ( <Button size="icon" variant="link" aria-label="Placeholder button"></Button> 
+        )}
+        { project.cert ? (
+          <Link href={project.cert} aria-label={`Go to cert page for ${project.name}`}>
+            <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Cert link for ${project.name}`} aria-label={`Cert link button for ${project.name}`}>
+              <FileText className="w-8 h-8 text-white hover:text-blue-600"/>
             </Button>
           </Link>
           ) : ( <Button size="icon" variant="link" aria-label="Placeholder button"></Button> 
@@ -352,7 +365,7 @@ export default function Page(){
                     <TableHead className="w-[250px] text-blue-900 dark:text-white text-base font-bold">Name</TableHead>
                     <TableHead className="w-[150px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Type</TableHead>
                     <TableHead className="w-[400px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Built with</TableHead>
-                    <TableHead className="w-[150px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Links</TableHead>
+                    <TableHead className="w-[180px] text-blue-900 dark:text-white text-base font-bold hidden xl:table-cell">Links</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
