@@ -185,7 +185,7 @@ export default function Home() {
   const { theme } = useTheme();
   return (
     
-    <main className="relative w-full h-full">
+    <main className="xl:relative xl:w-full xl:h-full">
       <div className="absolute inset-0 z-0 pointer-events-none xl:block hidden">
         <Suspense fallback={<span>loading...</span>}>
           <Canvas style={{ zIndex: 1 }}>
@@ -199,7 +199,7 @@ export default function Home() {
           </Canvas>
         </Suspense>
       </div>
-      <div className="relative z-10">
+      <div className="lg:relative z-10">
         <div className="block md:hidden">
         <h1 className="text-5xl font-bold text-black dark:text-violet-200">Hi, I&apos;m Joshua</h1><br/>
         <h2 className="text-2xl font-bold text-black dark:text-violet-300">Graduate FullStack Developer</h2><br/>
