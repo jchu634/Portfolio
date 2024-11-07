@@ -29,7 +29,7 @@ export default function NavLinks() {
                 dark:hover:bg-blue-200 dark:hover:text-blue-600 dark:bg-gray-900 dark:md:bg-transparent 
                 hover:shadow-big-blue dark:hover:shadow-big-white`,
                 {
-                  'bg-sky-800 md:bg-sky-200 text-white md:text-blue-600 dark:text-emerald-950 dark:bg-cyan-200 dark:md:bg-blue-950 dark:md:text-blue-400': pathname === link.href,
+                  'bg-sky-800 md:bg-sky-200 text-white md:text-blue-600 dark:text-emerald-600 dark:bg-cyan-200 dark:md:bg-blue-950 dark:md:text-blue-400': pathname === link.href,
                 }
               )}
             >
