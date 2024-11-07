@@ -69,6 +69,27 @@ const projects = [
   },
 ];
 
+const education = [
+  {
+    institution: 'University of Auckland',
+    description: 'Bachelor of Science in Computer Science',
+    timeframe: '2021-2024',
+    link: 'https://keshuac.com/extlink/ucert',
+  },
+  {
+    institution: 'NVIDIA Deep Learning Institute',
+    description: 'Fundamentals of Deep Learning',
+    timeframe: '2023',
+    link: 'https://keshuac.com/extlink/ncert1',
+  },
+  {
+    institution: 'NVIDIA Deep Learning Institute',
+    description: 'Fundamentals of Accelerated Computing with CUDA Python',
+    timeframe: '2024',
+    link: 'https://keshuac.com/extlink/ncert2',
+  }
+]
+
 function mapProjects(project:any, index:number){ // Index is here to stop the warning about needing a key
   return (
     <Card className="bg-slate-300 dark:bg-fuchsia-950 dark:bg-opacity-40 w-auto" key={index}>
@@ -136,6 +157,30 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
   )
 }
 
+function mapEdu(edu:any, index:number){ // Index is here to stop the warning about needing a key
+  return (
+    <Card className="bg-slate-300 dark:bg-fuchsia-950 dark:bg-opacity-40 w-auto" key={index}>
+      <CardContent>
+        <div className="flex items-start">
+          <div className="space-x-2 pt-2 pr-4">
+            { edu.link && (
+              <Link href={edu.link} aria-label={`Certificate for ${edu.description}`}>
+                <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Link to Certificate`} aria-label={`Link button to Certificate`}>
+                  <LinkIcon className="w-8 h-8 text-white hover:text-blue-600"/>
+                </Button>
+              </Link>
+            )}
+          </div>
+          <div>
+            <span className="text-2xl font-bold text-cyan-900 dark:text-cyan-200">{edu.institution} ({edu.timeframe})</span>
+            <p className="whitespace-pre-wrap text-m text-wrap">{edu.description}</p>  
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
 export default function Home() {  
   const { theme } = useTheme();
   return (
@@ -180,6 +225,16 @@ export default function Home() {
           </Button>
         </Link>
         
+        <br/>
+        <h2 className="text-2xl font-bold text-black dark:text-slate-200 pt-2">
+          Education + Qualifications:
+        </h2><br/>
+        <div className="space-y-4 pb-4">
+          {education.map((edu, index) => {
+            return mapEdu(edu, index);
+          })}
+        </div>
+
         <h2 className="text-2xl font-bold text-black dark:text-slate-200 pt-2">
           Featured Projects:
         </h2><br/>
