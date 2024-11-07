@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense, useRef, useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import { useTheme } from 'next-themes';
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,12 +8,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Link as LinkIcon, Download, ExternalLink } from "lucide-react";
-import { SiGithub, SiGithubHex } from '@icons-pack/react-simple-icons';
+import { SiGithub } from '@icons-pack/react-simple-icons';
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Mesh } from 'three';
-import { useGLTF, OrthographicCamera } from '@react-three/drei';
-import { BubbleV2 } from '@/components/models/bubbleV2';
+import { OrthographicCamera } from '@react-three/drei';
+import { BubbleModel } from '@/components/models/bubble';
 
 
 const projects = [
@@ -138,38 +137,17 @@ const projects = [
     )
   }
 
-function Rotate(props: JSX.IntrinsicElements['group']){
-  const ref = useRef<Group>(null!);
-
-  useFrame((state) => {
-    if (ref.current) {
-      ref.current.rotation.y += 0.01;
-    }
-  });
-
-  return <group ref={ref} {...props} />;
-};
-
-function Model({ url, scale, positionY, positionX, ...props }: { url: string, scale?: number[], positionY?: number, positionX?: number }) {
-  // useGLTF suspends the component, it literally stops processing
-  const { scene } = useGLTF(url)
-  // By the time we're here the model is guaranteed to be available
-  return <primitive object={scene} scale={scale} position-y={positionY} position-x={positionX} {...props} />
-}
-
 export default function App(){
     const { theme, setTheme } = useTheme();
 
     return (
       <main className="relative w-full h-full">
-        <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 z-10 pointer-events-none">
           <Suspense fallback={<span>loading...</span>}>
           <Canvas style={{ zIndex: 1 }}>
             <OrthographicCamera makeDefault zoom={50} />
+            <BubbleModel position-x={10} position-y={5.5}/>
 
-            <Rotate position-x={10} position-y={5.5} scale={[5,5,5]}>
-              <BubbleV2 />
-            </Rotate>
             { theme === 'light' && (
               <ambientLight intensity={0.3} />    
             )}
@@ -177,7 +155,7 @@ export default function App(){
           </Canvas>
           </Suspense>
         </div>
-        <div className="relative z-10">
+        <div className="relative z-0">
           <h3 className="text-xl text-black dark:text-slate-200">
             Hi, I&apos;m a new graduate from the University of Auckland (BSc in Computer Science)<br />
             I really like making stuff and trying out new technologies.<br />
