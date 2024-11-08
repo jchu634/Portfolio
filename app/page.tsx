@@ -119,23 +119,23 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
             <div className="space-x-2 pt-2">
               { project.github && (
                 <Link href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Github link for ${project.name}`} aria-label={`Github link button for ${project.name}`}>
-                    <SiGithub className="w-8 h-8 text-white hover:text-blue-600"/>
+                  <Button size="icon" className="group w-10 h-10 bg-black dark:bg-white dark:hover:bg-indigo-800 hover:bg-slate-200" title={`Github link for ${project.name}`} aria-label={`Github link button for ${project.name}`}>
+                    <SiGithub className="w-8 h-8 text-white dark:text-black group-hover:text-zinc-700 group-hover:dark:text-zinc-200"/>
                   </Button>
                 </Link>
               )}
               { project.link && (
                 <Link href={project.link} aria-label={`Go to website for ${project.name}`}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Link to ${project.name}`} aria-label={`Link button to ${project.name}`}>
-                    <LinkIcon className="w-8 h-8 text-white hover:text-blue-600"/>
+                  <Button size="icon" className="group w-10 h-10 bg-black dark:bg-white dark:hover:bg-indigo-800 hover:bg-slate-200" title={`Link to ${project.name}`} aria-label={`Link button to ${project.name}`}>
+                    <LinkIcon className="w-8 h-8 text-white dark:text-black group-hover:text-zinc-700 group-hover:dark:text-zinc-200"/>
                   </Button>
                 </Link>
               )}
               { project.download && (
                 <Link href={project.download} aria-label={`Go to download page for ${project.name}`}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Download link for ${project.name}`} aria-label={`Download link button for ${project.name}`}>
-                    <Download className="w-8 h-8 text-white hover:text-blue-600"/>
-                  </Button>
+                  <Button size="icon" className="group w-10 h-10 bg-black dark:bg-white dark:hover:bg-indigo-800 hover:bg-slate-200" title={`Download link for ${project.name}`} aria-label={`Download link button for ${project.name}`}>
+                    <Download className="w-8 h-8 text-white dark:text-black group-hover:text-zinc-700 group-hover:dark:text-zinc-200"/>
+                  </Button>               
                 </Link>
               )}
             </div>
@@ -165,8 +165,8 @@ function mapEdu(edu:any, index:number){ // Index is here to stop the warning abo
           <div className="space-x-2 pt-2 pr-4">
             { edu.link && (
               <Link href={edu.link} aria-label={`Certificate for ${edu.description}`}>
-                <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Link to Certificate`} aria-label={`Link button to Certificate`}>
-                  <LinkIcon className="w-8 h-8 text-white hover:text-blue-600"/>
+                <Button size="icon" className="group w-10 h-10 bg-black dark:bg-fuchsia-800 dark:hover:bg-slate-300 hover:bg-slate-200" title={`Link to Certificate`} aria-label={`Link button to Certificate`}>
+                  <LinkIcon className="w-8 h-8 text-white group-hover:text-blue-800"/>
                 </Button>
               </Link>
             )}
@@ -219,9 +219,9 @@ export default function Home() {
         <br/>
 
         <Link href="https://utfs.io/f/NQ2gjwtsCGtKRBynBBbPMa7DKY9qLyxQvIEZcpb8HkjrTetf">
-          <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
+          <Button variant="flex_outline" className="group dark:bg-sky-800 dark:hover:bg-purple-800 hover:bg-sky-700 text-white font-bold space-x-2 text-lg">
             <p>View CV</p>
-            <ExternalLink className="w-6 text-white hover:text-blue-600"/>
+            <ExternalLink className="w-6 text-white group-hover:text-blue-600"/>
           </Button>
         </Link>
         
@@ -247,9 +247,9 @@ export default function Home() {
         </div>
         
         <Link href="/projects">
-          <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
+          <Button variant="flex_outline" className="group dark:bg-sky-800 dark:hover:bg-purple-800 hover:bg-sky-700 text-white font-bold space-x-2 text-lg">
             <p>View Complete Project Archive</p>
-            <ExternalLink className="w-6 text-white hover:text-blue-600"/>
+            <ExternalLink className="w-6 text-white group-hover:text-blue-600"/>
           </Button>
         </Link>
         <br />
