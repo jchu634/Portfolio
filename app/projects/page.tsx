@@ -46,7 +46,7 @@ const projects = [
       '/projects/ryzensubtitles/complex_light.png',
       '/projects/ryzensubtitles/complex_dark.png',
     ],
-    cert:'https://keshuac.com/projects/ryzensubtitles/Certificates for the Winning Team.pdf',
+    cert:'https://utfs.io/f/NQ2gjwtsCGtKCqzKLe2jLhGCvurfiFms5UkNDxORWnd0pSE1',
   },
   { 
     name: 'CodeCritters',
@@ -280,7 +280,7 @@ function renderProject(selectedProject:any){
                   <CarouselItem key={index} className={`${moreThan1Image} p-4`}>
                     <Card className="bg-slate-200 dark:bg-sky-950 dark:bg-opacity-40">
                       <CardContent className="flex p-6 justify-center">
-                        <Image unoptimized alt="Project Image" className="object-scale-down max-h-[300px]"
+                        <Image alt="Project Image" className="object-scale-down max-h-[300px]"
                           src={images}
                           width={400}
                           height={400}

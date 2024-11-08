@@ -22,7 +22,7 @@ function interpolateColor(color1, color2, factor) {
 export function BubbleModel(props) {
   const bubbleRef = useRef();
   const groupRef = useRef();
-  const { nodes, materials } = useGLTF('/BubbleBig.gltf');
+  const { nodes, materials } = useGLTF('/BubbleBig.glb');
   const { theme } = useTheme();
   
   
@@ -111,4 +111,4 @@ export function BubbleModel(props) {
   );
 }
 
-useGLTF.preload('/BubbleBig.gltf');
+useGLTF.preload('/BubbleBig.glb');

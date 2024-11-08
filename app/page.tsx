@@ -218,7 +218,7 @@ export default function Home() {
         </h3>
         <br/>
 
-        <Link href="/CV.pdf">
+        <Link href="https://utfs.io/f/NQ2gjwtsCGtKRBynBBbPMa7DKY9qLyxQvIEZcpb8HkjrTetf">
           <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
             <p>View CV</p>
             <ExternalLink className="w-6 text-white hover:text-blue-600"/>
