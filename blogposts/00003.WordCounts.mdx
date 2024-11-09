@@ -2,42 +2,47 @@
 title: 'Word Counts are a mess'
 date: '2024-05-20'
 description: 'Why are word counts different between different software'
-lastUpdate: '2024-05-20'
+lastUpdate: '2024-11-10'
 ---
 
 ## Background
-Recently I had to submit a 'correct' word count along with a university assignment.
-This proved very difficult as each software I used gave entirely different word counts from each other, and there was no way I was going to try manually count a roughly 600 word document.
+Word counts are a mess.\
+Once in a Uni assignment, I had to submit an accurate word count along with the assignment.
+This proved impossible as each document software gave different word counts and there was no way I was going to manually count an approx ~600 word document.\
+Afterwards, I was curious as to why each software gave different word counts, so I decided to do some testing.
 
-So I decided to do a test and check why each software has different word counts.
+This blogpost is a collation of my findings.
 
-### How I tested.
+### Testing Methodology:
+My testing was not quite scientific, but I tried to at least be consistent.\
+I standardised using document formats .DOCX and .DOC as it is quite popular due to Microsoft Office's dominance and is well supported by most software.\
+I then chose a selection of popular office document software then tested each software (Word Desktop, Word Online, Libre Office, Google Docs, Apple Pages).
 
-I first started with a warm-up: a simple DOCX document with a 100 word story.\
+For each software, I first started with a sanity check: a simple DOCX document with a 100 word story.\
 This acted as a litmus test to check if there weren't any significant issues with the software.
 
 Then came the benchmark: a DOCX document with every feature I could think of which has a word count of 219 (counted manually).\
 This DOCX document was then converted into a DOC document (via Word Desktop) to see if there were any significant differences.
 
 ### Limitations and Expectations:
-Any word count generated from the benchmark will be wrong.\
-This is **by design** as the document contains many tricks to try and trip up software.\
-The main point is to find the differences in how each software measures word counts through a stress test.
+This benchmark is not a real-world document, any word count generated from the benchmark will be wrong.\
+This is **by design** as I added as many tricks to try and trip up software to find edge cases.\
+The main point of this exercise is to find the differences in how each software measures word counts through a stress test and not to find the actual word count of the document as that is quite subjective.
 
 That being said, let me list and explain some certain unknowns\
 (Things that shouldn't count as a word, but as long as the software is consistent is counted as correct within reason).
 
 They include
 - Bullet points (& Numbered lists): Should the bullet or the number count as a word? 
-    > I think they shouldn't
+    > Personally I think they shouldn't
 - Headers and footers: Should they be counted once or for each page?
-    > Technically should count for each page, but as a student, I would prefer if they don't
+    > I think it technically should count for each page, but as a student, I would prefer if they don't
 - Do words/separated/by/slashes/count as separate words or one big word?
 - Do words.separated.by.dots.count as separate words or one big word?
     > These two inclusions may seem pedantic, but they are important as they signify if URLs or Acroynms count as a single word or multiple.
 
 ## Results
-What were the actual results:
+Now here we get to the meat of the blogpost, the results of the testing.
 
 #### .DOCX
 - Word (Desktop App)(Office 365 Enterprise): 170
@@ -53,57 +58,62 @@ What were the actual results:
 - Google Docs: 131
 - Apple Pages: 154
 
-Let's talk about these figures:
-
+### Observations
+Now that we have the results, I have to say that I am quite surprised by the results.\
+There is a massive range between the word counts (126-187), and supprisingly, there is no difference between .DOC and .DOCX.\
+The difference in Google Docs and Word Desktop is due to lack of equations in the .DOC due to the conversion process.\
+Because of this, I will only be discussing the .DOCX results, lets have some fun and look at the quirks of each software:
 
 ### Word (Desktop + Online)
+#### Discussion
+A rather interesting quirk is that Word (Desktop) and Word (Online) have different word counts.\
+This quirk was the main motivation for this blogpost, as this caused much grief in my assignment.
+In my testing and [research](https://answers.microsoft.com/en-us/msoffice/forum/all/differences-in-word-count-in-word-online-and-word/0370e8af-8873-4d52-acfc-c64890bf7c7b), I found that Word Online doesn't count words in text boxes, headers, footers and SmartArt.\
+I found this rather strange, as I felt the main point of Word Online was to compete with Google Docs with its collaborative features.
+And for students which are a major target for the Office suite, this inconsistency is quite annoying as groups may be working on the same document in Word Online and Word Desktop, and the word count would be different between the two.
+
+As an aside, during testing I found a strange quirk in Word Online:\
+Inexplicably, Word Online doesn't counts bullets from bulletpoints, but it does count numbers from numbered lists.\
+This is almost certainly a bug, but I have no idea if the intended behaviour was to count the bulletpoints or to not count list markers at all.
 
 #### Notable Behaviours
 1. Word (Desktop+Online) don't count words from headers and footers
 2. Word (Desktop+Online) since Word 2003 has counted bullets as a separate word ([Source](https://answers.microsoft.com/en-us/msoffice/forum/all/exclude-bullet-points-from-word-count/e3f69a7b-3a7e-4219-93b4-a84b67809bc5))
 3. Word Online does not count words in equations, captions, WordArt, and textboxes.
 
-#### Notes
-Right off the bat, there was a significant descrepancy between Word (Desktop) and Word (Online).\
-I had expected it already, as this was one of the problems for my uni assignment.\
-A quick Google search corroborates my testing on Word Online as it does not count words in text boxes, headers, footers and SmartArt ([Source](https://answers.microsoft.com/en-us/msoffice/forum/all/differences-in-word-count-in-word-online-and-word/0370e8af-8873-4d52-acfc-c64890bf7c7b)).
-
-During the testing, I found a strange quirk in Word Online:\
-Inexplicably, Word Online doesn't counts bullets from bulletpoints, but it does count numbers from numbered lists.\
-This is quite likely to be a bug, but it is quite peculiar, as given this behaviour, I am not sure if algorithm was intended to count list markers or not.
-
 ### Libre Office
+#### Discussion
+Libre Office is rather impressive, as it caught almost every trick I threw at it. (Even the textbox in the header!)\
+I could only find 3 flaws in its wordcount, and some of those flaws are subjective whether they should be counted or not.
+
+1. Words in equations were not counted.
+2. Citation marks were counted.
+3. The page number is counted.
+
+The first flaw I feel is valid as even if equations are not counted, words in equations should be counted or else I could just write an entire essay in an equation and bypass any wordcount requirements.
+
+The second flaw, although more subjective, I feel is definitely incorrect as I feel that citation marks should be considered punctuation and should not be counted.\
+At the very least, this behaviour is uniqe among all the software tested.\
+(Citation Marks are the numbers next to a text which indicate citations, e.g. study<sup>1</sup>)
+
+Finally I can't quite articulate an explanation for the third flaw, but it is "just wrong".
+
+Note: Although Libre Office has the most inclusive wordcount algorithm, I have to say it was the most annoying for me to use and test\
+as it has the rather annoying behaviour of not updating the word count after undoing anything.
+
 #### Notable Behaviours
 1. Almost all inclusive
     > Almost everything that I added in the document that should count towards an word count is counted
-2. The sole exception I could find were equations
-
-#### Notes
-From my testing, Libre Office counts almost everything in the document, which is quite impressive, it even counted the textbox in the Header.
-I only found 3 flaws in its counting.
-- Words in equations were not counted.
-- Citation marks were counted.
-- The page number is counted.
-
-To clarify what I meant by Citation marks, it is the number next to a text (e.g. study<sup>1</sup>).\
-This behaviour along with counting page numbers is unique among all the software tested and in my personal opinion is incorrect as I consider those punctuation.
-
-Finally,
-Although Libre Office counts the most out of all software, it has a rather annoying bug where the word count is not counted when undoing an operation/
-, the word count after an undo is only updated after some other thing is updated.
-This was a rather major annoyance in testing Libre.
+2. Equations are not counted
+3. Sometimes has unique ideas on what should be counted as a word
 
 ### Google Docs
-#### Notable Behaviours
-- Bullets/Numbers, Headers/Footers, Foot/Endnotes are not counted
-- Slash and Dot separated words are counted separately
-- Words in drawings are not counted.
+#### Discussion
+Before I get to wordcounts, I have to note that Google Docs has its own unique approach to .DOCX compatibility.\
+Google Docs, I assume was never meant to compete directly with Word, but rather to offer collaboration as its main selling point\
+because of that it often has its own implementations of many DOCX features.
 
-#### Notes
-Google Docs is rather unique in that it seems the most removed from any other software tested\
-i.e. Google Docs seems to do its own thing and how it handles compatibility with .DOCX is different from everything else.
-
-Some of the ways it handles .DOCX differently are
+Some of the ways it handles .DOCX are:
 - Textboxes and WordArt are imported as a 'Drawing', a construct unique to Google Docs afaik.
 - Captions are not imported.
 - Tables nested in Textboxes are not imported and are missing.
@@ -112,39 +122,49 @@ Now the quirks in its wordcounts:
 - Similar to the Word suite, it doesn't count header/footers.
 - Uniquely, it doesn't count words in foot/Endnotes
 
-And the kicker:\
+But here's the real kicker:\
 It counts links and Acroynms as separate words, \
 i.e. this link: [https://www.youtube.com/watch?v=dQw4w9WgXcQ](https://www.youtube.com/watch?v=dQw4w9WgXcQ) which counts as 1 word in Word counts as 7 words in Google Docs.\
-This is highly disruptive as this would massively mess with anyone writing documents in Word, who is also working with another person on Google Docs and is especially annoying as all the software I tested counts the words in Bibliographies, so any documents with links cited would suddenly show up with an inflated wordcount.
+This is especially egregious as it would inflate the word count of any documents with links, which is especially bad as it would count links in a Bibliography or a references section.
+
+#### Notable Behaviours
+- Bullets/Numbers, Headers/Footers, Foot/Endnotes are not counted
+- Slash and Dot separated words are counted separately
+- Words in drawings are not counted.
+- .DOC compatibility:
+    - The software with a .DOC compatibility quirk, it managed to import the picture caption, but it imported it distorted and incorrectly as shown below \
+    ![Distorted Picture Caption](/BlogImages/WordCountImage3.png "Distorted Picture Caption")
 
 ### Apple Pages
+### Discussion
+In comparison to Google Docs, Apple Pages seems much tamer in how it imports elements from .DOCX documents.\
+The only issue I had with imports were tables nested in textboxes, which imported the table as a text representation.\
+This is rather minor, as Pages gives an warning in advance.
+
+That's where the good news ends as Apple Pages is inconsistent in its word count.
+- It somehow counted text in textboxes nested inside the header, **but it didn't count any other words in the header**.
+- The title in a table in a table of contents is counted, but the table directory isn't.
+- Links and Acroynms are counted separately (Same as Google Docs)
+- Apple Pages doesn't count mathematical symbols at all, but it does count Greek letters as symbols
+
+Notably, Apple Pages is the only software which counts emoji as words, and not as a char.\
+- What this means is that 🥡🦪, 🐈‍⬛ is counted as 3 words with Apple pages and 2 words in other software.
+
 #### Notable Behaviours
 - Bullets/Numbers, Headers/Footers are not counted
 - Equations are not counted
-- A lot of jank
-
-### Notes
-In comparison to Google Docs, Apple Pages seems much tamer in how it imports elements from .DOCX documents.\
-The only issue I had with imports were tables nested in textboxes, which imported the table as a text representation.\
-This is rather minor, given that Pages gives an warning in advance.
-
-What is rather egregious however, is how it inconsistently applies its counting.
-- For some reason, it somehow counted text in textboxes nested inside the header, but it didn't count any other words in the header.
-- The title in a table in a table of contents is counted, but the table directory isn't.
-- Links and Acroynms are counted separately (similar to Google Docs)
-- Uniquely, Emoji are counted as words, and not as a char as with the other software
-    - What this means is that 🥡🦪 🐈‍⬛ is counted as 3 words with Apple pages and 2 words in other software.
-- However, Apple Pages doesn't count mathematical symbols at all, but it does count Greek letters as symbols
+- Links and Acroynms are counted separately
+- Emoji are counted as words
+- Strange Table of Contents behaviour
 
 ## Conclusion
-Now that this exercise is finished, I don't know what to feel about the results.\
-It is great that the differences in word count is finally quantifiable and tested, 
-but ultimately it doesn't solve anything as everyone uses vastly different software.
+Now that this exercise is finished, I don't know quite what to feel about the results.\
+I don't know which software is the most correct, as ultimately many of the decision on what is or isn't a word is debatable.\
 
-The irony, is that this still won't be of any significant help for my assignment, as it uses Canvas's speedgrader, 
-which I have been unable to prod a wordcount number out of.
+Ironically, I discovered that this still hasn't fixed the issue with my original Uni assignment as they use Canvas's speedgrader,\ 
+which does not expose its wordcount to students.
 
-The universal solution is to have wordcounts with a margin of ± some number **_x_**, \
+Ultimately, the best solution is to build in a margin of error into wordcount requirements\
 and to NEVER require a precise wordcount to be written inside the document.
 
 ### Questions
@@ -153,27 +173,12 @@ If you have questions, feel free to send them to [jchu634@keshuac.com](mailto:jc
 
 ## Appendices
 
-### AP 1.1: Footnote: .DOC
-I had intended to write about .DOC as I had expected there to be a significant discrepancy between .DOC and .DOCX, but that has not materialised in my testing.\
-The only difference is in the conversion, equations are transformed into an image.\
-So all the wordcounts are offset by the 4 words in the equations.\
-The sole application with no change to word count (Libre Office) only has no difference because it never supported equations in word counts.
-
-The only quirk I found with .DOC compatibility was with Google Docs, \
-Unlike with .DOCX, it managed to import the picture caption, but it imported it incorrectly as shown below \
-(And yes, it was distorted in the document too).
-![Distorted Picture Caption](/BlogImages/WordCountImage3.png "Distorted Picture Caption")
-
-### AP 1.2: Footnote: .ODT
-I forgot this format existed until I wrote this blogpost,\
-I may get around to testing it in the future.
-
-### AP 1.3: Benchmark Files
+### AP 1.1: Benchmark Files
 All of files used in the testing are freely and publicly available at [https://github.com/jchu634/WordCountTesting](https://github.com/jchu634/WordCountTesting)\
 Feedback is very much welcome!
 
-### AP 1.4: Results Table:
-#### AP 1.4.1: .DOCX
+### AP 1.2: Results Table:
+#### AP 1.2.1: .DOCX
 <table>
     <thead>
         <tr>
@@ -189,8 +194,8 @@ Feedback is very much welcome!
             <th>Citation Mark</th>
             <th>Equations</th>
             <th>Links</th>
-            <th>SlashSeperatedWords</th>
-            <th>Acroynms</th>
+            <th>Slash/Seperated/Words</th>
+            <th>Acronyms</th>
             <th>Bibliographies</th>
             <th>Captions</th>
             <th>Footnotes</th>
@@ -284,8 +289,8 @@ Feedback is very much welcome!
             <td>❌</td>
             <td>✔️</td>
             <td>✔️</td>
-            <td>✔️ (Bullets Don&#39;t Count)</td>
-            <td>✔️ (Bullets Don&#39;t Count)</td>
+            <td>⭕ (No Bullets)</td>
+            <td>⭕ (No Bullets)</td>
             <td>✔️</td>
             <td>✔️</td>
             <td>❌</td>
@@ -309,9 +314,9 @@ Feedback is very much welcome!
             <td>✔️</td>
             <td>✔️</td>
             <td>✔️</td>
-            <td>✔️ (Bullets Don&#39;t Count)</td>
-            <td>✔️ (Bullets Don&#39;t Count)</td>
-            <td>✔️/❌ (Title counts, but not the table)</td>
+            <td>⭕ (No Bullets)</td>
+            <td>⭕ (No Bullets)</td>
+            <td>✔️/❌ (Only Title counts)</td>
             <td>✔️</td>
             <td>❌</td>
             <td>❌</td>
@@ -441,7 +446,7 @@ Feedback is very much welcome!
             <td>❌</td>
             <td>✔️</td>
             <td>✔️</td>
-            <td>✔️ (Bullets Don&#39;t Count)</td>
+            <td>⭕ (No Bullets)</td>
             <td>✔️  (Bullets Don&#39;t Count)</td>
             <td>✔️</td>
             <td>✔️</td>
@@ -466,9 +471,9 @@ Feedback is very much welcome!
             <td>✔️</td>
             <td>✔️</td>
             <td>✔️</td>
-            <td>✔️ (Bullets Don&#39;t Count)</td>
-            <td>✔️ (Bullets Don&#39;t Count)</td>
-            <td>✔️/❌ (Title counts, but not the table)</td>
+            <td>⭕ (No Bullets)</td>
+            <td>⭕ (No Bullets)</td>
+            <td>✔️/❌ (Only Title counts)</td>
             <td>✔️</td>
             <td>❌</td>
             <td>❌</td>

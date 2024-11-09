@@ -11,10 +11,10 @@ import {
 
 export default function Fakman() {
     const { unityProvider, requestFullscreen } = useUnityContext({
-        loaderUrl:"../../build/FakmanWebGL.loader.js",
-        dataUrl:"../../build/FakmanWebGL.data",
-        frameworkUrl:"../../build/FakmanWebGL.framework.js",
-        codeUrl:"../../build/FakmanWebGL.wasm",
+        loaderUrl:"https://utfs.io/f/NQ2gjwtsCGtKCqyEVbXjLhGCvurfiFms5UkNDxORWnd0pSE1",
+        dataUrl:"https://utfs.io/f/NQ2gjwtsCGtKMZLhyD8kWU3EkF6oeJ5t97qRmM4xOK2ZLX0B",
+        frameworkUrl:"https://utfs.io/f/NQ2gjwtsCGtKgPtnJP0EkM2bcfI49WrusQFoUhxBjlNHXZP5",
+        codeUrl:"https://utfs.io/f/NQ2gjwtsCGtKg5qksj0EkM2bcfI49WrusQFoUhxBjlNHXZP5",
         webglContextAttributes: {
             preserveDrawingBuffer: true,
         },

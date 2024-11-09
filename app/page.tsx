@@ -69,6 +69,27 @@ const projects = [
   },
 ];
 
+const education = [
+  {
+    institution: 'University of Auckland',
+    description: 'Bachelor of Science in Computer Science',
+    timeframe: '2021-2024',
+    link: 'https://keshuac.com/extlink/ucert',
+  },
+  {
+    institution: 'NVIDIA Deep Learning Institute',
+    description: 'Fundamentals of Deep Learning',
+    timeframe: '2023',
+    link: 'https://keshuac.com/extlink/ncert1',
+  },
+  {
+    institution: 'NVIDIA Deep Learning Institute',
+    description: 'Fundamentals of Accelerated Computing with CUDA Python',
+    timeframe: '2024',
+    link: 'https://keshuac.com/extlink/ncert2',
+  }
+]
+
 function mapProjects(project:any, index:number){ // Index is here to stop the warning about needing a key
   return (
     <Card className="bg-slate-300 dark:bg-fuchsia-950 dark:bg-opacity-40 w-auto" key={index}>
@@ -98,23 +119,23 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
             <div className="space-x-2 pt-2">
               { project.github && (
                 <Link href={project.github} aria-label={`Go to Github repository for ${project.name}`}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Github link for ${project.name}`} aria-label={`Github link button for ${project.name}`}>
-                    <SiGithub className="w-8 h-8 text-white hover:text-blue-600"/>
+                  <Button size="icon" className="group w-10 h-10 bg-black dark:bg-white dark:hover:bg-indigo-800 hover:bg-slate-200" title={`Github link for ${project.name}`} aria-label={`Github link button for ${project.name}`}>
+                    <SiGithub className="w-8 h-8 text-white dark:text-black group-hover:text-zinc-700 group-hover:dark:text-zinc-200"/>
                   </Button>
                 </Link>
               )}
               { project.link && (
                 <Link href={project.link} aria-label={`Go to website for ${project.name}`}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Link to ${project.name}`} aria-label={`Link button to ${project.name}`}>
-                    <LinkIcon className="w-8 h-8 text-white hover:text-blue-600"/>
+                  <Button size="icon" className="group w-10 h-10 bg-black dark:bg-white dark:hover:bg-indigo-800 hover:bg-slate-200" title={`Link to ${project.name}`} aria-label={`Link button to ${project.name}`}>
+                    <LinkIcon className="w-8 h-8 text-white dark:text-black group-hover:text-zinc-700 group-hover:dark:text-zinc-200"/>
                   </Button>
                 </Link>
               )}
               { project.download && (
                 <Link href={project.download} aria-label={`Go to download page for ${project.name}`}>
-                  <Button size="icon" className="w-10 h-10 bg-black dark:hover:bg-slate-300" title={`Download link for ${project.name}`} aria-label={`Download link button for ${project.name}`}>
-                    <Download className="w-8 h-8 text-white hover:text-blue-600"/>
-                  </Button>
+                  <Button size="icon" className="group w-10 h-10 bg-black dark:bg-white dark:hover:bg-indigo-800 hover:bg-slate-200" title={`Download link for ${project.name}`} aria-label={`Download link button for ${project.name}`}>
+                    <Download className="w-8 h-8 text-white dark:text-black group-hover:text-zinc-700 group-hover:dark:text-zinc-200"/>
+                  </Button>               
                 </Link>
               )}
             </div>
@@ -136,11 +157,35 @@ function mapProjects(project:any, index:number){ // Index is here to stop the wa
   )
 }
 
+function mapEdu(edu:any, index:number){ // Index is here to stop the warning about needing a key
+  return (
+    <Card className="bg-slate-300 dark:bg-fuchsia-950 dark:bg-opacity-40 w-auto" key={index}>
+      <CardContent>
+        <div className="flex items-start">
+          <div className="space-x-2 pt-2 pr-4">
+            { edu.link && (
+              <Link href={edu.link} aria-label={`Certificate for ${edu.description}`}>
+                <Button size="icon" className="group w-10 h-10 bg-black dark:bg-fuchsia-800 dark:hover:bg-slate-300 hover:bg-slate-200" title={`Link to Certificate`} aria-label={`Link button to Certificate`}>
+                  <LinkIcon className="w-8 h-8 text-white group-hover:text-blue-800"/>
+                </Button>
+              </Link>
+            )}
+          </div>
+          <div>
+            <span className="text-2xl font-bold text-cyan-900 dark:text-cyan-200">{edu.institution} ({edu.timeframe})</span>
+            <p className="whitespace-pre-wrap text-m text-wrap">{edu.description}</p>  
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
 export default function Home() {  
   const { theme } = useTheme();
   return (
     
-    <main className="relative w-full h-full">
+    <main className="xl:relative xl:w-full xl:h-full">
       <div className="absolute inset-0 z-0 pointer-events-none xl:block hidden">
         <Suspense fallback={<span>loading...</span>}>
           <Canvas style={{ zIndex: 1 }}>
@@ -154,7 +199,7 @@ export default function Home() {
           </Canvas>
         </Suspense>
       </div>
-      <div className="relative z-10">
+      <div className="lg:relative z-10">
         <div className="block md:hidden">
         <h1 className="text-5xl font-bold text-black dark:text-violet-200">Hi, I&apos;m Joshua</h1><br/>
         <h2 className="text-2xl font-bold text-black dark:text-violet-300">Graduate FullStack Developer</h2><br/>
@@ -173,13 +218,23 @@ export default function Home() {
         </h3>
         <br/>
 
-        <Link href="/CV.pdf">
-          <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
+        <Link href="https://utfs.io/f/NQ2gjwtsCGtKRBynBBbPMa7DKY9qLyxQvIEZcpb8HkjrTetf">
+          <Button variant="flex_outline" className="group dark:bg-sky-800 dark:hover:bg-purple-800 hover:bg-sky-700 text-white font-bold space-x-2 text-lg">
             <p>View CV</p>
-            <ExternalLink className="w-6 text-white hover:text-blue-600"/>
+            <ExternalLink className="w-6 text-white group-hover:text-blue-600"/>
           </Button>
         </Link>
         
+        <br/>
+        <h2 className="text-2xl font-bold text-black dark:text-slate-200 pt-2">
+          Education + Qualifications:
+        </h2><br/>
+        <div className="space-y-4 pb-4">
+          {education.map((edu, index) => {
+            return mapEdu(edu, index);
+          })}
+        </div>
+
         <h2 className="text-2xl font-bold text-black dark:text-slate-200 pt-2">
           Featured Projects:
         </h2><br/>
@@ -192,9 +247,9 @@ export default function Home() {
         </div>
         
         <Link href="/projects">
-          <Button variant="flex_outline" className=" dark:hover:bg-sky-900 text-white font-bold space-x-2 text-lg">
+          <Button variant="flex_outline" className="group dark:bg-sky-800 dark:hover:bg-purple-800 hover:bg-sky-700 text-white font-bold space-x-2 text-lg">
             <p>View Complete Project Archive</p>
-            <ExternalLink className="w-6 text-white hover:text-blue-600"/>
+            <ExternalLink className="w-6 text-white group-hover:text-blue-600"/>
           </Button>
         </Link>
         <br />

@@ -37,7 +37,6 @@ function RenderGif() {
     <div>
       <Image
         src="/pacman.gif"
-        unoptimized
         width={40}
         height={40}
         alt="Pacman"

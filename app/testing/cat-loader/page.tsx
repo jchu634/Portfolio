@@ -39,8 +39,8 @@ export default function App(){
             <Canvas dpr={[1, 2]} camera={{ position: [-2, 2, 4], fov: 25 }}>
             
             <Rotate position-y={0.01} position-x={0.01} scale={0.2}>
-                <Suspense fallback={<Model url="/TestingCat.gltf" />}>
-                    <Model url="/TestingCat.gltf" />
+                <Suspense fallback={<Model url="/TestingCat.glb" />}>
+                    <Model url="/TestingCat.glb" />
                 </Suspense>
             </Rotate>
             <ambientLight intensity={0.1} />
