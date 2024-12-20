@@ -1,20 +1,21 @@
-import type { Metadata} from 'next'
-import { Inter } from 'next/font/google'
-import '@/app/globals.css'
-import SideNav from '../components/sidenav';'@/app/ui/dashboard/sidenav.css';
-import { ThemeProvider } from "@/components/theme-provider"
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "@/app/globals.css";
+import SideNav from "../components/sidenav";
+("@/app/ui/dashboard/sidenav.css");
+import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'JCHU634 Portfolio',
-  description: 'JCHU634 Portfolio',
-}
+  title: "JCHU634 Portfolio",
+  description: "JCHU634 Portfolio",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -26,11 +27,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col-reverse md:flex-row h-screen dark:bg-slate-900">
-            <div className="w-full sm:w-[20rem] lg:w-[25rem] fixed bottom-0 z-20 md:relative flex-shrink-0">
+          <div className="flex h-screen flex-col-reverse dark:bg-slate-900 md:flex-row">
+            <div className="fixed bottom-0 z-20 w-full flex-shrink-0 sm:w-[20rem] md:relative lg:w-[25rem]">
               <SideNav />
             </div>
-            <div className="p-6 pb-48 overflow-y-auto md:p-12 flex-grow">
+            <div className="flex-grow overflow-y-auto p-6 pb-48 md:p-12">
               {children}
             </div>
           </div>

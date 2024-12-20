@@ -1,32 +1,31 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
-import { useGLTF } from '@react-three/drei';
-import { useSpring, a } from '@react-spring/three';
-import { useDrag } from '@use-gesture/react';
-import { useThree } from '@react-three/fiber';
+import React, { useRef, useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { useGLTF } from "@react-three/drei";
+import { useSpring, a } from "@react-spring/three";
+import { useDrag } from "@use-gesture/react";
+import { useThree } from "@react-three/fiber";
 
 function interpolateColor(color1, color2, factor) {
   const color1Matches = color1.slice(1).match(/.{2}/g);
   if (!color1Matches) return color1;
-  
+
   const result = color1Matches.map((hex, i) => {
     const value1 = parseInt(hex, 16);
     const color2Matches = color2.slice(1).match(/.{2}/g);
     const value2 = color2Matches ? parseInt(color2Matches[i], 16) : 0;
     const interpolatedValue = Math.round(value1 + (value2 - value1) * factor);
-    return interpolatedValue.toString(16).padStart(2, '0');
+    return interpolatedValue.toString(16).padStart(2, "0");
   });
-  return `#${result.join('')}`;
-};
+  return `#${result.join("")}`;
+}
 
 export function BubbleModel(props) {
   const bubbleRef = useRef();
   const groupRef = useRef();
-  const { nodes, materials } = useGLTF('/BubbleBig.glb');
+  const { nodes, materials } = useGLTF("/BubbleBig.glb");
   const { theme } = useTheme();
-  
-  
-  // Dragging Spring Logic 
+
+  // Dragging Spring Logic
   // Disabled as it has bad interactions with the rotation and orthographic camera
 
   // const { size, viewport } = useThree();
@@ -34,14 +33,13 @@ export function BubbleModel(props) {
   // const [isDragging, setIsDragging] = useState(false);
 
   // const [spring, set] = useSpring(() => ({ position: [0, 0, 0], config: { mass: 1, friction: 50, tension: 500, clamp:true } }));
-  
 
   // const bind = useDrag(({ movement: [x, y], down }) => {
   //   setIsDragging(down);
   //   console.log(down)
-  //   set({ 
+  //   set({
   //     config: { mass: down ? 1 : 4, tension: down ? 1200 : 500 },
-  //     position: down ? [x / aspect, -y / aspect, 0] : [0, 0, 0] 
+  //     position: down ? [x / aspect, -y / aspect, 0] : [0, 0, 0]
   //   });
   // });
 
@@ -58,19 +56,37 @@ export function BubbleModel(props) {
   // Apply Disco effect
   useEffect(() => {
     let colours = null;
-    if (theme === 'dark') {
-      colours = ['#4DEEEA', '#74EE15', '#FFE700', '#F000FF', '#001EFF', '#F8655A'];
+    if (theme === "dark") {
+      colours = [
+        "#4DEEEA",
+        "#74EE15",
+        "#FFE700",
+        "#F000FF",
+        "#001EFF",
+        "#F8655A",
+      ];
     } else {
-      colours = ['#571583', '#FEF100', '#FF4EA9', '#02FF01', '#F50912', '#207BEF'];
+      colours = [
+        "#571583",
+        "#FEF100",
+        "#FF4EA9",
+        "#02FF01",
+        "#F50912",
+        "#207BEF",
+      ];
     }
-    
+
     let index = 0;
     let factor = 0;
-    const steps = 100;        // Number of steps for interpolation
-    const stepDuration = 50;  // Duration of each step in milliseconds
-  
+    const steps = 100; // Number of steps for interpolation
+    const stepDuration = 50; // Duration of each step in milliseconds
+
     const interval = setInterval(() => {
-      const newColour = interpolateColor(colours[index], colours[(index + 1) % colours.length], factor / steps);
+      const newColour = interpolateColor(
+        colours[index],
+        colours[(index + 1) % colours.length],
+        factor / steps,
+      );
       if (bubbleRef.current && bubbleRef.current.material) {
         bubbleRef.current.material.color.set(newColour);
       }
@@ -111,4 +127,4 @@ export function BubbleModel(props) {
   );
 }
 
-useGLTF.preload('/BubbleBig.glb');
+useGLTF.preload("/BubbleBig.glb");

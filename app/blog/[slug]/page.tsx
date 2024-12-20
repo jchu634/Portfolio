@@ -1,13 +1,12 @@
-
-import { getAllPostNames, getPostByName } from '@/lib/post'
-import { notFound } from 'next/navigation'
-import { JSDOM } from 'jsdom';
-import createDOMPurify from 'dompurify';
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import Link from 'next/link'
-import Image from 'next/image'
-import { highlight } from 'sugar-high'
-import React, { ReactNode, ReactElement, ComponentType } from 'react'
+import { getAllPostNames, getPostByName } from "@/lib/post";
+import { notFound } from "next/navigation";
+import { JSDOM } from "jsdom";
+import createDOMPurify from "dompurify";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import Link from "next/link";
+import Image from "next/image";
+import { highlight } from "sugar-high";
+import React, { ReactNode, ReactElement, ComponentType } from "react";
 
 interface TableProps {
   data: {
@@ -44,7 +43,7 @@ interface LinkProps {
 }
 
 function CustomLink({ href, children, ...props }: LinkProps) {
-  if (href.startsWith('/')) {
+  if (href.startsWith("/")) {
     return (
       <Link href={href} {...props}>
         {children}
@@ -52,11 +51,15 @@ function CustomLink({ href, children, ...props }: LinkProps) {
     );
   }
 
-  if (href.startsWith('#')) {
+  if (href.startsWith("#")) {
     return <a {...props}>{children}</a>;
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props}>{children}</a>;
+  return (
+    <a target="_blank" rel="noopener noreferrer" {...props}>
+      {children}
+    </a>
+  );
 }
 
 interface ImageProps {
@@ -84,10 +87,10 @@ function slugify(str: string) {
     .toString()
     .toLowerCase()
     .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
-    .replace(/\-\-+/g, '-'); // Replace multiple - with single -
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/&/g, "-and-") // Replace & with 'and'
+    .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
+    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
 }
 
 function createHeading(level: number) {
@@ -97,13 +100,13 @@ function createHeading(level: number) {
       `h${level}`,
       { id: slug },
       [
-        React.createElement('a', {
+        React.createElement("a", {
           href: `#${slug}`,
           key: `link-${slug}`,
-          className: 'anchor',
+          className: "anchor",
         }),
       ],
-      children
+      children,
     );
   };
 
@@ -123,7 +126,7 @@ let components = {
   a: CustomLink,
   code: Code,
   Table,
-}
+};
 
 function generateStaticParams() {
   return getAllPostNames();
@@ -135,36 +138,35 @@ interface CustomMDXProps {
 }
 
 function CustomMDX({ source, components = {} }: CustomMDXProps) {
-  return (
-    <MDXRemote
-      source={source}
-      components={{ ...components }}
-    />
-  )
+  return <MDXRemote source={source} components={{ ...components }} />;
 }
 
-export default function Page({params}: {params: {slug: string}}) {
+export default function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const post = getPostByName(slug);
-  if (!post){
+  if (!post) {
     return notFound();
   }
-  
-  const window = new JSDOM('').window;
+
+  const window = new JSDOM("").window;
   const purify = createDOMPurify(window);
   const sanitisedHTML = purify.sanitize(post.content);
-  
+
   return (
-    <div>      
-      <article className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl prose-stone dark:prose-invert">
+    <div>
+      <article className="prose prose-sm prose-stone dark:prose-invert sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl">
         <h1> {post.title.toString()} </h1>
-        <h4> First Published: {post.date.toString()}, Last Updated: {post.lastUpdate.toString()}</h4>
+        <h4>
+          {" "}
+          First Published: {post.date.toString()}, Last Updated:{" "}
+          {post.lastUpdate.toString()}
+        </h4>
         <blockquote> {post.description.toString()}</blockquote>
         <text>{"\n"}</text>
       </article>
-      <article className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl prose-rosestone dark:prose-invert max-w-full">
+      <article className="prose prose-sm prose-rosestone max-w-full dark:prose-invert sm:prose-base lg:prose-lg xl:prose-xl">
         <CustomMDX source={sanitisedHTML} />
       </article>
     </div>
-  )
+  );
 }
