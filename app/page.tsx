@@ -306,15 +306,26 @@ export default function Home() {
         </h3>
         <br />
 
-        <Link href="https://utfs.io/f/NQ2gjwtsCGtKRBynBBbPMa7DKY9qLyxQvIEZcpb8HkjrTetf">
-          <Button
-            variant="flex_outline"
-            className="group space-x-2 text-lg font-bold text-white hover:bg-sky-700 dark:bg-sky-800 dark:hover:bg-purple-800"
-          >
-            <p>View CV</p>
-            <ExternalLink className="w-6 text-white group-hover:text-blue-600" />
-          </Button>
-        </Link>
+        <div className="flex gap-x-2">
+          <Link href="https://utfs.io/f/NQ2gjwtsCGtKRBynBBbPMa7DKY9qLyxQvIEZcpb8HkjrTetf">
+            <Button
+              variant="flex_outline"
+              className="group space-x-2 text-lg font-bold text-white hover:bg-sky-700 dark:bg-sky-800 dark:hover:bg-purple-800"
+            >
+              <p>View CV</p>
+              <ExternalLink className="w-6 text-white group-hover:text-blue-600" />
+            </Button>
+          </Link>
+          <Link href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKpLKfeomlDOyPvBFhCAkR7d84bW3f5pSYz0tM">
+            <Button
+              variant="flex_outline"
+              className="group space-x-2 text-lg font-bold text-white hover:bg-sky-700 dark:bg-sky-800 dark:hover:bg-purple-800"
+            >
+              <p>View Resume</p>
+              <ExternalLink className="w-6 text-white group-hover:text-blue-600" />
+            </Button>
+          </Link>
+        </div>
 
         <br />
         <h2 className="pt-2 text-2xl font-bold text-black dark:text-slate-200">
