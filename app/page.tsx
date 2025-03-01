@@ -52,7 +52,7 @@ const projects = [
       "Whisper",
     ],
     github: "https://github.com/jchu634/SubtitleProject",
-    website: "https://www.hackster.io/jchu634/ryzen-ai-subtitling-5ead7f",
+    link: "https://www.hackster.io/jchu634/ryzen-ai-subtitling-5ead7f",
     description:
       "An subtitling program which uses Whisper on a Ryzen AI NPU to generate real-time subtitles for an audio source.\n A Submission for the AMD Pervasive AI Developer Challenge.",
     image: "True",
@@ -73,7 +73,7 @@ const projects = [
       "Whisper",
     ],
     github: "https://github.com/jchu634/subtext-app",
-    website: "https://subtextapp.cc/",
+    link: "https://subtextapp.cc/",
     description:
       "Subtext is an easy to use subtitling app, which allows an user to utilise AI models to generate subtitles entirely on device.",
     image: "True",
