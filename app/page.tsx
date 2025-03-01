@@ -61,6 +61,27 @@ const projects = [
     image_alt: "Ryzen AI Subtitles Screenshot",
   },
   {
+    name: "Subtext",
+    type: ["Application"],
+    timeframe: "2025",
+    technologies_and_frameworks: [
+      "Next.JS",
+      "Astro",
+      "TailwindCSS",
+      "Python",
+      "Pywebview",
+      "Whisper",
+    ],
+    github: "https://github.com/jchu634/subtext-app",
+    website: "https://subtextapp.cc/",
+    description:
+      "Subtext is an easy to use subtitling app, which allows an user to utilise AI models to generate subtitles entirely on device.",
+    image: "True",
+    image_light: "/projects/subtextapp/ScreenshotLight.png",
+    image_dark: "/projects/subtextapp/ScreenshotDark.png",
+    image_alt: "Subtext App Screenshot",
+  },
+  {
     name: "Fakman",
     type: "Game",
     technologies_and_frameworks: ["Unity", "C#"],

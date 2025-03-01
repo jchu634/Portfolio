@@ -37,6 +37,29 @@ import { useState, useEffect } from "react";
 
 const projects = [
   {
+    name: "Subtext",
+    type: ["Application"],
+    timeframe: "2025",
+    technologies_and_frameworks: [
+      "Next.JS",
+      "Astro",
+      "TailwindCSS",
+      "Python",
+      "Pywebview",
+      "Whisper",
+    ],
+    github: "https://github.com/jchu634/subtext-app",
+    website: "https://subtextapp.cc/",
+    description:
+      "Subtext is an easy to use subtitling app, which allows an user to utilise AI models to generate subtitles entirely on device.",
+    images: [
+      "/projects/subtextapp/ScreenshotDark.png",
+      "/projects/subtextapp/ScreenshotLight.png",
+      "/projects/subtextapp/SiteLight.png",
+      "/projects/subtextapp/SiteDark.png",
+    ],
+  },
+  {
     name: "Ryzen AI Subtitles",
     type: ["Application"],
     timeframe: "2024",
