@@ -14,7 +14,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <head />
             <body>
                 <ThemeProvider
@@ -23,7 +23,7 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <div className="flex h-screen flex-col-reverse dark:bg-slate-900 md:flex-row">
+                    <div className="flex h-screen flex-col-reverse dark:bg-slate-900  md:flex-row">
                         <SideNav />
                         <div className="flex-grow overflow-y-auto p-6 pb-48 md:p-12">
                             {children}
