@@ -20,6 +20,7 @@
     "portfolio": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-unity-webgl": "^9.8.0",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7"
   },
