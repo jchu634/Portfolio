@@ -1,101 +1,87 @@
+"use client";
+import { useRef } from "react";
+
+import { cn } from "@/lib/utils";
+import VariableFontCursorProximity from "@/components/fancy/text/variable-font-cursor-proximity";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
+
 import Image from "next/image";
+import { intel_one_mono, roboto_slab } from "@/lib/fonts";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    const containerRef = useRef<HTMLDivElement>(
+        null
+    ) as React.RefObject<HTMLDivElement>;
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    return (
+        <div className="w-full h-full">
+            <div
+                className="w-3/4 h-1/4 rounded-lg items-center justify-center cursor-pointer relative overflow-hidden"
+                ref={containerRef}
+            >
+                <div className="size-full pl-5 flex flex-col items-left gap-4 ">
+                    {["Hi, I'm Joshua:", "I like making stuff."].map(
+                        (text, i) => (
+                            <VariableFontCursorProximity
+                                key={i}
+                                label={text}
+                                className={cn(
+                                    `text-3xl md:text-4xl lg:text-5xl leading-none  ${roboto_slab.className} text-orange-300`
+                                )}
+                                fromFontVariationSettings="'wght' 400, 'slnt' 0"
+                                toFontVariationSettings="'wght' 900, 'slnt' -10"
+                                radius={200}
+                                containerRef={containerRef}
+                            />
+                        )
+                    )}
+
+                    {/* prettier-ignore */}
+                    <p
+                    className={`text-3xl md:text-4xl lg:text-xl leading-10 ${roboto_slab.className} whitespace-pre-line text-white`}
+                >
+                    
+                    Hi, I'm a new graduate from the University of Auckland (BSc Computer Science) <br />
+                    Currently I am looking for work while working on a couple of projects I didn't have time to start while studying.
+                </p>
+                </div>
+            </div>
+            <div className="px-12 w-full pt-4">
+                <Carousel
+                    opts={{
+                        align: "start",
+                    }}
+                    className="w-full"
+                >
+                    <CarouselContent>
+                        {Array.from({ length: 5 }).map((_, index) => (
+                            <CarouselItem
+                                key={index}
+                                className="md:basis-1/2 lg:basis-1/3"
+                            >
+                                <div className="p-1">
+                                    <Card>
+                                        <CardContent className="flex  items-center justify-center p-6">
+                                            <span className="text-3xl font-semibold">
+                                                {index + 1}
+                                            </span>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </Carousel>
+            </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }
