@@ -11,9 +11,33 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link2Icon } from "lucide-react";
 
 import Image from "next/image";
+import Link from "next/link";
 import { intel_one_mono, roboto_slab } from "@/lib/fonts";
+
+const education = [
+    {
+        institution: "University of Auckland",
+        description: "BSc: Majoring in Computer Science",
+        timeframe: "2021-2024",
+        link: "https://keshuac.com/extlink/ucert",
+    },
+    {
+        institution: "NVIDIA Deep Learning Institute",
+        description: "Fundamentals of Deep Learning",
+        timeframe: "2023",
+        link: "https://keshuac.com/extlink/ncert1",
+    },
+    {
+        institution: "NVIDIA Deep Learning Institute",
+        description: "Fundamentals of Accelerated Computing with CUDA Python",
+        timeframe: "2024",
+        link: "https://keshuac.com/extlink/ncert2",
+    },
+];
 
 export default function Home() {
     const containerRef = useRef<HTMLDivElement>(
@@ -61,17 +85,34 @@ export default function Home() {
                     className="w-full"
                 >
                     <CarouselContent>
-                        {Array.from({ length: 5 }).map((_, index) => (
+                        {education.map((edu, index) => (
                             <CarouselItem
                                 key={index}
                                 className="md:basis-1/2 lg:basis-1/3"
                             >
                                 <div className="p-1">
                                     <Card>
-                                        <CardContent className="flex  items-center justify-center p-6">
-                                            <span className="text-3xl font-semibold">
-                                                {index + 1}
+                                        <CardContent
+                                            className={`flex flex-col min-h-30 justify-center ${intel_one_mono.className}`}
+                                        >
+                                            <span className="text-lg font-bold whitespace-pre-wrap">
+                                                {edu.description}
                                             </span>
+                                            <span className="text-base font-bold text-orange-400">
+                                                {edu.institution} (
+                                                {edu.timeframe})
+                                            </span>
+                                            <div className="pt-2">
+                                                <Button
+                                                    variant="outline"
+                                                    className="flex items-center w-fit border-2 border-white hover:bg-gray-700 hover:cursor-pointer"
+                                                >
+                                                    <Link2Icon />
+                                                    <p>Cert Link</p>
+                                                </Button>
+                                            </div>
+
+                                            <div className="flex gap-x-2"></div>
                                         </CardContent>
                                     </Card>
                                 </div>
