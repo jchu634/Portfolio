@@ -48,6 +48,6 @@ export const intel_one_mono = localFont({
             style: "italic",
         },
     ],
-    variable: "--font-one-mono",
+    variable: "--font-mono",
     display: "swap",
 });
