@@ -274,7 +274,7 @@ export default function Home() {
         </Carousel>
       </div>
 
-      <div className="flex h-400 justify-between px-12">
+      <div className="flex justify-between px-12">
         <div
           className={cn(
             "pt-10 pl-8 text-4xl font-bold text-orange-400",
