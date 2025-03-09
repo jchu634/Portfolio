@@ -23,6 +23,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const education = [
   {
@@ -287,73 +293,86 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <ScrollArea
-          className="h-108 w-3/4 rounded-md"
-          type="always"
-          ref={(node) => setContainer(node)}
-        >
-          <StackingCards
-            totalCards={projects.length}
-            scrollOptons={{ container: { current: container } }}
-            className="items-center justify-center"
-          >
-            {projects.map((project, index) => {
-              return (
-                <StackingCardItem key={index} index={index} className="h-100">
-                  <Card
-                    className={cn(
-                      project.bgColor,
-                      "relative mx-auto flex min-h-[80%] w-10/12 flex-col rounded-3xl px-8 py-10 sm:flex-row",
-                    )}
-                  >
-                    <CardContent
-                      className={cn(
-                        "flex min-h-full w-full flex-row justify-between",
-                        intel_one_mono.className,
-                      )}
-                    >
-                      <div className="flex w-[50%] flex-col">
-                        <span className="text-3xl font-bold whitespace-pre-wrap">
-                          {project.name}
-                        </span>
-                        <span className="text-base font-bold text-wrap whitespace-pre-line text-orange-400">
-                          {project.description}
-                        </span>
 
-                        <div className="pt-2">
-                          {project.website && (
-                            <Button
-                              variant="outline"
-                              className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
-                              asChild
-                            >
-                              <Link href={project.website}>
-                                <Link2Icon />
-                                <p>Website Link</p>
-                              </Link>
-                            </Button>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <ScrollArea
+                className="h-108 w-5/7 rounded-md"
+                type="always"
+                ref={(node) => setContainer(node)}
+              >
+                <StackingCards
+                  totalCards={projects.length}
+                  scrollOptons={{ container: { current: container } }}
+                  className="items-center justify-center"
+                >
+                  {projects.map((project, index) => {
+                    return (
+                      <StackingCardItem
+                        key={index}
+                        index={index}
+                        className="h-100"
+                      >
+                        <Card
+                          className={cn(
+                            project.bgColor,
+                            "relative mx-auto flex min-h-[80%] w-11/12 flex-col rounded-3xl px-8 py-10 sm:flex-row",
                           )}
-                        </div>
-                      </div>
-                      <div className="w-50% h-50%">
-                        <Image
-                          src={project.image_light}
-                          alt={project.name}
-                          priority={project.priority ? true : false}
-                          style={{ objectFit: "contain" }}
-                          width={400}
-                          height={400}
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </StackingCardItem>
-              );
-            })}
-          </StackingCards>
-        </ScrollArea>
+                        >
+                          <CardContent
+                            className={cn(
+                              "flex min-h-full w-full flex-row justify-between",
+                              intel_one_mono.className,
+                            )}
+                          >
+                            <div className="flex w-[50%] flex-col">
+                              <span className="text-3xl font-bold whitespace-pre-wrap">
+                                {project.name}
+                              </span>
+                              <span className="text-base font-bold text-wrap whitespace-pre-line text-orange-400">
+                                {project.description}
+                              </span>
+
+                              <div className="pt-2">
+                                {project.website && (
+                                  <Button
+                                    variant="outline"
+                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                                    asChild
+                                  >
+                                    <Link href={project.website}>
+                                      <Link2Icon />
+                                      <p>Website Link</p>
+                                    </Link>
+                                  </Button>
+                                )}
+                              </div>
+                            </div>
+                            <div className="w-50% h-50%">
+                              <Image
+                                src={project.image_light}
+                                alt={project.name}
+                                priority={project.priority ? true : false}
+                                style={{ objectFit: "contain" }}
+                                width={400}
+                                height={400}
+                              />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </StackingCardItem>
+                    );
+                  })}
+                </StackingCards>
+              </ScrollArea>
+            </TooltipTrigger>
+            <TooltipContent side="top" className="bg-slate-800 text-white">
+              <p>Scroll to see more projects</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
-      <div className="h-100">test</div>
     </div>
   );
 }
