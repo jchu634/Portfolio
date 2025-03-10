@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { intel_one_mono, roboto_slab } from "@/lib/fonts";
-import { Link2Icon } from "lucide-react";
+import { Link2Icon, DownloadIcon } from "lucide-react";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 
 import VariableFontCursorProximity from "@/components/fancy/text/variable-font-cursor-proximity";
 import StackingCards, {
@@ -69,6 +70,8 @@ const projects = [
     description:
       "Subtext is an easy to use subtitling app, which allows an user to utilise AI models to generate subtitles entirely on device.",
     image: "True",
+    download:
+      "https://github.com/jchu634/Subtext-app/releases/latest/download/Subtext-Setup.exe",
     priority: "True",
     image_light: "/projects/subtextapp/ScreenshotLight.png",
     image_dark: "/projects/subtextapp/ScreenshotDark.png",
@@ -326,15 +329,15 @@ export default function Home() {
                               intel_one_mono.className,
                             )}
                           >
-                            <div className="flex w-[50%] flex-col">
-                              <span className="text-3xl font-bold whitespace-pre-wrap">
+                            <div className="flex w-[50%] flex-col space-y-2">
+                              <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
                                 {project.name}
                               </span>
-                              <span className="text-base font-bold text-wrap whitespace-pre-line text-orange-400">
+                              <span className="text-base font-bold text-wrap whitespace-pre-line">
                                 {project.description}
                               </span>
 
-                              <div className="pt-2">
+                              <div className="flex gap-x-2 pt-2">
                                 {project.website && (
                                   <Button
                                     variant="outline"
@@ -343,7 +346,31 @@ export default function Home() {
                                   >
                                     <Link href={project.website}>
                                       <Link2Icon />
-                                      <p>Website Link</p>
+                                      <p>Website</p>
+                                    </Link>
+                                  </Button>
+                                )}
+                                {project.github && (
+                                  <Button
+                                    variant="outline"
+                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                                    asChild
+                                  >
+                                    <Link href={project.github}>
+                                      <SiGithub />
+                                      <p>Github Repo</p>
+                                    </Link>
+                                  </Button>
+                                )}
+                                {project.download && (
+                                  <Button
+                                    variant="outline"
+                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                                    asChild
+                                  >
+                                    <Link href={project.download}>
+                                      <DownloadIcon />
+                                      <p>Download ink</p>
                                     </Link>
                                   </Button>
                                 )}
