@@ -7,6 +7,7 @@ import Link from "next/link";
 import { intel_one_mono, roboto_slab } from "@/lib/fonts";
 import { Link2Icon, DownloadIcon } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
+import { isMobile } from "react-device-detect";
 
 import VariableFontCursorProximity from "@/components/fancy/text/variable-font-cursor-proximity";
 import StackingCards, {
@@ -41,27 +42,42 @@ export default function Home() {
   return (
     <div className="h-full w-full">
       <div
-        className="relative h-fit w-3/4 cursor-pointer items-center justify-center overflow-hidden rounded-lg md:px-12 md:pt-12"
+        className="relative h-fit cursor-pointer items-center justify-center overflow-hidden rounded-lg px-2 pt-12 md:w-3/4 md:px-8"
         ref={containerRef}
       >
         <div className="items-left flex size-full flex-col gap-4 pl-5">
-          {["Hi, I'm Joshua:", "I like making stuff."].map((text, i) => (
-            <VariableFontCursorProximity
-              key={i}
-              label={text}
+          {isMobile ? (
+            <div
               className={cn(
-                `text-3xl leading-none md:text-4xl lg:text-5xl ${roboto_slab.className} text-orange-400`,
+                "items-left flex flex-col gap-4 text-5xl leading-none text-orange-400",
+                roboto_slab.className,
               )}
-              fromFontVariationSettings="'wght' 500, 'slnt' 0"
-              toFontVariationSettings="'wght' 200, 'slnt' -10"
-              radius={200}
-              containerRef={containerRef}
-            />
-          ))}
+            >
+              <h1>Hi, I'm Joshua:</h1>
+              <h1>I like making stuff.</h1>
+            </div>
+          ) : (
+            <div className="items-left flex flex-col gap-4">
+              {["Hi, I'm Joshua:", "I like making stuff."].map((text, i) => (
+                <VariableFontCursorProximity
+                  key={i}
+                  label={text}
+                  className={cn(
+                    "text-5xl leading-none text-orange-400",
+                    roboto_slab.className,
+                  )}
+                  fromFontVariationSettings="'wght' 500, 'slnt' 0"
+                  toFontVariationSettings="'wght' 200, 'slnt' -10"
+                  radius={200}
+                  containerRef={containerRef}
+                />
+              ))}
+            </div>
+          )}
 
           {/* prettier-ignore */}
           <p
-          className={`text-3xl md:text-4xl lg:text-xl leading-10 ${roboto_slab.className} whitespace-pre-line text-white`}
+          className={`text-xl leading-10 ${roboto_slab.className} whitespace-pre-line text-white`}
         >
         
           Hi, I'm a new graduate from the University of Auckland (BSc Computer Science) <br />
@@ -70,7 +86,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-12 w-full px-12 pt-4 md:px-24">
+      <div className="mb-12 w-full px-16 pt-4 md:px-24">
         <Carousel
           opts={{
             align: "start",
@@ -112,10 +128,10 @@ export default function Home() {
         </Carousel>
       </div>
 
-      <div className="flex justify-between px-12">
+      <div className="flex flex-col justify-between px-8 md:flex-row md:px-12">
         <div
           className={cn(
-            "pt-10 pl-8 text-4xl font-bold text-orange-400",
+            "pt-10 text-4xl font-bold text-orange-400",
             roboto_slab.className,
           )}
         >
@@ -136,7 +152,7 @@ export default function Home() {
           <Tooltip>
             <TooltipTrigger asChild>
               <ScrollArea
-                className="h-108 w-5/7 rounded-md"
+                className="h-50 w-[90svw] rounded-md pr-5 md:h-108 md:w-5/7"
                 type="always"
                 ref={(node) => setContainer(node)}
               >
@@ -150,29 +166,29 @@ export default function Home() {
                       <StackingCardItem
                         key={index}
                         index={index}
-                        className="h-100"
+                        className="h-50 md:h-100"
                       >
                         <Card
                           className={cn(
                             project.bgColor,
-                            "relative mx-auto flex min-h-[80%] w-11/12 flex-col rounded-3xl px-8 py-10 sm:flex-row",
+                            "relative mx-auto flex min-h-[80%] w-[85svw] flex-col rounded-3xl px-4 sm:flex-row md:w-11/12 xl:py-10",
                           )}
                         >
                           <CardContent
                             className={cn(
-                              "flex min-h-full w-full flex-row justify-between",
+                              "flex min-h-full w-full justify-between",
                               intel_one_mono.className,
                             )}
                           >
-                            <div className="flex w-[50%] flex-col space-y-2">
+                            <div className="flex w-full flex-col space-y-2 lg:w-[50%]">
                               <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
                                 {project.name}
                               </span>
-                              <span className="text-base font-bold text-wrap whitespace-pre-line">
+                              <span className="text-base font-bold text-wrap whitespace-pre-wrap">
                                 {project.description}
                               </span>
 
-                              <div className="flex gap-x-2 pt-2">
+                              <div className="flex space-y-2 gap-x-2 pt-2 md:flex-col 2xl:flex-row 2xl:space-y-0">
                                 {project.website && (
                                   <Button
                                     variant="outline"
@@ -193,7 +209,7 @@ export default function Home() {
                                   >
                                     <Link href={project.github}>
                                       <SiGithub />
-                                      <p>Github Repo</p>
+                                      <p>Github</p>
                                     </Link>
                                   </Button>
                                 )}
@@ -205,20 +221,30 @@ export default function Home() {
                                   >
                                     <Link href={project.download}>
                                       <DownloadIcon />
-                                      <p>Download ink</p>
+                                      <p>Download</p>
                                     </Link>
                                   </Button>
                                 )}
                               </div>
                             </div>
-                            <div className="w-50% h-50%">
+                            <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
                               <Image
                                 src={project.image_light}
                                 alt={project.name}
                                 priority={project.priority ? true : false}
                                 style={{ objectFit: "contain" }}
-                                width={400}
-                                height={400}
+                                width={350}
+                                height={350}
+                                className="hidden xl:block"
+                              />
+                              <Image
+                                src={project.image_light}
+                                alt={project.name}
+                                priority={project.priority ? true : false}
+                                style={{ objectFit: "contain" }}
+                                width={300}
+                                height={300}
+                                className="hidden lg:block xl:hidden"
                               />
                             </div>
                           </CardContent>
