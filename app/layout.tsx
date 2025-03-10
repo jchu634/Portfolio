@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import SideNav from "@/components/sidenav";
+import MobileFooter from "@/components/mobile-footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,8 +26,11 @@ export default function RootLayout({
         >
           <div className="flex h-screen flex-col-reverse md:flex-row dark:bg-slate-900">
             <SideNav />
-            <div className="flex-grow overflow-y-auto">{children}</div>
+            <div className="flex-grow overflow-y-auto pb-20 md:pb-0">
+              {children}
+            </div>
           </div>
+          <MobileFooter />
         </ThemeProvider>
       </body>
     </html>

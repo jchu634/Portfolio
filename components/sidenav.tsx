@@ -12,7 +12,7 @@ import Image from "next/image";
 
 export default function SideNav() {
   return (
-    <main className="flex h-full w-15 flex-col justify-between bg-black p-2 dark:bg-white">
+    <main className="hidden h-full w-15 flex-col justify-between bg-black p-2 md:flex dark:bg-white">
       <div className="flex flex-col items-center gap-y-2">
         <LabelButton
           href="/"
