@@ -214,25 +214,27 @@ const projects = [
 export default function Page() {
   return (
     <main className="p-10">
-      <h1 className="text-5xl font-bold text-blue-900 dark:text-slate-200">
+      <h1 className="pb-10 text-5xl font-bold text-blue-900 dark:text-slate-200">
         Projects
       </h1>
       <Table>
         <TableCaption>A list of projects I have done.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Timeframe</TableHead>
-            <TableHead>Project</TableHead>
-            <TableHead> Built with</TableHead>
-            <TableHead> Links</TableHead>
+            <TableHead className="hidden md:table-cell">Timeframe</TableHead>
+            <TableHead className="hidden sm:table-cell">Project</TableHead>
+            <TableHead className="hidden xl:table-cell"> Built with</TableHead>
+            <TableHead className="hidden sm:table-cell"> Links</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {projects.map((project, index) => {
             return (
               <TableRow key={index}>
-                <TableCell>{project.timeframe}</TableCell>
-                <TableCell className="w-180 whitespace-pre">
+                <TableCell className="hidden md:table-cell">
+                  {project.timeframe}
+                </TableCell>
+                <TableCell className="w-180 whitespace-pre-wrap">
                   <Accordion type="single" collapsible>
                     <AccordionItem value="item-1">
                       <AccordionTriggerShell>
@@ -264,7 +266,60 @@ export default function Page() {
                           )}
                         >
                           {project.description}
-                          <div className="flex w-full justify-center">
+                          <div className="flex min-h-[40px] space-x-2 pt-2 sm:hidden">
+                            {project.github && (
+                              <Button
+                                className="group h-10 bg-black hover:cursor-pointer hover:bg-slate-200 dark:bg-white dark:hover:bg-indigo-800"
+                                title={`Github link for ${project.name}`}
+                                aria-label={`Github link button for ${project.name}`}
+                                asChild
+                              >
+                                <Link
+                                  href={project.github}
+                                  aria-label={`Go to Github repository for ${project.name}`}
+                                >
+                                  <p>Github</p>
+
+                                  <SiGithub className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                                </Link>
+                              </Button>
+                            )}
+
+                            {project.website && (
+                              <Button
+                                className="group h-10 bg-black hover:cursor-pointer hover:bg-slate-200 dark:bg-white dark:hover:bg-indigo-800"
+                                title={`Link to ${project.name}`}
+                                aria-label={`Link button to ${project.name}`}
+                                asChild
+                              >
+                                <Link
+                                  href={project.website}
+                                  aria-label={`Go to website for ${project.name}`}
+                                >
+                                  <p>Website</p>
+                                  <ExternalLinkIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                                </Link>
+                              </Button>
+                            )}
+
+                            {project.download && (
+                              <Button
+                                className="group h-10 bg-black hover:cursor-pointer hover:bg-slate-200 dark:bg-white dark:hover:bg-indigo-800"
+                                title={`Download link for ${project.name}`}
+                                aria-label={`Download link button for ${project.name}`}
+                                asChild
+                              >
+                                <Link
+                                  href={project.download}
+                                  aria-label={`Go to download page for ${project.name}`}
+                                >
+                                  <p>Download</p>
+                                  <DownloadIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                                </Link>
+                              </Button>
+                            )}
+                          </div>
+                          <div className="hidden justify-center sm:flex md:w-full">
                             {project.images && (
                               <Carousel
                                 className="relative max-h-fit w-4/5 px-8 sm:max-w-fit xl:max-w-fit"
@@ -314,7 +369,7 @@ export default function Page() {
                     </AccordionItem>
                   </Accordion>
                 </TableCell>
-                <TableCell className="space-x-2">
+                <TableCell className="hidden space-x-2 xl:table-cell">
                   {project.technologies_and_frameworks &&
                     project.technologies_and_frameworks.map(
                       (technologies_and_frameworks: string, index: number) => {
@@ -329,7 +384,7 @@ export default function Page() {
                       },
                     )}
                 </TableCell>
-                <TableCell>
+                <TableCell className="hidden sm:table-cell">
                   <div className="flex min-h-[40px] space-x-2 pt-2">
                     {project.github ? (
                       <Button
