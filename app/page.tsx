@@ -37,10 +37,11 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(
     null,
   ) as React.RefObject<HTMLDivElement>;
+
   const [container, setContainer] = useState<HTMLElement | null>(null);
 
   return (
-    <div className="h-full w-full">
+    <div className="h-fit w-full">
       <div
         className="relative h-fit cursor-pointer items-center justify-center overflow-hidden rounded-lg px-2 pt-12 md:w-3/4 md:px-8"
         ref={containerRef}
@@ -86,7 +87,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-12 w-full px-16 pt-4 md:px-24">
+      <div className="w-full px-16 pt-4 md:mb-12 md:px-24">
         <Carousel
           opts={{
             align: "start",
@@ -152,7 +153,7 @@ export default function Home() {
           <Tooltip>
             <TooltipTrigger asChild>
               <ScrollArea
-                className="h-50 w-[90svw] rounded-md pr-5 md:h-108 md:w-5/7"
+                className="hidden h-50 w-[90svw] rounded-md pr-5 md:flex md:h-108 md:w-5/7"
                 type="always"
                 ref={(node) => setContainer(node)}
               >
@@ -260,6 +261,77 @@ export default function Home() {
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
+      </div>
+      <div className="space-y-3 py-8 md:hidden">
+        {projects.map((project, index) => {
+          return (
+            <Card
+              className={cn(
+                project.bgColor,
+                "relative mx-auto h-fit w-[85svw] rounded-3xl",
+              )}
+              key={index}
+            >
+              <CardContent
+                className={cn(
+                  "flex min-h-full w-full justify-between",
+                  intel_one_mono.className,
+                )}
+              >
+                <div className="flex w-full flex-col space-y-2">
+                  <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
+                    {project.name}
+                  </span>
+                  <span className="text-base font-bold text-wrap whitespace-pre-wrap">
+                    {project.description}
+                  </span>
+
+                  <div className="flex flex-col space-y-2 gap-x-2 pt-2">
+                    <div className="flex flex-row space-x-2">
+                      {project.website && (
+                        <Button
+                          variant="outline"
+                          className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                          asChild
+                        >
+                          <Link href={project.website}>
+                            <Link2Icon />
+                            <p>Website</p>
+                          </Link>
+                        </Button>
+                      )}
+                      {project.github && (
+                        <Button
+                          variant="outline"
+                          className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                          asChild
+                        >
+                          <Link href={project.github}>
+                            <SiGithub />
+                            <p>Github</p>
+                          </Link>
+                        </Button>
+                      )}
+                    </div>
+
+                    {project.download && (
+                      <Button
+                        variant="outline"
+                        className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                        asChild
+                      >
+                        <Link href={project.download}>
+                          <DownloadIcon />
+                          <p>Download</p>
+                        </Link>
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );
