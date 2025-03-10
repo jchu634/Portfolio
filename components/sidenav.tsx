@@ -1,6 +1,6 @@
 "use client"; // This is a client component
 import { ModeToggle } from "@/components/ui/mode-toggle";
-import { MailIcon } from "lucide-react";
+import { MailIcon, NotepadTextIcon } from "lucide-react";
 import { LabelButton } from "@/components/ui/label-button";
 
 import {
@@ -26,6 +26,16 @@ export default function SideNav() {
             width={50}
             height={50}
           />
+        </LabelButton>
+        <LabelButton
+          href="./projects"
+          ariaLabel="Open link to view Printables profile"
+          label="Projects"
+          variant="nohover"
+          className="border-2 border-black"
+          size="icon"
+        >
+          <NotepadTextIcon className="size-5" />
         </LabelButton>
       </div>
       <div className="flex flex-col items-center gap-y-2">
