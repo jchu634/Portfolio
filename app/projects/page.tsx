@@ -28,14 +28,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 
-import {
-  intel_one_mono,
-  roboto_slab,
-  stix,
-  dm_sans,
-  lexend,
-  gabarito,
-} from "@/lib/fonts";
+import { intel_one_mono, lexend } from "@/lib/fonts";
 
 const projects = [
   {
