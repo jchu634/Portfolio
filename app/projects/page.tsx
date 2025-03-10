@@ -220,17 +220,33 @@ export default function Page() {
       <Table>
         <TableCaption>A list of projects I have done.</TableCaption>
         <TableHeader>
-          <TableRow>
-            <TableHead className="hidden md:table-cell">Timeframe</TableHead>
-            <TableHead className="hidden sm:table-cell">Project</TableHead>
-            <TableHead className="hidden xl:table-cell"> Built with</TableHead>
-            <TableHead className="hidden sm:table-cell"> Links</TableHead>
+          <TableRow
+            className={cn("border-black dark:border-white", lexend.className)}
+          >
+            <TableHead className="hidden text-black md:table-cell dark:text-white">
+              Timeframe
+            </TableHead>
+            <TableHead className="hidden text-black sm:table-cell dark:text-white">
+              Project
+            </TableHead>
+            <TableHead className="hidden text-black xl:table-cell dark:text-white">
+              Built with
+            </TableHead>
+            <TableHead className="hidden text-black sm:table-cell dark:text-white">
+              Links
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {projects.map((project, index) => {
             return (
-              <TableRow key={index}>
+              <TableRow
+                key={index}
+                className={cn(
+                  "border-black dark:border-white",
+                  lexend.className,
+                )}
+              >
                 <TableCell className="hidden md:table-cell">
                   {project.timeframe}
                 </TableCell>
@@ -336,7 +352,7 @@ export default function Page() {
                                           key={index}
                                           className="p-4"
                                         >
-                                          <Card className="dark:bg-opacity-40 bg-slate-200 dark:bg-sky-950">
+                                          <Card className="dark:bg-opacity-40 bg-slate-500 dark:bg-slate-300">
                                             <CardContent className="flex justify-center">
                                               <Image
                                                 alt="Project Image"
@@ -357,8 +373,8 @@ export default function Page() {
                                 </CarouselContent>
                                 {project.images.length > 2 && (
                                   <>
-                                    <CarouselPrevious className="" />
-                                    <CarouselNext className="" />
+                                    <CarouselPrevious className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
+                                    <CarouselNext className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
                                   </>
                                 )}
                               </Carousel>

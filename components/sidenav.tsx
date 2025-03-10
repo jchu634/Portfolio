@@ -12,13 +12,14 @@ import Image from "next/image";
 
 export default function SideNav() {
   return (
-    <main className="hidden h-full w-15 flex-col justify-between bg-black p-2 md:flex dark:bg-white">
+    <main className="hidden h-full w-15 flex-col justify-between bg-[#122c23] p-2 md:flex dark:bg-white">
       <div className="flex flex-col items-center gap-y-2">
         <LabelButton
           href="/"
           ariaLabel="Open link to go back to homepage"
           label="Home"
           variant="nohover"
+          className="bg-transparent"
         >
           <Image
             src="/bigFavicon.png"
@@ -32,7 +33,7 @@ export default function SideNav() {
           ariaLabel="Open link to view Printables profile"
           label="Projects"
           variant="nohover"
-          className="border-2 border-black"
+          className="border-2 border-white bg-transparent dark:border-black"
           size="icon"
         >
           <NotepadTextIcon className="size-5" />
@@ -44,6 +45,7 @@ export default function SideNav() {
           ariaLabel="Open link to view Linkedin profile"
           label="LinkedIn"
           variant="nohover"
+          className="bg-transparent"
         >
           <Image
             src="/LinkedIn-Black.png"
@@ -66,6 +68,7 @@ export default function SideNav() {
           ariaLabel="Open link to view Github profile"
           label="GitHub"
           variant="nohover"
+          className="bg-transparent"
         >
           <SiGithub className="size-8 text-white dark:text-black" />
         </LabelButton>
@@ -75,6 +78,7 @@ export default function SideNav() {
           ariaLabel="Open link to view Printables profile"
           label="Printables"
           variant="nohover"
+          className="bg-transparent"
         >
           <SiPrintables className="size-8" style={{ color: SiPrintablesHex }} />
         </LabelButton>
@@ -84,6 +88,7 @@ export default function SideNav() {
           ariaLabel="Open link to email Joshua"
           label="Email Me"
           variant="nohover"
+          className="bg-transparent"
         >
           <MailIcon className="size-8 text-white dark:text-black" />
         </LabelButton>

@@ -50,7 +50,7 @@ export default function Home() {
           {isMobile ? (
             <div
               className={cn(
-                "items-left flex flex-col gap-4 text-5xl leading-none text-orange-400",
+                "items-left flex flex-col gap-4 text-5xl leading-none text-orange-500 dark:text-orange-400",
                 roboto_slab.className,
               )}
             >
@@ -64,7 +64,7 @@ export default function Home() {
                   key={i}
                   label={text}
                   className={cn(
-                    "text-5xl leading-none text-orange-400",
+                    "text-5xl leading-none text-orange-500 dark:text-orange-400",
                     roboto_slab.className,
                   )}
                   fromFontVariationSettings="'wght' 500, 'slnt' 0"
@@ -78,7 +78,7 @@ export default function Home() {
 
           {/* prettier-ignore */}
           <p
-          className={`text-xl leading-10 ${roboto_slab.className} whitespace-pre-line text-white`}
+          className={`text-xl leading-10 ${roboto_slab.className} whitespace-pre-line text-black dark:text-white`}
         >
         
           Hi, I'm a new graduate from the University of Auckland (BSc Computer Science) <br />
@@ -99,18 +99,21 @@ export default function Home() {
                 <div className="p-1">
                   <Card>
                     <CardContent
-                      className={`flex min-h-30 flex-col justify-center ${intel_one_mono.className}`}
+                      className={cn(
+                        "flex min-h-30 flex-col justify-center",
+                        intel_one_mono.className,
+                      )}
                     >
                       <span className="text-lg font-bold whitespace-pre-wrap">
                         {edu.description}
                       </span>
-                      <span className="text-base font-bold text-orange-400">
+                      <span className="text-base font-bold text-orange-500 dark:text-orange-400">
                         {edu.institution} ({edu.timeframe})
                       </span>
                       <div className="pt-2">
                         <Button
                           variant="outline"
-                          className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                          className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
                         >
                           <Link2Icon />
                           <p>Cert Link</p>
@@ -132,17 +135,24 @@ export default function Home() {
       <div className="flex flex-col justify-between px-8 md:flex-row md:px-12">
         <div
           className={cn(
-            "pt-10 text-4xl font-bold text-orange-400",
+            "pt-10 text-4xl font-bold text-orange-500 dark:text-orange-400",
             roboto_slab.className,
           )}
         >
           Featured Projects
-          <div className="text-xl font-medium text-white">
+          <div className="text-xl font-medium text-black dark:text-white">
             Find more projects{" "}
-            <Link href="/projects">
+            <Link href="/projects" className="hidden dark:inline">
               <UnderlineToBackground
                 label="here"
                 targetTextColor="#193cb8"
+                className="cursor-pointer"
+              />
+            </Link>
+            <Link href="/projects" className="inline dark:hidden">
+              <UnderlineToBackground
+                label="here"
+                targetTextColor="#FFFF"
                 className="cursor-pointer"
               />
             </Link>
@@ -185,7 +195,7 @@ export default function Home() {
                               <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
                                 {project.name}
                               </span>
-                              <span className="text-base font-bold text-wrap whitespace-pre-wrap">
+                              <span className="text-base font-bold text-wrap whitespace-pre-wrap text-white">
                                 {project.description}
                               </span>
 
@@ -193,7 +203,7 @@ export default function Home() {
                                 {project.website && (
                                   <Button
                                     variant="outline"
-                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
                                     <Link href={project.website}>
@@ -205,7 +215,7 @@ export default function Home() {
                                 {project.github && (
                                   <Button
                                     variant="outline"
-                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
                                     <Link href={project.github}>
@@ -217,7 +227,7 @@ export default function Home() {
                                 {project.download && (
                                   <Button
                                     variant="outline"
-                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
                                     <Link href={project.download}>
@@ -291,7 +301,7 @@ export default function Home() {
                       {project.website && (
                         <Button
                           variant="outline"
-                          className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                          className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                           asChild
                         >
                           <Link href={project.website}>
@@ -303,7 +313,7 @@ export default function Home() {
                       {project.github && (
                         <Button
                           variant="outline"
-                          className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                          className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                           asChild
                         >
                           <Link href={project.github}>
@@ -317,7 +327,7 @@ export default function Home() {
                     {project.download && (
                       <Button
                         variant="outline"
-                        className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700"
+                        className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                         asChild
                       >
                         <Link href={project.download}>
