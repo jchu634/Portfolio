@@ -1,11 +1,7 @@
 import { MailIcon, NotepadTextIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import {
-  SiGithub,
-  SiPrintables,
-  SiPrintablesHex,
-} from "@icons-pack/react-simple-icons";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 import Link from "next/link";
 import Image from "next/image";
 

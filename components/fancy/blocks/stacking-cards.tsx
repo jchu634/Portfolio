@@ -6,7 +6,6 @@ import {
   useRef,
   type HTMLAttributes,
   type PropsWithChildren,
-  type RefObject,
 } from "react";
 import {
   motion,

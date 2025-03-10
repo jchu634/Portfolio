@@ -346,7 +346,7 @@ export default function Page() {
                               >
                                 <CarouselContent>
                                   {project.images.map(
-                                    (images: any, index: number) => {
+                                    (image, index: number) => {
                                       return (
                                         <CarouselItem
                                           key={index}
@@ -358,7 +358,7 @@ export default function Page() {
                                                 alt="Project Image"
                                                 className="max-h-[300px] object-scale-down"
                                                 style={{ objectFit: "contain" }}
-                                                src={images}
+                                                src={image}
                                                 width={400}
                                                 height={400}
                                                 layout="responsive"

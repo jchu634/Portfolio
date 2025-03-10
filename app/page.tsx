@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -54,7 +54,7 @@ export default function Home() {
                 roboto_slab.className,
               )}
             >
-              <h1>Hi, I'm Joshua:</h1>
+              <h1>Hi, I&apos;m Joshua:</h1>
               <h1>I like making stuff.</h1>
             </div>
           ) : (
@@ -81,8 +81,8 @@ export default function Home() {
           className={`text-xl leading-10 ${roboto_slab.className} whitespace-pre-line text-black dark:text-white`}
         >
         
-          Hi, I'm a new graduate from the University of Auckland (BSc Computer Science) <br />
-          Currently I am looking for work while working on a couple of projects I didn't have time to start while studying.
+          Hi, I&apos;m a new graduate from the University of Auckland (BSc Computer Science) <br />
+          Currently I am looking for work while working on a couple of projects I didn&apos;t have time to start while studying.
         </p>
         </div>
       </div>

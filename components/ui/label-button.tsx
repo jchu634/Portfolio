@@ -24,7 +24,6 @@ interface ProximityButtonProps {
 export const LabelButton = ({
   children,
   className = "",
-  asChild = false,
   href = "",
   variant = "ghost",
   size: buttonSize = "icon",
