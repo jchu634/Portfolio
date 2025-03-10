@@ -31,6 +31,7 @@
     "poly-decomp": "^0.3.0",
     "portfolio": "file:",
     "react": "^19.0.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^19.0.0",
     "react-unity-webgl": "^9.8.0",
     "svg-path-commander": "^2.1.10",
