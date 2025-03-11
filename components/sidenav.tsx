@@ -45,7 +45,7 @@ export default function SideNav() {
         >
           <Image
             src="/bigFavicon.png"
-            alt="linkedIn Profile Link"
+            alt="Profile Picture"
             width={50}
             height={50}
           />
