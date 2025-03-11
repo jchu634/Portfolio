@@ -16,7 +16,6 @@ export function ModeToggle() {
       className="relative flex items-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      suppressHydrationWarning
     >
       <Button
         variant="outline"
@@ -36,6 +35,7 @@ export function ModeToggle() {
           x: isHovered ? 0 : -10,
         }}
         transition={{ duration: 0.2 }}
+        suppressHydrationWarning
       >
         Switch to {theme == "dark" ? <>light </> : <>dark </>} theme
         <div className="absolute top-1/2 -left-2 -translate-y-1/2 border-8 border-transparent border-r-black dark:border-r-white" />

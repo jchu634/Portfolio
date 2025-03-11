@@ -258,7 +258,7 @@ export default function Page() {
                           <div className="flex flex-col">
                             <h2
                               className={cn(
-                                "text-lg text-orange-400",
+                                "text-lg font-semibold text-orange-500 dark:text-orange-400",
                                 intel_one_mono.className,
                               )}
                             >
