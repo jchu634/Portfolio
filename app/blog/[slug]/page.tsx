@@ -6,9 +6,9 @@ import { notFound } from "next/navigation";
 export default async function BlogPost({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   try {
     // Remove the .tsx extension for the import

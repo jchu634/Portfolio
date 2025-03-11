@@ -19,11 +19,11 @@ const BlogIndexPage = async () => {
       const fileName = file.replace(/\.tsx$/, "");
 
       // Await the dynamic import
-      const module = await import(`@/blogposts/${fileName}`);
+      const blogModule = await import(`@/blogposts/${fileName}`);
 
       postData.push({
         slug: fileName,
-        metadata: module.metadata,
+        metadata: blogModule.metadata,
       });
     } catch (error) {
       console.error(`Error importing ${file}:`, error);
