@@ -1,6 +1,6 @@
 "use client"; // This is a client component
 import { ModeToggle } from "@/components/ui/mode-toggle";
-import { MailIcon, NotepadTextIcon } from "lucide-react";
+import { MailIcon, NotepadTextIcon, SquarePenIcon } from "lucide-react";
 import { LabelButton } from "@/components/ui/label-button";
 import { useState, useEffect } from "react";
 
@@ -38,7 +38,7 @@ export default function SideNav() {
       <div className="flex flex-col items-center gap-y-2">
         <LabelButton
           href="/"
-          ariaLabel="Open link to go back to homepage"
+          ariaLabel="Open link to go to homepage"
           label="Home"
           variant="nohover"
           className="bg-transparent"
@@ -51,14 +51,24 @@ export default function SideNav() {
           />
         </LabelButton>
         <LabelButton
-          href="./projects"
-          ariaLabel="Open link to view Printables profile"
+          href="/projects"
+          ariaLabel="Open link to go to projects page"
           label="Projects"
           variant="nohover"
           className="border-2 border-white bg-transparent dark:border-black"
           size="icon"
         >
           <NotepadTextIcon className="size-5" />
+        </LabelButton>
+        <LabelButton
+          href="/blog"
+          ariaLabel="Open link to go to blog page"
+          label="Blog"
+          variant="nohover"
+          className="border-2 border-white bg-transparent dark:border-black"
+          size="icon"
+        >
+          <SquarePenIcon className="size-5" />
         </LabelButton>
         {showCursor && (
           <div>
