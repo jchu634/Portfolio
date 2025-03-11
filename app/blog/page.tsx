@@ -1,14 +1,7 @@
-// pages/blog/index.tsx
 import React from "react";
 import Link from "next/link";
 import fs from "fs";
-
-interface Metadata {
-  title: string;
-  date: string;
-  description: string;
-  lastUpdate: string;
-}
+import { Metadata } from "@/lib/blogType";
 
 interface BlogPostData {
   slug: string;

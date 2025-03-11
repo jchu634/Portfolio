@@ -1,10 +1,5 @@
-interface Metadata {
-  title: string;
-  date: string;
-  description: string;
-  lastUpdate: string;
-}
 import { Separator } from "@/components/ui/separator";
+import { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Down the rabbit-hole: VHS Digitisation",
