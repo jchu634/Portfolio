@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "@/app/globals.css";
-import SideNav from "../components/sidenav";
-("@/app/ui/dashboard/sidenav.css");
 import { ThemeProvider } from "@/components/theme-provider";
-
-const inter = Inter({ subsets: ["latin"] });
+import SideNav from "@/components/sidenav";
+import MobileFooter from "@/components/mobile-footer";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "JCHU634 Portfolio",
@@ -14,11 +11,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
       <body>
         <ThemeProvider
@@ -27,14 +24,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex h-screen flex-col-reverse dark:bg-slate-900 md:flex-row">
-            <div className="fixed bottom-0 z-20 w-full flex-shrink-0 sm:w-[20rem] md:relative lg:w-[25rem]">
-              <SideNav />
-            </div>
-            <div className="flex-grow overflow-y-auto p-6 pb-48 md:p-12">
+          <div className="flex h-screen flex-col-reverse bg-blue-200 md:flex-row dark:bg-slate-900">
+            <SideNav />
+            <div className="flex-grow overflow-y-auto pb-20 md:pb-0">
               {children}
             </div>
           </div>
+          <MobileFooter />
         </ThemeProvider>
       </body>
     </html>

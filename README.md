@@ -1,7 +1,7 @@
 ## JCHU634-Portfolio
 This is a portfolio website, built with [Next.js](https://nextjs.org/) and bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Visit the website at [portfolio.keshuac.com](https://portfolio.keshuac.com/)
+Visit the website at [keshuac.com](https://portfolio.keshuac.com/)
 
 ## Getting Started
 
@@ -18,5 +18,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.

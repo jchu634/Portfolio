@@ -1,385 +1,348 @@
 "use client";
-import React, { Suspense } from "react";
-
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
+import { useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Canvas } from "@react-three/fiber";
-import { OrthographicCamera } from "@react-three/drei";
-import { BubbleModel } from "@/components/models/bubble";
+import { intel_one_mono, roboto_slab } from "@/lib/fonts";
+import { Link2Icon, DownloadIcon } from "lucide-react";
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import { isMobile } from "react-device-detect";
 
-import { Link as LinkIcon, Download, ExternalLink } from "lucide-react";
-import { SiGithub, SiGithubHex } from "@icons-pack/react-simple-icons";
+import VariableFontCursorProximity from "@/components/fancy/text/variable-font-cursor-proximity";
+import StackingCards, {
+  StackingCardItem,
+} from "@/components/fancy/blocks/stacking-cards";
+import UnderlineToBackground from "@/components/fancy/text/underline-to-background";
 
-const projects = [
-  {
-    name: "CodeCritters",
-    type: "Hybrid Application and Website",
-    technologies_and_frameworks: [
-      "Python",
-      "PyInstaller",
-      "InnoSetup",
-      "FastAPI",
-      "React",
-      "TensorFlow",
-      "PyTorch",
-      "PyWebView",
-    ],
-    description:
-      "My team's University capstone project: A website/application that uses machine learning to identify insects pests for Landcare research.",
-    github:
-      "https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters",
-    link: "https://codecritters.live/",
-    download:
-      "https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters/releases/latest",
-    image: "True",
-    image_dark: "/projects/codecritters/codecritters_dark.png",
-    image_light: "/projects/codecritters/codecritters_light.png",
-    image_alt: "CodeCritters Screenshot",
-  },
-  {
-    name: "Ryzen AI Subtitles",
-    type: ["Application"],
-    timeframe: "2024",
-    technologies_and_frameworks: [
-      "Next.JS",
-      "TailwindCSS",
-      "Python",
-      "Ryzen AI Software",
-      "Whisper",
-    ],
-    github: "https://github.com/jchu634/SubtitleProject",
-    link: "https://www.hackster.io/jchu634/ryzen-ai-subtitling-5ead7f",
-    description:
-      "An subtitling program which uses Whisper on a Ryzen AI NPU to generate real-time subtitles for an audio source.\n A Submission for the AMD Pervasive AI Developer Challenge.",
-    image: "True",
-    image_light: "/projects/ryzensubtitles/simple_light.png",
-    image_dark: "/projects/ryzensubtitles/simple_dark.png",
-    image_alt: "Ryzen AI Subtitles Screenshot",
-  },
-  {
-    name: "Subtext",
-    type: ["Application"],
-    timeframe: "2025",
-    technologies_and_frameworks: [
-      "Next.JS",
-      "Astro",
-      "TailwindCSS",
-      "Python",
-      "Pywebview",
-      "Whisper",
-    ],
-    github: "https://github.com/jchu634/subtext-app",
-    link: "https://subtextapp.cc/",
-    description:
-      "Subtext is an easy to use subtitling app, which allows an user to utilise AI models to generate subtitles entirely on device.",
-    image: "True",
-    image_light: "/projects/subtextapp/ScreenshotLight.png",
-    image_dark: "/projects/subtextapp/ScreenshotDark.png",
-    image_alt: "Subtext App Screenshot",
-  },
-  {
-    name: "Fakman",
-    type: "Game",
-    technologies_and_frameworks: ["Unity", "C#"],
-    description: "A Pacman clone made as a learning project for Unity and C#.",
-    github: "https://github.com/jchu634/fakman",
-    link: "/projects/games/Fakman",
-    image: "True",
-    image_dark: "/projects/fakman/Fakman.png",
-    image_light: "/projects/fakman/Fakman.png",
-    image_alt: "Fakman Screenshot",
-    website: "/projects/games/Fakman",
-  },
-  {
-    name: "Loopy-Desktop",
-    type: "Application",
-    technologies_and_frameworks: ["Electron", "HTML", "CSS", "VanillaJS"],
-    description:
-      "An Electron desktop client with extra features for Loopy, an open source web application which allows users to visualise systems.",
-    github: "https://github.com/jchu634/loopy-desktop",
-    download: "https://github.com/jchu634/loopy-desktop/releases/latest",
-    image: "True",
-    image_dark: "/projects/loopy/Loopy.png",
-    image_light: "/projects/loopy/Loopy.png",
-    image_alt: "Loopy Desktop Screenshot",
-  },
-];
-
-const education = [
-  {
-    institution: "University of Auckland",
-    description: "Bachelor of Science in Computer Science",
-    timeframe: "2021-2024",
-    link: "https://keshuac.com/extlink/ucert",
-  },
-  {
-    institution: "NVIDIA Deep Learning Institute",
-    description: "Fundamentals of Deep Learning",
-    timeframe: "2023",
-    link: "https://keshuac.com/extlink/ncert1",
-  },
-  {
-    institution: "NVIDIA Deep Learning Institute",
-    description: "Fundamentals of Accelerated Computing with CUDA Python",
-    timeframe: "2024",
-    link: "https://keshuac.com/extlink/ncert2",
-  },
-];
-
-function mapProjects(project: any, index: number) {
-  // Index is here to stop the warning about needing a key
-  return (
-    <Card
-      className="w-auto bg-slate-300 dark:bg-fuchsia-950 dark:bg-opacity-40"
-      key={index}
-    >
-      <CardContent>
-        <div className="flex items-start">
-          {project.image && (
-            <div className="group-hover:brightness-50 group-hover:filter dark:group-hover:grayscale-0">
-              <Image
-                className="hidden pr-5 dark:block dark:lg:block"
-                src={project.image_dark}
-                width={250}
-                height={250}
-                alt={project.image_alt}
-              />
-              <Image
-                className="hidden pr-5 dark:hidden lg:block"
-                src={project.image_light}
-                width={250}
-                height={250}
-                alt={project.image_alt}
-              />
-            </div>
-          )}
-          <div>
-            <span className="text-2xl font-bold text-cyan-900 dark:text-cyan-200">
-              {project.name}
-            </span>
-            <p className="text-m whitespace-pre-wrap text-wrap">
-              {project.description}
-            </p>
-            <div className="space-x-2 pt-2">
-              {project.github && (
-                <Link
-                  href={project.github}
-                  aria-label={`Go to Github repository for ${project.name}`}
-                >
-                  <Button
-                    size="icon"
-                    className="group h-10 w-10 bg-black hover:bg-slate-200 dark:bg-white dark:hover:bg-indigo-800"
-                    title={`Github link for ${project.name}`}
-                    aria-label={`Github link button for ${project.name}`}
-                  >
-                    <SiGithub className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
-                  </Button>
-                </Link>
-              )}
-              {project.link && (
-                <Link
-                  href={project.link}
-                  aria-label={`Go to website for ${project.name}`}
-                >
-                  <Button
-                    size="icon"
-                    className="group h-10 w-10 bg-black hover:bg-slate-200 dark:bg-white dark:hover:bg-indigo-800"
-                    title={`Link to ${project.name}`}
-                    aria-label={`Link button to ${project.name}`}
-                  >
-                    <LinkIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
-                  </Button>
-                </Link>
-              )}
-              {project.download && (
-                <Link
-                  href={project.download}
-                  aria-label={`Go to download page for ${project.name}`}
-                >
-                  <Button
-                    size="icon"
-                    className="group h-10 w-10 bg-black hover:bg-slate-200 dark:bg-white dark:hover:bg-indigo-800"
-                    title={`Download link for ${project.name}`}
-                    aria-label={`Download link button for ${project.name}`}
-                  >
-                    <Download className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
-                  </Button>
-                </Link>
-              )}
-            </div>
-            <div className="flex flex-wrap gap-y-2 space-x-2 pt-2">
-              {project.technologies_and_frameworks &&
-                project.technologies_and_frameworks.map(
-                  (technologies_and_frameworks: string, index: number) => {
-                    return (
-                      <span
-                        className="rounded-md bg-[#2B382E] p-1 px-2 text-xs font-bold text-[#62FDBF] dark:bg-black"
-                        key={index}
-                      >
-                        {technologies_and_frameworks}
-                      </span>
-                    );
-                  },
-                )}
-            </div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function mapEdu(edu: any, index: number) {
-  // Index is here to stop the warning about needing a key
-  return (
-    <Card
-      className="w-auto bg-slate-300 dark:bg-fuchsia-950 dark:bg-opacity-40"
-      key={index}
-    >
-      <CardContent>
-        <div className="flex items-start">
-          <div className="space-x-2 pr-4 pt-2">
-            {edu.link && (
-              <Link
-                href={edu.link}
-                aria-label={`Certificate for ${edu.description}`}
-              >
-                <Button
-                  size="icon"
-                  className="group h-10 w-10 bg-black hover:bg-slate-200 dark:bg-fuchsia-800 dark:hover:bg-slate-300"
-                  title={`Link to Certificate`}
-                  aria-label={`Link button to Certificate`}
-                >
-                  <LinkIcon className="h-8 w-8 text-white group-hover:text-blue-800" />
-                </Button>
-              </Link>
-            )}
-          </div>
-          <div>
-            <span className="text-2xl font-bold text-cyan-900 dark:text-cyan-200">
-              {edu.institution} ({edu.timeframe})
-            </span>
-            <p className="text-m whitespace-pre-wrap text-wrap">
-              {edu.description}
-            </p>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { projects, education } from "@/lib/homepageData";
 
 export default function Home() {
-  const { theme } = useTheme();
+  const containerRef = useRef<HTMLDivElement>(
+    null,
+  ) as React.RefObject<HTMLDivElement>;
+
+  const [container, setContainer] = useState<HTMLElement | null>(null);
+
   return (
-    <main className="xl:relative xl:h-full xl:w-full">
-      <div className="pointer-events-none absolute inset-0 z-0 hidden xl:block">
-        <Suspense fallback={<span>loading...</span>}>
-          <Canvas style={{ zIndex: 1 }}>
-            <OrthographicCamera makeDefault zoom={50} />
-            <BubbleModel position={[10, 4.5, 0]} />
-
-            {theme === "light" && <ambientLight intensity={0.3} />}
-            <directionalLight position={[-10, -5, 10]} color="white" />
-          </Canvas>
-        </Suspense>
-      </div>
-      <div className="z-10 lg:relative">
-        <div className="block md:hidden">
-          <h1 className="text-5xl font-bold text-black dark:text-violet-200">
-            Hi, I&apos;m Joshua
-          </h1>
-          <br />
-          <h2 className="text-2xl font-bold text-black dark:text-violet-300">
-            Graduate FullStack Developer
-          </h2>
-          <br />
-          <h3 className="text-xl text-black dark:text-slate-200">
-            I like making stuff.
-          </h3>
-          <br />
-        </div>
-
-        <h2 className="text-2xl font-bold text-black dark:text-slate-200">
-          About Me:
-        </h2>
-        <br></br>
-        <h3 className="text-xl text-black dark:text-slate-200">
-          Hi, I&apos;m a new graduate from the University of Auckland (BSc in
-          Computer Science)
-          <br />
-          I really like making stuff and trying out new technologies.
-          <br />
-          <br />
-          Currently I am working on a couple of projects I didn&apos;t have time
-          to start while studying.
-          <br />
-          I am currently interested in Machine Learning, hardware Video
-          encode/decode.
-          <br />
-          <br />
-          Also looking for work.
-          <br />
-        </h3>
-        <br />
-
-        <div className="flex gap-x-2">
-          <Link href="https://utfs.io/f/NQ2gjwtsCGtKRBynBBbPMa7DKY9qLyxQvIEZcpb8HkjrTetf">
-            <Button
-              variant="flex_outline"
-              className="group space-x-2 text-lg font-bold text-white hover:bg-sky-700 dark:bg-sky-800 dark:hover:bg-purple-800"
+    <div className="h-fit w-full">
+      <div
+        className="relative h-fit cursor-pointer items-center justify-center overflow-hidden rounded-lg px-2 pt-12 md:w-3/4 md:px-8"
+        ref={containerRef}
+      >
+        <div className="items-left flex size-full flex-col gap-4 pl-5">
+          {isMobile ? (
+            <div
+              className={cn(
+                "items-left flex flex-col gap-4 text-5xl leading-none text-orange-500 dark:text-orange-400",
+                roboto_slab.className,
+              )}
             >
-              <p>View CV</p>
-              <ExternalLink className="w-6 text-white group-hover:text-blue-600" />
-            </Button>
-          </Link>
-          <Link href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKpLKfeomlDOyPvBFhCAkR7d84bW3f5pSYz0tM">
-            <Button
-              variant="flex_outline"
-              className="group space-x-2 text-lg font-bold text-white hover:bg-sky-700 dark:bg-sky-800 dark:hover:bg-purple-800"
-            >
-              <p>View Resume</p>
-              <ExternalLink className="w-6 text-white group-hover:text-blue-600" />
-            </Button>
-          </Link>
-        </div>
+              <h1>Hi, I&apos;m Joshua:</h1>
+              <h1>I like making stuff.</h1>
+            </div>
+          ) : (
+            <div className="items-left flex flex-col gap-4">
+              {["Hi, I'm Joshua:", "I like making stuff."].map((text, i) => (
+                <VariableFontCursorProximity
+                  key={i}
+                  label={text}
+                  className={cn(
+                    "text-5xl leading-none text-orange-500 dark:text-orange-400",
+                    roboto_slab.className,
+                  )}
+                  fromFontVariationSettings="'wght' 500, 'slnt' 0"
+                  toFontVariationSettings="'wght' 200, 'slnt' -10"
+                  radius={200}
+                  containerRef={containerRef}
+                />
+              ))}
+            </div>
+          )}
 
-        <br />
-        <h2 className="pt-2 text-2xl font-bold text-black dark:text-slate-200">
-          Education + Qualifications:
-        </h2>
-        <br />
-        <div className="space-y-4 pb-4">
-          {education.map((edu, index) => {
-            return mapEdu(edu, index);
-          })}
+          {/* prettier-ignore */}
+          <p
+          className={`text-xl leading-10 ${roboto_slab.className} whitespace-pre-line text-black dark:text-white`}
+        >
+        
+          Hi, I&apos;m a new graduate from the University of Auckland (BSc Computer Science) <br />
+          Currently I am looking for work while working on a couple of projects I didn&apos;t have time to start while studying.
+        </p>
         </div>
-
-        <h2 className="pt-2 text-2xl font-bold text-black dark:text-slate-200">
-          Featured Projects:
-        </h2>
-        <br />
-        <div className="space-y-4 pb-4">
-          {projects.map((project, index) => {
-            return mapProjects(project, index);
-          })}
-        </div>
-
-        <Link href="/projects">
-          <Button
-            variant="flex_outline"
-            className="group space-x-2 text-lg font-bold text-white hover:bg-sky-700 dark:bg-sky-800 dark:hover:bg-purple-800"
-          >
-            <p>View Complete Project Archive</p>
-            <ExternalLink className="w-6 text-white group-hover:text-blue-600" />
-          </Button>
-        </Link>
-        <br />
       </div>
-    </main>
+
+      <div className="w-full px-16 pt-4 md:mb-12 md:px-24">
+        <Carousel
+          opts={{
+            align: "start",
+          }}
+        >
+          <CarouselContent>
+            {education.map((edu, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <Card>
+                    <CardContent
+                      className={cn(
+                        "flex min-h-30 flex-col justify-center",
+                        intel_one_mono.className,
+                      )}
+                    >
+                      <span className="text-lg font-bold whitespace-pre-wrap">
+                        {edu.description}
+                      </span>
+                      <span className="text-base font-bold text-orange-500 dark:text-orange-400">
+                        {edu.institution} ({edu.timeframe})
+                      </span>
+                      <div className="pt-2">
+                        <Button
+                          variant="outline"
+                          className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                        >
+                          <Link2Icon />
+                          <p>Cert Link</p>
+                        </Button>
+                      </div>
+
+                      <div className="flex gap-x-2"></div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+
+      <div className="flex flex-col justify-between px-8 md:flex-row md:px-12">
+        <div
+          className={cn(
+            "pt-10 text-4xl font-bold text-orange-500 dark:text-orange-400",
+            roboto_slab.className,
+          )}
+        >
+          Featured Projects
+          <div className="text-xl font-medium text-black dark:text-white">
+            Find more projects{" "}
+            <Link href="/projects" className="hidden dark:inline">
+              <UnderlineToBackground
+                label="here"
+                targetTextColor="#193cb8"
+                className="cursor-pointer"
+              />
+            </Link>
+            <Link href="/projects" className="inline dark:hidden">
+              <UnderlineToBackground
+                label="here"
+                targetTextColor="#FFFF"
+                className="cursor-pointer"
+              />
+            </Link>
+          </div>
+        </div>
+
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <ScrollArea
+                className="hidden h-50 w-[90svw] rounded-md pr-5 md:flex md:h-108 md:w-5/7"
+                type="always"
+                ref={(node) => setContainer(node)}
+              >
+                <StackingCards
+                  totalCards={projects.length}
+                  scrollOptons={{ container: { current: container } }}
+                  className="items-center justify-center"
+                >
+                  {projects.map((project, index) => {
+                    return (
+                      <StackingCardItem
+                        key={index}
+                        index={index}
+                        className="h-50 md:h-100"
+                      >
+                        <Card
+                          className={cn(
+                            project.bgColor,
+                            "relative mx-auto flex min-h-[80%] w-[85svw] flex-col rounded-3xl px-4 sm:flex-row md:w-11/12 xl:py-10",
+                          )}
+                        >
+                          <CardContent
+                            className={cn(
+                              "flex min-h-full w-full justify-between",
+                              intel_one_mono.className,
+                            )}
+                          >
+                            <div className="flex w-full flex-col space-y-2 lg:w-[50%]">
+                              <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
+                                {project.name}
+                              </span>
+                              <span className="text-base font-bold text-wrap whitespace-pre-wrap text-white">
+                                {project.description}
+                              </span>
+
+                              <div className="flex space-y-2 gap-x-2 pt-2 md:flex-col 2xl:flex-row 2xl:space-y-0">
+                                {project.website && (
+                                  <Button
+                                    variant="outline"
+                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                                    asChild
+                                  >
+                                    <Link href={project.website}>
+                                      <Link2Icon />
+                                      <p>Website</p>
+                                    </Link>
+                                  </Button>
+                                )}
+                                {project.github && (
+                                  <Button
+                                    variant="outline"
+                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                                    asChild
+                                  >
+                                    <Link href={project.github}>
+                                      <SiGithub />
+                                      <p>Github</p>
+                                    </Link>
+                                  </Button>
+                                )}
+                                {project.download && (
+                                  <Button
+                                    variant="outline"
+                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                                    asChild
+                                  >
+                                    <Link href={project.download}>
+                                      <DownloadIcon />
+                                      <p>Download</p>
+                                    </Link>
+                                  </Button>
+                                )}
+                              </div>
+                            </div>
+                            <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
+                              <Image
+                                src={project.image_light}
+                                alt={project.name}
+                                priority={project.priority ? true : false}
+                                style={{ objectFit: "contain" }}
+                                width={350}
+                                height={350}
+                                className="hidden xl:block"
+                              />
+                              <Image
+                                src={project.image_light}
+                                alt={project.name}
+                                priority={project.priority ? true : false}
+                                style={{ objectFit: "contain" }}
+                                width={300}
+                                height={300}
+                                className="hidden lg:block xl:hidden"
+                              />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </StackingCardItem>
+                    );
+                  })}
+                </StackingCards>
+              </ScrollArea>
+            </TooltipTrigger>
+            <TooltipContent side="top" className="bg-slate-800 text-white">
+              <p>Scroll to see more projects</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
+      <div className="space-y-3 py-8 md:hidden">
+        {projects.map((project, index) => {
+          return (
+            <Card
+              className={cn(
+                project.bgColor,
+                "relative mx-auto h-fit w-[85svw] rounded-3xl",
+              )}
+              key={index}
+            >
+              <CardContent
+                className={cn(
+                  "flex min-h-full w-full justify-between",
+                  intel_one_mono.className,
+                )}
+              >
+                <div className="flex w-full flex-col space-y-2">
+                  <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
+                    {project.name}
+                  </span>
+                  <span className="text-base font-bold text-wrap whitespace-pre-wrap">
+                    {project.description}
+                  </span>
+
+                  <div className="flex flex-col space-y-2 gap-x-2 pt-2">
+                    <div className="flex flex-row space-x-2">
+                      {project.website && (
+                        <Button
+                          variant="outline"
+                          className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                          asChild
+                        >
+                          <Link href={project.website}>
+                            <Link2Icon />
+                            <p>Website</p>
+                          </Link>
+                        </Button>
+                      )}
+                      {project.github && (
+                        <Button
+                          variant="outline"
+                          className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                          asChild
+                        >
+                          <Link href={project.github}>
+                            <SiGithub />
+                            <p>Github</p>
+                          </Link>
+                        </Button>
+                      )}
+                    </div>
+
+                    {project.download && (
+                      <Button
+                        variant="outline"
+                        className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                        asChild
+                      >
+                        <Link href={project.download}>
+                          <DownloadIcon />
+                          <p>Download</p>
+                        </Link>
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+    </div>
   );
 }
