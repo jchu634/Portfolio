@@ -1,7 +1,11 @@
-import React from "react";
 import Link from "next/link";
 import fs from "fs";
+
 import { Metadata } from "@/lib/blogType";
+
+import { roboto_slab } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
 
 interface BlogPostData {
   slug: string;
@@ -29,19 +33,34 @@ const BlogIndexPage = async () => {
       console.error(`Error importing ${file}:`, error);
     }
   }
-  console.log(postData);
+  postData.reverse();
 
   return (
-    <div>
-      <h1>Blog Posts</h1>
-      <ul>
+    <div className={cn("p-10", roboto_slab.className)}>
+      <h1 className="text-4xl font-bold text-orange-500 dark:text-orange-400">
+        Blog Posts:
+      </h1>
+      <div className="space-y-2 pt-4">
         {postData.map((post) => (
-          <li key={post.slug}>
-            <Link href={`/blog/${post.slug}`}>{post.metadata?.title}</Link>
-            <p>{post.metadata?.description}</p>
-          </li>
+          <div key={post.slug}>
+            <Link href={`/blog/${post.slug}`}>
+              <h4 className="text-2xl font-semibold">{post.metadata?.title}</h4>
+              <p>{post.metadata?.description}</p>
+              <div className="flex">
+                <p className="font-semibold whitespace-pre">Last Updated: </p>
+                <p>{post.metadata?.lastUpdate}</p>
+              </div>
+              <div className="flex">
+                <p className="font-semibold whitespace-pre">
+                  First Published:{" "}
+                </p>
+                <p>{post.metadata?.date}</p>
+              </div>
+            </Link>
+            <Separator className="my-4 bg-black dark:bg-white" />
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
