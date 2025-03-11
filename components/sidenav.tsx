@@ -44,9 +44,8 @@ export default function SideNav() {
           className="bg-transparent"
         >
           <Image
-            src="/bigFavicon.png"
+            src="/bigfavicon.png"
             alt="Profile Picture"
-            unoptimized={true}
             width={50}
             height={50}
           />

@@ -12,9 +12,8 @@ export default function MobileFooter() {
         <Button variant="nohover" size="icon" asChild>
           <Link href="/">
             <Image
-              src="/bigFavicon.png"
+              src="/bigfavicon.png"
               alt="Profile Picture"
-              unoptimized={true}
               width={50}
               height={50}
             />
