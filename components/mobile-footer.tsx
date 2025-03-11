@@ -14,6 +14,7 @@ export default function MobileFooter() {
             <Image
               src="/bigFavicon.png"
               alt="Profile Picture"
+              unoptimized={true}
               width={50}
               height={50}
             />

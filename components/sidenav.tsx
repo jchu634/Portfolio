@@ -46,6 +46,7 @@ export default function SideNav() {
           <Image
             src="/bigFavicon.png"
             alt="Profile Picture"
+            unoptimized={true}
             width={50}
             height={50}
           />
@@ -77,14 +78,14 @@ export default function SideNav() {
           </div>
         )}
       </div>
-      <div className="flex flex-col items-center gap-y-2">
+      <div className="flex flex-col flex-wrap items-center gap-y-2 overflow-hidden">
         <LabelButton
           label="Toggle Cursor trail"
           variant="nohover"
           className="bg-transparent"
           onClick={() => setShowCursor(!showCursor)}
         >
-          <div className="relative-center flex items-center">
+          <div className="relative-center hidden items-center lg:flex">
             {showCursor && (
               <div>
                 <PacmanEnabledSVGDark className="hidden h-6 w-6 dark:block" />
