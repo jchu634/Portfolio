@@ -2,6 +2,18 @@
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { MailIcon, NotepadTextIcon } from "lucide-react";
 import { LabelButton } from "@/components/ui/label-button";
+import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+
+// Cursor trail
+import {
+  PacmanDisabledSVGDark,
+  PacmanDisabledSVGLight,
+  PacmanEnabledSVGDark,
+  PacmanEnabledSVGLight,
+} from "./cursor/svg";
+import CustomCursorTrail from "@/components/cursor/cursorTrail";
+import CustomCursorGif from "@/components/cursor/cursorGif";
 
 import {
   SiGithub,
@@ -11,6 +23,17 @@ import {
 import Image from "next/image";
 
 export default function SideNav() {
+  const [showCursor, setShowCursor] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const storedValue = localStorage.getItem("showCursor");
+    setShowCursor(storedValue !== null ? JSON.parse(storedValue) : true);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("showCursor", JSON.stringify(showCursor));
+  }, [showCursor]);
+
   return (
     <main className="hidden h-full w-15 flex-col justify-between bg-[#122c23] p-2 md:flex dark:bg-white">
       <div className="flex flex-col items-center gap-y-2">
@@ -38,8 +61,36 @@ export default function SideNav() {
         >
           <NotepadTextIcon className="size-5" />
         </LabelButton>
+        {showCursor && (
+          <div>
+            <CustomCursorTrail />
+            <CustomCursorGif />
+          </div>
+        )}
       </div>
       <div className="flex flex-col items-center gap-y-2">
+        <LabelButton
+          label="Toggle Cursor trail"
+          variant="nohover"
+          className="bg-transparent"
+          onClick={() => setShowCursor(!showCursor)}
+        >
+          <div className="relative-center flex items-center">
+            {showCursor && (
+              <div>
+                <PacmanEnabledSVGDark className="hidden h-6 w-6 dark:block" />
+                <PacmanEnabledSVGLight className="block h-6 w-6 dark:hidden" />
+              </div>
+            )}
+            {!showCursor && (
+              <div>
+                <PacmanDisabledSVGDark className="hidden h-6 w-6 dark:block" />
+                <PacmanDisabledSVGLight className="block h-6 w-6 dark:hidden" />
+              </div>
+            )}
+          </div>
+        </LabelButton>
+
         <LabelButton
           href="https://www.linkedin.com/in/jchu634/"
           ariaLabel="Open link to view Linkedin profile"
