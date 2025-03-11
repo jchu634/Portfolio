@@ -29,7 +29,7 @@ const BlogIndexPage = async () => {
       const module = await import(`@/blogposts/${fileName}`);
 
       postData.push({
-        slug: file,
+        slug: fileName,
         metadata: module.metadata,
       });
     } catch (error) {

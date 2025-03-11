@@ -1,4 +1,7 @@
 import React from "react";
+import { roboto_slab } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
+import { notFound } from "next/navigation";
 
 export default async function BlogPost({
   params,
@@ -15,17 +18,12 @@ export default async function BlogPost({
     const PostContent = (await import(`@/blogposts/${fileName}`)).default;
 
     return (
-      <article className="prose prose-slate max-w-none">
+      <div className={cn("h-full w-full p-10", roboto_slab.className)}>
         <PostContent />
-      </article>
+      </div>
     );
   } catch (error) {
     console.error(`Error importing ${slug}:`, error);
-    return (
-      <div>
-        <h1>Error</h1>
-        <p>Could not load blog post.</p>
-      </div>
-    );
+    return notFound();
   }
 }
