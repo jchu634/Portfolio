@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useState, MouseEventHandler } from "react";
 import Link from "next/link";
 
 interface ProximityButtonProps {
@@ -8,6 +8,7 @@ interface ProximityButtonProps {
   className?: string;
   asChild?: boolean;
   href?: string;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   variant?:
     | "nohover"
     | "destructive"
@@ -24,10 +25,12 @@ interface ProximityButtonProps {
 export const LabelButton = ({
   children,
   className = "",
-  href = "",
+  href,
   variant = "ghost",
   size: buttonSize = "icon",
   ariaLabel,
+  asChild,
+  onClick,
   label,
 }: ProximityButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -41,12 +44,17 @@ export const LabelButton = ({
       <Button
         variant={variant}
         size={buttonSize}
-        asChild
+        asChild={asChild}
+        onClick={onClick}
         className={`flex items-center justify-center ${className}`}
       >
-        <Link href={href} aria-label={ariaLabel} className="justify-center">
-          {children}
-        </Link>
+        {href ? (
+          <Link href={href} aria-label={ariaLabel} className="justify-center">
+            {children}
+          </Link>
+        ) : (
+          <>{children}</>
+        )}
       </Button>
 
       {label && (
