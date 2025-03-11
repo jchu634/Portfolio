@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
+@plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -12,6 +13,8 @@
   --font-slab: var(--font-roboto-slab);
   --font-lexend: var(--font-lexend);
   --font-gabarito: var(--font-gabarito);
+  --gradient-radial-tr: 'radial-gradient(circle at top right, var(--tw-gradient-stops))',
+
 }
 
 :root {
