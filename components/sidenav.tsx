@@ -2,7 +2,6 @@
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { MailIcon, NotepadTextIcon } from "lucide-react";
 import { LabelButton } from "@/components/ui/label-button";
-import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 
 // Cursor trail
