@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { intel_one_mono, roboto_slab } from "@/lib/fonts";
-import { Link2Icon, DownloadIcon } from "lucide-react";
+import { Link2Icon, DownloadIcon, ExternalLinkIcon } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { isMobile } from "react-device-detect";
 
@@ -78,12 +78,32 @@ export default function Home() {
 
           {/* prettier-ignore */}
           <p
-          className={`text-xl leading-10 ${roboto_slab.className} whitespace-pre-line text-black dark:text-white`}
+          className={cn("text-xl leading-10whitespace-pre-line text-black dark:text-white",  roboto_slab.className )}
         >
         
           Hi, I&apos;m a new graduate from the University of Auckland (BSc Computer Science) <br />
           Currently I am looking for work while working on a couple of projects I didn&apos;t have time to start while studying.
         </p>
+          <div className={cn("flex gap-x-2", roboto_slab.className)}>
+            <Link href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKK0HnSxFn3FlbzvMTDoijX9mwHq04LfdAk2CW">
+              <Button
+                variant="outline"
+                className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+              >
+                <p>View CV</p>
+                <ExternalLinkIcon />
+              </Button>
+            </Link>
+            <Link href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKpLKfeomlDOyPvBFhCAkR7d84bW3f5pSYz0tM">
+              <Button
+                variant="outline"
+                className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+              >
+                <p>View Resume</p>
+                <ExternalLinkIcon />
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
 
