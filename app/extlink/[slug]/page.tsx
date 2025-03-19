@@ -9,15 +9,20 @@ const redirects: { [key: string]: string } = {
     "https://www.myequals.net/sharelink/636507e6-d4d8-499d-a98e-1f01490cb092/846d6a10-5f8d-4857-86da-e69abd4ee594",
 };
 
-function sanitizeString(str: String) {
+function sanitizeString(str: string) {
   str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim, "");
   return str.trim();
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const sanitizedSlug = sanitizeString(params.slug);
-  if (redirects[params.slug]) {
-    redirect(redirects[params.slug]);
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const sanitizedSlug = sanitizeString(slug);
+  if (redirects[sanitizedSlug]) {
+    redirect(redirects[sanitizedSlug]);
   } else {
     return notFound();
   }
