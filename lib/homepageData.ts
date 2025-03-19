@@ -7,15 +7,21 @@ export const education = [
   },
   {
     institution: "NVIDIA Deep Learning Institute",
-    description: "Fundamentals of Deep Learning",
-    timeframe: "2023",
-    link: "https://keshuac.com/extlink/ncert1",
+    description: "Fundamentals of Accelerated Data Science",
+    timeframe: "2025",
+    link: "https://keshuac.com/extlink/ncert3",
   },
   {
     institution: "NVIDIA Deep Learning Institute",
-    description: "Fundamentals of Accelerated Computing with CUDA Python",
+    description: "Fundamentals of Accelerated Computing\nwith CUDA Python",
     timeframe: "2024",
     link: "https://keshuac.com/extlink/ncert2",
+  },
+  {
+    institution: "NVIDIA Deep Learning Institute",
+    description: "Fundamentals of Deep Learning",
+    timeframe: "2023",
+    link: "https://keshuac.com/extlink/ncert1",
   },
 ];
 export const projects = [

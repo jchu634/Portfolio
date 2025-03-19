@@ -134,9 +134,12 @@ export default function Home() {
                         <Button
                           variant="outline"
                           className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                          asChild
                         >
-                          <Link2Icon />
-                          <p>Cert Link</p>
+                          <Link href={edu.link}>
+                            <Link2Icon />
+                            <p>Cert Link</p>
+                          </Link>
                         </Button>
                       </div>
 
