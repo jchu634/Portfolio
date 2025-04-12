@@ -1,6 +1,6 @@
 "use client"; // This is a client component
 import { ModeToggle } from "@/components/ui/mode-toggle";
-import { MailIcon, NotepadTextIcon, SquarePenIcon } from "lucide-react";
+import { MailIcon, CodeIcon, NotebookTextIcon } from "lucide-react";
 import { LabelButton } from "@/components/ui/label-button";
 import { useState, useEffect } from "react";
 
@@ -58,7 +58,7 @@ export default function SideNav() {
           className="border-2 border-white bg-transparent dark:border-black"
           size="icon"
         >
-          <NotepadTextIcon className="size-5" />
+          <CodeIcon className="size-5" />
         </LabelButton>
         <LabelButton
           href="/blog"
@@ -68,7 +68,7 @@ export default function SideNav() {
           className="border-2 border-white bg-transparent dark:border-black"
           size="icon"
         >
-          <SquarePenIcon className="size-5" />
+          <NotebookTextIcon className="size-5" />
         </LabelButton>
         {showCursor && (
           <div>
