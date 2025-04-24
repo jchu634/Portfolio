@@ -14,8 +14,10 @@ function RenderCursorTrail() {
   const cursorTimeOut = 500; // Change this value to adjust how long each div stays on the screen
 
   useEffect(() => {
+    const timeoutIds = new Map<number, NodeJS.Timeout>();
+
     const moveCursor = (e: MouseEvent) => {
-      const newCursor: Cursor = {
+      const potentialNewCursor: Cursor = {
         top: e.clientY,
         left: e.clientX,
         key: Date.now(),
@@ -24,22 +26,33 @@ function RenderCursorTrail() {
       // Calculate the distance between the new cursor and the last cursor
       const distance = lastCursor.current
         ? Math.sqrt(
-            Math.pow(newCursor.left - lastCursor.current.left, 2) +
-              Math.pow(newCursor.top - lastCursor.current.top, 2),
+            Math.pow(potentialNewCursor.left - lastCursor.current.left, 2) +
+              Math.pow(potentialNewCursor.top - lastCursor.current.top, 2),
           )
         : Infinity;
 
       // Only add the new cursor if the distance is greater than the threshold
       if (distance > cursorMinDistance) {
-        // Change this value to adjust the distance between cursors
-        setCursors((prevCursors) => [...prevCursors, newCursor]);
-        lastCursor.current = newCursor;
+        const keyToRemove = potentialNewCursor.key;
 
-        setTimeout(() => {
-          setCursors((prevCursors) =>
-            prevCursors.filter((cursor) => cursor.key !== newCursor.key),
-          );
-        }, cursorTimeOut); // Change this value to adjust how long each div stays on the screen
+        setCursors((prevCursors) => {
+          // Calculate timeout based on the position (index + 1) in the trail
+          const newCursorIndex = prevCursors.length + 1;
+          const timeoutDuration = newCursorIndex * cursorTimeOut;
+
+          const timeoutId = setTimeout(() => {
+            setCursors((currentCursors) =>
+              currentCursors.filter((cursor) => cursor.key !== keyToRemove),
+            );
+            timeoutIds.delete(keyToRemove);
+          }, timeoutDuration);
+
+          timeoutIds.set(keyToRemove, timeoutId);
+
+          return [...prevCursors, potentialNewCursor];
+        });
+
+        lastCursor.current = potentialNewCursor;
       }
     };
 
@@ -47,15 +60,17 @@ function RenderCursorTrail() {
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
+      timeoutIds.forEach((timeoutId) => clearTimeout(timeoutId));
     };
-  }, []);
+    // Add dependencies to re-run the effect if these values change
+  }, [cursorMinDistance, cursorTimeOut]);
 
   return (
     <div>
       {cursors.map((cursor) => (
         <div
           key={cursor.key}
-          className="pointer-events-none invisible absolute h-5 w-5 rounded-full bg-black dark:bg-white lg:visible"
+          className="pointer-events-none invisible absolute h-5 w-5 rounded-full bg-black lg:visible dark:bg-white"
           style={{ top: cursor.top, left: cursor.left, position: "absolute" }}
         />
       ))}
