@@ -75,13 +75,8 @@ function CursorTrailWithGif() {
     // Cleanup function
     return () => {
       window.removeEventListener("mousemove", moveMouse);
-      // Clear any remaining timeouts when the component unmounts
-      timeoutIds.current.forEach((timeoutId) => clearTimeout(timeoutId));
-      timeoutIds.current.clear();
     };
-    // Only CURSOR_MIN_DISTANCE and CURSOR_TIMEOUT_MS are dependencies here
-    // Cursors state is managed internally via setCursors callback
-  }, [CURSOR_MIN_DISTANCE, CURSOR_TIMEOUT_MS]);
+  }, []);
 
   // Effect to update GIF target and style when the trail changes
   useEffect(() => {
@@ -127,7 +122,7 @@ function CursorTrailWithGif() {
       //   transition: 'none' // Stop transition when idle
       // }));
     }
-  }, [cursors, CURSOR_TIMEOUT_MS, gifStyle.left]); // Include gifStyle.left to recalculate flip correctly on first move
+  }, [cursors, gifStyle.left]); // Include gifStyle.left to recalculate flip correctly on first move
 
   return (
     <div>
