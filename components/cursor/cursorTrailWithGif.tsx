@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef, CSSProperties } from "react";
 import Image from "next/image";
 
 type Cursor = {
-  top: number;
-  left: number;
+  Y: number;
+  X: number;
   key: number;
 };
 
@@ -26,25 +26,23 @@ function CursorTrailWithGif() {
   });
   const lastCursorPos = useRef<Cursor | null>(null);
   const currentGifTargetKey = useRef<number | null>(null); // Track the key of the target cursor
-  const previousGifTargetPos = useRef<{ top: number; left: number } | null>(
-    null,
-  ); // Track previous target for flipping logic
+  const previousGifTargetPos = useRef<{ Y: number; left: number } | null>(null); // Track previous target for flipping logic
   const timeoutIds = useRef(new Map<number, NodeJS.Timeout>());
 
   // Effect to handle mouse movement and add trail points
   useEffect(() => {
     const moveMouse = (e: MouseEvent) => {
       const potentialNewCursor: Cursor = {
-        top: e.clientY,
-        left: e.clientX,
+        Y: e.clientY,
+        X: e.clientX,
         key: Date.now(),
       };
 
       // Calculate distance from the last *added* trail point
       const distance = lastCursorPos.current
         ? Math.sqrt(
-            Math.pow(potentialNewCursor.left - lastCursorPos.current.left, 2) +
-              Math.pow(potentialNewCursor.top - lastCursorPos.current.top, 2),
+            Math.pow(potentialNewCursor.X - lastCursorPos.current.X, 2) +
+              Math.pow(potentialNewCursor.Y - lastCursorPos.current.Y, 2),
           )
         : Infinity;
 
@@ -97,13 +95,13 @@ function CursorTrailWithGif() {
         const currentLeft =
           previousGifTargetPos.current?.left ??
           parseFloat(gifStyle.left as string) ??
-          nextTarget.left;
-        const isFlipped = nextTarget.left < currentLeft;
+          nextTarget.X;
+        const isFlipped = nextTarget.X < currentLeft;
 
         setGifStyle((prevStyle) => ({
           ...prevStyle,
-          top: `${nextTarget.top}px`,
-          left: `${nextTarget.left}px`,
+          top: `${nextTarget.Y}px`,
+          left: `${nextTarget.X}px`,
           transform: `translate(-50%, -50%) scaleX(${isFlipped ? -1 : 1})`,
           // Ensure transition matches the time until the *next* point expires
           transition: `top ${CURSOR_TIMEOUT_MS / 1000}s linear, left ${
@@ -113,8 +111,8 @@ function CursorTrailWithGif() {
 
         currentGifTargetKey.current = nextTarget.key;
         previousGifTargetPos.current = {
-          top: nextTarget.top,
-          left: nextTarget.left,
+          Y: nextTarget.Y,
+          left: nextTarget.X,
         };
       }
     } else {
@@ -138,8 +136,8 @@ function CursorTrailWithGif() {
           key={cursor.key}
           className="pointer-events-none invisible absolute h-5 w-5 rounded-full bg-black lg:visible dark:bg-white"
           style={{
-            top: `${cursor.top}px`,
-            left: `${cursor.left}px`,
+            top: `${cursor.Y}px`,
+            left: `${cursor.X}px`,
             position: "absolute",
             transform: "translate(-50%, -50%)", // Center the dot on the coordinate
           }}
