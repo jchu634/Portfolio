@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, CSSProperties } from "react";
 import Image from "next/image";
 
 type Cursor = {
@@ -7,24 +7,32 @@ type Cursor = {
   key: number;
 };
 
+const CURSOR_MIN_DISTANCE = 100; // Min distance between trail points to add a new one
+const CURSOR_TIMEOUT_MS = 100; // Time (ms) for a trail point to live and for GIF to travel to it
+
 function CursorTrailWithGif() {
   const [cursors, setCursors] = useState<Cursor[]>([]);
-  const [gifPosition, setGifPosition] = useState({ top: -100, left: -100 }); // Start off-screen
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [gifStyle, setGifStyle] = useState<CSSProperties>({
+    position: "absolute",
+    top: "-100px", // Start off-screen
+    left: "-100px",
+    transform: "translate(-50%, -50%) scaleX(1)",
+    pointerEvents: "none",
+    // Initial transition set, will be updated dynamically
+    transition: `top ${CURSOR_TIMEOUT_MS / 1000}s linear, left ${
+      CURSOR_TIMEOUT_MS / 1000
+    }s linear`,
+    willChange: "top, left", // Hint for performance
+  });
   const lastCursorPos = useRef<Cursor | null>(null);
-  const gifPositionRef = useRef(gifPosition); // Ref to access current gifPosition in timeout
+  const currentGifTargetKey = useRef<number | null>(null); // Track the key of the target cursor
+  const previousGifTargetPos = useRef<{ top: number; left: number } | null>(
+    null,
+  ); // Track previous target for flipping logic
+  const timeoutIds = useRef(new Map<number, NodeJS.Timeout>());
 
-  // Update ref whenever gifPosition changes
+  // Effect to handle mouse movement and add trail points
   useEffect(() => {
-    gifPositionRef.current = gifPosition;
-  }, [gifPosition]);
-
-  const cursorMinDistance = 100; // Distance between trail points
-  const cursorTimeOut = 200; // Base time for each segment expiration
-
-  useEffect(() => {
-    const timeoutIds = new Map<number, NodeJS.Timeout>();
-
     const moveMouse = (e: MouseEvent) => {
       const potentialNewCursor: Cursor = {
         top: e.clientY,
@@ -40,61 +48,91 @@ function CursorTrailWithGif() {
           )
         : Infinity;
 
-      if (distance > cursorMinDistance) {
-        const keyToRemove = potentialNewCursor.key;
-        const cursorToExpire = { ...potentialNewCursor }; // Capture position for timeout
+      // Only add a new point if the mouse moved sufficiently
+      if (distance > CURSOR_MIN_DISTANCE) {
+        const newKey = potentialNewCursor.key;
 
+        // Add the new cursor point to the state
         setCursors((prevCursors) => {
-          const newCursorIndex = prevCursors.length + 1;
-          const timeoutDuration = newCursorIndex * cursorTimeOut;
+          const newCursors = [...prevCursors, potentialNewCursor];
+          const timeoutDuration = newCursors.length * CURSOR_TIMEOUT_MS; // Stagger removal
 
+          // Set a timeout to remove this specific cursor point after its calculated duration
           const timeoutId = setTimeout(() => {
-            // --- GIF Movement Logic ---
-            // Check direction before updating position
-            setIsFlipped(cursorToExpire.left < gifPositionRef.current.left);
-            // Move GIF to the position of the expiring cursor
-            setGifPosition({
-              top: cursorToExpire.top,
-              left: cursorToExpire.left,
-            });
-            // --- End GIF Movement ---
-
-            // Remove the cursor element from the trail state
             setCursors((currentCursors) =>
-              currentCursors.filter((cursor) => cursor.key !== keyToRemove),
+              currentCursors.filter((cursor) => cursor.key !== newKey),
             );
-            timeoutIds.delete(keyToRemove);
+            timeoutIds.current.delete(newKey);
           }, timeoutDuration);
 
-          timeoutIds.set(keyToRemove, timeoutId);
-
-          // If it's the very first cursor, move the GIF immediately
-          if (prevCursors.length === 0) {
-            setGifPosition({
-              top: cursorToExpire.top,
-              left: cursorToExpire.left,
-            });
-          }
-
-          return [...prevCursors, potentialNewCursor];
+          timeoutIds.current.set(newKey, timeoutId);
+          return newCursors;
         });
-
-        // Update the last *added* cursor position
-        lastCursorPos.current = potentialNewCursor;
+        lastCursorPos.current = potentialNewCursor; // Update last added position
       }
     };
 
     window.addEventListener("mousemove", moveMouse);
 
+    // Cleanup function
     return () => {
       window.removeEventListener("mousemove", moveMouse);
-      timeoutIds.forEach((timeoutId) => clearTimeout(timeoutId));
+      // Clear any remaining timeouts when the component unmounts
+      timeoutIds.current.forEach((timeoutId) => clearTimeout(timeoutId));
+      timeoutIds.current.clear();
     };
-  }, [cursorMinDistance, cursorTimeOut]); // Dependencies
+    // Only CURSOR_MIN_DISTANCE and CURSOR_TIMEOUT_MS are dependencies here
+    // Cursors state is managed internally via setCursors callback
+  }, [CURSOR_MIN_DISTANCE, CURSOR_TIMEOUT_MS]);
+
+  // Effect to update GIF target and style when the trail changes
+  useEffect(() => {
+    if (cursors.length > 0) {
+      const nextTarget = cursors[0]; // The oldest cursor is the next target
+
+      // Only update if the target has actually changed
+      if (nextTarget.key !== currentGifTargetKey.current) {
+        // Determine flip direction based on previous target
+        // Use current GIF position if previous target isn't set yet (first move)
+        const currentLeft =
+          previousGifTargetPos.current?.left ??
+          parseFloat(gifStyle.left as string) ??
+          nextTarget.left;
+        const isFlipped = nextTarget.left < currentLeft;
+
+        setGifStyle((prevStyle) => ({
+          ...prevStyle,
+          top: `${nextTarget.top}px`,
+          left: `${nextTarget.left}px`,
+          transform: `translate(-50%, -50%) scaleX(${isFlipped ? -1 : 1})`,
+          // Ensure transition matches the time until the *next* point expires
+          transition: `top ${CURSOR_TIMEOUT_MS / 1000}s linear, left ${
+            CURSOR_TIMEOUT_MS / 1000
+          }s linear`,
+        }));
+
+        currentGifTargetKey.current = nextTarget.key;
+        previousGifTargetPos.current = {
+          top: nextTarget.top,
+          left: nextTarget.left,
+        };
+      }
+    } else {
+      // No cursors, reset target key and potentially hide GIF or stop transition
+      currentGifTargetKey.current = null;
+      previousGifTargetPos.current = null; // Reset previous position too
+      // Optional: Move GIF off-screen immediately when idle and stop transition
+      // setGifStyle(prevStyle => ({
+      //   ...prevStyle,
+      //   top: '-100px',
+      //   left: '-100px',
+      //   transition: 'none' // Stop transition when idle
+      // }));
+    }
+  }, [cursors, CURSOR_TIMEOUT_MS, gifStyle.left]); // Include gifStyle.left to recalculate flip correctly on first move
 
   return (
     <div>
-      {/* Render Cursor Trail Elements */}
       {cursors.map((cursor) => (
         <div
           key={cursor.key}
@@ -108,21 +146,14 @@ function CursorTrailWithGif() {
         />
       ))}
 
-      {/* Render GIF */}
       <Image
-        src="/pacman.gif" // Make sure this path is correct
+        src="/pacman.gif"
         width={40}
         height={40}
         alt="Following GIF"
         className="invisible lg:visible"
-        style={{
-          position: "absolute",
-          top: `${gifPosition.top}px`,
-          left: `${gifPosition.left}px`,
-          transform: `translate(-50%, -50%) ${isFlipped ? "scaleX(-1)" : "scaleX(1)"}`, // Center GIF and flip
-          pointerEvents: "none",
-          transition: "top 0.1s ease-out, left 0.1s ease-out", // Optional smooth transition
-        }}
+        style={gifStyle} // Apply the calculated style
+        unoptimized // NextJS cannot optimize Gifs
       />
     </div>
   );
