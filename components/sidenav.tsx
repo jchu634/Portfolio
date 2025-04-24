@@ -11,8 +11,7 @@ import {
   PacmanEnabledSVGDark,
   PacmanEnabledSVGLight,
 } from "./cursor/svg";
-import CustomCursorTrail from "@/components/cursor/cursorTrail";
-import CustomCursorGif from "@/components/cursor/cursorGif";
+import CursorTrailWithGif from "@/components/cursor/cursorTrail";
 
 import {
   SiGithub,
@@ -72,8 +71,7 @@ export default function SideNav() {
         </LabelButton>
         {showCursor && (
           <div>
-            <CustomCursorTrail />
-            <CustomCursorGif />
+            <CursorTrailWithGif />
           </div>
         )}
       </div>
