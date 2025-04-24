@@ -1,4 +1,4 @@
-import { MailIcon, NotepadTextIcon, SquarePenIcon } from "lucide-react";
+import { MailIcon, CodeIcon, NotebookTextIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
@@ -21,12 +21,12 @@ export default function MobileFooter() {
         </Button>
         <Button variant="nohover" className="bg-white" size="icon" asChild>
           <Link href="/projects">
-            <NotepadTextIcon className="size-10 text-black" />
+            <CodeIcon className="size-10 text-black" />
           </Link>
         </Button>
         <Button variant="nohover" className="bg-white" size="icon" asChild>
           <Link href="/blog">
-            <SquarePenIcon className="size-10 text-black" />
+            <NotebookTextIcon className="size-10 text-black" />
           </Link>
         </Button>
       </div>
