@@ -358,15 +358,12 @@ export default function Page() {
                                       (image, index: number) => {
                                         return (
                                           <DialogTrigger asChild key={index}>
-                                            <CarouselItem className="p-4">
+                                            <CarouselItem className="p-4 hover:cursor-pointer">
                                               <Card className="dark:bg-opacity-40">
                                                 <CardContent className="flex justify-center">
                                                   <Image
                                                     alt="Project Image"
                                                     className="max-h-[300px] object-scale-down"
-                                                    style={{
-                                                      objectFit: "contain",
-                                                    }}
                                                     src={image}
                                                     width={400}
                                                     height={400}
