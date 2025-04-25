@@ -354,7 +354,7 @@ export default function Page() {
                                     loop: true,
                                   }}
                                 >
-                                  <CarouselContent className="flex items-center justify-center">
+                                  <CarouselContent>
                                     {project.images.map(
                                       (image, index: number) => {
                                         return (
