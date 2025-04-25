@@ -492,14 +492,13 @@ export default function Post() {
           <p>
             Notably, Apple Pages is the only software which counts emoji as
             words, and not as a char.
-            <br />
-            <ul>
-              <li>
-                What this means is that 🥡🦪, 🐈‍⬛ is counted as 3 words with
-                Apple pages and 2 words in other software.
-              </li>
-            </ul>
           </p>
+          <ul>
+            <li>
+              What this means is that 🥡🦪, 🐈‍⬛ is counted as 3 words with Apple
+              pages and 2 words in other software.
+            </li>
+          </ul>
 
           <h4>Notable Behaviours</h4>
           <ul>
