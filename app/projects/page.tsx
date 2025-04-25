@@ -22,6 +22,7 @@ import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
+  CarouselCenteredContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
@@ -353,14 +354,14 @@ export default function Page() {
                                     loop: true,
                                   }}
                                 >
-                                  <CarouselContent>
+                                  <CarouselContent className="flex items-center justify-center">
                                     {project.images.map(
                                       (image, index: number) => {
                                         return (
                                           <DialogTrigger asChild key={index}>
                                             <CarouselItem className="p-4 hover:cursor-pointer">
                                               <Card className="dark:bg-opacity-40">
-                                                <CardContent className="flex justify-center">
+                                                <CardContent className="flex items-center justify-center">
                                                   <Image
                                                     alt="Project Image"
                                                     className="max-h-[300px] object-scale-down"
@@ -402,7 +403,7 @@ export default function Page() {
                                           loop: true,
                                         }}
                                       >
-                                        <CarouselContent className="h-full">
+                                        <CarouselCenteredContent className="h-full">
                                           {project.images.map(
                                             (image, index: number) => {
                                               return (
@@ -427,7 +428,7 @@ export default function Page() {
                                               );
                                             },
                                           )}
-                                        </CarouselContent>
+                                        </CarouselCenteredContent>
                                         {project.images.length > 2 && (
                                           <>
                                             <CarouselPrevious className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
