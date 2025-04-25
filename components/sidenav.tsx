@@ -75,7 +75,7 @@ export default function SideNav() {
           </div>
         )}
       </div>
-      <div className="flex flex-col flex-wrap items-center gap-y-2 overflow-hidden">
+      <div className="flex flex-col flex-wrap items-center gap-y-2 overflow-x-hidden">
         <LabelButton
           label="Toggle Cursor trail"
           variant="nohover"
