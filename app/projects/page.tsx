@@ -27,6 +27,14 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 import { intel_one_mono, lexend } from "@/lib/fonts";
 
@@ -337,47 +345,103 @@ export default function Page() {
                           </div>
                           <div className="hidden justify-center sm:flex md:w-full">
                             {project.images && (
-                              <Carousel
-                                className="relative max-h-fit w-4/5 px-8 sm:max-w-fit xl:max-w-fit"
-                                opts={{
-                                  align: "start",
-                                  loop: true,
-                                }}
-                              >
-                                <CarouselContent>
-                                  {project.images.map(
-                                    (image, index: number) => {
-                                      return (
-                                        <CarouselItem
-                                          key={index}
-                                          className="p-4"
-                                        >
-                                          <Card className="dark:bg-opacity-40 bg-slate-500 dark:bg-slate-300">
-                                            <CardContent className="flex justify-center">
-                                              <Image
-                                                alt="Project Image"
-                                                className="max-h-[300px] object-scale-down"
-                                                style={{ objectFit: "contain" }}
-                                                src={image}
-                                                width={400}
-                                                height={400}
-                                                layout="responsive"
-                                                objectFit="contain"
-                                              />
-                                            </CardContent>
-                                          </Card>
-                                        </CarouselItem>
-                                      );
-                                    },
+                              <Dialog>
+                                <Carousel
+                                  className="relative max-h-fit w-4/5 px-8 sm:max-w-fit xl:max-w-fit"
+                                  opts={{
+                                    align: "start",
+                                    loop: true,
+                                  }}
+                                >
+                                  <CarouselContent>
+                                    {project.images.map(
+                                      (image, index: number) => {
+                                        return (
+                                          <DialogTrigger asChild key={index}>
+                                            <CarouselItem className="p-4">
+                                              <Card className="dark:bg-opacity-40">
+                                                <CardContent className="flex justify-center">
+                                                  <Image
+                                                    alt="Project Image"
+                                                    className="max-h-[300px] object-scale-down"
+                                                    style={{
+                                                      objectFit: "contain",
+                                                    }}
+                                                    src={image}
+                                                    width={400}
+                                                    height={400}
+                                                    layout="responsive"
+                                                    objectFit="contain"
+                                                  />
+                                                </CardContent>
+                                              </Card>
+                                            </CarouselItem>
+                                          </DialogTrigger>
+                                        );
+                                      },
+                                    )}
+                                  </CarouselContent>
+                                  {project.images.length > 2 && (
+                                    <>
+                                      <CarouselPrevious className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
+                                      <CarouselNext className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
+                                    </>
                                   )}
-                                </CarouselContent>
-                                {project.images.length > 2 && (
-                                  <>
-                                    <CarouselPrevious className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
-                                    <CarouselNext className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
-                                  </>
-                                )}
-                              </Carousel>
+                                </Carousel>
+
+                                <DialogContent className="h-[90%] min-w-4/5">
+                                  <DialogHeader>
+                                    <DialogTitle>
+                                      {project.name} Gallery
+                                    </DialogTitle>
+                                    <DialogDescription>
+                                      Image Gallery for {project.name}
+                                    </DialogDescription>
+                                    <div className="flex h-full w-4/5 items-center justify-center md:w-full">
+                                      <Carousel
+                                        className="relative flex h-full w-4/5 items-center px-8"
+                                        opts={{
+                                          align: "start",
+                                          loop: true,
+                                        }}
+                                      >
+                                        <CarouselContent className="h-full">
+                                          {project.images.map(
+                                            (image, index: number) => {
+                                              return (
+                                                <CarouselItem
+                                                  className="flex h-full w-full items-center p-4"
+                                                  key={index}
+                                                >
+                                                  <Card className="dark:bg-opacity-40 h-fit w-full">
+                                                    <CardContent className="flex h-full items-center justify-center">
+                                                      <Image
+                                                        alt="Project Image"
+                                                        className="max-h-[500px] object-contain lg:max-h-[700px]"
+                                                        src={image}
+                                                        width={600}
+                                                        height={600}
+                                                        layout="responsive"
+                                                        objectFit="contain"
+                                                      />
+                                                    </CardContent>
+                                                  </Card>
+                                                </CarouselItem>
+                                              );
+                                            },
+                                          )}
+                                        </CarouselContent>
+                                        {project.images.length > 2 && (
+                                          <>
+                                            <CarouselPrevious className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
+                                            <CarouselNext className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
+                                          </>
+                                        )}
+                                      </Carousel>
+                                    </div>
+                                  </DialogHeader>
+                                </DialogContent>
+                              </Dialog>
                             )}
                           </div>
                         </div>
