@@ -18,3 +18,7 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Licenses
+This codebase is MIT Licensed with the exception of blogposts.
+Blogposts are licensed under Creative Commons Attribution 4.0 International.
