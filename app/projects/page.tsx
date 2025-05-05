@@ -43,7 +43,7 @@ const projects = [
   {
     name: "Subtext",
     type: ["Application"],
-    timeframe: "2024-2025",
+    timeframe: "2024-Ongoing",
     technologies_and_frameworks: [
       "Astro",
       "Next.JS",
