@@ -113,7 +113,8 @@ export const projects = [
     name: "Fakman",
     type: "Game",
     technologies_and_frameworks: ["Unity", "C#"],
-    description: "A Unity C# Pacman clone.",
+    description:
+      "A Pacman clone written in C# using the Unity Engine.\nPlayable in the link below!",
     github: "https://github.com/jchu634/fakman",
     link: "/projects/games/Fakman",
     image: "True",
