@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Setting up Proxmox self-hosted Github runners for Subtext",
   date: "2025-04-25",
   description: "Documenting how the Subtext self-hosted runners were setup",
-  lastUpdate: "2025-04-25",
+  lastUpdate: "2025-05-22",
 };
 export default function Post() {
   return (
@@ -71,6 +71,20 @@ export default function Post() {
             Instructions
           </a>
           )
+          <p>
+            Another important thing to set up was NVIDIA VGU drivers which I set
+            up using this{" "}
+            <a href="https://github.com/wvthoog/proxmox-vgpu-installer?tab=readme-ov-file">
+              script
+            </a>{" "}
+            and its accompanying{" "}
+            <a href="https://wvthoog.nl/proxmox-vgpu-v3/">blogpost.</a>
+          </p>
+          <blockquote>
+            This is important as I need a NVIDIA driver present for Pytorch to
+            actually install the packages which include CUDA support into the
+            builds.
+          </blockquote>
         </div>
         <h3>Windows VM Setup</h3>
         <h4> Software</h4>
@@ -86,6 +100,12 @@ export default function Post() {
             )
             <br />
             This is needed for networking to function.
+          </li>
+          <li>
+            The NVIDIA Grid Driver
+            <br />
+            This is needed for PyTorch to build the application with CUDA
+            support.
           </li>
           <li>
             Microsoft Store
@@ -153,6 +173,18 @@ export default function Post() {
           found it easier to add a hard-coded path into the script, which is
           enabled when a specific argument is passed to the script.
         </p>
+        <blockquote>
+          Edit:{" "}
+          <div className="not-italic">
+            I got tired of reconfiguring this manually each time so I added it
+            into the arguments
+          </div>
+          <CodeBlock>
+            ./config.cmd --url https://github.com/jchu634/Subtext-app
+            --runasservice --windowslogonaccount "NT AUTHORITY\SYSTEM" --name
+            NAME --labels LABELS --replace --token TOKEN
+          </CodeBlock>
+        </blockquote>
       </div>
       <h3>Exporting Build Artifacts</h3>
       <p>
@@ -193,7 +225,19 @@ export default function Post() {
         well.
       </p>
       <h3>Notes</h3>
-      <h4>Github Runner Bugs</h4>
+      <h4>Github Runner Issues</h4>
+      <blockquote>
+        Edit:
+        <div className="not-italic">
+          The cause of this issue was due to the VM's incorrect time.
+          <br />I do not leave the VM on 24/7 (Electricity is expensive) so when
+          I actually turn on the VM
+          <br />
+          When the VM boots, the Github Runner automatically runs, finds the
+          incorrect time and then forcibly removes the runner. (
+          <a href="https://github.com/jchu634/Actions-Service-Start">My Fix</a>)
+        </div>
+      </blockquote>
       <p>
         When I was setting up the runner, I kept needing to restart Windows as I
         installed new dependencies. <br />
