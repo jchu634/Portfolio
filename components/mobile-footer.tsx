@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function MobileFooter() {
   return (
-    <main className="absolute bottom-0 flex h-20 w-full justify-between bg-black p-2 px-4 md:hidden dark:bg-white">
+    <main className="absolute bottom-0 flex h-20 w-full justify-between bg-[#122c23] p-2 px-4 md:hidden dark:bg-white">
       <div className="flex flex-row items-center gap-x-2">
         <Button variant="nohover" size="icon" asChild>
           <Link href="/">
@@ -19,14 +19,24 @@ export default function MobileFooter() {
             />
           </Link>
         </Button>
-        <Button variant="nohover" className="bg-white" size="icon" asChild>
+        <Button
+          variant="nohover"
+          className="bg-transparent"
+          size="icon"
+          asChild
+        >
           <Link href="/projects">
-            <CodeIcon className="size-10 text-black" />
+            <CodeIcon className="size-10 text-white dark:text-black" />
           </Link>
         </Button>
-        <Button variant="nohover" className="bg-white" size="icon" asChild>
+        <Button
+          variant="nohover"
+          className="bg-transparent"
+          size="icon"
+          asChild
+        >
           <Link href="/blog">
-            <NotebookTextIcon className="size-10 text-black" />
+            <NotebookTextIcon className="size-10 text-white dark:text-black" />
           </Link>
         </Button>
       </div>
