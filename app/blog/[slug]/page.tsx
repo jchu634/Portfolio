@@ -26,13 +26,13 @@ export default async function BlogPost({
         <div className="prose lg:prose-xl dark:prose-invert prose-p:text-zinc-800 dark:prose-p:text-zinc-200 prose-a:text-blue-600 dark:prose-a:text-blue-400 max-w-none">
           <Separator className="bg-black dark:bg-white"></Separator>
 
-          <div className="flex flex-row items-center justify-end text-right">
+          <div className="flex flex-row items-center justify-end pb-15 text-right md:pb-0">
             This work is licensed under{" "}
             <Link
               href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
               className="flex h-16 flex-row items-center space-x-2 pl-2"
             >
-              <p>CC BY 4.0</p>
+              <p className="text-base md:text-xl">CC BY 4.0</p>
 
               <Image
                 src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
