@@ -186,9 +186,8 @@ export default function Home() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <ScrollArea
-                className="hidden h-50 w-[90svw] rounded-md pr-5 md:flex md:h-108 md:w-5/7"
-                type="always"
+              <div
+                className="hidden overflow-auto rounded-md pr-5 md:inline md:h-120 md:w-5/7"
                 ref={(node) => setContainer(node)}
               >
                 <StackingCards
@@ -201,12 +200,12 @@ export default function Home() {
                       <StackingCardItem
                         key={index}
                         index={index}
-                        className="h-50 md:h-100"
+                        className="h-120"
                       >
                         <Card
                           className={cn(
                             project.bgColor,
-                            "relative mx-auto flex min-h-[80%] w-[85svw] flex-col rounded-3xl px-4 sm:flex-row md:w-11/12 xl:py-10",
+                            "relative mx-auto flex h-fit min-h-80 flex-col rounded-3xl px-4 sm:flex-row md:w-11/12 xl:py-10",
                           )}
                         >
                           <CardContent
@@ -287,8 +286,9 @@ export default function Home() {
                       </StackingCardItem>
                     );
                   })}
+                  <div className="relative h-80 w-full overflow-hidden" />
                 </StackingCards>
-              </ScrollArea>
+              </div>
             </TooltipTrigger>
             <TooltipContent side="top" className="bg-slate-800 text-white">
               <p>Scroll to see more projects</p>
