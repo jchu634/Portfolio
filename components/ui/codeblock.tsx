@@ -44,7 +44,7 @@ function CodeBlock({
 
   return (
     <span className={cn(codeBlockVariants({ variant, className }), "")}>
-      <div
+      <span
         className={cn(
           "font-bold tracking-tighter",
           intel_one_mono.className,
@@ -53,11 +53,9 @@ function CodeBlock({
         {...props}
       >
         {children}
-      </div>
-      <Separator
-        orientation="vertical"
-        className="mx-0 min-h-5 min-w-[1.5px] bg-gray-700 dark:border-gray-300"
-      />
+      </span>
+      <span className="min-h-4 border border-gray-700 dark:border-gray-300"></span>
+
       <Button
         variant="ghost"
         size="icon"
