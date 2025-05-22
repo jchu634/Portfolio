@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function MobileFooter() {
   return (
-    <main className="fixed bottom-0 flex h-20 w-full justify-between bg-[#122c23] p-2 px-4 md:hidden dark:bg-white">
+    <main className="fixed bottom-0 flex h-15 w-full justify-between bg-[#122c23] p-2 px-4 md:hidden dark:bg-white">
       <div className="flex flex-row items-center gap-x-2">
         <Button variant="nohover" size="icon" asChild>
           <Link href="/">
@@ -26,7 +26,7 @@ export default function MobileFooter() {
           asChild
         >
           <Link href="/projects">
-            <CodeIcon className="size-10 text-white dark:text-black" />
+            <CodeIcon className="size-8 text-white dark:text-black" />
           </Link>
         </Button>
         <Button
@@ -36,11 +36,11 @@ export default function MobileFooter() {
           asChild
         >
           <Link href="/blog">
-            <NotebookTextIcon className="size-10 text-white dark:text-black" />
+            <NotebookTextIcon className="size-8 text-white dark:text-black" />
           </Link>
         </Button>
       </div>
-      <div className="flex flex-row items-center gap-x-6">
+      <div className="flex flex-row items-center gap-x-2">
         <Button variant="nohover" size="icon" asChild>
           <Link href="https://www.linkedin.com/in/jchu634/">
             <Image
@@ -62,12 +62,12 @@ export default function MobileFooter() {
 
         <Button variant="nohover" size="icon" asChild>
           <Link href="https://github.com/jchu634">
-            <SiGithub className="size-12 text-white dark:text-black" />
+            <SiGithub className="size-8 text-white dark:text-black" />
           </Link>
         </Button>
         <Button variant="nohover" size="icon" asChild>
           <Link href="mailto:jchu634@keshuac.com">
-            <MailIcon className="size-12 text-white dark:text-black" />
+            <MailIcon className="size-8 text-white dark:text-black" />
           </Link>
         </Button>
       </div>
