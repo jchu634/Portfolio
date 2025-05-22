@@ -32,7 +32,7 @@ export default async function BlogPost({
               href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
               className="flex h-16 flex-row items-center space-x-2 pl-2"
             >
-              <p>CC BY 4.0</p>
+              <p className="text-base md:text-xl">CC BY 4.0</p>
 
               <Image
                 src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
