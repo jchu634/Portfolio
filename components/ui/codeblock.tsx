@@ -5,7 +5,6 @@ import { useState } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 
 import { intel_one_mono } from "@/lib/fonts";
 import { CheckIcon, CopyIcon } from "lucide-react";
