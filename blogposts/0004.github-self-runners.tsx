@@ -113,7 +113,7 @@ export default function Post() {
             This is for installing WinGet and simplify downloading software.
             <br /> Since this is normally not installed in Win 11 LTSC, this
             needs to be re-installed with{" "}
-            <CodeBlock variant="nooutline">wsreset -i</CodeBlock>
+            <CodeBlock variant="no_outline">wsreset -i</CodeBlock>
           </li>
           <li>
             WinGet <br />

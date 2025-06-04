@@ -14,7 +14,8 @@ const codeBlockVariants = cva("group inline-flex items-center space-x-2", {
     variant: {
       default:
         "border-2 border-gray-700 px-3 shadow-sm dark:border-gray-300 italic rounded-xl size-fit text-base",
-      nooutline: "px-1 text-lg",
+      no_outline: "px-1 text-lg",
+      no_outline_italic: "px-1 text-lg italic",
     },
   },
   defaultVariants: {
@@ -26,9 +27,13 @@ function CodeBlock({
   className,
   variant,
   children,
+  hideCopyButton,
   ...props
 }: React.ComponentProps<"div"> &
-  VariantProps<typeof codeBlockVariants> & { children: React.ReactNode }) {
+  VariantProps<typeof codeBlockVariants> & {
+    children: React.ReactNode;
+    hideCopyButton?: boolean;
+  }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -53,20 +58,23 @@ function CodeBlock({
       >
         {children}
       </span>
-      <span className="min-h-4 border border-gray-700 dark:border-gray-300"></span>
-
-      <Button
-        variant="ghost"
-        size="icon"
-        className="hover:bg-accent hover:text-accent-foreground size-6 transition-opacity"
-        onClick={handleCopy}
-      >
-        {copied ? (
-          <CheckIcon className="size-4" />
-        ) : (
-          <CopyIcon className="size-4" />
-        )}{" "}
-      </Button>
+      {!hideCopyButton && (
+        <>
+          <span className="min-h-4 border border-gray-700 dark:border-gray-300"></span>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hover:bg-accent hover:text-accent-foreground size-6 transition-opacity"
+            onClick={handleCopy}
+          >
+            {copied ? (
+              <CheckIcon className="size-4" />
+            ) : (
+              <CopyIcon className="size-4" />
+            )}{" "}
+          </Button>
+        </>
+      )}
     </span>
   );
 }
