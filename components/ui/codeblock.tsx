@@ -27,9 +27,13 @@ function CodeBlock({
   className,
   variant,
   children,
+  hideCopyButton,
   ...props
 }: React.ComponentProps<"div"> &
-  VariantProps<typeof codeBlockVariants> & { children: React.ReactNode }) {
+  VariantProps<typeof codeBlockVariants> & {
+    children: React.ReactNode;
+    hideCopyButton?: boolean;
+  }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -54,20 +58,23 @@ function CodeBlock({
       >
         {children}
       </span>
-      <span className="min-h-4 border border-gray-700 dark:border-gray-300"></span>
-
-      <Button
-        variant="ghost"
-        size="icon"
-        className="hover:bg-accent hover:text-accent-foreground size-6 transition-opacity"
-        onClick={handleCopy}
-      >
-        {copied ? (
-          <CheckIcon className="size-4" />
-        ) : (
-          <CopyIcon className="size-4" />
-        )}{" "}
-      </Button>
+      {!hideCopyButton && (
+        <>
+          <span className="min-h-4 border border-gray-700 dark:border-gray-300"></span>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hover:bg-accent hover:text-accent-foreground size-6 transition-opacity"
+            onClick={handleCopy}
+          >
+            {copied ? (
+              <CheckIcon className="size-4" />
+            ) : (
+              <CopyIcon className="size-4" />
+            )}{" "}
+          </Button>
+        </>
+      )}
     </span>
   );
 }
