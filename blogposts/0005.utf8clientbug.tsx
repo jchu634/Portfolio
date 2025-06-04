@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "Application error: a client-side exception has occurred while loading localhost",
   date: "2025-06-04",
   description:
-    "Documenting a server-side bug which occured when migrating from Next.js 15.1",
+    "Documenting a server-side bug which occured when migrating from Next.js 15.1.x",
   lastUpdate: "2025-06-04",
 };
 export default function Post() {
@@ -28,7 +28,8 @@ export default function Post() {
       <div>
         <h3>TLDR</h3>
         <p>
-          The server sent a UTF-8 encoded file with CP-1252 encoding instead.
+          The Windows server sent a UTF-8 encoded file with CP-1252 encoding
+          instead.
         </p>
       </div>
 
@@ -109,21 +110,50 @@ export default function Post() {
           same file from both servers and diffed them to see if they were
           different and reported if they were different.
           <br />
-          This script then flagged <span className="italic">index.html</span>
+          This script then flagged <span className="italic">index.html </span>
           which showed that NGINX returned{" "}
           <span className="italic">data-panel-id="Â«R6fbÂ»"</span> while FastAPI
           returned <span className="italic"> data-panel-group-id="«Rfb»"</span>
         </p>
       </div>
       <div>
-        <h3>The Cause and the fix</h3>
+        <h3>Conclusion</h3>
         <p>
-          The root cause of the bug was my original FastAPI code:
-          <CodeBlock variant="no_outline">
+          The root cause of the bug was this line in my original FastAPI code:
+          <br />
+          <CodeBlock variant="no_outline_italic" hideCopyButton={true}>
+            return HTMLResponse(open(static_file_path, "r").read())
+          </CodeBlock>
+          <br />
+          And the fix:
+          <br />
+          <CodeBlock variant="no_outline_italic" hideCopyButton={true}>
             return HTMLResponse(open(static_file_path, "r",
             encoding="utf-8").read())
           </CodeBlock>
-          The fix to the backend that caused the
+        </p>
+        <p>
+          An explanation of the bug is that be default if
+          <span className="italic"> encoding</span> is not set to anything, by
+          default Python will use the default system encoding{" "}
+          <CodeBlock variant="no_outline_italic" hideCopyButton={true}>
+            locale.getencoding()
+          </CodeBlock>
+          . <br />
+          On Windows, this returns CP-1252. When Python opened and read the
+          UTF-8 file using CP-1252, when it sent the response it stripped the Â
+          character from data-panel-id which broke the application.
+        </p>
+        <p>
+          The upgrade to Next.js 15.2.x or 15.3.x is what triggered the bug as
+          previously in 15.1.x, the exported html had a data-panel-group-id of{" "}
+          <span className="italic">:R2ftb:</span>.
+        </p>
+        <p>
+          Note: If anyone finds it useful, they can find the testing repo here:{" "}
+          <a href="https://github.com/jchu634/next-export-test">
+            https://github.com/jchu634/next-export-test
+          </a>
         </p>
       </div>
     </article>
