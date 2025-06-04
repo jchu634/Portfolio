@@ -14,7 +14,8 @@ const codeBlockVariants = cva("group inline-flex items-center space-x-2", {
     variant: {
       default:
         "border-2 border-gray-700 px-3 shadow-sm dark:border-gray-300 italic rounded-xl size-fit text-base",
-      nooutline: "px-1 text-lg",
+      no_outline: "px-1 text-lg",
+      no_outline_italic: "px-1 text-lg italic",
     },
   },
   defaultVariants: {
