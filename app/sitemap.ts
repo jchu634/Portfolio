@@ -6,7 +6,6 @@ import path from "path";
 
 // Helper function to dynamically import blog post metadata
 async function getPostMetadata(filePath: string) {
-  const fullPath = path.join(process.cwd(), "blogposts", filePath);
   try {
     const postModule = await import(
       `@/blogposts/${filePath.replace(/\.tsx$/, "")}`
@@ -34,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return {
         url: `https://keshuac.com/blog/${slug}`,
         lastModified: lastModified,
-        changeFrequency: "weekly" as "weekly",
+        changeFrequency: "weekly" as unknown as "weekly",
         priority: 0.7,
       };
     });
