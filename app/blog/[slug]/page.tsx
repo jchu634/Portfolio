@@ -73,11 +73,11 @@ export default async function BlogPost({
           {chronologicallyPreviousPostData ? (
             <Button
               asChild
-              className="max-w-sm justify-start bg-[#122c23] py-8 dark:bg-white"
+              className="justify-start overflow-hidden bg-[#122c23] py-8 text-left text-ellipsis dark:bg-white"
             >
               <Link
                 href={`/blog/${chronologicallyPreviousPostData.slug}`}
-                className="overflow-hidden px-2 text-ellipsis whitespace-nowrap text-blue-600 hover:underline dark:text-blue-800"
+                className="text-blue-600 hover:underline dark:text-blue-800"
               >
                 &larr; Previous post:
                 <br />
