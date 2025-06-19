@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   date: "2025-06-04",
   description:
     "Documenting a server-side bug which occured when migrating from Next.js 15.1.x",
-  lastUpdate: "2025-06-04",
+  lastUpdate: "2025-06-20",
 };
 export default function Post() {
   return (
@@ -47,20 +47,22 @@ export default function Post() {
           <span className="font-bold">dev</span>. <br />
           Then I sent it to the build server and the bug happened: every build
           would build without issues. <br />
-          Except when running the builds, I would get this error:{" "}
+          But when running the builds, I would get this error:{" "}
           <span className="italic">
             Application error: a client-side exception has occurred while
             loading localhost (see the browser console for more information).
           </span>
           <br />
-          and there would be three errors in the console <br />
-          <span className="italic">"No group found for id "«Rufb»""</span>
-          <br />
-          <span className="italic">"No group found for id "«Rfb»""</span>
-          <br />
-          <span className="italic">
-            "Uncaught Error: No group found for id "«Rufb»" ""
-          </span>
+          and there would be three errors in the console
+          <blockquote>
+            <span className="italic">No group found for id "«Rufb»"</span>
+            <br />
+            <span className="italic">No group found for id "«Rfb»"</span>
+            <br />
+            <span className="italic">
+              Uncaught Error: No group found for id "«Rufb»"
+            </span>
+          </blockquote>
         </p>
       </div>
       <div>
@@ -76,40 +78,45 @@ export default function Post() {
           react-resizable-panels package before.
           <br />
           Since I was using react-resizable-panels through the ShadCN Resizable
-          element, through some testing on my own, I was able to confirm that
-          this bug was caused by some interaction with the Resizable component.
+          element, through some testing, I was able to isolate this bug to some
+          interaction with the Resizable component.
         </p>
         <p>
-          I then made a barebones test website with create-next-app, which I
-          initialised ShadCN on and installed Resizable on.
-          <br />I was able to recreate the issue when I exported the test
-          website and hosted it via my backend.
+          I then made a barebones create-next-app application, with only a
+          ShadCN Resizable component and was able to recreate the issue when the
+          application was exported and hosted via my backend.
           <br />
           Since this only occured when the application was exported and hosted
-          and not in dev, I spun up a NGINX vm for debugging and SSHed over the
-          exact same build that was causing issues.
+          and not in dev, I spun up a NGINX vm for debugging with the exact same
+          build that was causing issues.
           <br />I had expected to encounter the exact same bug again, but it
           worked flawlessly.
         </p>
         <p>
-          From there I tried to debug why my FastAPI backend caused this error.
+          This meant that it was my FastAPI backend which caused this error.
           <br />
-          After spending a unspecified (long) amount of time comparing the
-          FastAPI and NGINX requests against the same file in the network tab,
-          <br />I got Gemini 2.5 flash to spin up a script which queried the
-          same file from both servers and diffed them to see if they were
-          different and reported if they were different.
+          I first compared the FastAPI and NGINX requests against the same file
+          in the network tab, and there were no obvious differences, no file
+          fetches failed and each file fetched was the same size.
+          <br />
+          I then spun up a script which queried the same file from both servers
+          and diffed them.
           <br />
           This script then flagged <span className="italic">index.html </span>
           which showed that NGINX returned{" "}
-          <span className="italic">data-panel-id="Â«R6fbÂ»"</span> while FastAPI
-          returned <span className="italic"> data-panel-group-id="«Rfb»"</span>
+          <blockquote>
+            <span className="italic">data-panel-id="Â«R6fbÂ»"</span>
+          </blockquote>
+          while FastAPI returned{" "}
+          <blockquote>
+            <span className="italic"> data-panel-group-id="«Rfb»"</span>
+          </blockquote>
         </p>
       </div>
       <div>
         <h3>Conclusion</h3>
         <p>
-          The root cause of the bug was this line in my original FastAPI code:
+          Eventually, I found the root cause of the bug:
           <br />
           <CodeBlock variant="no_outline_italic" hideCopyButton={true}>
             return HTMLResponse(open(static_file_path, "r").read())
@@ -123,21 +130,34 @@ export default function Post() {
           </CodeBlock>
         </p>
         <p>
-          An explanation of the bug is that be default if
+          Explanation: In{" "}
+          <CodeBlock
+            variant="no_outline_italic"
+            hideCopyButton={true}
+            className="text-md"
+          >
+            open()
+          </CodeBlock>
+          , if
           <span className="italic"> encoding</span> is not set to anything, by
-          default Python will use the default system encoding{" "}
-          <CodeBlock variant="no_outline_italic" hideCopyButton={true}>
+          default Python will use the default system encoding:
+          <CodeBlock
+            variant="no_outline_italic"
+            hideCopyButton={true}
+            className="text-md"
+          >
             locale.getencoding()
           </CodeBlock>
-          . <br />
+          <br />
           On Windows, this returns CP-1252. When Python opened and read the
-          UTF-8 file using CP-1252, when it sent the response it stripped the Â
-          character from data-panel-id which broke the application.
+          UTF-8 file using CP-1252, it stripped the Â character from
+          data-panel-id which broke the application as React could no longer
+          find the element.
         </p>
         <p>
           The upgrade to Next.js 15.2.x or 15.3.x is what triggered the bug as
           previously in 15.1.x, the exported html had a data-panel-group-id of{" "}
-          <span className="italic">:R2ftb:</span>.
+          <span className="italic">:R2ftb:</span>.<br />
         </p>
         <p>
           Note: If anyone finds it useful, they can find the testing repo here:{" "}
