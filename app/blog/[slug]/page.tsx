@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import CommentSection from "@/components/ui/comments";
 import Image from "next/image";
 import Link from "next/link";
 import fs from "fs";
@@ -60,6 +61,7 @@ export default async function BlogPost({
       currentIndex > 0 && currentIndex !== -1
         ? allPostsData[currentIndex - 1]
         : null;
+    const currentPostData: PostData = allPostsData[currentIndex];
 
     const PostContent = (await import(`@/blogposts/${currentPostFileName}`))
       .default;
@@ -108,6 +110,9 @@ export default async function BlogPost({
             <div /> // Placeholder for spacing
           )}
         </div>
+        {currentPostData.title && (
+          <CommentSection blogtitle={currentPostData.title} />
+        )}
 
         <div className="prose lg:prose-xl dark:prose-invert prose-p:text-zinc-800 dark:prose-p:text-zinc-200 prose-a:text-blue-600 dark:prose-a:text-blue-400 max-w-none">
           <Separator className="bg-black dark:bg-white"></Separator>
