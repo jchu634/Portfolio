@@ -54,16 +54,16 @@ export default function Post() {
           </span>
           <br />
           and there would be three errors in the console
-          <blockquote>
-            <span className="italic">No group found for id "«Rufb»"</span>
-            <br />
-            <span className="italic">No group found for id "«Rfb»"</span>
-            <br />
-            <span className="italic">
-              Uncaught Error: No group found for id "«Rufb»"
-            </span>
-          </blockquote>
         </p>
+        <blockquote>
+          <span className="italic">No group found for id "«Rufb»"</span>
+          <br />
+          <span className="italic">No group found for id "«Rfb»"</span>
+          <br />
+          <span className="italic">
+            Uncaught Error: No group found for id "«Rufb»"
+          </span>
+        </blockquote>
       </div>
       <div>
         <h3>Debugging</h3>
@@ -104,14 +104,14 @@ export default function Post() {
           <br />
           This script then flagged <span className="italic">index.html </span>
           which showed that NGINX returned{" "}
-          <blockquote>
-            <span className="italic">data-panel-id="Â«R6fbÂ»"</span>
-          </blockquote>
-          while FastAPI returned{" "}
-          <blockquote>
-            <span className="italic"> data-panel-group-id="«Rfb»"</span>
-          </blockquote>
         </p>
+        <blockquote>
+          <span className="italic">data-panel-id="Â«R6fbÂ»"</span>
+        </blockquote>
+        while FastAPI returned{" "}
+        <blockquote>
+          <span className="italic"> data-panel-group-id="«Rfb»"</span>
+        </blockquote>
       </div>
       <div>
         <h3>Conclusion</h3>
