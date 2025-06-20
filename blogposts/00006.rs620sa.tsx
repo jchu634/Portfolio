@@ -97,7 +97,7 @@ export default function Post() {
           <FigureWithCaption
             src={"/blogs/6/ASUS RS620SA Power Supply 2.jpg"}
             aspectRatio={"aspect-[4/3]"}
-            figureWidth="w-1/2"
+            figureWidth="sm:w-1/2 w-full"
             className="not-prose"
             caption={"ASUS RS620SA-E10-RS12 Power Supply"}
           />
@@ -109,7 +109,7 @@ export default function Post() {
           <FigureWithCaption
             src={"/blogs/6/ASUS RS620SA Cable Management.png"}
             aspectRatio={"aspect-[1491/978]"}
-            figureWidth="w-3/4"
+            figureWidth="md:w-1/2 w-full"
             className="not-prose"
             caption={"ASUS RS620SA-E10-RS12 Cable Management"}
           />
@@ -118,7 +118,7 @@ export default function Post() {
           <FigureWithCaption
             src={"/blogs/6/ASUS RS620SA Cable Management Cable.jpg"}
             aspectRatio={"aspect-[1972/1110]"}
-            figureWidth="w-3/4"
+            figureWidth="md:w-1/2 w-full"
             className="not-prose"
             caption={"ASUS RS620SA-E10-RS12 Custom SFP28 Cables"}
           />
@@ -144,7 +144,7 @@ export default function Post() {
             <FigureWithCaption
               src={"/blogs/6/ASUS RS620SA Backplane.jpg"}
               aspectRatio={"aspect-[911/1161]"}
-              figureWidth="w-1/2"
+              figureWidth="sm:w-1/2 w-full"
               className="not-prose"
               caption={"ASUS RS620SA-E10-RS12 Backplane"}
             />
@@ -172,7 +172,7 @@ export default function Post() {
             <br />
             Note: The node pictured only has 2 DIMMS installed as I used it as a
             test, and the rest of my ram was deployed elseware.
-            <div className="flex space-x-2">
+            <div className="sm:flex sm:space-x-2">
               <FigureWithCaption
                 src={"/blogs/6/ASUS RS620SA Unpopulated Node.jpeg"}
                 aspectRatio={"aspect-[16/9]"}
@@ -195,18 +195,18 @@ export default function Post() {
             cards are limited to 75W.)
             <br /> and finally a riser card with 2 M.2 slots, with each slot
             supporting up to 22110, with SATA or a PCIE Gen 4x4 link.
-            <div className="flex space-x-2">
+            <div className="sm:flex sm:space-x-2">
               <FigureWithCaption
                 src={"/blogs/6/ASUS RS620SA M.2 Side 1.jpg"}
                 aspectRatio={"aspect-[1804/571]"}
-                figureWidth="w-1/2"
+                figureWidth="sm:w-1/2 w-full"
                 className="not-prose"
                 caption={"ASUS RS620SA-E10-RS12 M.2 Riser Card Side 1"}
               />
               <FigureWithCaption
                 src={"/blogs/6/ASUS RS620SA M.2 Side 2.jpg"}
                 aspectRatio={"aspect-[1831/475]"}
-                figureWidth="w-1/2"
+                figureWidth="sm:w-1/2 w-full"
                 className="not-prose"
                 caption={"ASUS RS620SA-E10-RS12 M.2 Riser Card Side 2"}
               />
@@ -219,7 +219,7 @@ export default function Post() {
             <FigureWithCaption
               src={"/blogs/6/ASUS RS620SA Node VGA TPM.jpg"}
               aspectRatio={"aspect-[16/9]"}
-              figureWidth="w-full"
+              figureWidth="sm:w-1/2 w-full"
               className="not-prose"
               caption={"ASUS RS620SA-E10-RS12 VGA and TPM"}
             />
@@ -227,7 +227,7 @@ export default function Post() {
             <FigureWithCaption
               src={"/blogs/6/ASUS RS620SA Node backplane connector.jpg"}
               aspectRatio={"aspect-[2057/795]"}
-              figureWidth="w-full"
+              figureWidth="sm:w-1/2 w-full"
               className="not-prose"
               caption={"ASUS RS620SA-E10-RS12 Node Backplane Connector"}
             />
@@ -243,7 +243,7 @@ export default function Post() {
           <FigureWithCaption
             src={"/blogs/6/ASUS RS620SA Node ASPEED.jpg"}
             aspectRatio={"aspect-[4/3]"}
-            figureWidth="w-full"
+            figureWidth="sm:w-1/2 w-full"
             className="not-prose"
             caption={"ASUS RS620SA-E10-RS12 Node ASPEED AST2500"}
           />
