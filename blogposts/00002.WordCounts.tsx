@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import BlogHeader from "@/components/blog-header";
+import BlogHeader from "@/components/ui/blog-header";
 
 export const metadata: Metadata = {
   title: "Word Counts are a mess",

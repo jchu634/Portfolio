@@ -1,5 +1,5 @@
 import { Metadata } from "@/lib/blogType";
-import BlogHeader from "@/components/blog-header";
+import BlogHeader from "@/components/ui/blog-header";
 
 export const metadata: Metadata = {
   title: "Misc: Grenadine Recipe",
