@@ -1,8 +1,9 @@
 "use client";
 import Giscus from "@giscus/react";
+import { useTheme } from "next-themes";
 
 export default function CommentSection({ blogtitle }: { blogtitle: string }) {
-  console.log(blogtitle);
+  const { theme, setTheme } = useTheme();
   return (
     <Giscus
       id="comments"
@@ -15,7 +16,7 @@ export default function CommentSection({ blogtitle }: { blogtitle: string }) {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme="purple_dark"
+      theme={theme == "dark" ? "purple_dark" : "light_tritanopia"}
       lang="en"
       loading="lazy"
     />
