@@ -274,8 +274,8 @@ export default function Post() {
               outlet.
               <blockquote>
                 For those curious on how I run this server without 16A despite
-                the PSU's C19, I use a C19 to C14 cable and never more than 3 or
-                4 nodes at once.
+                the PSU requiring a 16A C19 cable: I use a C19 to C14 cable and
+                never more than 3 or 4 nodes at once.
               </blockquote>
             </li>
             <li>
