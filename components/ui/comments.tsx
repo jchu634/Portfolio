@@ -3,7 +3,7 @@ import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 
 export default function CommentSection({ blogtitle }: { blogtitle: string }) {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   return (
     <Giscus
       id="comments"

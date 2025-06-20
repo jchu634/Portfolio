@@ -1,6 +1,5 @@
 import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
-import Image from "next/image";
 import FigureWithCaption from "@/components/ui/captioned-image";
 
 export const metadata: Metadata = {
