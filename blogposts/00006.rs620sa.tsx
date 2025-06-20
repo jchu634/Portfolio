@@ -4,7 +4,7 @@ import Image from "next/image";
 import FigureWithCaption from "@/components/ui/captioned-image";
 
 export const metadata: Metadata = {
-  title: "ASUS RS70SA-E10-RS12 2U6N EPYC Server Review?",
+  title: "ASUS RS620SA-E10-RS12 2U6N EPYC Server Review?",
   date: "2025-06-19",
   description: "A unique 2U6N EPYC Rome/Milan Server.",
   lastUpdate: "2025-06-19",
