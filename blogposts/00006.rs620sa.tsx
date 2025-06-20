@@ -169,13 +169,25 @@ export default function Post() {
           <div>
             Each node has a single SP3 socket and has 8 memory channels
             supporting DDR4 3200 with up to 4096GB with 512GB LRDIMMs.
-            <FigureWithCaption
-              src={"/blogs/6/ASUS RS620SA Unpopulated Node.jpeg"}
-              aspectRatio={"aspect-[16/9]"}
-              figureWidth="w-full"
-              className="not-prose"
-              caption={"ASUS RS620SA-E10-RS12 Unpopulated Node"}
-            />
+            <br />
+            Note: The node pictured only has 2 DIMMS installed as I used it as a
+            test, and the rest of my ram was deployed elseware.
+            <div className="flex space-x-2">
+              <FigureWithCaption
+                src={"/blogs/6/ASUS RS620SA Unpopulated Node.jpeg"}
+                aspectRatio={"aspect-[16/9]"}
+                figureWidth="w-full"
+                className="not-prose"
+                caption={"ASUS RS620SA-E10-RS12 Unpopulated Node"}
+              />
+              <FigureWithCaption
+                src={"/blogs/6/ASUS RS620SA Populated Node.jpg"}
+                aspectRatio={"aspect-[16/9]"}
+                figureWidth="w-full"
+                className="not-prose"
+                caption={"ASUS RS620SA-E10-RS12 Populated Node"}
+              />
+            </div>
             As for expansion slots, each node has a PCIE Gen4 x16 OCP 3.0
             expansion slot for networking, <br />
             a PCIE Gen4 x16 half length low profile expansion slot through a
@@ -319,11 +331,11 @@ export default function Post() {
             (Link).
           </a>
           <br />
-          Although, I strongly suspect the reason was due to the much larger SP5
-          socket, in my opinion, one of the possible factors is that I don't
-          think the RS620SA sold particularly well considering that there is the
-          lack of BIOS/BMC updates since 2022 despite other ASUS EPYC servers
-          released in the same timeframe getting updates.
+          I strongly suspect the reason was due to the much larger SP5 socket.
+          <br /> Although in my opinion, one of the possible factors is that I
+          don't think the RS620SA sold particularly well considering that there
+          is the lack of BIOS/BMC updates since 2022 despite other ASUS EPYC
+          servers released in the same timeframe getting updates.
           <br />
           <br />
           Despite this, I am very happy with my purchase, I got it for a
