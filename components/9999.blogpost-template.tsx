@@ -1,5 +1,5 @@
 import { Metadata } from "@/lib/blogType";
-import BlogHeader from "./blog-header";
+import BlogHeader from "./ui/blog-header";
 
 export const metadata: Metadata = {
   title: "Blogpost-Template",
