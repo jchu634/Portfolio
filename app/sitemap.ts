@@ -60,7 +60,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
-      url: "https://keshuac.com/projects/games/fakman",
+      url: "https://keshuac.com/projects/games/Fakman",
       lastModified: new Date(1740999600),
       changeFrequency: "never",
       priority: 0.5,
