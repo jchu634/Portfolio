@@ -224,7 +224,7 @@ export default function Post() {
             />
             Also the Node backplane connectors
             <FigureWithCaption
-              src={"/blogs/6/ASUS RS620SA Node backplane connector.jpg"}
+              src={"/blogs/6/ASUS RS620SA Node Backplane Connector.jpg"}
               aspectRatio={"aspect-[2057/795]"}
               figureWidth="sm:w-1/2 w-full"
               className="not-prose"
