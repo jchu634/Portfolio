@@ -1,5 +1,21 @@
 export const projects = [
   {
+    name: "Inkproof",
+    type: ["Website"],
+    timeframe: "2025",
+    technologies_and_frameworks: ["Next.JS", "TailwindCSS", "TypeScript"],
+    github: "https://github.com/jchu634/Inkproof",
+    website: "https://inkproof.keshuac.com",
+    brief: "A modern ePUB Editor",
+    description: `Inkproof is an pet project that I really wanted to exist.
+      It is also my entry to the Bolt.new 2025 Hackathon.      
+      The project is primarily designed for client-side use, heavily utilising the Origin Private File System (OPFS).`,
+    images: [
+      "/projects/inkproof/inkproof_editor_dark.png",
+      "/projects/inkproof/inkproof_editor_light.png",
+    ],
+  },
+  {
     name: "Subtext",
     type: ["Application"],
     timeframe: "2024-Ongoing",

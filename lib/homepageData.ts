@@ -71,6 +71,20 @@ export const projects = [
   },
   {
     bgColor: "bg-[#1f464d]",
+    name: "Inkproof",
+    type: ["Website"],
+    timeframe: "2024",
+    technologies_and_frameworks: ["Next.JS", "TailwindCSS"],
+    github: "https://github.com/jchu634/Inkproof",
+    website: "https://inkproof.keshuac.com",
+    description: "A modern ePUB Editor\nBuilt for the Bolt.new 2025 Hackathon",
+    image: "True",
+    image_light: "/projects/inkproof/inkproof_editor_light.png",
+    image_dark: "/projects/inkproof/inkproof_editor_dark.png",
+    image_alt: "Inkproof Editor Screenshot",
+  },
+  {
+    bgColor: "bg-[#B30753]",
     name: "CodeCritters",
     type: "Hybrid Application and Website",
     technologies_and_frameworks: [
