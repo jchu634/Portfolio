@@ -219,8 +219,28 @@ export default function Home() {
                               <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
                                 {project.name}
                               </span>
+
                               <span className="text-base font-bold text-wrap whitespace-pre-wrap text-white">
                                 {project.description}
+                              </span>
+
+                              <span className="hidden space-x-2 xl:table-cell">
+                                {project.technologies_and_frameworks &&
+                                  project.technologies_and_frameworks.map(
+                                    (
+                                      technologies_and_frameworks: string,
+                                      index: number,
+                                    ) => {
+                                      return (
+                                        <span
+                                          className="rounded-md bg-lime-200 p-1 px-2 text-xs font-bold text-emerald-950 no-underline hover:no-underline"
+                                          key={index}
+                                        >
+                                          {technologies_and_frameworks}
+                                        </span>
+                                      );
+                                    },
+                                  )}
                               </span>
 
                               <div className="flex space-y-2 gap-x-2 pt-2 md:flex-col 2xl:flex-row 2xl:space-y-0">
