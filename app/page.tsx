@@ -88,19 +88,19 @@ export default function Home() {
             <Link href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKK0HnSxFn3FlbzvMTDoijX9mwHq04LfdAk2CW">
               <Button
                 variant="outline"
-                className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                className="d flex w-fit space-x-2 border-2 border-black not-only:items-center hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
               >
                 <p>View CV</p>
-                <ExternalLinkIcon />
+                <ExternalLinkIcon className="size-5" />
               </Button>
             </Link>
             <Link href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKpLKfeomlDOyPvBFhCAkR7d84bW3f5pSYz0tM">
               <Button
                 variant="outline"
-                className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
               >
                 <p>View Resume</p>
-                <ExternalLinkIcon />
+                <ExternalLinkIcon className="size-5" />
               </Button>
             </Link>
           </div>
@@ -133,11 +133,11 @@ export default function Home() {
                       <div className="pt-2">
                         <Button
                           variant="outline"
-                          className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                          className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
                           asChild
                         >
                           <Link href={edu.link}>
-                            <Link2Icon />
+                            <Link2Icon className="size-5" />
                             <p>Cert Link</p>
                           </Link>
                         </Button>
@@ -225,11 +225,11 @@ export default function Home() {
                                 {project.website && (
                                   <Button
                                     variant="outline"
-                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                                    className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
                                     <Link href={project.website}>
-                                      <Link2Icon />
+                                      <Link2Icon className="size-5" />
                                       <p>Website</p>
                                     </Link>
                                   </Button>
@@ -237,11 +237,11 @@ export default function Home() {
                                 {project.github && (
                                   <Button
                                     variant="outline"
-                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                                    className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
                                     <Link href={project.github}>
-                                      <SiGithub />
+                                      <SiGithub className="size-5" />
                                       <p>Github</p>
                                     </Link>
                                   </Button>
@@ -249,11 +249,11 @@ export default function Home() {
                                 {project.download && (
                                   <Button
                                     variant="outline"
-                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                                    className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
                                     <Link href={project.download}>
-                                      <DownloadIcon />
+                                      <DownloadIcon className="size-5" />
                                       <p>Download</p>
                                     </Link>
                                   </Button>
