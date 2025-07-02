@@ -374,7 +374,7 @@ export default function Home() {
                       <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
                         {project.name}
                       </span>
-                      <span className="text-base font-bold text-wrap whitespace-pre-wrap">
+                      <span className="text-base font-bold text-wrap whitespace-pre-wrap text-white">
                         {project.description}
                       </span>
 
@@ -383,11 +383,11 @@ export default function Home() {
                           {project.website && (
                             <Button
                               variant="outline"
-                              className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                              className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                               asChild
                             >
                               <Link href={project.website}>
-                                <Link2Icon />
+                                <Link2Icon className="size-4" />
                                 <p>Website</p>
                               </Link>
                             </Button>
@@ -395,11 +395,11 @@ export default function Home() {
                           {project.github && (
                             <Button
                               variant="outline"
-                              className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                              className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                               asChild
                             >
                               <Link href={project.github}>
-                                <SiGithub />
+                                <SiGithub className="size-4" />
                                 <p>Github</p>
                               </Link>
                             </Button>
@@ -409,11 +409,11 @@ export default function Home() {
                         {project.download && (
                           <Button
                             variant="outline"
-                            className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                            className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                             asChild
                           >
                             <Link href={project.download}>
-                              <DownloadIcon />
+                              <DownloadIcon className="size-4" />
                               <p>Download</p>
                             </Link>
                           </Button>
