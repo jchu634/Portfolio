@@ -8,6 +8,7 @@ import { intel_one_mono, roboto_slab } from "@/lib/fonts";
 import { Link2Icon, DownloadIcon, ExternalLinkIcon } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { isMobile } from "react-device-detect";
+import { useTheme } from "next-themes";
 
 import VariableFontCursorProximity from "@/components/fancy/text/variable-font-cursor-proximity";
 import StackingCards, {
@@ -39,6 +40,7 @@ export default function Home() {
 
   const [container, setContainer] = useState<HTMLElement | null>(null);
   const [mobContainer, setMobContainer] = useState<HTMLElement | null>(null);
+  const { theme } = useTheme();
 
   return (
     <div className="h-fit w-full">
@@ -260,26 +262,49 @@ export default function Home() {
                                 )}
                               </div>
                             </div>
-                            <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
-                              <Image
-                                src={project.image_light}
-                                alt={project.name}
-                                priority={project.priority ? true : false}
-                                style={{ objectFit: "contain" }}
-                                width={350}
-                                height={350}
-                                className="hidden xl:block"
-                              />
-                              <Image
-                                src={project.image_light}
-                                alt={project.name}
-                                priority={project.priority ? true : false}
-                                style={{ objectFit: "contain" }}
-                                width={300}
-                                height={300}
-                                className="hidden lg:block xl:hidden"
-                              />
-                            </div>
+                            {theme == "dark" ? (
+                              <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
+                                <Image
+                                  src={project.image_dark}
+                                  alt={project.name}
+                                  priority={project.priority ? true : false}
+                                  style={{ objectFit: "contain" }}
+                                  width={350}
+                                  height={350}
+                                  className="hidden xl:block"
+                                />
+                                <Image
+                                  src={project.image_dark}
+                                  alt={project.name}
+                                  priority={project.priority ? true : false}
+                                  style={{ objectFit: "contain" }}
+                                  width={300}
+                                  height={300}
+                                  className="hidden lg:block xl:hidden"
+                                />
+                              </div>
+                            ) : (
+                              <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
+                                <Image
+                                  src={project.image_light}
+                                  alt={project.name}
+                                  priority={project.priority ? true : false}
+                                  style={{ objectFit: "contain" }}
+                                  width={350}
+                                  height={350}
+                                  className="hidden xl:block"
+                                />
+                                <Image
+                                  src={project.image_light}
+                                  alt={project.name}
+                                  priority={project.priority ? true : false}
+                                  style={{ objectFit: "contain" }}
+                                  width={300}
+                                  height={300}
+                                  className="hidden lg:block xl:hidden"
+                                />
+                              </div>
+                            )}
                           </CardContent>
                         </Card>
                       </StackingCardItem>
