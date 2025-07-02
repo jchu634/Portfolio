@@ -8,6 +8,7 @@ import { intel_one_mono, roboto_slab } from "@/lib/fonts";
 import { Link2Icon, DownloadIcon, ExternalLinkIcon } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { isMobile } from "react-device-detect";
+import { useTheme } from "next-themes";
 
 import VariableFontCursorProximity from "@/components/fancy/text/variable-font-cursor-proximity";
 import StackingCards, {
@@ -39,6 +40,7 @@ export default function Home() {
 
   const [container, setContainer] = useState<HTMLElement | null>(null);
   const [mobContainer, setMobContainer] = useState<HTMLElement | null>(null);
+  const { theme } = useTheme();
 
   return (
     <div className="h-fit w-full">
@@ -88,19 +90,19 @@ export default function Home() {
             <Link href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKK0HnSxFn3FlbzvMTDoijX9mwHq04LfdAk2CW">
               <Button
                 variant="outline"
-                className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                className="d flex w-fit space-x-2 border-2 border-black not-only:items-center hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
               >
                 <p>View CV</p>
-                <ExternalLinkIcon />
+                <ExternalLinkIcon className="size-5" />
               </Button>
             </Link>
             <Link href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKpLKfeomlDOyPvBFhCAkR7d84bW3f5pSYz0tM">
               <Button
                 variant="outline"
-                className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
               >
                 <p>View Resume</p>
-                <ExternalLinkIcon />
+                <ExternalLinkIcon className="size-5" />
               </Button>
             </Link>
           </div>
@@ -133,11 +135,11 @@ export default function Home() {
                       <div className="pt-2">
                         <Button
                           variant="outline"
-                          className="d flex w-fit items-center border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                          className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
                           asChild
                         >
                           <Link href={edu.link}>
-                            <Link2Icon />
+                            <Link2Icon className="size-5" />
                             <p>Cert Link</p>
                           </Link>
                         </Button>
@@ -217,19 +219,39 @@ export default function Home() {
                               <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
                                 {project.name}
                               </span>
+
                               <span className="text-base font-bold text-wrap whitespace-pre-wrap text-white">
                                 {project.description}
+                              </span>
+
+                              <span className="hidden space-x-2 xl:table-cell">
+                                {project.technologies_and_frameworks &&
+                                  project.technologies_and_frameworks.map(
+                                    (
+                                      technologies_and_frameworks: string,
+                                      index: number,
+                                    ) => {
+                                      return (
+                                        <span
+                                          className="rounded-md bg-lime-200 p-1 px-2 text-xs font-bold text-emerald-950 no-underline hover:no-underline"
+                                          key={index}
+                                        >
+                                          {technologies_and_frameworks}
+                                        </span>
+                                      );
+                                    },
+                                  )}
                               </span>
 
                               <div className="flex space-y-2 gap-x-2 pt-2 md:flex-col 2xl:flex-row 2xl:space-y-0">
                                 {project.website && (
                                   <Button
                                     variant="outline"
-                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                                    className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
                                     <Link href={project.website}>
-                                      <Link2Icon />
+                                      <Link2Icon className="size-5" />
                                       <p>Website</p>
                                     </Link>
                                   </Button>
@@ -237,11 +259,11 @@ export default function Home() {
                                 {project.github && (
                                   <Button
                                     variant="outline"
-                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                                    className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
                                     <Link href={project.github}>
-                                      <SiGithub />
+                                      <SiGithub className="size-5" />
                                       <p>Github</p>
                                     </Link>
                                   </Button>
@@ -249,37 +271,60 @@ export default function Home() {
                                 {project.download && (
                                   <Button
                                     variant="outline"
-                                    className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                                    className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
                                     <Link href={project.download}>
-                                      <DownloadIcon />
+                                      <DownloadIcon className="size-5" />
                                       <p>Download</p>
                                     </Link>
                                   </Button>
                                 )}
                               </div>
                             </div>
-                            <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
-                              <Image
-                                src={project.image_light}
-                                alt={project.name}
-                                priority={project.priority ? true : false}
-                                style={{ objectFit: "contain" }}
-                                width={350}
-                                height={350}
-                                className="hidden xl:block"
-                              />
-                              <Image
-                                src={project.image_light}
-                                alt={project.name}
-                                priority={project.priority ? true : false}
-                                style={{ objectFit: "contain" }}
-                                width={300}
-                                height={300}
-                                className="hidden lg:block xl:hidden"
-                              />
-                            </div>
+                            {theme == "dark" ? (
+                              <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
+                                <Image
+                                  src={project.image_dark}
+                                  alt={project.name}
+                                  priority={project.priority ? true : false}
+                                  style={{ objectFit: "contain" }}
+                                  width={350}
+                                  height={350}
+                                  className="hidden xl:block"
+                                />
+                                <Image
+                                  src={project.image_dark}
+                                  alt={project.name}
+                                  priority={project.priority ? true : false}
+                                  style={{ objectFit: "contain" }}
+                                  width={300}
+                                  height={300}
+                                  className="hidden lg:block xl:hidden"
+                                />
+                              </div>
+                            ) : (
+                              <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
+                                <Image
+                                  src={project.image_light}
+                                  alt={project.name}
+                                  priority={project.priority ? true : false}
+                                  style={{ objectFit: "contain" }}
+                                  width={350}
+                                  height={350}
+                                  className="hidden xl:block"
+                                />
+                                <Image
+                                  src={project.image_light}
+                                  alt={project.name}
+                                  priority={project.priority ? true : false}
+                                  style={{ objectFit: "contain" }}
+                                  width={300}
+                                  height={300}
+                                  className="hidden lg:block xl:hidden"
+                                />
+                              </div>
+                            )}
                           </CardContent>
                         </Card>
                       </StackingCardItem>
@@ -329,7 +374,7 @@ export default function Home() {
                       <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
                         {project.name}
                       </span>
-                      <span className="text-base font-bold text-wrap whitespace-pre-wrap">
+                      <span className="text-base font-bold text-wrap whitespace-pre-wrap text-white">
                         {project.description}
                       </span>
 
@@ -338,11 +383,11 @@ export default function Home() {
                           {project.website && (
                             <Button
                               variant="outline"
-                              className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                              className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                               asChild
                             >
                               <Link href={project.website}>
-                                <Link2Icon />
+                                <Link2Icon className="size-4" />
                                 <p>Website</p>
                               </Link>
                             </Button>
@@ -350,11 +395,11 @@ export default function Home() {
                           {project.github && (
                             <Button
                               variant="outline"
-                              className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                              className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                               asChild
                             >
                               <Link href={project.github}>
-                                <SiGithub />
+                                <SiGithub className="size-4" />
                                 <p>Github</p>
                               </Link>
                             </Button>
@@ -364,11 +409,11 @@ export default function Home() {
                         {project.download && (
                           <Button
                             variant="outline"
-                            className="flex w-fit items-center border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
+                            className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                             asChild
                           >
                             <Link href={project.download}>
-                              <DownloadIcon />
+                              <DownloadIcon className="size-4" />
                               <p>Download</p>
                             </Link>
                           </Button>
