@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "ASUS RS620SA-E10-RS12 2U6N EPYC Server Review?",
   date: "2025-06-19",
   description: "A unique 2U6N EPYC Rome/Milan Server.",
-  lastUpdate: "2025-06-19",
+  lastUpdate: "2025-06-22",
 };
 export default function Post() {
   return (

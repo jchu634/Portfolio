@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   date: "2025-06-04",
   description:
     "Documenting a server-side bug which occured when migrating from Next.js 15.1.x",
-  lastUpdate: "2025-06-20",
+  lastUpdate: "2025-06-21",
 };
 export default function Post() {
   return (
