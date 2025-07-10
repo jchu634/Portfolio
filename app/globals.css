@@ -13,6 +13,8 @@
   --font-slab: var(--font-roboto-slab);
   --font-lexend: var(--font-lexend);
   --font-gabarito: var(--font-gabarito);
+  --font-intel: var(--font-intel_one_mono);
+
   --gradient-radial-tr: 'radial-gradient(circle at top right, var(--tw-gradient-stops))',
 
 }
@@ -134,4 +136,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+.prose :where(:not(pre) > code)::before,
+.prose :where(:not(pre) > code)::after {
+  content: "" !important;
 }

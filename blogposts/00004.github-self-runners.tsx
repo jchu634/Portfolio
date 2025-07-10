@@ -102,7 +102,9 @@ export default function Post() {
             This is for installing WinGet and simplify downloading software.
             <br /> Since this is normally not installed in Win 11 LTSC, this
             needs to be re-installed with{" "}
-            <CodeBlock variant="no_outline">wsreset -i</CodeBlock>
+            <CodeBlock variant="no_outline" className="prose-pre:m-0">
+              wsreset -i
+            </CodeBlock>
           </li>
           <li>
             WinGet <br />
@@ -113,7 +115,7 @@ export default function Post() {
             Windows Terminal
             <blockquote className="my-0!">For some terminal QOL</blockquote>
             Install:{" "}
-            <CodeBlock>
+            <CodeBlock className="prose-pre:m-0">
               winget install --id=Microsoft.WindowsTerminal -e
             </CodeBlock>
           </li>
@@ -168,7 +170,7 @@ export default function Post() {
             I got tired of reconfiguring this manually each time so I added it
             into the arguments
           </div>
-          <CodeBlock>
+          <CodeBlock className="prose-pre:m-0">
             ./config.cmd --url https://github.com/jchu634/Subtext-app
             --runasservice --windowslogonaccount "NT AUTHORITY\SYSTEM" --name
             NAME --labels LABELS --replace --token TOKEN
