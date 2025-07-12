@@ -1,6 +1,8 @@
 import { CodeBlock } from "@/components/ui/codeblock";
 import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
+import { intel_one_mono } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title:
@@ -8,7 +10,7 @@ export const metadata: Metadata = {
   date: "2025-06-04",
   description:
     "Documenting a server-side bug which occured when migrating from Next.js 15.1.x",
-  lastUpdate: "2025-06-20",
+  lastUpdate: "2025-07-11",
 };
 export default function Post() {
   return (
@@ -104,61 +106,79 @@ export default function Post() {
           <br />
           This script then flagged <span className="italic">index.html </span>
           which showed that NGINX returned{" "}
+          <code
+            className={cn(
+              "rounded-md bg-slate-800 p-1.5 text-white",
+              intel_one_mono.className,
+            )}
+          >
+            <span className="italic">data-panel-id="Â«R6fbÂ»"</span>
+          </code>{" "}
+          while FastAPI returned{" "}
+          <code
+            className={cn(
+              "rounded-md bg-slate-800 p-1.5 text-white",
+              intel_one_mono.className,
+            )}
+          >
+            <span className="italic"> data-panel-group-id="«Rfb»"</span>
+          </code>
         </p>
-        <blockquote>
-          <span className="italic">data-panel-id="Â«R6fbÂ»"</span>
-        </blockquote>
-        while FastAPI returned{" "}
-        <blockquote>
-          <span className="italic"> data-panel-group-id="«Rfb»"</span>
-        </blockquote>
       </div>
       <div>
         <h3>Conclusion</h3>
         <p>
-          Eventually, I found the root cause of the bug:
+          Eventually, I found the root cause of the bug: In{" "}
+          <code
+            className={cn(
+              "rounded-md bg-slate-800 p-1.5 text-white",
+              intel_one_mono.className,
+            )}
+          >
+            open()
+          </code>
+          , if
+          <span className="italic"> encoding</span> is not set to anything, by
+          default Python will use the default system encoding:{" "}
+          <code
+            className={cn(
+              "rounded-md bg-slate-800 p-1.5 text-white",
+              intel_one_mono.className,
+            )}
+          >
+            locale.getencoding()
+          </code>
           <br />
-          <CodeBlock variant="no_outline_italic" hideCopyButton={true}>
+          On Windows, this returns CP-1252. When Python opened and read the
+          UTF-8 file using CP-1252, it stripped some UTF-8 characters from
+          data-panel-id (Â, 6) which broke the application as React could no
+          longer find the element.
+          <p>
+            The upgrade to Next.js 15.2.x or 15.3.x is what triggered the bug as
+            previously in 15.1.x, the exported html had a data-panel-group-id of{" "}
+            <code
+              className={cn(
+                "rounded-md bg-slate-800 p-1.5 text-white italic",
+                intel_one_mono.className,
+              )}
+            >
+              :R2ftb:
+            </code>
+            .<br />
+          </p>
+          <h4>Buggy Code</h4>
+          <CodeBlock hideCopyButton={true} className="prose-pre:m-0">
             return HTMLResponse(open(static_file_path, "r").read())
           </CodeBlock>
-          <br />
-          And the fix:
-          <br />
-          <CodeBlock variant="no_outline_italic" hideCopyButton={true}>
+          <h4>Fixed Code</h4>
+          <CodeBlock hideCopyButton={true} className="prose-pre:m-0">
             return HTMLResponse(open(static_file_path, "r",
             encoding="utf-8").read())
           </CodeBlock>
         </p>
-        <p>
-          Explanation: In{" "}
-          <CodeBlock
-            variant="no_outline_italic"
-            hideCopyButton={true}
-            className="text-md"
-          >
-            open()
-          </CodeBlock>
-          , if
-          <span className="italic"> encoding</span> is not set to anything, by
-          default Python will use the default system encoding:
-          <CodeBlock
-            variant="no_outline_italic"
-            hideCopyButton={true}
-            className="text-md"
-          >
-            locale.getencoding()
-          </CodeBlock>
-          <br />
-          On Windows, this returns CP-1252. When Python opened and read the
-          UTF-8 file using CP-1252, it stripped the Â character from
-          data-panel-id which broke the application as React could no longer
-          find the element.
-        </p>
-        <p>
-          The upgrade to Next.js 15.2.x or 15.3.x is what triggered the bug as
-          previously in 15.1.x, the exported html had a data-panel-group-id of{" "}
-          <span className="italic">:R2ftb:</span>.<br />
-        </p>
+
+        <p></p>
+
         <p>
           Note: If anyone finds it useful, they can find the testing repo here:{" "}
           <a href="https://github.com/jchu634/next-export-test">

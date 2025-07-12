@@ -13,6 +13,8 @@
   --font-slab: var(--font-roboto-slab);
   --font-lexend: var(--font-lexend);
   --font-gabarito: var(--font-gabarito);
+  --font-intel: var(--font-intel_one_mono);
+
   --gradient-radial-tr: 'radial-gradient(circle at top right, var(--tw-gradient-stops))',
 
 }
@@ -135,3 +137,22 @@
     @apply bg-background text-foreground;
   }
 }
+@layer utilities {
+  .all-initial {
+    all: initial;
+  }
+  .all-inherit {
+    all: inherit;
+  }
+  .all-revert {
+    all: revert;
+  }
+  .all-unset {
+    all: unset;
+  }
+}
+.prose :where(:not(pre) > code)::before,
+.prose :where(:not(pre) > code)::after {
+  content: "" !important;
+}
+
