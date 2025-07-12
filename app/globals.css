@@ -137,7 +137,22 @@
     @apply bg-background text-foreground;
   }
 }
+@layer utilities {
+  .all-initial {
+    all: initial;
+  }
+  .all-inherit {
+    all: inherit;
+  }
+  .all-revert {
+    all: revert;
+  }
+  .all-unset {
+    all: unset;
+  }
+}
 .prose :where(:not(pre) > code)::before,
 .prose :where(:not(pre) > code)::after {
   content: "" !important;
 }
+
