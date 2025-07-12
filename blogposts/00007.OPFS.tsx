@@ -12,10 +12,10 @@ import {
 import { ChevronDownIcon } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Documenting the OPFS Browser development",
+  title: "Documenting Firefox Extension OPFS APIs",
   date: "2025-07-10",
   description: "This wasn't supposed to work...",
-  lastUpdate: "2025-07-10",
+  lastUpdate: "2025-07-12",
 };
 export default function Post() {
   const code = `
@@ -52,11 +52,12 @@ export default function Post() {
           That is where my things diverge from my original draft of this
           article.
           <br />
-          I was originally stuck and unable to get anything to work, but I
-          decided to try one more extension API, and it worked.
+          I was originally stuck and unable to get anything to work, and was
+          frustrated enough to write an article, but I decided to try one more
+          extension API, and... it worked.
           <br />
           So this article is an attempt to salvage the content from my original
-          blogpost and to document what in the OPFS works or doesn't on Firefox
+          article and to document what in the OPFS works or doesn't on Firefox
           Addons.
         </p>
       </div>
@@ -79,6 +80,7 @@ export default function Post() {
                 For this article, the only contexts that are relevant are
                 Background, Content and Devtools.
                 <br />
+                <br />
               </p>
               <p>
                 Background Scripts as implied, run in the background, their job
@@ -91,15 +93,25 @@ export default function Post() {
                 an event happens or they can be persistent and run the entire
                 time the browser has loaded a certain extension.
                 <br />
+                <br />
               </p>
               <p>
                 Content Scripts are intended to run on a webpage, they are used
                 as they are able to read and modify the contents of a page.
                 Hence Content Scripts are immensely powerful.
-              </p>
-              <p>
+                <br />
                 Devtool Scripts are incredibly specialised, intended to run on a
                 page in the browser's devtools.
+              </p>
+              <br />
+              <p>
+                Unlike Background scripts which have full access to the suite of
+                Web-Extension APIs, Devtool and Content Scripts only get access
+                to a subset of the Web-Extension APIs.
+                <br />
+                This is because Background scripts do not get direct access to
+                the DOM which restricts it somewhat. <br />
+                Devtool Scripts also get exclusive access to the Devtool APIs.
               </p>
             </AccordionContent>
           </AccordionItem>
@@ -188,7 +200,7 @@ export default function Post() {
         </p>
         <p>
           You would think that OPFS-Explorer would then be fine, as it does its
-          OPFS calls from the correct context through bridge.
+          OPFS calls from the correct context through a bridge.
           <br />
           But it breaks in an entirely different way.
           <br />
@@ -245,7 +257,7 @@ export default function Post() {
           >
             eval()
           </code>{" "}
-          acts very simimilarly to{" "}
+          acts very similarly to{" "}
           <code
             className={cn(
               "rounded-md bg-slate-800 p-1 text-white",
@@ -270,7 +282,7 @@ export default function Post() {
           is uniquely able to access the OPFS correctly.
         </p>
         <p>
-          However, an issue is that any script run by
+          However, an issue is that any script run by{" "}
           <code
             className={cn(
               "rounded-md bg-slate-800 p-1 text-white",
@@ -279,10 +291,10 @@ export default function Post() {
           >
             eval()
           </code>{" "}
-          must return to a JSON representable value.
+          must return a JSON representable value.
           <br />
           This caused all sorts of headache, as the OPFS api is asynchronous and
-          would return a promise of JSON, which I could not get{" "}
+          would return a JSON promise and not JSON, which I could not get{" "}
           <code
             className={cn(
               "rounded-md bg-slate-800 p-1 text-white",
@@ -293,8 +305,9 @@ export default function Post() {
           </code>{" "}
           to resolve at all.
           <br />
-          Ultimately, my solution was to give up on a clean Devtools only script
-          and to architect the extension so that
+          Ultimately, I was unable to get it to work and my solution was to
+          instead give up on a clean Devtools only script and to architect the
+          extension so that
         </p>
         <ol>
           <li>
