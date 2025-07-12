@@ -167,19 +167,11 @@ export default function Post() {
             .<br />
           </p>
           <h4>Buggy Code</h4>
-          <CodeBlock
-            variant="no_outline_italic"
-            hideCopyButton={true}
-            className="prose-pre:m-0"
-          >
+          <CodeBlock hideCopyButton={true} className="prose-pre:m-0">
             return HTMLResponse(open(static_file_path, "r").read())
           </CodeBlock>
           <h4>Fixed Code</h4>
-          <CodeBlock
-            variant="no_outline_italic"
-            hideCopyButton={true}
-            className="prose-pre:m-0"
-          >
+          <CodeBlock hideCopyButton={true} className="prose-pre:m-0">
             return HTMLResponse(open(static_file_path, "r",
             encoding="utf-8").read())
           </CodeBlock>

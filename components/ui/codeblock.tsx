@@ -1,38 +1,21 @@
 "use client";
 import * as React from "react";
 import { useState } from "react";
-import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 import { intel_one_mono } from "@/lib/fonts";
 import { CheckIcon, CopyIcon } from "lucide-react";
 
-const codeBlockVariants = cva("group inline-flex items-center space-x-2", {
-  variants: {
-    variant: {
-      default:
-        "border-2 border-gray-700 px-3 shadow-sm dark:border-gray-300 italic rounded-xl size-fit text-base",
-      no_outline: "px-1 text-lg",
-      no_outline_italic: "px-1 text-lg italic",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-  },
-});
-
 function CodeBlock({
   className,
-  variant,
   children,
   hideCopyButton,
   ...props
-}: React.ComponentProps<"div"> &
-  VariantProps<typeof codeBlockVariants> & {
-    children: React.ReactNode;
-    hideCopyButton?: boolean;
-  }) {
+}: React.ComponentProps<"div"> & {
+  children: React.ReactNode;
+  hideCopyButton?: boolean;
+}) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
