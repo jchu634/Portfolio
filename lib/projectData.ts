@@ -1,5 +1,17 @@
 export const projects = [
   {
+    name: "OPFS Browser",
+    type: ["Application"],
+    timeframe: "2025",
+    technologies_and_frameworks: ["Vite", "TailwindCSS", "Firefox Addons"],
+    github: "https://github.com/jchu634/opfs-browser",
+    brief: "Web Browser Extension for viewing the OPFS in the Devtools.",
+    description: `OPFS Browser was created so that I could have a way to easily debug Origin Private File System (OPFS) issues.
+    This was directly created in response to frustrations in debugging Inkproof on Firefox as there was no extension to do so unlike on Chrome.
+    `,
+    images: ["/projects/opfs-browser/opfs-browser-screenshot.png"],
+  },
+  {
     name: "Inkproof",
     type: ["Website"],
     timeframe: "2025",
@@ -142,6 +154,17 @@ export const projects = [
     ],
   },
   {
+    name: "Shorts Redirector",
+    type: ["Application"],
+    timeframe: "2023",
+    technologies_and_frameworks: ["HTML", "CSS", "VanillaJS"],
+    brief: "Chrome Extension for Redirecting YouTube Shorts",
+    description:
+      "A Chrome Extension which automatically redirects YouTube Shorts from the Shorts player to the General YouTube player.\n" +
+      "This was never published to the Chrome Web Store as I found there existed an already published extension which did the same thing after I finished this.",
+    github: "https://github.com/jchu634/ShortsRedirector",
+  },
+  {
     name: "Loopy-Desktop",
     type: ["Application"],
     timeframe: "2022 - 2023",
@@ -170,17 +193,6 @@ export const projects = [
     github: "https://github.com/jchu634/fakman",
     website: "/projects/games/Fakman",
     images: ["/projects/fakman/Fakman.png"],
-  },
-  {
-    name: "Shorts Redirector",
-    type: ["Application"],
-    timeframe: "2023",
-    technologies_and_frameworks: ["HTML", "CSS", "VanillaJS"],
-    brief: "Chrome Extension for Redirecting YouTube Shorts",
-    description:
-      "A Chrome Extension which automatically redirects YouTube Shorts from the Shorts player to the General YouTube player.\n" +
-      "This was never published to the Chrome Web Store as I found there existed an already published extension which did the same thing after I finished this.",
-    github: "https://github.com/jchu634/ShortsRedirector",
   },
   {
     name: "Brookshear Machine Simulator",
