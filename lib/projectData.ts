@@ -5,8 +5,9 @@ export const projects = [
     timeframe: "2025",
     technologies_and_frameworks: ["Vite", "TailwindCSS", "Firefox Addons"],
     github: "https://github.com/jchu634/opfs-browser",
+    website: "https://addons.mozilla.org/en-US/firefox/addon/opfs-browser/",
     brief: "Web Browser Extension for viewing the OPFS in the Devtools.",
-    description: `OPFS Browser was created so that I could have a way to easily debug Origin Private File System (OPFS) issues.
+    description: `OPFS Browser is a Firefox addon created so that I could have a way to easily debug Origin Private File System (OPFS) issues.
     This was directly created in response to frustrations in debugging Inkproof on Firefox as there was no extension to do so unlike on Chrome.
     `,
     images: ["/projects/opfs-browser/opfs-browser-screenshot.png"],
