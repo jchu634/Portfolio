@@ -10,12 +10,13 @@ import {
   AccordionTriggerShell,
 } from "@/components/ui/accordion";
 import { ChevronDownIcon } from "lucide-react";
+import { FirefoxAddon } from "@/lib/svg";
 
 export const metadata: Metadata = {
   title: "Documenting Firefox Extension OPFS APIs",
   date: "2025-07-10",
   description: "This wasn't supposed to work...",
-  lastUpdate: "2025-07-12",
+  lastUpdate: "2025-07-16",
 };
 export default function Post() {
   const code = `
@@ -340,6 +341,12 @@ export default function Post() {
           Here's hoping that day will come sooner than later, but until then,
           3rd-party extensions work fine enough.
         </p>
+        <blockquote>
+          Edit: My extension can now be downloaded here
+          <a href="https://addons.mozilla.org/en-US/firefox/addon/opfs-browser/">
+            <FirefoxAddon className="w-40" />
+          </a>
+        </blockquote>
       </div>
     </article>
   );
