@@ -1,5 +1,20 @@
 export const projects = [
   {
+    name: "Typing-Automation-Tools",
+    type: ["Application"],
+    timeframe: "2025",
+    technologies_and_frameworks: ["C++", "Win32"],
+    github: "https://github.com/jchu634/Typing-Automation-Tools",
+    download:
+      "https://github.com/jchu634/Typing-Automation-Tools/releases/latest",
+    brief: "Useful Typing Windows Tools",
+    description: `Two tools that I made for debugging before polishing up for release
+    - type-at-wpm: A tool that types text you give it at a given WPM.
+    - type-clipboard: A Windows tray application that types out text in the clipboard.
+      (Really useful to send text into a Proxmox noVNC terminal.)
+    `,
+  },
+  {
     name: "OPFS Browser",
     type: ["Application"],
     timeframe: "2025",
