@@ -37,7 +37,7 @@ const BlogIndexPage = async () => {
 
   return (
     <div className={cn("p-10", roboto_slab.className)}>
-      <h1 className="text-4xl font-bold text-orange-500 dark:text-orange-400">
+      <h1 className="text-4xl font-bold text-[#122c23] dark:text-orange-400">
         Blog Posts:
       </h1>
       <div className="space-y-2 pt-4">
