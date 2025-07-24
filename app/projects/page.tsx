@@ -43,7 +43,7 @@ import { projects } from "@/lib/projectData";
 export default function Page() {
   return (
     <main className="p-10">
-      <h1 className="pb-10 text-5xl font-bold text-blue-900 dark:text-slate-200">
+      <h1 className="pb-10 text-5xl font-bold text-[#122c23] dark:text-slate-200">
         Projects
       </h1>
       <Table>
