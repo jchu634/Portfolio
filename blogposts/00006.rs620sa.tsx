@@ -31,8 +31,18 @@ export default function Post() {
           According to its press release, it is world's first 2U6N Server and to
           be fair, I haven't been able to find any other 2U6N servers.{" "}
           <sup>
-            <a href="https://www.asus.com/nz/news/8zde5ol1snpde80o/">(Link)</a>
-            <a href="https://web.archive.org/web/20250619083410/https://www.asus.com/nz/news/8zde5ol1snpde80o/">
+            <a
+              href="https://www.asus.com/nz/news/8zde5ol1snpde80o/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              (Link)
+            </a>
+            <a
+              href="https://web.archive.org/web/20250619083410/https://www.asus.com/nz/news/8zde5ol1snpde80o/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               (Archive)
             </a>
           </sup>
@@ -248,7 +258,11 @@ export default function Post() {
           />
           I won't review or show the IPMI interface as it has been extensively
           covered by STH{" "}
-          <a href="https://www.servethehome.com/asus-esc4000a-e10-2u-amd-epyc-nvidia-gpu-server-review/3/">
+          <a
+            href="https://www.servethehome.com/asus-esc4000a-e10-2u-amd-epyc-nvidia-gpu-server-review/3/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             here
           </a>
           <blockquote>
@@ -310,8 +324,18 @@ export default function Post() {
           ranking for energy efficiency for a high-density server powered by
           AMD® EPYC™ 7002 processors.
           <sup>
-            <a href="https://www.asus.com/nz/news/8zde5ol1snpde80o/">(Link)</a>
-            <a href="https://web.archive.org/web/20250619083410/https://www.asus.com/nz/news/8zde5ol1snpde80o/">
+            <a
+              href="https://www.asus.com/nz/news/8zde5ol1snpde80o/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              (Link)
+            </a>
+            <a
+              href="https://web.archive.org/web/20250619083410/https://www.asus.com/nz/news/8zde5ol1snpde80o/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               (Archive)
             </a>
           </sup>
@@ -326,7 +350,11 @@ export default function Post() {
           kind, (2U6N) and perhaps the last of its kind.
           <br />
           ASUS has transitioned back to 2U4N for its latest generations{" "}
-          <a href="https://www.servethehome.com/cxl-paradigm-shift-asus-rs520qa-e13-rs8u-2u-4-node-amd-epyc-server-review/">
+          <a
+            href="https://www.servethehome.com/cxl-paradigm-shift-asus-rs520qa-e13-rs8u-2u-4-node-amd-epyc-server-review/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             (Link).
           </a>
           <br />

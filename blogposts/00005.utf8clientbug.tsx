@@ -29,7 +29,14 @@ export default function Post() {
         <h3>Background</h3>
         <p>
           This occured when I was developing{" "}
-          <a href="https://subtextapp.cc">Subtext</a>.<br />
+          <a
+            href="https://subtextapp.cc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Subtext
+          </a>
+          .<br />
           Subtext uses a custom Python FastAPI setup for hosting the Frontend
           which is a static Next.js site. <br />
           Until this bug I hadn't had any issues with this setup.
@@ -40,7 +47,11 @@ export default function Post() {
         <p>
           When I was updating Subtext, I wanted to bump the Next.js version, if
           only to stop the annoying dependabot{" "}
-          <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-29927">
+          <a
+            href="https://nvd.nist.gov/vuln/detail/CVE-2025-29927"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             CVE-2025-29927
           </a>{" "}
           warnings.
@@ -71,7 +82,11 @@ export default function Post() {
         <h3>Debugging</h3>
         <p>
           When I searched Google, very fortunately the{" "}
-          <a href="https://github.com/bvaughn/react-resizable-panels/issues/204">
+          <a
+            href="https://github.com/bvaughn/react-resizable-panels/issues/204"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             first result
           </a>{" "}
           was relevant.
@@ -181,7 +196,11 @@ export default function Post() {
 
         <p>
           Note: If anyone finds it useful, they can find the testing repo here:{" "}
-          <a href="https://github.com/jchu634/next-export-test">
+          <a
+            href="https://github.com/jchu634/next-export-test"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             https://github.com/jchu634/next-export-test
           </a>
         </p>

@@ -265,7 +265,11 @@ export default function Post() {
             <br />
             This quirk was the main motivation for this blogpost, as this caused
             much grief in my assignment. In my testing and{" "}
-            <a href="https://answers.microsoft.com/en-us/msoffice/forum/all/differences-in-word-count-in-word-online-and-word/0370e8af-8873-4d52-acfc-c64890bf7c7b">
+            <a
+              href="https://answers.microsoft.com/en-us/msoffice/forum/all/differences-in-word-count-in-word-online-and-word/0370e8af-8873-4d52-acfc-c64890bf7c7b"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               research
             </a>
             , I found that Word Online doesn&apos;t count words in text boxes,
@@ -298,7 +302,11 @@ export default function Post() {
             <li>
               Word (Desktop+Online) since Word 2003 has counted bullets as a
               separate word (
-              <a href="https://answers.microsoft.com/en-us/msoffice/forum/all/exclude-bullet-points-from-word-count/e3f69a7b-3a7e-4219-93b4-a84b67809bc5">
+              <a
+                href="https://answers.microsoft.com/en-us/msoffice/forum/all/exclude-bullet-points-from-word-count/e3f69a7b-3a7e-4219-93b4-a84b67809bc5"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Source
               </a>
               )
@@ -409,7 +417,11 @@ export default function Post() {
             <br />
             It counts links and Acroynms as separate words, <br />
             i.e. this link:{" "}
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <a
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               https://www.youtube.com/watch?v=dQw4w9WgXcQ
             </a>{" "}
             which counts as 1 word in Word counts as 7 words in Google Docs.
@@ -528,7 +540,13 @@ export default function Post() {
           <h3>Questions</h3>
           <p>
             If you have questions, feel free to send them to{" "}
-            <a href="mailto:jchu634@keshuac.com">jchu634@keshuac.com</a>
+            <a
+              href="mailto:jchu634@keshuac.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              jchu634@keshuac.com
+            </a>
           </p>
 
           <h2>Appendices</h2>
@@ -537,7 +555,11 @@ export default function Post() {
           <p>
             All of files used in the testing are freely and publicly available
             at{" "}
-            <a href="https://github.com/jchu634/WordCountTesting">
+            <a
+              href="https://github.com/jchu634/WordCountTesting"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               https://github.com/jchu634/WordCountTesting
             </a>
             <br />

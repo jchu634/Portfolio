@@ -121,13 +121,23 @@ export default function Post() {
         <h4>Settings</h4>
         Since this VM is mostly going to be interacted with within QEMU, these
         tweaks from this{" "}
-        <a href="https://youtu.be/hVl9B3dTFB4?t=644">TechHut video</a> disabling
-        some Windows graphics effects improves the experience greatly.
+        <a
+          href="https://youtu.be/hVl9B3dTFB4?t=644"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          TechHut video
+        </a>{" "}
+        disabling some Windows graphics effects improves the experience greatly.
         <h3>Github Runner Setup</h3>
         <p>
           To download the Github Runner application, follow the instructions
           from the{" "}
-          <a href="https://github.com/actions/runner/releases/">
+          <a
+            href="https://github.com/actions/runner/releases/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             runner release notes
           </a>
         </p>
@@ -151,7 +161,11 @@ export default function Post() {
           The Github Runner will not be able to access the user PATH.
           <br />
           It appears that the official{" "}
-          <a href="https://github.com/actions/runner/issues/2540">
+          <a
+            href="https://github.com/actions/runner/issues/2540"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             solution
           </a>{" "}
           is to add your necessary PATH variables to a .env file in the runner
@@ -197,7 +211,11 @@ export default function Post() {
         <li>
           Make a one-way send syncthing connection between that folder and the
           build folder on the NAS.{" "}
-          <a href="https://docs.syncthing.net/index.html">
+          <a
+            href="https://docs.syncthing.net/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             (Syncthing Documentation)
           </a>
         </li>
@@ -206,7 +224,15 @@ export default function Post() {
       <h3>Conclusion</h3>
       <p>
         In the end this is how I set up a Github Self-Hosted runner in Windows
-        for <a href="https://subtextapp.cc">Subtext</a>.<br />
+        for{" "}
+        <a
+          href="https://subtextapp.cc"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Subtext
+        </a>
+        .<br />
         If I were ever to need to redo this again, I would properly set up the
         env file to properly fix the Path issues.
         <br />
@@ -224,7 +250,14 @@ export default function Post() {
           <br />
           When the VM boots, the Github Runner automatically runs, finds the
           incorrect time and then forcibly removes the runner. (
-          <a href="https://github.com/jchu634/Actions-Service-Start">My Fix</a>)
+          <a
+            href="https://github.com/jchu634/Actions-Service-Start"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            My Fix
+          </a>
+          )
         </div>
       </blockquote>
       <p>
