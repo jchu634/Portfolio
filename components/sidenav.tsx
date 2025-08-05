@@ -103,6 +103,7 @@ export default function SideNav() {
           ariaLabel="Open link to view Linkedin profile"
           label="LinkedIn"
           variant="nohover"
+          extLink={true}
           className="bg-transparent"
         >
           <Image
@@ -126,6 +127,7 @@ export default function SideNav() {
           ariaLabel="Open link to view Github profile"
           label="GitHub"
           variant="nohover"
+          extLink={true}
           className="bg-transparent"
         >
           <SiGithub className="size-8 text-white dark:text-black" />
@@ -136,6 +138,7 @@ export default function SideNav() {
           ariaLabel="Open link to view Printables profile"
           label="Printables"
           variant="nohover"
+          extLink={true}
           className="bg-transparent"
         >
           <SiPrintables className="size-8" style={{ color: SiPrintablesHex }} />
@@ -146,6 +149,7 @@ export default function SideNav() {
           ariaLabel="Open link to email Joshua"
           label="Email Me"
           variant="nohover"
+          extLink={true}
           className="bg-transparent"
         >
           <MailIcon className="size-8 text-white dark:text-black" />
