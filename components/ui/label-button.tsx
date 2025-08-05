@@ -17,6 +17,7 @@ interface ProximityButtonProps {
     | "link"
     | "ghost"
     | "default";
+  extLink?: boolean;
   size?: "icon";
   ariaLabel?: string;
   label?: string;
@@ -27,6 +28,7 @@ export const LabelButton = ({
   className = "",
   href,
   variant = "ghost",
+  extLink = false,
   size: buttonSize = "icon",
   ariaLabel,
   asChild,
@@ -49,9 +51,27 @@ export const LabelButton = ({
         className={`flex items-center justify-center ${className}`}
       >
         {href ? (
-          <Link href={href} aria-label={ariaLabel} className="justify-center">
-            {children}
-          </Link>
+          <>
+            {extLink ? (
+              <Link
+                href={href}
+                aria-label={ariaLabel}
+                className="justify-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {children}
+              </Link>
+            ) : (
+              <Link
+                href={href}
+                aria-label={ariaLabel}
+                className="justify-center"
+              >
+                {children}
+              </Link>
+            )}
+          </>
         ) : (
           <>{children}</>
         )}

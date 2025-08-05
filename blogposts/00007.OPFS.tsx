@@ -44,8 +44,15 @@ export default function Post() {
         <h3>Background</h3>
         <p>
           For the Bolt.new hackathon, I worked on{" "}
-          <a href="inkproof.keshuac.com">Inkproof</a>, a epub editor which
-          stores all project info in the Origin Private File System (OPFS).
+          <a
+            href="inkproof.keshuac.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Inkproof
+          </a>
+          , a epub editor which stores all project info in the Origin Private
+          File System (OPFS).
           <br />I was unable to debug it easily in Zen, so I decided I wanted to
           port over or make my own extension to debug OPFS.
         </p>
@@ -127,14 +134,22 @@ export default function Post() {
           </p>
           <ul>
             <li>
-              <a href="https://github.com/InsecureBeast/opfs-viewer">
+              <a
+                href="https://github.com/InsecureBeast/opfs-viewer"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {" "}
                 OPFS Viewer
               </a>
             </li>
             <li>
               or the previously mentioned{" "}
-              <a href="https://github.com/tomayac/opfs-explorer">
+              <a
+                href="https://github.com/tomayac/opfs-explorer"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 OPFS Explorer
               </a>
             </li>
@@ -343,7 +358,11 @@ export default function Post() {
         </p>
         <blockquote>
           Edit: My extension can now be downloaded here
-          <a href="https://addons.mozilla.org/en-US/firefox/addon/opfs-browser/">
+          <a
+            href="https://addons.mozilla.org/en-US/firefox/addon/opfs-browser/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FirefoxAddon className="w-40" />
           </a>
         </blockquote>

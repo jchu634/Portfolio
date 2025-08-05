@@ -122,6 +122,8 @@ export default function Page() {
                                 <Link
                                   href={project.github}
                                   aria-label={`Go to Github repository for ${project.name}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                 >
                                   <p>Github</p>
 
@@ -140,6 +142,8 @@ export default function Page() {
                                 <Link
                                   href={project.website}
                                   aria-label={`Go to website for ${project.name}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                 >
                                   <p>Website</p>
                                   <ExternalLinkIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
@@ -157,6 +161,8 @@ export default function Page() {
                                 <Link
                                   href={project.download}
                                   aria-label={`Go to download page for ${project.name}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                 >
                                   <p>Download</p>
                                   <DownloadIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
@@ -295,6 +301,8 @@ export default function Page() {
                         <Link
                           href={project.github}
                           aria-label={`Go to Github repository for ${project.name}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           <SiGithub className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                         </Link>
@@ -314,6 +322,8 @@ export default function Page() {
                         <Link
                           href={project.website}
                           aria-label={`Go to website for ${project.name}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           <ExternalLinkIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                         </Link>
@@ -333,6 +343,8 @@ export default function Page() {
                         <Link
                           href={project.download}
                           aria-label={`Go to download page for ${project.name}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           <DownloadIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                         </Link>

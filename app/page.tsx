@@ -87,7 +87,11 @@ export default function Home() {
           Currently I am looking for work while working on a couple of projects I didn&apos;t have time to start while studying.
         </p>
           <div className={cn("flex gap-x-2", roboto_slab.className)}>
-            <Link href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKK0HnSxFn3FlbzvMTDoijX9mwHq04LfdAk2CW">
+            <Link
+              href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKK0HnSxFn3FlbzvMTDoijX9mwHq04LfdAk2CW"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="outline"
                 className="d flex w-fit space-x-2 border-2 border-black not-only:items-center hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
@@ -96,7 +100,11 @@ export default function Home() {
                 <ExternalLinkIcon className="size-5" />
               </Button>
             </Link>
-            <Link href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKpLKfeomlDOyPvBFhCAkR7d84bW3f5pSYz0tM">
+            <Link
+              href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKpLKfeomlDOyPvBFhCAkR7d84bW3f5pSYz0tM"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="outline"
                 className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
@@ -138,7 +146,11 @@ export default function Home() {
                           className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
                           asChild
                         >
-                          <Link href={edu.link}>
+                          <Link
+                            href={edu.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             <Link2Icon className="size-5" />
                             <p>Cert Link</p>
                           </Link>
@@ -250,7 +262,11 @@ export default function Home() {
                                     className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
-                                    <Link href={project.website}>
+                                    <Link
+                                      href={project.website}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
                                       <Link2Icon className="size-5" />
                                       <p>Website</p>
                                     </Link>
@@ -262,7 +278,11 @@ export default function Home() {
                                     className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
-                                    <Link href={project.github}>
+                                    <Link
+                                      href={project.github}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
                                       <SiGithub className="size-5" />
                                       <p>Github</p>
                                     </Link>
@@ -274,7 +294,11 @@ export default function Home() {
                                     className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
                                     asChild
                                   >
-                                    <Link href={project.download}>
+                                    <Link
+                                      href={project.download}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
                                       <DownloadIcon className="size-5" />
                                       <p>Download</p>
                                     </Link>
@@ -330,7 +354,7 @@ export default function Home() {
                       </StackingCardItem>
                     );
                   })}
-                  <div className="relative h-80 w-full overflow-hidden" />
+                  <div className="pointer-events-none relative h-80 w-full overflow-hidden" />
                 </StackingCards>
               </div>
             </TooltipTrigger>
@@ -426,7 +450,7 @@ export default function Home() {
             );
           })}
 
-          <div className="relative h-80 w-full overflow-hidden" />
+          <div className="pointer-events-none invisible relative h-80 w-full overflow-hidden" />
         </StackingCards>
       </div>
     </div>
