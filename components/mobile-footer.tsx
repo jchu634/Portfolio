@@ -10,7 +10,7 @@ export default function MobileFooter() {
     <main className="fixed bottom-0 flex h-15 w-full justify-between bg-[#122c23] p-2 px-4 md:hidden dark:bg-white">
       <div className="flex flex-row items-center gap-x-2">
         <Button variant="nohover" size="icon" asChild>
-          <Link href="/" target="_blank" rel="noopener noreferrer">
+          <Link href="/">
             <Image
               src="/bigfavicon.png"
               alt="Profile Picture"
@@ -25,7 +25,7 @@ export default function MobileFooter() {
           size="icon"
           asChild
         >
-          <Link href="/projects" target="_blank" rel="noopener noreferrer">
+          <Link href="/projects">
             <CodeIcon className="size-8 text-white dark:text-black" />
           </Link>
         </Button>
@@ -35,7 +35,7 @@ export default function MobileFooter() {
           size="icon"
           asChild
         >
-          <Link href="/blog" target="_blank" rel="noopener noreferrer">
+          <Link href="/blog">
             <NotebookTextIcon className="size-8 text-white dark:text-black" />
           </Link>
         </Button>
