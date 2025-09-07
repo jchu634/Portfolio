@@ -26,7 +26,7 @@ export default function Post() {
         </p>
         <h3>Intro</h3>
         <p>
-          The ASUS RS70SA-E10-RS12 is a extremely high density 2u 6 node EPYC
+          The ASUS RS620SA-E10-RS12 is a extremely high density 2u 6 node EPYC
           SP3 server. It supports EPYC Rome/Milan. <br />
           According to its press release, it is world's first 2U6N Server and to
           be fair, I haven't been able to find any other 2U6N servers.{" "}
