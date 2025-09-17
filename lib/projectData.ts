@@ -17,7 +17,7 @@ export const projects = [
   {
     name: "OPFS Browser",
     type: ["Application"],
-    timeframe: "2025",
+    timeframe: "2025-Ongoing",
     technologies_and_frameworks: ["Vite", "TailwindCSS", "Firefox Addons"],
     github: "https://github.com/jchu634/opfs-browser",
     website: "https://addons.mozilla.org/en-US/firefox/addon/opfs-browser/",
@@ -26,22 +26,6 @@ export const projects = [
     This was directly created in response to frustrations in debugging Inkproof on Firefox as there was no extension to do so unlike on Chrome.
     `,
     images: ["/projects/opfs-browser/opfs-browser-screenshot.png"],
-  },
-  {
-    name: "Inkproof",
-    type: ["Website"],
-    timeframe: "2025",
-    technologies_and_frameworks: ["Next.JS", "TailwindCSS", "TypeScript"],
-    github: "https://github.com/jchu634/Inkproof",
-    website: "https://inkproof.keshuac.com",
-    brief: "A modern ePUB Editor",
-    description: `Inkproof is an pet project that I really wanted to exist.
-      It is also my entry to the Bolt.new 2025 Hackathon.      
-      The project is primarily designed for client-side use, heavily utilising the Origin Private File System (OPFS).`,
-    images: [
-      "/projects/inkproof/inkproof_editor_dark.png",
-      "/projects/inkproof/inkproof_editor_light.png",
-    ],
   },
   {
     name: "Subtext",
@@ -66,6 +50,58 @@ export const projects = [
       "/projects/subtextapp/ScreenshotLight.png",
       "/projects/subtextapp/SiteLight.png",
       "/projects/subtextapp/SiteDark.png",
+    ],
+  },
+  {
+    name: "Portfolio Website",
+    type: ["Website"],
+    timeframe: "2023-Ongoing",
+    technologies_and_frameworks: ["Next.JS", "TailwindCSS"],
+    github: "https://github.com/jchu634/portfolio",
+    website: "/",
+    brief: "This very website! 😊",
+    description:
+      "This very website you are on right now! This website is built using Next.JS and TailwindCSS.",
+    images: [
+      "/projects/portfolio/mobile_dark.png",
+      "/projects/portfolio/mobile_light.png",
+      "/projects/portfolio/blog_dark.png",
+      "/projects/portfolio/blog_light.png",
+      "/projects/portfolio/home_dark.png",
+      "/projects/portfolio/home_light.png",
+      "/projects/portfolio/projects_dark.png",
+      "/projects/portfolio/projects_light.png",
+    ],
+  },
+  {
+    name: "Typing-Automation-Tools",
+    type: ["Application"],
+    timeframe: "2025",
+    technologies_and_frameworks: ["C++", "Win32"],
+    github: "https://github.com/jchu634/Typing-Automation-Tools",
+    download:
+      "https://github.com/jchu634/Typing-Automation-Tools/releases/latest",
+    brief: "Useful Typing Windows Tools",
+    description: `Two tools that I made for debugging before polishing up for release
+    - type-at-wpm: A tool that types text you give it at a given WPM.
+    - type-clipboard: A Windows tray application that types out text in the clipboard.
+      (Really useful to send text into a Proxmox noVNC terminal.)
+    `,
+  },
+  {
+    name: "Inkproof",
+    type: ["Website"],
+    timeframe: "2025",
+    technologies_and_frameworks: ["Next.JS", "TailwindCSS", "TypeScript"],
+    github: "https://github.com/jchu634/Inkproof",
+    website: "https://inkproof.keshuac.com",
+    brief: "A modern ePUB Editor",
+    description: `Inkproof is an pet project that I really wanted to exist.
+      It is also my entry to the Bolt.new 2025 Hackathon.      
+      The project is primarily designed for client-side use, heavily utilising the Origin Private File System (OPFS).`,
+    images: [
+      "/projects/inkproof/inkproof_editor_dark.png",
+      "/projects/inkproof/inkproof_editor_light.png",
     ],
   },
   {
