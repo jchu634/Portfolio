@@ -88,7 +88,7 @@ export default function Home() {
         </p>
           <div className={cn("flex gap-x-2", roboto_slab.className)}>
             <Link
-              href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKK0HnSxFn3FlbzvMTDoijX9mwHq04LfdAk2CW"
+              href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtK1X4J7ICJL5uYdhioRkHUyMKpOcqNBWwgf2G7"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -101,7 +101,7 @@ export default function Home() {
               </Button>
             </Link>
             <Link
-              href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKpLKfeomlDOyPvBFhCAkR7d84bW3f5pSYz0tM"
+              href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKAfny98ZtgzTMQdub9iFLcE2aV5ey8mWn4kDI"
               target="_blank"
               rel="noopener noreferrer"
             >
