@@ -1,4 +1,26 @@
-export const education = [
+interface EducationType {
+  institution: string;
+  description: string;
+  timeframe: string;
+  link: string;
+}
+interface ProjectCardType {
+  bgColor: string;
+  name: string;
+  type: string[];
+  technologies_and_frameworks: string[];
+  github?: string;
+  website?: string;
+  description: string;
+  image?: boolean;
+  download?: string;
+  priority?: boolean;
+  image_light?: string;
+  image_dark?: string;
+  image_alt?: string;
+}
+
+export const education: EducationType[] = [
   {
     institution: "University of Auckland",
     description: "BSc: Majoring in Computer Science",
@@ -24,20 +46,19 @@ export const education = [
     link: "https://keshuac.com/extlink/ncert1",
   },
 ];
-export const projects = [
+export const projects: ProjectCardType[] = [
   {
     bgColor: "bg-[#122c23]",
     name: "Subtext",
     type: ["Application"],
-    timeframe: "2025",
     technologies_and_frameworks: ["Next.JS", "Astro", "Python", "InnoSetup"],
     github: "https://github.com/jchu634/subtext-app",
     website: "https://subtextapp.cc/",
     description: "An local, easy to use, AI subtitling app.",
-    image: "True",
+    image: true,
     download:
       "https://github.com/jchu634/Subtext-app/releases/latest/download/Subtext-Setup.exe",
-    priority: "True",
+    priority: true,
     image_light: "/projects/subtextapp/ScreenshotLight.png",
     image_dark: "/projects/subtextapp/ScreenshotDark.png",
     image_alt: "Subtext App Screenshot",
@@ -46,12 +67,11 @@ export const projects = [
     bgColor: "bg-[#E41655]",
     name: "Ryzen AI Subtitles",
     type: ["Application"],
-    timeframe: "2024",
     technologies_and_frameworks: ["Next.JS", "Python", "Ryzen AI Software"],
     github: "https://github.com/jchu634/SubtitleProject",
     website: "https://www.hackster.io/jchu634/ryzen-ai-subtitling-5ead7f",
     description: "Real-Time Captions using the Ryzen AI NPU",
-    image: "True",
+    image: true,
     image_light: "/projects/ryzensubtitles/simple_light.png",
     image_dark: "/projects/ryzensubtitles/simple_dark.png",
     image_alt: "Ryzen AI Subtitles Screenshot",
@@ -60,12 +80,11 @@ export const projects = [
     bgColor: "bg-[#1f464d]",
     name: "Inkproof",
     type: ["Website"],
-    timeframe: "2024",
     technologies_and_frameworks: ["Next.JS", "TailwindCSS"],
     github: "https://github.com/jchu634/Inkproof",
     website: "https://inkproof.keshuac.com",
     description: "A modern ePUB Editor\nBuilt for the Bolt.new 2025 Hackathon",
-    image: "True",
+    image: true,
     image_light: "/projects/inkproof/inkproof_editor_light.png",
     image_dark: "/projects/inkproof/inkproof_editor_dark.png",
     image_alt: "Inkproof Editor Screenshot",
@@ -73,7 +92,7 @@ export const projects = [
   {
     bgColor: "bg-[#B30753]",
     name: "CodeCritters",
-    type: "Hybrid Application and Website",
+    type: ["Hybrid Application and Website"],
     technologies_and_frameworks: [
       "TensorFlow",
       "PyTorch",
@@ -87,7 +106,7 @@ export const projects = [
     website: "https://codecritters.live/",
     download:
       "https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters/releases/latest",
-    image: "True",
+    image: true,
     image_dark: "/projects/codecritters/codecritters_dark.png",
     image_light: "/projects/codecritters/codecritters_light.png",
     image_alt: "CodeCritters Screenshot",
@@ -95,12 +114,12 @@ export const projects = [
   {
     bgColor: "bg-[#56206f]",
     name: "Loopy-Desktop",
-    type: "Application",
+    type: ["Application"],
     technologies_and_frameworks: ["Electron", "HTML", "CSS", "VanillaJS"],
     description: "An Desktop client for Loopy with new features.",
     github: "https://github.com/jchu634/loopy-desktop",
     download: "https://github.com/jchu634/loopy-desktop/releases/latest",
-    image: "True",
+    image: true,
     image_dark: "/projects/loopy/Loopy.png",
     image_light: "/projects/loopy/Loopy.png",
     image_alt: "Loopy Desktop Screenshot",
@@ -108,13 +127,12 @@ export const projects = [
   {
     bgColor: "bg-[#122c23]",
     name: "Fakman",
-    type: "Game",
+    type: ["Game"],
     technologies_and_frameworks: ["Unity", "C#"],
     description:
       "A Pacman clone written in C# using the Unity Engine.\nPlayable in the link below!",
     github: "https://github.com/jchu634/fakman",
-    link: "/projects/games/Fakman",
-    image: "True",
+    image: true,
     image_dark: "/projects/fakman/Fakman.png",
     image_light: "/projects/fakman/Fakman.png",
     image_alt: "Fakman Screenshot",

@@ -306,49 +306,51 @@ export default function Home() {
                                 )}
                               </div>
                             </div>
-                            {theme == "dark" ? (
-                              <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
-                                <Image
-                                  src={project.image_dark}
-                                  alt={project.name}
-                                  priority={project.priority ? true : false}
-                                  style={{ objectFit: "contain" }}
-                                  width={350}
-                                  height={350}
-                                  className="hidden xl:block"
-                                />
-                                <Image
-                                  src={project.image_dark}
-                                  alt={project.name}
-                                  priority={project.priority ? true : false}
-                                  style={{ objectFit: "contain" }}
-                                  width={300}
-                                  height={300}
-                                  className="hidden lg:block xl:hidden"
-                                />
-                              </div>
-                            ) : (
-                              <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
-                                <Image
-                                  src={project.image_light}
-                                  alt={project.name}
-                                  priority={project.priority ? true : false}
-                                  style={{ objectFit: "contain" }}
-                                  width={350}
-                                  height={350}
-                                  className="hidden xl:block"
-                                />
-                                <Image
-                                  src={project.image_light}
-                                  alt={project.name}
-                                  priority={project.priority ? true : false}
-                                  style={{ objectFit: "contain" }}
-                                  width={300}
-                                  height={300}
-                                  className="hidden lg:block xl:hidden"
-                                />
-                              </div>
-                            )}
+                            {theme == "dark"
+                              ? project.image_dark && (
+                                  <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
+                                    <Image
+                                      src={project.image_dark}
+                                      alt={project.name}
+                                      priority={project.priority ? true : false}
+                                      style={{ objectFit: "contain" }}
+                                      width={350}
+                                      height={350}
+                                      className="hidden xl:block"
+                                    />
+                                    <Image
+                                      src={project.image_dark}
+                                      alt={project.name}
+                                      priority={project.priority ? true : false}
+                                      style={{ objectFit: "contain" }}
+                                      width={300}
+                                      height={300}
+                                      className="hidden lg:block xl:hidden"
+                                    />
+                                  </div>
+                                )
+                              : project.image_light && (
+                                  <div className="hidden items-center justify-end lg:flex lg:w-[50%]">
+                                    <Image
+                                      src={project.image_light}
+                                      alt={project.name}
+                                      priority={project.priority ? true : false}
+                                      style={{ objectFit: "contain" }}
+                                      width={350}
+                                      height={350}
+                                      className="hidden xl:block"
+                                    />
+                                    <Image
+                                      src={project.image_light}
+                                      alt={project.name}
+                                      priority={project.priority ? true : false}
+                                      style={{ objectFit: "contain" }}
+                                      width={300}
+                                      height={300}
+                                      className="hidden lg:block xl:hidden"
+                                    />
+                                  </div>
+                                )}
                           </CardContent>
                         </Card>
                       </StackingCardItem>
