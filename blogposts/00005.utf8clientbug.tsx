@@ -168,29 +168,29 @@ export default function Post() {
           UTF-8 file using CP-1252, it stripped some UTF-8 characters from
           data-panel-id (Â, 6) which broke the application as React could no
           longer find the element.
-          <p>
-            The upgrade to Next.js 15.2.x or 15.3.x is what triggered the bug as
-            previously in 15.1.x, the exported html had a data-panel-group-id of{" "}
-            <code
-              className={cn(
-                "rounded-md bg-slate-800 p-1.5 text-white italic",
-                intel_one_mono.className,
-              )}
-            >
-              :R2ftb:
-            </code>
-            .<br />
-          </p>
-          <h4>Buggy Code</h4>
-          <CodeBlock hideCopyButton={true} className="prose-pre:m-0">
-            return HTMLResponse(open(static_file_path, "r").read())
-          </CodeBlock>
-          <h4>Fixed Code</h4>
-          <CodeBlock hideCopyButton={true} className="prose-pre:m-0">
-            return HTMLResponse(open(static_file_path, "r",
-            encoding="utf-8").read())
-          </CodeBlock>
         </p>
+        <p>
+          The upgrade to Next.js 15.2.x or 15.3.x is what triggered the bug as
+          previously in 15.1.x, the exported html had a data-panel-group-id of{" "}
+          <code
+            className={cn(
+              "rounded-md bg-slate-800 p-1.5 text-white italic",
+              intel_one_mono.className,
+            )}
+          >
+            :R2ftb:
+          </code>
+          .<br />
+        </p>
+        <h4>Buggy Code</h4>
+        <CodeBlock hideCopyButton={true} className="prose-pre:m-0">
+          return HTMLResponse(open(static_file_path, "r").read())
+        </CodeBlock>
+        <h4>Fixed Code</h4>
+        <CodeBlock hideCopyButton={true} className="prose-pre:m-0">
+          return HTMLResponse(open(static_file_path, "r",
+          encoding="utf-8").read())
+        </CodeBlock>
 
         <p></p>
 

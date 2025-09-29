@@ -145,10 +145,11 @@ export default function Post() {
           Since setting up the Github Runner as a Service lets it auto starts
           when the VM boots, <br />
           Run the config script as Administrator{" "}
-          <CodeBlock>
-            config.cmd --url "REPO URL HERE" --token "RUNNER TOKEN GOES HERE"
-          </CodeBlock>
-          <br />
+        </p>
+        <CodeBlock>
+          config.cmd --url "REPO URL HERE" --token "RUNNER TOKEN GOES HERE"
+        </CodeBlock>
+        <p>
           Additionally, to prevent permission issues running as "NT
           AUTHORITY\NETWORK SERVICE", when the script asks, set the runner to
           run as "NT AUTHORITY\SYSTEM".
