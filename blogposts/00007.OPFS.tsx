@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Documenting Firefox Extension OPFS APIs",
   date: "2025-07-10",
   description: "This wasn't supposed to work...",
-  lastUpdate: "2025-07-16",
+  lastUpdate: "2025-09-30",
 };
 export default function Post() {
   const code = `
@@ -45,7 +45,7 @@ export default function Post() {
         <p>
           For the Bolt.new hackathon, I worked on{" "}
           <a
-            href="inkproof.keshuac.com"
+            href="https://inkproof.keshuac.com"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -130,30 +130,28 @@ export default function Post() {
         <div>
           <p>
             If you are in an Chromium browser, the best solution to view the
-            contents of a OPFS is an extension:
+            contents of a OPFS is by using an extension:
+            <a
+              href="https://github.com/InsecureBeast/opfs-viewer"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              OPFS Viewer
+            </a>{" "}
+            or{" "}
+            <a
+              href="https://github.com/tomayac/opfs-explorer"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              OPFS Explorer
+            </a>
           </p>
-          <ul>
-            <li>
-              <a
-                href="https://github.com/InsecureBeast/opfs-viewer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {" "}
-                OPFS Viewer
-              </a>
-            </li>
-            <li>
-              or the previously mentioned{" "}
-              <a
-                href="https://github.com/tomayac/opfs-explorer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                OPFS Explorer
-              </a>
-            </li>
-          </ul>
+          <p>
+            However, these do not function in Firefox and there are no
+            extensions for Firefox.
+          </p>
           <h4>Extension Structures</h4>
           <div>
             <p>
@@ -232,7 +230,7 @@ export default function Post() {
           >
             FileSystemDirectoryHandle.values()
           </code>{" "}
-          api which is needed to get the directory structure is broken.
+          api which is needed to get the directory structure.
           <br />
           On Firefox, this fetches an empty iterable which triggers an error.
         </p>
@@ -242,7 +240,7 @@ export default function Post() {
         <p>
           Through this, Firefox appears to have no way for most extensions to
           access the OPFS directory listings as the other
-          FileSystemDirectoryHandle APIS appear work fine (read, write, delete)
+          FileSystemDirectoryHandle APIs appear work fine (read, write, delete)
           and you can even check if a particular file exists through{" "}
           <code
             className={cn(
@@ -258,7 +256,9 @@ export default function Post() {
         <h3>My Approach</h3>
         <p>
           So if the most important OPFS apis are locked down from being called
-          in extensions, how did I get it to work.
+          in extensions, how did I get it to work?
+          <br />
+          The answer:
         </p>
         <CodeBlock hideCopyButton={true}>
           devtools.inspectedWindow.eval() // Referred to as eval() from now on
@@ -273,7 +273,7 @@ export default function Post() {
           >
             eval()
           </code>{" "}
-          acts very similarly to{" "}
+          acts very similarly to the{" "}
           <code
             className={cn(
               "rounded-md bg-slate-800 p-1 text-white",
@@ -281,10 +281,10 @@ export default function Post() {
             )}
           >
             tabs.executeScript()
-          </code>
-          , but most importantly it reads the current state of the page, unlike
-          Content-Scripts which are isolated from changes made to the page by
-          page scripts.
+          </code>{" "}
+          used by OPFS-Viewer, but most importantly it reads the current state
+          of the page, unlike Content-Scripts which are isolated from changes
+          made to the page by page scripts.
           <br />
           This is most likely the reason why{" "}
           <code
@@ -323,7 +323,7 @@ export default function Post() {
           <br />
           Ultimately, I was unable to get it to work and my solution was to
           instead give up on a clean Devtools only script and to architect the
-          extension so that
+          extension similar to OPFS-Explorer so that
         </p>
         <ol>
           <li>
