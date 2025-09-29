@@ -343,7 +343,7 @@ export default function Post() {
             incorrect as I feel that citation marks should be considered
             punctuation and should not be counted.
             <br />
-            At the very least, this behaviour is uniqe among all the software
+            At the very least, this behaviour is unique among all the software
             tested.
             <br />
             (Citation Marks are the numbers next to a text which indicate
@@ -524,7 +524,7 @@ export default function Post() {
 
           <p>
             Ironically, I discovered that this still hasn&apos;t fixed the issue
-            with my original Uni assignment as they use Canvas&apos;s
+            with my original Uni assignment as they use Canvas&apos;
             speedgrader, <br />
             which does not expose its wordcount to students.
           </p>
