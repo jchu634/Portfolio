@@ -754,3 +754,79 @@ export const FirefoxAddon = (props: SVGProps<SVGSVGElement>) => (
     </defs>
   </svg>
 );
+
+export const Blog7Diagram = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={320}
+    height={160}
+    viewBox="0 0 512 256"
+    preserveAspectRatio="xMidYMid meet"
+    {...props}
+  >
+    <path
+      d="M130.052 178.958s31.753 17.141 15.174 51.142"
+      style={{
+        display: "inline",
+        fill: "none",
+        stroke: "#00f",
+        strokeWidth: 10,
+        strokeLinecap: "butt",
+        strokeLinejoin: "miter",
+        strokeOpacity: 1,
+      }}
+    />
+    <path
+      d="M504.275 21.335v209.028"
+      style={{
+        display: "inline",
+        fill: "none",
+        stroke: "#fff",
+        strokeWidth: 10,
+        strokeLinecap: "butt",
+        strokeLinejoin: "miter",
+        strokeDasharray: "none",
+        strokeOpacity: 1,
+      }}
+    />
+    <path
+      d="M6.934 230.363 504.275 21.335"
+      style={{
+        display: "inline",
+        fill: "none",
+        stroke: "#ffd230",
+        strokeWidth: 10,
+        strokeLinecap: "butt",
+        strokeLinejoin: "miter",
+        strokeDasharray: "none",
+        strokeOpacity: 1,
+      }}
+    />
+    <path
+      d="M504.275 230.363H6.935"
+      style={{
+        display: "inline",
+        fill: "none",
+        stroke: "#9f0712",
+        strokeWidth: 10,
+        strokeLinecap: "butt",
+        strokeLinejoin: "miter",
+        strokeDasharray: "none",
+        strokeOpacity: 1,
+      }}
+    />
+    {/* <path
+      d="M160.596 219.585h28.014v-4.384H167.54v-.183l9.866-9.988c8.404-8.526 10.048-11.023 10.048-15.468 0-6.578-4.994-10.78-11.997-10.78-5.299 0-9.257 1.827-15.712 8.04l2.923 3.592c5.846-5.542 8.587-7.125 12.545-7.125 4.446 0 6.821 2.619 6.821 6.455 0 3.228-1.157 5.177-8.587 12.85l-12.85 13.337zm36.845-35.504h19.122v.182l-12.484 13.825.974 2.436c1.888-.305 3.532-.488 5.36-.488 6.942 0 9.622 2.62 9.622 6.578 0 4.567-3.593 7.551-14.373 8.343l-7.308.548.427 4.69 7.247-.488c14.007-.974 19.427-5.968 19.427-13.154 0-5.664-3.776-10.597-13.764-10.597v-.122l11.937-12.789v-3.35H197.44zm38.915 5.663c0 7.308 5.237 12.12 12.545 12.12 7.37 0 12.546-4.933 12.546-12.18 0-7.37-5.116-12.241-12.485-12.241-7.308 0-12.606 4.932-12.606 12.301zm12.545-8.647c4.629 0 8.222 3.47 8.222 8.647 0 5.055-3.471 8.465-8.16 8.465-4.812 0-8.222-3.47-8.222-8.526 0-5.176 3.35-8.586 8.16-8.586z"
+      aria-label="23\xB0"
+      style={{
+        fontSize: 20,
+        stroke: "#ffff",
+        fill: "#ffff",
+
+        lineHeight: 1.25,
+        fontFamily: "&quot",
+        strokeWidth: 1.5225,
+      }}
+    /> */}
+  </svg>
+);
