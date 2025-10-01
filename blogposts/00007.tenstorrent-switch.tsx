@@ -238,6 +238,23 @@ export default function Post() {
 `}
             ></CodeBlock>
           </div>
+          <div>
+            <h2>Conclusion</h2>
+            <p>
+              That's it, I couldn't completely replicate the button: the{" "}
+              <code>onhover </code>
+              is missing, but I didn't really think it was too necessary to
+              replicate and it is relatively easy.
+              <br />
+              What I got stuck on and forced me to stop was the animation.
+              <br /> I am not experienced enough with js animation libraries to
+              replicate the soft close/open effects and my attempts were
+              laughably bad.
+              <br />I will leave this challenge open to readers and maybe... I
+              might return in the future to complete it once I gain the
+              expertise.
+            </p>
+          </div>
         </div>
       </div>
     </article>
