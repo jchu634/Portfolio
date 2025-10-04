@@ -50,7 +50,7 @@ export default function Post() {
             horizontal center and a skewed div to apply the vertical centering
             to apply flex.
           </p>
-          <div className="flex space-x-8 p-10">
+          <div className="space-y-14 p-4 lg:flex lg:space-x-8 lg:p-10">
             <TextExperiment />
             <CodeBlock
               code={`<div className="flex h-20 w-30 -skew-y-[23deg] items-center border-2 border-black dark:border-white">
@@ -67,21 +67,21 @@ export default function Post() {
               <br />
               and the containing div providing the bottom border.
             </p>
-            <div className="flex space-x-8 p-10">
+            <div className="space-y-14 p-4 lg:flex lg:space-x-8 lg:p-10">
               <div>
                 <Switch1 />
               </div>
 
               <CodeBlock
                 code={`<div className="flex pt-10">
-      <div className="flex h-21 w-40 items-center border-2 border-white"></div>
-      <div className="flex border-2 dark:border-white">
-        <div className="flex h-20 w-30 translate-y-[-25.5px] -skew-y-[24deg] items-center border-2 border-black dark:border-white">
-          <p className="w-full text-center">test</p>
-        </div>
-        <div className="h-20 w-15 translate-y-[-26px] skew-y-[50deg] border-2 border-black dark:border-white"></div>
-      </div>
-    </div>`}
+  <div className="flex h-21 w-40 items-center border-2 border-white"></div>
+  <div className="flex border-2 dark:border-white">
+    <div className="flex h-20 w-30 translate-y-[-25.5px] -skew-y-[24deg] items-center border-2 border-black dark:border-white">
+      <p className="w-full text-center">test</p>
+    </div>
+    <div className="h-20 w-15 translate-y-[-26px] skew-y-[50deg] border-2 border-black dark:border-white"></div>
+  </div>
+</div>`}
               ></CodeBlock>
             </div>
           </div>
@@ -111,7 +111,7 @@ export default function Post() {
             Hence the distorted edge's length can be calculated to be a
             hypothenuse of a theoretical triangle.
           </p>
-          <div className="flex space-x-8 p-8">
+          <div className="flex space-x-2 p-2 pt-4 md:pt-8 lg:space-x-8 lg:p-8">
             <div className="flex h-20 w-30 border-4 border-red-800">
               <div className="flex h-full w-full -translate-y-[22px] -skew-y-[23deg] items-center border-2 border-black dark:border-white">
                 <p className="w-full text-center">test</p>
@@ -131,21 +131,21 @@ export default function Post() {
             rectangular div to match the first div. (Some manual offsetting
             required)
           </p>
-          <div className="flex space-x-8 p-10">
+          <div className="space-y-14 p-4 lg:flex lg:space-x-8 lg:p-10">
             <div>
               <Switch2 />
             </div>
 
             <CodeBlock
               code={`<div className="flex pt-10">
-      <div className="flex h-21 w-40 items-center border-2 border-white"></div>
-      <div className="flex border-2 dark:border-white">
-        <div className="flex h-20 w-30 translate-y-[-25.5px] -skew-y-[23deg] items-center border-2 border-white">
-          <p className="w-full text-center">test</p>
-        </div>
-        <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-2 border-white"></div>
-      </div>
-    </div>`}
+  <div className="flex h-21 w-40 items-center border-2 border-white"></div>
+  <div className="flex border-2 dark:border-white">
+    <div className="flex h-20 w-30 translate-y-[-25.5px] -skew-y-[23deg] items-center border-2 border-white">
+      <p className="w-full text-center">test</p>
+    </div>
+    <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-2 border-white"></div>
+  </div>
+</div>`}
             ></CodeBlock>
           </div>
           <p>
@@ -155,42 +155,42 @@ export default function Post() {
             less thick in some areas and then added a background to each
             element.
           </p>
-          <div className="flex space-x-8 p-10">
+          <div className="space-y-14 p-4 lg:flex lg:space-x-8 lg:p-10">
             <div>
               <Switch3 />
             </div>
 
             <CodeBlock
               code={`<div className="flex pt-10">
-      <div className="flex h-21 w-40 items-center border-2 border-white"></div>
-      <div className="flex border-y-2 border-r-1 border-l-2 border-white">
-        <div className="flex h-20 w-30 translate-y-[-25.5px] -skew-y-[23deg] items-center border-y-2 border-r-1 border-white">
-          <p className="w-full text-center">Right Switch</p>
-        </div>
-        <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-x-1 border-y-2 border-white"></div>
-      </div>
-    </div>`}
+  <div className="flex h-21 w-40 items-center border-2 border-white"></div>
+  <div className="flex border-y-2 border-r-1 border-l-2 border-white">
+    <div className="flex h-20 w-30 translate-y-[-25.5px] -skew-y-[23deg] items-center border-y-2 border-r-1 border-white">
+      <p className="w-full text-center">Right Switch</p>
+    </div>
+    <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-x-1 border-y-2 border-white"></div>
+  </div>
+</div>`}
             ></CodeBlock>
           </div>
           <p>
             Note: This is using my specific background, adjust to your own
             site's colours
           </p>
-          <div className="flex space-x-8 p-10">
+          <div className="space-y-14 p-4 lg:flex lg:space-x-8 lg:p-10">
             <div>
               <Switch4 />
             </div>
 
             <CodeBlock
               code={`<div className="flex pt-10">
-      <div className="flex h-21 w-40 items-center border-2 border-white"></div>
-      <div className="flex border-y-2 border-r-1 border-l-2 border-white">
-        <div className="flex h-20 w-30 translate-y-[-25.5px] -skew-y-[23deg] items-center border-y-2 border-r-1 border-white bg-slate-900">
-          <p className="w-full text-center">Right Switch</p>
-        </div>
-        <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-x-1 border-y-2 border-white"></div>
-      </div>
-    </div>`}
+  <div className="flex h-21 w-40 items-center border-2 border-white"></div>
+  <div className="flex border-y-2 border-r-1 border-l-2 border-white">
+    <div className="flex h-20 w-30 translate-y-[-25.5px] -skew-y-[23deg] items-center border-y-2 border-r-1 border-white bg-slate-900">
+      <p className="w-full text-center">Right Switch</p>
+    </div>
+    <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-x-1 border-y-2 border-white"></div>
+  </div>
+</div>`}
             ></CodeBlock>
           </div>
           <p>
@@ -198,21 +198,21 @@ export default function Post() {
             flip the skew angles from positive to negative and vice versa.
             <br />
           </p>
-          <div className="flex space-x-8 p-10">
+          <div className="space-y-14 p-4 lg:flex lg:space-x-8 lg:p-10">
             <div>
               <Switch4Flipped />
             </div>
 
             <CodeBlock
               code={`<div className="flex pt-10">
-      <div className="flex border-y-2 border-r-1 border-l-2 border-white">
-        <div className="h-20 w-15 translate-y-[-26px] -skew-y-[40.32deg] border-x-1 border-y-2 border-white bg-slate-900"></div>
-        <div className="flex h-20 w-30 translate-y-[-25.5px] skew-y-[23deg] items-center border-y-2 border-r-1 border-white bg-slate-900">
-          <p className="w-full text-center text-black">Left Switch</p>
-        </div>
-      </div>
-      <div className="flex h-21 w-40 items-center border-2 border-white"></div>
-    </div>`}
+  <div className="flex border-y-2 border-r-1 border-l-2 border-white">
+    <div className="h-20 w-15 translate-y-[-26px] -skew-y-[40.32deg] border-x-1 border-y-2 border-white bg-slate-900"></div>
+    <div className="flex h-20 w-30 translate-y-[-25.5px] skew-y-[23deg] items-center border-y-2 border-r-1 border-white bg-slate-900">
+      <p className="w-full text-center text-black">Left Switch</p>
+    </div>
+  </div>
+  <div className="flex h-21 w-40 items-center border-2 border-white"></div>
+</div>`}
             ></CodeBlock>
           </div>
           <p>
@@ -221,7 +221,7 @@ export default function Post() {
             <code>onClick</code>.
             <br />
           </p>
-          <div className="flex space-x-8 p-10 pt-4">
+          <div className="space-y-14 p-4 lg:flex lg:space-x-8 lg:p-10">
             <div>
               Try Using me ↓
               <Switch4Logic />
