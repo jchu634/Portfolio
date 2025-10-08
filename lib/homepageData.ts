@@ -65,6 +65,24 @@ export const projects: ProjectCardType[] = [
   },
   {
     bgColor: "bg-[#E41655]",
+    name: "HA-Components",
+    type: ["Application"],
+    technologies_and_frameworks: [
+      "NextJS",
+      "TailwindCSS",
+      "react",
+      "Home Assistant",
+    ],
+    github: "https://github.com/jchu634/ha-components",
+    website: "https://hacomponents.keshuac.com/",
+    description: `A ShadCN/ui inspired component framework for Home Assistant Dashboards.`,
+    image: true,
+    priority: true,
+    image_light: "/projects/hacomponents/homepage_light.png",
+    image_dark: "/projects/hacomponents/homepage_dark.png",
+  },
+  {
+    bgColor: "bg-[#1f464d]",
     name: "Ryzen AI Subtitles",
     type: ["Application"],
     technologies_and_frameworks: ["Next.JS", "Python", "Ryzen AI Software"],
@@ -77,7 +95,7 @@ export const projects: ProjectCardType[] = [
     image_alt: "Ryzen AI Subtitles Screenshot",
   },
   {
-    bgColor: "bg-[#1f464d]",
+    bgColor: "bg-[#B30753]",
     name: "Inkproof",
     type: ["Website"],
     technologies_and_frameworks: ["Next.JS", "TailwindCSS"],
@@ -90,7 +108,7 @@ export const projects: ProjectCardType[] = [
     image_alt: "Inkproof Editor Screenshot",
   },
   {
-    bgColor: "bg-[#B30753]",
+    bgColor: "bg-[#56206f]",
     name: "CodeCritters",
     type: ["Hybrid Application and Website"],
     technologies_and_frameworks: [
@@ -112,7 +130,7 @@ export const projects: ProjectCardType[] = [
     image_alt: "CodeCritters Screenshot",
   },
   {
-    bgColor: "bg-[#56206f]",
+    bgColor: "bg-[#122c23]",
     name: "Loopy-Desktop",
     type: ["Application"],
     technologies_and_frameworks: ["Electron", "HTML", "CSS", "VanillaJS"],
@@ -125,7 +143,7 @@ export const projects: ProjectCardType[] = [
     image_alt: "Loopy Desktop Screenshot",
   },
   {
-    bgColor: "bg-[#122c23]",
+    bgColor: "bg-[#E41655]",
     name: "Fakman",
     type: ["Game"],
     technologies_and_frameworks: ["Unity", "C#"],

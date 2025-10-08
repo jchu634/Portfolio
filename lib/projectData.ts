@@ -14,6 +14,28 @@ interface ProjectTypes {
 
 export const projects: ProjectTypes[] = [
   {
+    name: "HA-Components",
+    type: ["Application"],
+    timeframe: "2025-Ongoing",
+    technologies_and_frameworks: [
+      "NextJS",
+      "TailwindCSS",
+      "react",
+      "Home Assistant",
+    ],
+    github: "https://github.com/jchu634/ha-components",
+    website: "https://hacomponents.keshuac.com/",
+    brief: "Component Framework for building custom Home Assistant Dashboards.",
+    description: `HAComponents is a component framework inspired by ShadCN/ui.
+    It allows a user to freely style and create components which integrate into Home Assistant.
+    `,
+    images: [
+      "/projects/hacomponents/homepage_dark.png",
+      "/projects/hacomponents/homepage_light.png",
+      "/projects/hacomponents/components_light.png",
+    ],
+  },
+  {
     name: "OPFS Browser",
     type: ["Application"],
     timeframe: "2025-Ongoing",
