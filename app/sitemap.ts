@@ -31,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         : new Date();
 
       return {
-        url: `https://keshuac.com/blog/${slug}`,
+        url: `https://www.keshuac.com/blog/${slug}`,
         lastModified: lastModified,
         changeFrequency: "weekly" as unknown as "weekly",
         priority: 0.7,
@@ -42,25 +42,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: "https://keshuac.com",
+      url: "https://www.keshuac.com",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: "https://keshuac.com/projects",
+      url: "https://www.keshuac.com/projects",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://keshuac.com/blog",
+      url: "https://www.keshuac.com/blog",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
-      url: "https://keshuac.com/projects/games/Fakman",
+      url: "https://www.keshuac.com/projects/games/Fakman",
       lastModified: new Date(1740999600),
       changeFrequency: "never",
       priority: 0.5,
