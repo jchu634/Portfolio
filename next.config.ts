@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   devIndicators: {
     position: "bottom-right",
   },
+  skipTrailingSlashRedirect: true,
   experimental: { reactCompiler: true },
 };
 
