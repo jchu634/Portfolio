@@ -14,9 +14,18 @@ import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
 import javascript from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
 import python from "react-syntax-highlighter/dist/esm/languages/prism/python";
 import powershell from "react-syntax-highlighter/dist/esm/languages/prism/powershell";
+import bash from "react-syntax-highlighter/dist/esm/languages/prism/bash";
+import ini from "react-syntax-highlighter/dist/esm/languages/prism/ini";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-type Languages = "jsx" | "tsx" | "javascript" | "python" | "powershell";
+type Languages =
+  | "jsx"
+  | "tsx"
+  | "javascript"
+  | "python"
+  | "powershell"
+  | "bash"
+  | "ini";
 
 function CodeBlock({
   className,
@@ -48,6 +57,8 @@ function CodeBlock({
   SyntaxHighlighter.registerLanguage("javascript", javascript);
   SyntaxHighlighter.registerLanguage("python", python);
   SyntaxHighlighter.registerLanguage("powershell", powershell);
+  SyntaxHighlighter.registerLanguage("bash", bash);
+  SyntaxHighlighter.registerLanguage("ini", ini);
 
   return (
     <div
