@@ -35,7 +35,7 @@
     "portfolio": "file:",
     "react": "19.1.5",
     "react-device-detect": "^2.2.3",
-    "react-dom": "19.1.1",
+    "react-dom": "19.1.5",
     "react-syntax-highlighter": "^16.1.0",
     "react-unity-webgl": "==9.6.0",
     "svg-path-commander": "^2.1.10",
