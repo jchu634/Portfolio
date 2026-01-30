@@ -54,7 +54,7 @@ export default function Post() {
               <li>
                 Then open zadig and choose the UB500 by selecting TP-Link
                 Bluetooth USB Adapter from the dropdown.
-                <br /> (If it doesn't show up, you may need to tick
+                <br /> (If it doesn&apos;t show up, you may need to tick
                 Options&gt;List All Devices)
               </li>
               <li>

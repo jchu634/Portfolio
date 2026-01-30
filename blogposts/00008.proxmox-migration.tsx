@@ -83,7 +83,7 @@ eno1 enp87s0 manual
 
 auto vmbr1
 iface vmbr1 inet manual
-  bridge-ports enp87s0 
+  bridge-ports enp87s0
   bridge-stp off
   bridge-fd 0
 
@@ -92,7 +92,7 @@ eno1 enp2s0f1np1 manual
 
 auto vmbr2
 iface vmbr2 inet manual
-  bridge-ports enp2s0f1np1 
+  bridge-ports enp2s0f1np1
   bridge-stp off
   bridge-fd 0`}
             </CodeBlock>
@@ -132,7 +132,7 @@ qm set 101 -net1 virtio,bridge=vmbr2 # LAN`}
             OPNSense should now have picked up the new LAN configuration and the
             Web interface should now be available.
             <br />
-            From there you can fix your WAN interfaces. I won't provide the
+            From there you can fix your WAN interfaces. I won&apos;t provide the
             steps for this as my WAN setup is likely quite different from
             standard to talk with my ISP network.
           </li>
@@ -155,8 +155,8 @@ qm set 101 -net1 virtio,bridge=vmbr2 # LAN`}
           PiHole has much less to configure.
           <br />
           (Note: It may be more difficult if you use pihole with unbound as a
-          recursive DNS, I used OPNSense's built in Unbound DNS server instead.
-          )
+          recursive DNS, I used OPNSense&apos;s built in Unbound DNS server
+          instead. )
         </p>
         <ol>
           <li>
@@ -215,8 +215,8 @@ qm set 101 -net1 virtio,bridge=vmbr2 # LAN`}
             Create a new HAOS instance, personally I use the community proxmox
             script for this
             <CodeBlock className="w-fit pr-10" language="bash">
-              bash -c "$(curl -fsSL
-              https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/vm/haos-vm.sh)"
+              bash -c &quot;$(curl -fsSL
+              https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/vm/haos-vm.sh)&quot;
             </CodeBlock>
           </li>
           <li>
