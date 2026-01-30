@@ -27,8 +27,8 @@ export default function Post() {
           <h2>CLI Commands</h2>
           This entire blogpost assumes that you have enabled editing.
           <CodeBlock className="w-fit pr-10" language="bash">
-            qmrestore /var/lib/vz/dump/BACKUP_FILE_NAME.vma.zst 101 --storage
-            local-lvm
+            {`enable
+configure terminal`}
           </CodeBlock>
           <h3>Creating a VLAN</h3>
           Command:
