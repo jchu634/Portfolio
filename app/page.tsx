@@ -82,9 +82,11 @@ export default function Home() {
           <p
           className={cn("text-xl leading-10whitespace-pre-line text-black dark:text-white",  roboto_slab.className )}
         >
-        
-          Hi, I&apos;m a new graduate from the University of Auckland (BSc Computer Science) <br />
-          Currently I am looking for work while working on a couple of projects I didn&apos;t have time to start while studying.
+
+            Hi, I&apos;m currently studying a Masters of Cybersecurity at Monash University.<br />
+            I previously graduated with a (BSc Computer Science) from from the University of Auckland.<br />
+            I write and maintain a couple of open-source projects in my spare time.
+
         </p>
           <div className={cn("flex gap-x-2", roboto_slab.className)}>
             <Link
@@ -146,14 +148,16 @@ export default function Home() {
                           className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
                           asChild
                         >
-                          <Link
-                            href={edu.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Link2Icon className="size-5" />
-                            <p>Cert Link</p>
-                          </Link>
+                          {edu.link && (
+                            <Link
+                              href={edu.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Link2Icon className="size-5" />
+                              <p>Cert Link</p>
+                            </Link>
+                          )}
                         </Button>
                       </div>
 
