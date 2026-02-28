@@ -61,6 +61,7 @@ const BlogIndexPage = async () => {
           </div>
         ))}
       </div>
+      <p>These blogposts are Creative Commons BY 4.0 Licensed</p>
     </div>
   );
 };
