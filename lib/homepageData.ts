@@ -2,7 +2,7 @@ interface EducationType {
   institution: string;
   description: string;
   timeframe: string;
-  link: string;
+  link?: string;
 }
 interface ProjectCardType {
   bgColor: string;
@@ -21,6 +21,11 @@ interface ProjectCardType {
 }
 
 export const education: EducationType[] = [
+  {
+    institution: "Monash University",
+    description: "Masters in Cybersecurity",
+    timeframe: "2026-Current",
+  },
   {
     institution: "University of Auckland",
     description: "BSc: Majoring in Computer Science",

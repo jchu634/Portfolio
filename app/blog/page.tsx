@@ -6,6 +6,7 @@ import { Metadata } from "@/lib/blogType";
 import { roboto_slab } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 interface BlogPostData {
   slug: string;
@@ -60,6 +61,30 @@ const BlogIndexPage = async () => {
             <Separator className="my-4 bg-black dark:bg-white" />
           </div>
         ))}
+      </div>
+      <div>
+        These blogposts are licensed under{" "}
+        <Link
+          href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
+          className="inline-flex items-center space-x-2"
+        >
+          <p className="font-bold">CC BY 4.0</p>
+
+          <Image
+            src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
+            className="size-8"
+            width={32}
+            height={32}
+            alt="Creative Commons Icon"
+          />
+          <Image
+            src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
+            className="size-8"
+            width={32}
+            height={32}
+            alt="Creative Commons BY Icon"
+          />
+        </Link>
       </div>
     </div>
   );
