@@ -86,7 +86,7 @@ export default function Post() {
           />
           There are a lot of packets which appear constantly from 2.6.1,
           according to the device tree, these come from the HID mouse, so as
-          mouse packets they can be safely ignored, similarly packes from 2.6.2
+          mouse packets they can be safely ignored, similarly packets from 2.6.2
           can be ignored.
           <br />
           Whats left is a a small amount of packets.
