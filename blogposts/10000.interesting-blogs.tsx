@@ -25,7 +25,7 @@ export default function Post() {
             </a>
           </h4>
           <p>
-            An great introduction into HID, USB and their web api
+            A great introduction into HID, USB and their web API
             counterparts.{" "}
           </p>
         </li>
