@@ -44,7 +44,7 @@ export default function Post() {
           Taking a look at the official software with DIE (Detect It Easy), it
           appears to be written in C++, and with a quick look at the machine
           code in Ghidra, I notice that it looks like a lot of painful work and
-          giant red flag to to try something else first.
+          a giant red flag to try something else first.
           <br />
         </div>
         <div>
