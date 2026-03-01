@@ -73,15 +73,15 @@ const BlogIndexPage = async () => {
           <Image
             src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
             className="size-8"
-            width="8"
-            height="8"
+            width={32}
+            height={32}
             alt="Creative Commons Icon"
           />
           <Image
             src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
             className="size-8"
-            width="8"
-            height="8"
+            width={32}
+            height={32}
             alt="Creative Commons BY Icon"
           />
         </Link>
