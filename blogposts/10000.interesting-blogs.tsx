@@ -41,7 +41,7 @@ export default function Post() {
             </a>
           </h4>
           <p>
-            A interesting talk on the process on how Xeno Kovah reverse
+            An interesting talk on the process of how Xeno Kovah reverse
             engineered how to send custom packets for MITM using modern realtek
             chips.{" "}
           </p>
