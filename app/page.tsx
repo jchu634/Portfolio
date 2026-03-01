@@ -84,7 +84,7 @@ export default function Home() {
         >
 
             Hi, I&apos;m currently studying a Masters of Cybersecurity at Monash University.<br />
-            I previously graduated with a (BSc Computer Science) from from the University of Auckland.<br />
+            I previously graduated with a (BSc Computer Science) from the University of Auckland.<br />
             I write and maintain a couple of open-source projects in my spare time.
 
         </p>
