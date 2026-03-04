@@ -108,7 +108,6 @@ export const projects: ProjectTypes[] = [
     - X6 Battery Utility: A system tray app that shows the battery status of the mouse.
     These tools were written using the research I did on them, and there is a write-up available.
     `,
-    `,
   },
   {
     name: "Typing-Automation-Tools",
