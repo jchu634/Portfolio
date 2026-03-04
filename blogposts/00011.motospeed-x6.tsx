@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   date: "2026-03-01",
   description:
     "Writeup on reverse engineering the Motospeed X6 battery reporting mechanisms.",
-  lastUpdate: "2026-03-01",
+  lastUpdate: "2026-03-04",
 };
 export default function Post() {
   return (
@@ -201,15 +201,145 @@ export default function Post() {
           </div>
         </div>
         <div>
+          <h3>Charging</h3>
+          There aren't many changes when the mouse is charging, but still
+          connected wirelessly, you still send the <code>SET_REPORT</code> and
+          the packet received is almost identical. <br />
+          The only diffence is that it sets the first bit to indicate charging.
+          <br />
+          e.g. If it is charging and it is at 31% <code>(0x1F)</code>, it would
+          set the first bit to <code>1</code> hence returning 159%{" "}
+          <code>(0x9F)</code>
+          <div className="flex gap-x-2">
+            <CodeBlock
+              hideCopyButton={true}
+              className="my-2 w-fit"
+              language="bash"
+            >
+              0001 1111 (Not Charging)
+            </CodeBlock>
+            <CodeBlock
+              hideCopyButton={true}
+              className="my-2 w-fit"
+              language="bash"
+            >
+              1001 1111 (Charging)
+            </CodeBlock>
+          </div>
+          <h3>Plugged in</h3>
+          When it is plugged in however, there are some changes.
+          <br />
+          Firstly the firmware reports the manufacturer as Motospeed instead of
+          Darmoshark and the device is reported as "MOTOSPEED' - 'X6"
+          <br />
+          Secondly, although the USB device tree is identical to the dongle,
+          while the VID is identical, the PID changes.
+          <br />
+          Lastly, the battery packet no longer returns useful information.
+          <br />
+          <br />
+          In this example you can see that when plugged in directly, it reports
+          an entirely wrong battery level.
+          <div className="flex w-[55rem] justify-between">
+            <p>
+              Dongle (Not Charging)
+              <br />
+              Battery HEX: <code>0x3E</code> (62%)
+              <br />
+              Battery Actual: 62% (Not Charging)
+            </p>
+            <CodeBlock
+              hideCopyButton={true}
+              className="my-2 w-fit"
+              language="bash"
+            >
+              {`Hex View  00 01 02 03 04 05 06 07  08 09 0A 0B 0C 0D 0E 0F
+
+00000000  B4 06 00 22 22 02 90 01  20 03 B0 04 80 0C C0 12
+00000010  15 05 04 01 3E 00 00 00  00 00 00 00 00 00 00 00
+00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00
+00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00`}
+            </CodeBlock>
+          </div>
+          <div className="flex w-[55rem] justify-between">
+            <p>
+              Dongle (Charging)
+              <br />
+              Battery HEX: <code>0xBE</code> (190%)
+              <br />
+              Battery Actual: 62% (Charging)
+            </p>
+            <CodeBlock
+              hideCopyButton={true}
+              className="my-2 w-fit"
+              language="bash"
+            >
+              {`Hex View  00 01 02 03 04 05 06 07  08 09 0A 0B 0C 0D 0E 0F
+
+00000000  B4 06 00 22 22 02 90 01  20 03 B0 04 80 0C C0 12
+00000010  15 05 04 01 BE 00 00 00  00 00 00 00 00 00 00 00
+00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00
+00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00`}
+            </CodeBlock>
+          </div>
+          <div className="flex w-[55rem] justify-between">
+            <p>
+              Plugged in directly
+              <br />
+              Battery: <code>0xA4</code> (164%)
+              <br />
+              Battery Actual: IDK
+            </p>
+            <CodeBlock
+              hideCopyButton={true}
+              className="my-2 w-fit"
+              language="bash"
+            >
+              {`Hex View  00 01 02 03 04 05 06 07  08 09 0A 0B 0C 0D 0E 0F
+
+00000000  B4 06 00 22 22 02 90 01  20 03 B0 04 80 0C C0 12
+00000010  15 05 04 01 A4 00 00 00  00 00 00 00 00 00 00 00
+00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00
+00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00`}
+            </CodeBlock>
+          </div>
+          <div>
+            <CodeBlock
+              hideCopyButton={true}
+              className="my-2 h-fit w-fit"
+              language="bash"
+            >
+              {`Dongle (Not Charging) 0011 1110
+Dongle (Charging)     1011 1110
+Plugged In            1010 0100
+                `}
+            </CodeBlock>
+          </div>
+          Since even the binary is so different from the rest, I have no idea
+          how the battery is reported when the mouse is plugged in.
+          <br />
+          Addtionally, I could not find any wireshark packets that had some hex
+          that reflected the battery when it was plugged in.
+          <br />
+          Finally, I have no idea if the battery level is even reported at all
+          when plugged in, as the official software never actually shows the
+          battery level when charging, just that it is charging.
+        </div>
+        <div>
           <h3>Conclusion</h3>
           Not much more to say.
-          <br />I am making a small windows system tray utility available based
-          on this research{" "}
-          <a href="">
-            <s>here</s> (Soon)
-          </a>
           <br />
-          And the POC code is available{" "}
+          I plan to do some more follow-on research, and reverse engineer how
+          their button-remapping, RGB, dpi and macros work. So if you are
+          interested, check back here.
+          <br />
+          Ultimately, I completed my goal and discovered how the Motospeed X6
+          reports its battery levels and if it is charging. <br />
+          Based on this research I made a system tray utility that shows your
+          current battery and charge status, available now{" "}
+          <a href="https://github.com/jchu634/motospeed-x6-Utilities">here.</a>
+          <br />
+          And for those who want to take a look at the POC code, it is available{" "}
           <a href="https://github.com/jchu634/motospeed-x6-reverse-engineering">
             here
           </a>
