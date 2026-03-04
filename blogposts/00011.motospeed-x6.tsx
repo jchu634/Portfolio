@@ -6,8 +6,7 @@ import FigureWithCaption from "@/components/ui/captioned-image";
 export const metadata: Metadata = {
   title: "Reverse engineering a bit of the Motospeed X6",
   date: "2026-03-01",
-  description:
-    "Writeup on reverse engineering the Motospeed X6 battery reporting mechanisms.",
+  description: "Motospeed X6 battery reporting writeup.",
   lastUpdate: "2026-03-04",
 };
 export default function Post() {
@@ -205,7 +204,8 @@ export default function Post() {
           There aren't many changes when the mouse is charging, but still
           connected wirelessly, you still send the <code>SET_REPORT</code> and
           the packet received is almost identical. <br />
-          The only difference is that it sets the first bit to indicate charging.
+          The only difference is that it sets the first bit to indicate
+          charging.
           <br />
           e.g. If it is charging and it is at 31% <code>(0x1F)</code>, it would
           set the first bit to <code>1</code> hence returning 159%{" "}
