@@ -240,7 +240,7 @@ export default function Post() {
           <br />
           In this example you can see that when plugged in directly, it reports
           an entirely wrong battery level.
-          <div className="flex w-[55rem] justify-between">
+          <div className="flex flex-col gap-4 lg:w-[55rem] lg:flex-row lg:justify-between">
             <p>
               Dongle (Not Charging)
               <br />
@@ -261,7 +261,7 @@ export default function Post() {
 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00`}
             </CodeBlock>
           </div>
-          <div className="flex w-[55rem] justify-between">
+          <div className="flex flex-col gap-4 lg:w-[55rem] lg:flex-row lg:justify-between">
             <p>
               Dongle (Charging)
               <br />
@@ -282,7 +282,7 @@ export default function Post() {
 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00`}
             </CodeBlock>
           </div>
-          <div className="flex w-[55rem] justify-between">
+          <div className="flex flex-col gap-4 lg:w-[55rem] lg:flex-row lg:justify-between">
             <p>
               Plugged in directly
               <br />
