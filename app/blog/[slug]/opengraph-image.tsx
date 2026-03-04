@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 // Image metadata
-export const alt = "About Acme";
+export let alt = "JCHU634 blog post";
 export const size = {
   width: 1200,
   height: 630,
@@ -27,7 +27,7 @@ export default async function Image({
   try {
     const blogModule = await import(`@/blogposts/${currentPostFileName}`);
     blogTitle = blogModule.metadata?.title || "JCHU634 Blog";
-    blogDescription = blogModule.metadata?.description || "test";
+    blogDescription = blogModule.metadata?.description || "";
   } catch (e) {
     console.error(`Error importing metadata for ${currentPostFileName}:`, e);
   }
