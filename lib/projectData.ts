@@ -104,9 +104,10 @@ export const projects: ProjectTypes[] = [
       "https://github.com/jchu634/Motospeed-x6-Utilities/releases/latest",
     brief: "Reverse Engineered Motospeed X6 tools",
     website: "/blog/00011.motospeed-x6",
-    description: `Tools that I for the Motospeed X6 gaming mouse
+    description: `Tools that I built for the Motospeed X6 gaming mouse.
     - X6 Battery Utility: A system tray app that shows the battery status of the mouse.
-    These tools were written using the research I did on them, there is a writeup available.
+    These tools were written using the research I did on them, and there is a write-up available.
+    `,
     `,
   },
   {
