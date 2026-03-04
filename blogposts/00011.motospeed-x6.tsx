@@ -205,7 +205,7 @@ export default function Post() {
           There aren't many changes when the mouse is charging, but still
           connected wirelessly, you still send the <code>SET_REPORT</code> and
           the packet received is almost identical. <br />
-          The only diffence is that it sets the first bit to indicate charging.
+          The only difference is that it sets the first bit to indicate charging.
           <br />
           e.g. If it is charging and it is at 31% <code>(0x1F)</code>, it would
           set the first bit to <code>1</code> hence returning 159%{" "}
@@ -318,7 +318,7 @@ Plugged In            1010 0100
           Since even the binary is so different from the rest, I have no idea
           how the battery is reported when the mouse is plugged in.
           <br />
-          Addtionally, I could not find any wireshark packets that had some hex
+          Additionally, I could not find any Wireshark packets that had some hex
           that reflected the battery when it was plugged in.
           <br />
           Finally, I have no idea if the battery level is even reported at all
