@@ -95,6 +95,21 @@ export const projects: ProjectTypes[] = [
     ],
   },
   {
+    name: "Motospeed X6 Utilities",
+    type: ["Application"],
+    timeframe: "2026",
+    technologies_and_frameworks: ["Rust"],
+    github: "https://github.com/jchu634/Motospeed-x6-Utilities",
+    download:
+      "https://github.com/jchu634/Motospeed-x6-Utilities/releases/latest",
+    brief: "Reverse Engineered Motospeed X6 tools",
+    website: "/blog/00011.motospeed-x6",
+    description: `Tools that I built for the Motospeed X6 gaming mouse.
+    - X6 Battery Utility: A system tray app that shows the battery status of the mouse.
+    These tools were written using the research I did on them, and there is a write-up available.
+    `,
+  },
+  {
     name: "Typing-Automation-Tools",
     type: ["Application"],
     timeframe: "2025",
@@ -118,7 +133,7 @@ export const projects: ProjectTypes[] = [
     website: "https://inkproof.keshuac.com",
     brief: "A modern ePUB Editor",
     description: `Inkproof is an pet project that I really wanted to exist.
-      It is also my entry to the Bolt.new 2025 Hackathon.      
+      It is also my entry to the Bolt.new 2025 Hackathon.
       The project is primarily designed for client-side use, heavily utilising the Origin Private File System (OPFS).`,
     images: [
       "/projects/inkproof/inkproof_editor_dark.png",
