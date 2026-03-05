@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Motospeed X6 Reverse engineering - Battery",
   date: "2026-03-01",
   description: "Motospeed X6 writeup part 1.",
-  lastUpdate: "2026-03-04",
+  lastUpdate: "2026-03-06",
 };
 export default function Post() {
   return (
