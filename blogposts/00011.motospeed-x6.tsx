@@ -4,9 +4,9 @@ import { CodeBlock } from "@/components/ui/codeblock";
 import FigureWithCaption from "@/components/ui/captioned-image";
 
 export const metadata: Metadata = {
-  title: "Reverse engineering a bit of the Motospeed X6",
+  title: "Motospeed X6 Reverse engineering - Battery",
   date: "2026-03-01",
-  description: "Motospeed X6 battery reporting writeup.",
+  description: "Motospeed X6 writeup part 1.",
   lastUpdate: "2026-03-04",
 };
 export default function Post() {
@@ -327,11 +327,9 @@ Plugged In            1010 0100
         </div>
         <div>
           <h3>Conclusion</h3>
-          Not much more to say.
-          <br />
-          I plan to do some more follow-on research, and reverse engineer how
-          their button-remapping, RGB, dpi and macros work. So if you are
-          interested, check back here.
+          This is the 1st part of a set of articles on my research on the
+          Motospeed X6 with future topics including how their button-remapping,
+          RGB, dpi and macros work.
           <br />
           Ultimately, I completed my goal and discovered how the Motospeed X6
           reports its battery levels and if it is charging. <br />
@@ -350,8 +348,8 @@ Plugged In            1010 0100
           AI was used as a learning resource to help understand the USB packet
           flow, write some code and as a psuedo search engine.
           <br />
-          This article was <p className="inline font-bold">NOT</p> written with
-          AI.
+          This article has NOT been written with AI as is the case with all of
+          my articles thus far.
           <br />
         </div>
       </div>
