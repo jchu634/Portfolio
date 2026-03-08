@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Motospeed X6 Reverse engineering - Lighting, Settings",
   date: "2026-03-05",
   description: "Motospeed X6 writeup part 2",
-  lastUpdate: "2026-03-06",
+  lastUpdate: "2026-03-08",
 };
 export default function Post() {
   return (
@@ -21,6 +21,11 @@ export default function Post() {
           <br />
           After finding the battery request in Part 1, it got much easier as I
           now know what to do and where to look.
+          <br />
+          Apologies about the relative dryness of the article, there isn't as
+          much interesting insights about the info or the reverse engineering
+          this time.
+          <br />I promise the next part on Macros will be much more interesting.
         </div>
         <br />
         At its core, the API still sends SET_REPORTs with custom payloads to EP0
@@ -179,8 +184,8 @@ export default function Post() {
           Motospeed uses the same packet to change DPI values, which DPI slot is
           currently being used and even how many DPI slots are active.
           <br /> Byte 4 changes the currently active slots, <br />
-          Bytes 6-15 act as pairs to form a "bucket" that stores the
-          slots&apos;s dpi in little-endian format, <br />
+          Bytes 6-15 stores the DPI as sets of 16bit unsigned integers in
+          little-endian format, <br />
           and finally byte 16 changes the number of active slots.
           <br />
           <h4>DPI packet Example:</h4>
@@ -278,12 +283,9 @@ export default function Post() {
           achieve without custom drivers just by using SET_REPORT as a private
           channel to communicate configuration info.
           <br />
-          This time, unlike Part 1, when I wanted the info to design a custom
-          utility, I have no idea if this information would be ever be useful.
-          <br />
           Maybe one day I will write a virtual HID driver for controlling the
-          RGB lights, of which I would argue hardly deserve that name, given how
-          bad the colour reproduction is.
+          RGB lights, of which I would argue hardly deserves that name, given
+          how bad the colour reproduction is.
           <br />
           In part 3, I will explore how their button remapping feature works, so
           hopefully, I will see you then.
