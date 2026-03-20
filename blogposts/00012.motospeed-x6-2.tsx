@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Motospeed X6 Reverse engineering - Lighting, Settings",
   date: "2026-03-05",
   description: "Motospeed X6 writeup part 2",
-  lastUpdate: "2026-03-08",
+  lastUpdate: "2026-03-21",
 };
 export default function Post() {
   return (
@@ -137,10 +137,10 @@ export default function Post() {
             language="bash"
           >
             {`b5 42 02 01 02 01 00 01 01 00 00 00 00 00 00 00 00 00 00 00 00
-│  │  │  │  │  │  └─┬─┘  │  └────────────padding──────────────┘
-│  │  │  │  │  │    │    └ Esports Mode (01 = Closed, 02 = Open)
-│  │  │  │  │  │    └ Unknown
-│  │  │  │  │  │
+│  │  │  │  │  │  │  │  │  └────────────padding──────────────┘
+│  │  │  │  │  │  │  │  └ Esports Mode (01 = Closed, 02 = Open)
+│  │  │  │  │  │  │  └ Scroll Direction (01 = Forwards, 02 = Backwards)
+│  │  │  │  │  │  └ Unknown
 │  │  │  │  │  └ Motion Sync (01 = On, 02 = Off)
 │  │  │  │  └ Angle Snap (01 = On, 02 = Off)
 │  │  │  └ Ripple (01 = On, 02 = Off)
@@ -226,7 +226,7 @@ export default function Post() {
           <br /> I leave this as an exercise to the reader, as I don&apos;t want
           to break my one and only mouse.
           <h4>Polling packet Rate Example:</h4>
-          Polling rate index 3 (2000hz)
+          Polling rate (index 3: 2000hz)
           <br />
           <CodeBlock
             hideCopyButton={true}
@@ -294,6 +294,16 @@ export default function Post() {
           <a href="https://github.com/jchu634/motospeed-x6-reverse-engineering">
             here
           </a>
+          <h3>Postscript</h3>
+          <div>
+            Edits:
+            <ul>
+              <li>
+                (21.03.2026) Added scroll direction to general settings as I
+                just forgot to test this feature ㄟ( ▔, ▔ )ㄏ
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>
