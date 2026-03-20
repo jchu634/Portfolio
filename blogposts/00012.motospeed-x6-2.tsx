@@ -120,13 +120,9 @@ export default function Post() {
           <h2>Settings</h2>
           The settings packets are in comparison quite a bit more interesting,
           they cram all the settings into one payload, and more importantly
-          there are two unused bytes which appear before Esports mode,
-          indicating there might be some hidden settings which are disabled if
+          there is an unused byte which appears before scroll direction,
+          indicating there might be some hidden setting which is disabled if
           following convention.
-          <br /> If I were to speculate, I would assume that they used to be
-          used to set the debounce and sleep time, before they were spun out
-          into their own packets, as the debounce and sleep packets are
-          remarkably empty.
           <br />
           <h4>General Settings packet Example:</h4>
           Lift Up Distance = High, Ripple = on, Angle Snap = Off, Motion Sync =
