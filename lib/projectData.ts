@@ -106,7 +106,8 @@ export const projects: ProjectTypes[] = [
     website: "/blog/00011.motospeed-x6",
     description: `Tools that I built for the Motospeed X6 gaming mouse.
     - X6 Battery Utility: A system tray app that shows the battery status of the mouse.
-    These tools were written using the research I did on them, and there is a write-up available.
+    - X6 Experimental WebHID utility: A WebHID configuration tool that allows you to configure your mouse via WebHID.
+    Based on my reverse engineering into its configuration HID commands, writeup available at my blog.
     `,
   },
   {

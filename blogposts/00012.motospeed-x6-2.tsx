@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Motospeed X6 Reverse engineering - Lighting, Settings",
   date: "2026-03-05",
   description: "Motospeed X6 writeup part 2",
-  lastUpdate: "2026-03-06",
+  lastUpdate: "2026-03-21",
 };
 export default function Post() {
   return (
@@ -21,6 +21,11 @@ export default function Post() {
           <br />
           After finding the battery request in Part 1, it got much easier as I
           now know what to do and where to look.
+          <br />
+          Apologies about the relative dryness of the article, there isn't as
+          much interesting insights about the info or the reverse engineering
+          this time.
+          <br />I promise the next part on Macros will be much more interesting.
         </div>
         <br />
         At its core, the API still sends SET_REPORTs with custom payloads to EP0
@@ -115,13 +120,9 @@ export default function Post() {
           <h2>Settings</h2>
           The settings packets are in comparison quite a bit more interesting,
           they cram all the settings into one payload, and more importantly
-          there are two unused bytes which appear before Esports mode,
-          indicating there might be some hidden settings which are disabled if
+          there is an unused byte which appears before scroll direction,
+          indicating there might be some hidden setting which is disabled if
           following convention.
-          <br /> If I were to speculate, I would assume that they used to be
-          used to set the debounce and sleep time, before they were spun out
-          into their own packets, as the debounce and sleep packets are
-          remarkably empty.
           <br />
           <h4>General Settings packet Example:</h4>
           Lift Up Distance = High, Ripple = on, Angle Snap = Off, Motion Sync =
@@ -132,10 +133,10 @@ export default function Post() {
             language="bash"
           >
             {`b5 42 02 01 02 01 00 01 01 00 00 00 00 00 00 00 00 00 00 00 00
-│  │  │  │  │  │  └─┬─┘  │  └────────────padding──────────────┘
-│  │  │  │  │  │    │    └ Esports Mode (01 = Closed, 02 = Open)
-│  │  │  │  │  │    └ Unknown
-│  │  │  │  │  │
+│  │  │  │  │  │  │  │  │  └────────────padding──────────────┘
+│  │  │  │  │  │  │  │  └ Esports Mode (01 = Closed, 02 = Open)
+│  │  │  │  │  │  │  └ Scroll Direction (01 = Forwards, 02 = Backwards)
+│  │  │  │  │  │  └ Unknown
 │  │  │  │  │  └ Motion Sync (01 = On, 02 = Off)
 │  │  │  │  └ Angle Snap (01 = On, 02 = Off)
 │  │  │  └ Ripple (01 = On, 02 = Off)
@@ -179,8 +180,8 @@ export default function Post() {
           Motospeed uses the same packet to change DPI values, which DPI slot is
           currently being used and even how many DPI slots are active.
           <br /> Byte 4 changes the currently active slots, <br />
-          Bytes 6-15 act as pairs to form a "bucket" that stores the
-          slots&apos;s dpi in little-endian format, <br />
+          Bytes 6-15 stores the DPI as sets of 16bit unsigned integers in
+          little-endian format, <br />
           and finally byte 16 changes the number of active slots.
           <br />
           <h4>DPI packet Example:</h4>
@@ -221,7 +222,7 @@ export default function Post() {
           <br /> I leave this as an exercise to the reader, as I don&apos;t want
           to break my one and only mouse.
           <h4>Polling packet Rate Example:</h4>
-          Polling rate index 3 (2000hz)
+          Polling rate (index 3: 2000hz)
           <br />
           <CodeBlock
             hideCopyButton={true}
@@ -278,12 +279,9 @@ export default function Post() {
           achieve without custom drivers just by using SET_REPORT as a private
           channel to communicate configuration info.
           <br />
-          This time, unlike Part 1, when I wanted the info to design a custom
-          utility, I have no idea if this information would be ever be useful.
-          <br />
           Maybe one day I will write a virtual HID driver for controlling the
-          RGB lights, of which I would argue hardly deserve that name, given how
-          bad the colour reproduction is.
+          RGB lights, of which I would argue hardly deserves that name, given
+          how bad the colour reproduction is.
           <br />
           In part 3, I will explore how their button remapping feature works, so
           hopefully, I will see you then.
@@ -292,6 +290,16 @@ export default function Post() {
           <a href="https://github.com/jchu634/motospeed-x6-reverse-engineering">
             here
           </a>
+          <h3>Postscript</h3>
+          <div>
+            Edits:
+            <ul>
+              <li>
+                (21.03.2026) Added scroll direction to general settings as I
+                just forgot to test this feature ㄟ( ▔, ▔ )ㄏ
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>
