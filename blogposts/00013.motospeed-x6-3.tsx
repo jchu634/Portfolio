@@ -235,7 +235,7 @@ export default function Post() {
                 <ul>
                   <li>
                     <code>0x0c6f00</code>: Screen Brightness + (0c prefix = HID
-                    Usage Page) )
+                    Usage Page)
                   </li>
                   <li>
                     <code>0x0c7000</code>: Screen Brightness -
