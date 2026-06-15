@@ -14,7 +14,7 @@ export default function Post() {
       <BlogHeader header_metadata={metadata} />
       <div>
         <h2>About</h2>
-        This pt2 in a writeup about the EdGo app, which is an unofficial app
+        This is pt2 in a writeup about the EdGo app, which is an unofficial app
         client for the EdDiscussion platform, explaining the technical
         architecture and decisions.
       </div>
@@ -25,15 +25,15 @@ export default function Post() {
         Native (Expo) as it was a great fit for EdDiscussion&apos;s API with a
         good balance between native performance and web API compatibility.
         <br />
-        As a side note, I attempted to try a Sparkling+Lynx stack, but it is
-        very much in beta and it did not compile at all on Windows.
+        As a side note, I attempted a Sparkling+Lynx stack, but it is very much
+        in beta and it did not compile at all on Windows.
         <br />
         <br />
-        For database operations, the primary DB is utilises Expo-Sqlite
-        interfaced through DrizzleORM due to its developer experience, although
-        DrizzleORM has been patched to support asynchronous operations, which
-        will be elaborated on later. Additionally, react-native-mmkv is used as
-        a persistant KV store, and expo-secure-store is used for sensitive data
+        For database operations, the primary DB utilises Expo-Sqlite interfaced
+        through DrizzleORM due to its developer experience, although DrizzleORM
+        has been patched to support asynchronous operations, which will be
+        elaborated on later. Additionally, react-native-mmkv is used as a
+        persistent KV store, and expo-secure-store is used for sensitive data
         (API Keys).
         <br />
         For styling, I wanted a Tailwind-like experience, and chose uniwind over
@@ -42,7 +42,7 @@ export default function Post() {
         <br />
         Finally, Effect-ts is used, it handles most business logic and data
         fetching. This was a mistake as this meant I was learning both Effect-ts
-        and React-Native simulatenously and this made for a cliff of a learning
+        and React-Native simultaneously and this made for a cliff of a learning
         curve.
       </div>
       <div>
@@ -56,21 +56,21 @@ export default function Post() {
         </code>{" "}
         hook, which returns data from a query and automatically retriggers a
         rerender when query results change. <br />
-        So when a user opens a screen, it triggers a api fetch, in the meantime,
-        the screen renders the DB results, when the api fetch is resolved, it
+        So when a user opens a screen, it triggers a API fetch, in the meantime,
+        the screen renders the DB results, when the API fetch is resolved, it
         updates the db, which triggers a rerender with the updated results.
         <br />
         To prevent extremely large queries, data fetches are paginated, which
-        showed a significant flaw, as loading a new chunk of data, the UI would
-        be stuck waiting for API queries to resolve despite only fetching data
-        unless the user was offline.
+        showed a significant flaw, as when loading a new chunk of data, the UI
+        would be stuck waiting for API queries to resolve despite only fetching
+        data. This didn't occur when the user was offline.
         <br />
         This was eventually root-caused to be a limitation in DrizzleORM itself
         as its Expo-Sqlite driver is synchronous, and it turns out that the new
-        page fetch was been queued behind the previous page sync operation,
-        which was waiting on the API results. When offline, the API call would
-        fail almost immediately which terminated the sync and unblocked the next
-        page sync. <br />
+        page fetch was queued behind the previous page sync operation, which was
+        waiting on the API results. When offline, the API call would fail almost
+        immediately which terminated the sync and unblocked the next page sync.{" "}
+        <br />
         This is still an issue, and my "fix" was adopting a hacky patch to
         support asynchronous operations, while waiting for the Drizzle driver to
         be updated to be asynchronous.
@@ -84,13 +84,13 @@ export default function Post() {
         comments, as EdDiscussion returns these through a custom HTML-like XML
         schema which caused a couple of issues.
         <br />
-        Firstly, the XML parsing library used (TurboXML) although working great,
-        did not support self-closing tags, which EdDiscussion used for line
-        breaks. TurboXML had to be patched to support this and to lightly
-        restructure the returned data to be more easily parsed.
+        Firstly, TurboXML (XML parsing library) did not support self-closing
+        tags, which EdDiscussion used for line breaks. TurboXML had to be
+        patched to support this and to lightly restructure the returned data to
+        be more easily parsed.
         <br />
         Secondly, the largest difficulty with the rendering is the text node
-        merging. React Native does not support copying text from across
+        merging. React-Native does not support copying text from across
         different <code>Text</code> nodes, hence a core part of the XML
         rendering was to collect all consecutive text nodes and merge them into
         a single <code>Text</code> node.
@@ -106,7 +106,7 @@ export default function Post() {
         a leaf, before moving back up the tree merging the text nodes as we go.
         <br />
         Finally by the time we get back to the root paragraph node, it is parsed
-        a single <code>Text</code> node, with subnodes for text formatting.
+        as a single <code>Text</code> node, with subnodes for text formatting.
       </div>
       <div>
         <h3>Storage Layer</h3>
@@ -154,22 +154,22 @@ export default function Post() {
         limit and offset are already documented by smartspot2, and query is
         simply a string that you want to query from, it returns a standard
         thread response.
-        <h3>Websocket</h3>
+        <h3>WebSocket API</h3>
         <code>wss://edstem.org/api/stream</code>
         <br />
-        Ed's websocket API isn't particularly complex, but it has a couple of
+        Ed's WebSocket API isn't particularly complex, but it has a couple of
         things you need to get right.
         <br />
         <h4>Authentication</h4>
-        Similar to the HTTP endpoints, the websocket can be authenticated using
+        Similar to the HTTP endpoints, the WebSocket can be authenticated using
         a bearer token, however, the standard WebSocket API does not support
         headers.
-        <br /> Afaik there is no way to authenticate using an api token on the
+        <br /> Afaik there is no way to authenticate using an API token on the
         browser, as the X-token used to authenticate seems to be different from
         the API token.
         <br />
-        Alternative websocket implementations such as NodeJS do support headers
-        on the Websocket handshake and will work, e.g. React Native websockets{" "}
+        Alternative WebSocket implementations such as NodeJS do support headers
+        on the Websocket handshake and will work, e.g. React-Native WebSockets{" "}
         <CodeBlock>
           {`const Ws = WebSocket as unknown as new (
   url: string,
@@ -178,14 +178,14 @@ export default function Post() {
 ) => WebSocket;`}
         </CodeBlock>
         <h4>API Request Formatting</h4>
-        Ed's websocket API works by sending a key pair{" "}
+        Ed's WebSocket API works by sending a key-value pair{" "}
         <code>{`{ id: 1, type: "" },`}</code>, where ID is a incremental
-        identifier number which resets on every websocket connection and type is
-        the websocket API request type.
+        identifier which resets on every WebSocket connection and type is the
+        WebSocket API request type.
       </div>
       <div>
-        <h4>Unread Message Counts (Websocket)</h4>
-        Note: This is the only websocket request type I reverse engineered,
+        <h4>Unread Message Counts (WebSocket)</h4>
+        Note: This is the only WebSocket request type I reverse engineered,
         there are more, I just didn't need them. <br />
         <code>{`{ id: {ID}, type: "thread.unreadCounts" },`}</code>
         <br />
