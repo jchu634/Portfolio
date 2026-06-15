@@ -27,7 +27,7 @@ export default function RootLayout({
         >
           <div className="flex h-screen flex-col-reverse bg-blue-200 md:flex-row dark:bg-slate-900">
             <SideNav />
-            <div className="flex-grow overflow-y-auto pb-15 md:pb-0">
+            <div className="grow overflow-y-auto pb-15 md:pb-0">
               {children}
               <Analytics />
             </div>
