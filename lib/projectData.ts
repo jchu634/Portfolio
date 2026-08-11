@@ -14,6 +14,24 @@ interface ProjectTypes {
 
 export const projects: ProjectTypes[] = [
   {
+    name: "EdGo",
+    type: ["Mobile App"],
+    timeframe: "2026-Ongoing",
+    technologies_and_frameworks: ["React Native", "Effect-TS", "DrizzleORM"],
+    github: "https://github.com/jchu634/edgo",
+    brief: "3rd Party Client App for Ed Discussion",
+    description: `EdGo is a local-first client for the Ed Discussion forum platform.
+    `,
+    images: [
+      "/projects/edgo/darkMode_course.jpg",
+      "/projects/edgo/darkMode_homepage.jpg",
+      "/projects/edgo/darkMode_question.jpg",
+      "/projects/edgo/lightMode_course.jpg",
+      "/projects/edgo/lightMode_homepage.jpg",
+      "/projects/edgo/lightMode_question.jpg",
+    ],
+  },
+  {
     name: "HA-Components",
     type: ["Application"],
     timeframe: "2025-Ongoing",
