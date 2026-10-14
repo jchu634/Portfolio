@@ -65,7 +65,7 @@ export default function Post() {
           >
             {`0 0 0 1 1 1 1 0
 │ │   │ │ │ └┬┘
-│ │   │ │ │  └ Lift Off Distance (High:01, Low:10)
+│ │   │ │ │  └ Lift Off Distance (Low:01, High:10)
 │ │   │ │ └ Motion Sync
 │ │   │ └ Angle Snap
 │ │   └ Ripple

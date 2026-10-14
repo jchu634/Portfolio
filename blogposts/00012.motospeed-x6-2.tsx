@@ -125,8 +125,8 @@ export default function Post() {
           following convention.
           <br />
           <h4>General Settings packet Example:</h4>
-          Lift Up Distance = High, Ripple = on, Angle Snap = Off, Motion Sync =
-          Off, Esports Mode = Closed
+          Lift Up Distance = High, Motion Sync = On, Angle Snap = Off, Ripple =
+          On, Esports Mode = Closed
           <CodeBlock
             hideCopyButton={true}
             className="my-2 w-fit"
@@ -137,9 +137,9 @@ export default function Post() {
 │  │  │  │  │  │  │  │  └ Esports Mode (01 = Closed, 02 = Open)
 │  │  │  │  │  │  │  └ Scroll Direction (01 = Forwards, 02 = Backwards)
 │  │  │  │  │  │  └ Unknown
-│  │  │  │  │  └ Motion Sync (01 = On, 02 = Off)
+│  │  │  │  │  └ Ripple (01 = On, 02 = Off)
 │  │  │  │  └ Angle Snap (01 = On, 02 = Off)
-│  │  │  └ Ripple (01 = On, 02 = Off)
+│  │  │  └ Motion Sync (01 = On, 02 = Off)
 │  │  └─ Lift Up Distance Flag (01=low, 02=high)
 │  └ 0x42 (General Settings Command)
 └ 0xb5 (Report ID)`}
