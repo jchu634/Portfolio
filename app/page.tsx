@@ -19,13 +19,6 @@ import UnderlineToBackground from "@/components/fancy/text/underline-to-backgrou
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -45,42 +38,43 @@ export default function Home() {
   return (
     <div className="h-fit w-full">
       <div
-        className="relative h-fit cursor-pointer items-center justify-center overflow-hidden rounded-lg px-2 pt-12 md:w-3/4 md:px-8"
+        className="relative grid w-full max-w-7xl items-end gap-8 px-8 pt-12 md:px-12 xl:grid-cols-[minmax(0,1fr)_22rem] xl:gap-12"
         ref={containerRef}
       >
-        <div className="items-left flex size-full flex-col gap-4 pl-5">
-          {isMobile ? (
-            <div
-              className={cn(
-                "items-left flex flex-col gap-4 text-5xl leading-none text-orange-500 dark:text-orange-400",
-                roboto_slab.className,
-              )}
-            >
-              <h1>Hi, I&apos;m Joshua:</h1>
-              <h1>I like making stuff.</h1>
-            </div>
-          ) : (
-            <div className="items-left flex flex-col gap-4">
-              {["Hi, I'm Joshua:", "I like making stuff."].map((text, i) => (
-                <VariableFontCursorProximity
-                  key={i}
-                  label={text}
-                  className={cn(
-                    "text-5xl leading-none text-orange-500 dark:text-orange-400",
-                    roboto_slab.className,
-                  )}
-                  fromFontVariationSettings="'wght' 500, 'slnt' 0"
-                  toFontVariationSettings="'wght' 200, 'slnt' -10"
-                  radius={200}
-                  containerRef={containerRef}
-                />
-              ))}
-            </div>
-          )}
+        <div className="min-w-0">
+          <div className="flex w-full flex-col items-start gap-6">
+            {isMobile ? (
+              <div
+                className={cn(
+                  "items-left flex flex-col gap-4 text-5xl leading-none text-orange-500 dark:text-orange-400",
+                  roboto_slab.className,
+                )}
+              >
+                <h1>Hi, I&apos;m Joshua:</h1>
+                <h1>I like making stuff.</h1>
+              </div>
+            ) : (
+              <div className="items-left flex flex-col gap-4">
+                {["Hi, I'm Joshua:", "I like making stuff."].map((text, i) => (
+                  <VariableFontCursorProximity
+                    key={i}
+                    label={text}
+                    className={cn(
+                      "text-5xl leading-none text-orange-500 dark:text-orange-400",
+                      roboto_slab.className,
+                    )}
+                    fromFontVariationSettings="'wght' 500, 'slnt' 0"
+                    toFontVariationSettings="'wght' 200, 'slnt' -10"
+                    radius={200}
+                    containerRef={containerRef}
+                  />
+                ))}
+              </div>
+            )}
 
-          {/* prettier-ignore */}
-          <p
-          className={cn("text-xl leading-10whitespace-pre-line text-black dark:text-white",  roboto_slab.className )}
+            {/* prettier-ignore */}
+            <p
+          className={cn("text-xl leading-relaxed text-black dark:text-white",  roboto_slab.className )}
         >
 
             Hi, I&apos;m currently studying a Masters of Cybersecurity at Monash University.<br />
@@ -88,89 +82,81 @@ export default function Home() {
             I write and maintain a couple of open-source projects in my spare time.
 
         </p>
-          <div className={cn("flex gap-x-2", roboto_slab.className)}>
-            <Link
-              href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKkdu7ihp3cS0OA7Y9ol3wj41TBUKtbVqDnuG5"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="outline"
-                className="d flex w-fit space-x-2 border-2 border-black not-only:items-center hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+            <div className={cn("flex flex-wrap gap-2", roboto_slab.className)}>
+              <Link
+                href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKkdu7ihp3cS0OA7Y9ol3wj41TBUKtbVqDnuG5"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <p>View CV</p>
-                <ExternalLinkIcon className="size-5" />
-              </Button>
-            </Link>
-            <Link
-              href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKwsEGZ5Anrj2vxehYfgo4bBtLNOZ6kAuiXRJE"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="outline"
-                className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                <Button
+                  variant="outline"
+                  className="d flex w-fit space-x-2 border-2 border-black not-only:items-center hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                >
+                  <p>View CV</p>
+                  <ExternalLinkIcon className="size-5" />
+                </Button>
+              </Link>
+              <Link
+                href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKwsEGZ5Anrj2vxehYfgo4bBtLNOZ6kAuiXRJE"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <p>View Resume</p>
-                <ExternalLinkIcon className="size-5" />
-              </Button>
-            </Link>
+                <Button
+                  variant="outline"
+                  className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                >
+                  <p>View Resume</p>
+                  <ExternalLinkIcon className="size-5" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="w-full px-16 pt-4 md:mb-12 md:px-24">
-        <Carousel
-          opts={{
-            align: "start",
-          }}
-        >
-          <CarouselContent>
-            {education.map((edu, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Card>
-                    <CardContent
-                      className={cn(
-                        "flex min-h-30 flex-col justify-center",
-                        intel_one_mono.className,
-                      )}
+        <section aria-labelledby="education-heading" className="min-w-0">
+          <h2
+            id="education-heading"
+            className={cn(
+              "mb-4 text-3xl font-bold text-orange-500 dark:text-orange-400",
+              roboto_slab.className,
+            )}
+          >
+            Education
+          </h2>
+          <div className="grid items-start gap-4 sm:grid-cols-2 xl:grid-cols-1">
+            {education.map((edu) => (
+              <Card key={edu.institution} className="w-full">
+                <CardContent
+                  className={cn(
+                    "flex flex-col items-start gap-2",
+                    intel_one_mono.className,
+                  )}
+                >
+                  <h3 className="text-lg font-bold">{edu.description}</h3>
+                  <p className="text-base font-bold text-orange-500 dark:text-orange-400">
+                    {edu.institution}
+                  </p>
+                  <p className="text-sm">{edu.timeframe}</p>
+                  {edu.link && (
+                    <Button
+                      variant="outline"
+                      className="mt-2 flex w-fit items-center gap-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                      asChild
                     >
-                      <span className="text-lg font-bold whitespace-pre-wrap">
-                        {edu.description}
-                      </span>
-                      <span className="text-base font-bold text-orange-500 dark:text-orange-400">
-                        {edu.institution} ({edu.timeframe})
-                      </span>
-                      <div className="pt-2">
-                        <Button
-                          variant="outline"
-                          className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
-                          asChild
-                        >
-                          {edu.link && (
-                            <Link
-                              href={edu.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Link2Icon className="size-5" />
-                              <p>Cert Link</p>
-                            </Link>
-                          )}
-                        </Button>
-                      </div>
-
-                      <div className="flex gap-x-2"></div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
+                      <Link
+                        href={edu.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Link2Icon className="size-5" />
+                        Cert Link
+                      </Link>
+                    </Button>
+                  )}
+                </CardContent>
+              </Card>
             ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+          </div>
+        </section>
       </div>
 
       <div className="flex flex-col justify-between px-8 md:flex-row md:px-12">
