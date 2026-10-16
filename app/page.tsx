@@ -25,6 +25,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { projects, education } from "@/lib/homepageData";
+import FeaturedProjects from "@/components/featured-projects";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(
@@ -32,13 +33,12 @@ export default function Home() {
   ) as React.RefObject<HTMLDivElement>;
 
   const [container, setContainer] = useState<HTMLElement | null>(null);
-  const [mobContainer, setMobContainer] = useState<HTMLElement | null>(null);
   const { theme } = useTheme();
 
   return (
     <div className="h-fit w-full">
       <div
-        className="relative grid w-full max-w-7xl items-end gap-8 px-8 pt-12 md:px-12 xl:grid-cols-[minmax(0,1fr)_22rem] xl:gap-12"
+        className="sticky top-[var(--homepage-intro-top,auto)] grid w-full max-w-7xl items-end gap-8 px-8 pt-12 md:relative md:top-auto md:px-12 xl:grid-cols-[minmax(0,1fr)_22rem] xl:gap-12"
         ref={containerRef}
       >
         <div className="min-w-0">
@@ -159,7 +159,7 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="flex flex-col justify-between px-8 md:flex-row md:px-12">
+      <div className="hidden justify-between px-8 md:flex md:flex-row md:px-12">
         <div
           className={cn(
             "pt-10 text-4xl font-bold text-orange-500 dark:text-orange-400",
@@ -356,95 +356,7 @@ export default function Home() {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <div
-        className="h-[300px] overflow-auto md:hidden"
-        ref={(node) => setMobContainer(node)}
-      >
-        <StackingCards
-          totalCards={projects.length}
-          scrollOptons={{ container: { current: mobContainer } }}
-        >
-          <div className="flex h-[20px] w-full items-center pt-2 pl-8 text-xl font-bold whitespace-pre uppercase">
-            Scroll down↓
-          </div>
-          {projects.map((project, index) => {
-            return (
-              <StackingCardItem
-                key={index}
-                index={index}
-                className="h-[300px] md:h-100"
-              >
-                <Card
-                  className={cn(
-                    project.bgColor,
-                    "relative mx-auto h-fit min-h-[240px] w-[85svw] rounded-3xl",
-                  )}
-                >
-                  <CardContent
-                    className={cn(
-                      "flex h-full w-full justify-between",
-                      intel_one_mono.className,
-                    )}
-                  >
-                    <div className="flex w-full flex-col space-y-2">
-                      <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
-                        {project.name}
-                      </span>
-                      <span className="text-base font-bold text-wrap whitespace-pre-wrap text-white">
-                        {project.description}
-                      </span>
-
-                      <div className="flex flex-col space-y-2 gap-x-2 pt-2">
-                        <div className="flex flex-row space-x-2">
-                          {project.website && (
-                            <Button
-                              variant="outline"
-                              className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
-                              asChild
-                            >
-                              <Link href={project.website}>
-                                <Link2Icon className="size-4" />
-                                <p>Website</p>
-                              </Link>
-                            </Button>
-                          )}
-                          {project.github && (
-                            <Button
-                              variant="outline"
-                              className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
-                              asChild
-                            >
-                              <Link href={project.github}>
-                                <SiGithub className="size-4" />
-                                <p>Github</p>
-                              </Link>
-                            </Button>
-                          )}
-                        </div>
-
-                        {project.download && (
-                          <Button
-                            variant="outline"
-                            className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
-                            asChild
-                          >
-                            <Link href={project.download}>
-                              <DownloadIcon className="size-4" />
-                              <p>Download</p>
-                            </Link>
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </StackingCardItem>
-            );
-          })}
-
-          <div className="pointer-events-none invisible relative h-80 w-full overflow-hidden" />
-        </StackingCards>
-      </div>
+      <FeaturedProjects introRef={containerRef} />
     </div>
   );
 }
