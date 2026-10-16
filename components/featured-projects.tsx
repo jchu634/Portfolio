@@ -5,14 +5,15 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { PauseIcon, PlayIcon, Link2Icon, DownloadIcon } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
+
 import { projects } from "@/lib/homepageData";
 import { intel_one_mono, roboto_slab } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
+import { cn } from "cnfast";
 import { Button } from "@/components/ui/button";
 import StackingCards, {
   StackingCardItem,
 } from "@/components/fancy/blocks/stacking-cards";
-const featured = projects.filter((p) => p.name !== "Inkproof");
+
 const DURATION = 20000;
 
 export default function FeaturedProjects({
@@ -25,6 +26,11 @@ export default function FeaturedProjects({
   const [remaining, setRemaining] = useState(DURATION);
   const remainingTime = useRef(DURATION);
   const mobile = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const timerControlRef = useRef<HTMLButtonElement>(null);
   const [stack, setStack] = useState({
     top: 16,
     heading: 124,
@@ -47,7 +53,7 @@ export default function FeaturedProjects({
         return;
       remainingTime.current = Math.max(0, remainingTime.current - elapsed);
       if (!remainingTime.current) {
-        setActive((i) => (i + 1) % featured.length);
+        setActive((i) => (i + 1) % projects.length);
         remainingTime.current = DURATION;
       }
       setRemaining(remainingTime.current);
@@ -57,21 +63,20 @@ export default function FeaturedProjects({
   useEffect(() => {
     const track = mobile.current;
     const intro = introRef.current;
-    const heading = track?.querySelector<HTMLElement>("[data-project-heading]");
-    const cards = track?.querySelectorAll<HTMLElement>("article");
-    const contents = track?.querySelectorAll<HTMLElement>(
-      "[data-project-content]",
-    );
-    const section = track?.closest("section");
-    if (!track || !intro || !heading || !cards || !contents || !section) return;
+    const heading = headingRef.current;
+    const section = sectionRef.current;
+    const cards = projects.flatMap((_, index) => {
+      const card = cardRefs.current[index];
+      const content = contentRefs.current[index];
+      return card && content ? [{ card, content }] : [];
+    });
+    if (!track || !intro || !heading || !section) return;
 
     function measure() {
       if (
         !track ||
         !intro ||
         !heading ||
-        !cards ||
-        !contents ||
         !section ||
         !matchMedia("(max-width: 767px)").matches
       )
@@ -79,8 +84,7 @@ export default function FeaturedProjects({
       // Measure natural content so the shared height can shrink after resizing.
       const cardHeight = Math.max(
         240,
-        ...Array.from(contents, (content) => {
-          const card = content.parentElement!;
+        ...cards.map(({ card, content }) => {
           const style = getComputedStyle(card);
           return Math.ceil(
             content.offsetHeight +
@@ -93,7 +97,7 @@ export default function FeaturedProjects({
       // Reserve the same height for every card, including the largest stagger.
       const step = Math.max(
         300,
-        Math.ceil(cardHeight / (1 - (0.05 + (cards.length - 1) * 0.03))),
+        Math.ceil(cardHeight / (1 - (0.05 + (projects.length - 1) * 0.03))),
       );
       const height = heading.offsetHeight;
       const bottom = window.innerHeight - 60;
@@ -118,7 +122,7 @@ export default function FeaturedProjects({
     const observer = new ResizeObserver(measure);
     observer.observe(intro);
     observer.observe(heading);
-    contents.forEach((content) => observer.observe(content));
+    cards.forEach(({ content }) => observer.observe(content));
     window.addEventListener("resize", measure);
     measure();
     return () => {
@@ -128,7 +132,7 @@ export default function FeaturedProjects({
       track.style.removeProperty("--project-card-height");
     };
   }, [introRef]);
-  const project = featured[active];
+  const project = projects[active];
   if (!project) return null;
   const image =
     resolvedTheme === "dark"
@@ -139,16 +143,17 @@ export default function FeaturedProjects({
     setPaused(true);
   }
   function pauseForInput(target: EventTarget) {
-    if (target instanceof Element && !target.closest("[data-timer-control]"))
+    if (target instanceof Node && !timerControlRef.current?.contains(target))
       setPaused(true);
   }
   return (
     <section
+      ref={sectionRef}
       aria-label="Featured projects"
       className="w-full px-8 pt-12 md:px-12 md:pb-12"
     >
       <div className="mb-6 hidden items-end justify-between gap-3 md:flex">
-        <Heading />
+        <ProjectHeading />
         <Link href="/projects" className="underline underline-offset-4">
           View all projects &#8599;
         </Link>
@@ -158,13 +163,10 @@ export default function FeaturedProjects({
         onPointerDownCapture={(e) => pauseForInput(e.target)}
         onKeyDownCapture={(e) => pauseForInput(e.target)}
       >
-        <div
-          role="tablist"
-          aria-label="Featured projects"
-          className="flex"
-        >
-          {featured.map((item, index) => (
-            <button
+        <div role="tablist" aria-label="Featured projects" className="flex">
+          {projects.map((item, index) => (
+            <Button
+              variant="ghostnohover"
               key={item.name}
               ref={(node) => {
                 tabs.current[index] = node;
@@ -178,18 +180,18 @@ export default function FeaturedProjects({
               onKeyDown={(e) => {
                 let next = index;
                 if (e.key === "ArrowRight")
-                  next = (index + 1) % featured.length;
+                  next = (index + 1) % projects.length;
                 else if (e.key === "ArrowLeft")
-                  next = (index - 1 + featured.length) % featured.length;
+                  next = (index - 1 + projects.length) % projects.length;
                 else if (e.key === "Home") next = 0;
-                else if (e.key === "End") next = featured.length - 1;
+                else if (e.key === "End") next = projects.length - 1;
                 else return;
                 e.preventDefault();
                 select(next);
                 tabs.current[next]?.focus();
               }}
               className={cn(
-                "shrink-0 cursor-pointer rounded-t-lg border-2 border-b-0 px-2 py-1.5 text-xs font-bold text-white focus-visible:outline-2 focus-visible:outline-orange-300",
+                "h-auto shrink-0 cursor-pointer rounded-none rounded-t-lg border-2 border-b-0 px-2 py-1.5 text-xs font-bold text-white shadow-none focus-visible:outline-2 focus-visible:outline-orange-300",
                 item.bgColor,
                 active === index
                   ? "border-orange-300"
@@ -197,10 +199,10 @@ export default function FeaturedProjects({
               )}
             >
               {item.name}
-            </button>
+            </Button>
           ))}
         </div>
-        {featured.map((item, index) => (
+        {projects.map((item, index) => (
           <div
             key={item.name}
             role="tabpanel"
@@ -212,14 +214,11 @@ export default function FeaturedProjects({
             {active === index && (
               <div
                 className={cn(
-                  "relative grid min-h-[21rem] grid-cols-2 items-center gap-6 rounded-b-2xl p-8 pb-16 text-white",
+                  "relative grid min-h-84 grid-cols-2 items-center gap-6 rounded-b-2xl p-8 pb-16 text-white",
                   project.bgColor,
                 )}
               >
                 <div className="min-w-0 space-y-4">
-                  <p className="text-xs tracking-widest text-white/65 uppercase">
-                    {project.type.join(" / ")}
-                  </p>
                   <h3
                     className={cn(
                       "text-4xl font-bold text-orange-300",
@@ -258,23 +257,24 @@ export default function FeaturedProjects({
                   </div>
                 )}
                 <div className="absolute right-8 bottom-3 flex items-center gap-3">
-                  <button
-                    type="button"
-                    data-timer-control
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    ref={timerControlRef}
                     onClick={() => setPaused((p) => !p)}
                     aria-label={
                       paused
                         ? "Resume automatic project switching"
                         : "Pause automatic project switching"
                     }
-                    className="cursor-pointer rounded-full p-2 hover:bg-white/15"
+                    className="size-8 cursor-pointer rounded-full p-2 hover:bg-white/15 hover:text-white"
                   >
                     {paused ? (
                       <PlayIcon className="size-4" />
                     ) : (
                       <PauseIcon className="size-4" />
                     )}
-                  </button>
+                  </Button>
                   <div
                     aria-hidden="true"
                     className="h-1 w-24 overflow-hidden rounded-full bg-white/25"
@@ -294,17 +294,17 @@ export default function FeaturedProjects({
       </div>
       <div ref={mobile} className={cn("md:hidden", intel_one_mono.className)}>
         <StackingCards
-          totalCards={featured.length}
+          totalCards={projects.length}
           scrollOptons={{
             offset: [`start ${stack.top}px`, `end ${stack.bottom}px`],
           }}
         >
           <div
-            data-project-heading
+            ref={headingRef}
             className="sticky z-10 bg-blue-200 pt-6 pb-6 dark:bg-slate-950"
             style={{ top: stack.top }}
           >
-            <Heading />
+            <ProjectHeading />
             <Link
               href="/projects"
               className="mt-3 inline-block underline underline-offset-4"
@@ -313,19 +313,27 @@ export default function FeaturedProjects({
             </Link>
           </div>
           <div className="-mx-8">
-            {featured.map((item, index) => (
+            {projects.map((item, index) => (
               <StackingCardItem
                 key={item.name}
                 index={index}
                 style={{ top: stack.top + stack.heading, height: stack.step }}
               >
                 <article
+                  ref={(node) => {
+                    cardRefs.current[index] = node;
+                  }}
                   className={cn(
-                    "relative mx-auto h-fit min-h-[var(--project-card-height,15rem)] w-[85svw] rounded-3xl p-6 text-white shadow-lg",
+                    "relative mx-auto h-fit min-h-(--project-card-height,15rem) w-[85svw] rounded-3xl p-6 text-white shadow-lg",
                     item.bgColor,
                   )}
                 >
-                  <div data-project-content className="flow-root">
+                  <div
+                    ref={(node) => {
+                      contentRefs.current[index] = node;
+                    }}
+                    className="flow-root"
+                  >
                     <h3 className="text-3xl font-bold text-orange-300">
                       {item.name}
                     </h3>
@@ -352,7 +360,7 @@ export default function FeaturedProjects({
     </section>
   );
 }
-function Heading() {
+function ProjectHeading() {
   return (
     <h2
       className={cn(
@@ -377,9 +385,10 @@ function ProjectLinks({ project }: { project: (typeof projects)[number] }) {
             href={project.website}
             target="_blank"
             rel="noopener noreferrer"
+            className="space-x-2"
           >
-            <Link2Icon />
-            Website
+            <Link2Icon className="space-x-2" />
+            <p>Website</p>
           </Link>
         </Button>
       )}
@@ -389,9 +398,14 @@ function ProjectLinks({ project }: { project: (typeof projects)[number] }) {
           className="border-white/60 bg-transparent text-white hover:bg-white hover:text-black"
           asChild
         >
-          <Link href={project.github} target="_blank" rel="noopener noreferrer">
-            <SiGithub />
-            Github
+          <Link
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="space-x-2"
+          >
+            <SiGithub className="size-4" />
+            <p>Github</p>
           </Link>
         </Button>
       )}
@@ -405,9 +419,10 @@ function ProjectLinks({ project }: { project: (typeof projects)[number] }) {
             href={project.download}
             target="_blank"
             rel="noopener noreferrer"
+            className="space-x-2"
           >
-            <DownloadIcon />
-            Download
+            <DownloadIcon className="size-4" />
+            <p>Download</p>
           </Link>
         </Button>
       )}
