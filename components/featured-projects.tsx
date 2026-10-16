@@ -59,24 +59,41 @@ export default function FeaturedProjects({
     const intro = introRef.current;
     const heading = track?.querySelector<HTMLElement>("[data-project-heading]");
     const cards = track?.querySelectorAll<HTMLElement>("article");
+    const contents = track?.querySelectorAll<HTMLElement>(
+      "[data-project-content]",
+    );
     const section = track?.closest("section");
-    if (!track || !intro || !heading || !cards || !section) return;
+    if (!track || !intro || !heading || !cards || !contents || !section) return;
 
     function measure() {
       if (
+        !track ||
         !intro ||
         !heading ||
         !cards ||
+        !contents ||
         !section ||
         !matchMedia("(max-width: 767px)").matches
       )
         return;
-      // Keep each card, including its staggered top offset, inside the scene.
+      // Measure natural content so the shared height can shrink after resizing.
+      const cardHeight = Math.max(
+        240,
+        ...Array.from(contents, (content) => {
+          const card = content.parentElement!;
+          const style = getComputedStyle(card);
+          return Math.ceil(
+            content.offsetHeight +
+              parseFloat(style.paddingTop) +
+              parseFloat(style.paddingBottom),
+          );
+        }),
+      );
+      track.style.setProperty("--project-card-height", `${cardHeight}px`);
+      // Reserve the same height for every card, including the largest stagger.
       const step = Math.max(
         300,
-        ...Array.from(cards, (card, index) =>
-          Math.ceil(card.offsetHeight / (1 - (0.05 + index * 0.03))),
-        ),
+        Math.ceil(cardHeight / (1 - (0.05 + (cards.length - 1) * 0.03))),
       );
       const height = heading.offsetHeight;
       const bottom = window.innerHeight - 60;
@@ -101,13 +118,14 @@ export default function FeaturedProjects({
     const observer = new ResizeObserver(measure);
     observer.observe(intro);
     observer.observe(heading);
-    cards.forEach((card) => observer.observe(card));
+    contents.forEach((content) => observer.observe(content));
     window.addEventListener("resize", measure);
     measure();
     return () => {
       observer.disconnect();
       window.removeEventListener("resize", measure);
       intro.style.removeProperty("--homepage-intro-top");
+      track.style.removeProperty("--project-card-height");
     };
   }, [introRef]);
   const project = featured[active];
@@ -132,7 +150,7 @@ export default function FeaturedProjects({
       <div className="mb-6 hidden items-end justify-between gap-3 md:flex">
         <Heading />
         <Link href="/projects" className="underline underline-offset-4">
-          View all projects ↗
+          View all projects &#8599;
         </Link>
       </div>
       <div
@@ -291,7 +309,7 @@ export default function FeaturedProjects({
               href="/projects"
               className="mt-3 inline-block underline underline-offset-4"
             >
-              View all projects ↗
+              View all projects &#8599;
             </Link>
           </div>
           <div className="-mx-8">
@@ -303,17 +321,19 @@ export default function FeaturedProjects({
               >
                 <article
                   className={cn(
-                    "relative mx-auto h-fit min-h-60 w-[85svw] rounded-3xl p-6 text-white shadow-lg",
+                    "relative mx-auto h-fit min-h-[var(--project-card-height,15rem)] w-[85svw] rounded-3xl p-6 text-white shadow-lg",
                     item.bgColor,
                   )}
                 >
-                  <h3 className="text-3xl font-bold text-orange-300">
-                    {item.name}
-                  </h3>
-                  <p className="mt-3 font-bold whitespace-pre-line">
-                    {item.description}
-                  </p>
-                  <ProjectLinks project={item} />
+                  <div data-project-content className="flow-root">
+                    <h3 className="text-3xl font-bold text-orange-300">
+                      {item.name}
+                    </h3>
+                    <p className="mt-3 font-bold whitespace-pre-line">
+                      {item.description}
+                    </p>
+                    <ProjectLinks project={item} />
+                  </div>
                 </article>
               </StackingCardItem>
             ))}
