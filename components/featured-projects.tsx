@@ -143,7 +143,7 @@ export default function FeaturedProjects({
         <div
           role="tablist"
           aria-label="Featured projects"
-          className="flex flex-wrap gap-1"
+          className="flex"
         >
           {featured.map((item, index) => (
             <button
@@ -171,7 +171,7 @@ export default function FeaturedProjects({
                 tabs.current[next]?.focus();
               }}
               className={cn(
-                "min-h-9 shrink-0 cursor-pointer rounded-t-lg border-2 px-3 py-2 text-xs font-bold text-white focus-visible:outline-2 focus-visible:outline-orange-300",
+                "shrink-0 cursor-pointer rounded-t-lg border-2 border-b-0 px-2 py-1.5 text-xs font-bold text-white focus-visible:outline-2 focus-visible:outline-orange-300",
                 item.bgColor,
                 active === index
                   ? "border-orange-300"
@@ -194,11 +194,11 @@ export default function FeaturedProjects({
             {active === index && (
               <div
                 className={cn(
-                  "relative grid min-h-[25rem] grid-cols-2 items-center gap-8 rounded-b-2xl p-10 pb-20 text-white",
+                  "relative grid min-h-[21rem] grid-cols-2 items-center gap-6 rounded-b-2xl p-8 pb-16 text-white",
                   project.bgColor,
                 )}
               >
-                <div className="min-w-0 space-y-5">
+                <div className="min-w-0 space-y-4">
                   <p className="text-xs tracking-widest text-white/65 uppercase">
                     {project.type.join(" / ")}
                   </p>
@@ -229,7 +229,7 @@ export default function FeaturedProjects({
                   <ProjectLinks project={project} />
                 </div>
                 {image && (
-                  <div className="relative h-72 min-w-0">
+                  <div className="relative h-60 min-w-0">
                     <Image
                       src={image}
                       alt={project.image_alt || `${project.name} screenshot`}
@@ -239,7 +239,7 @@ export default function FeaturedProjects({
                     />
                   </div>
                 )}
-                <div className="absolute right-10 bottom-5 flex items-center gap-3">
+                <div className="absolute right-8 bottom-3 flex items-center gap-3">
                   <button
                     type="button"
                     data-timer-control
