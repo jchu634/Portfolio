@@ -111,7 +111,7 @@ export default function Home() {
               <Card key={edu.institution} className="w-full">
                 <CardContent
                   className={cn(
-                    "flex flex-col items-start gap-2",
+                    "flex flex-col items-start",
                     intel_one_mono.className,
                   )}
                 >
