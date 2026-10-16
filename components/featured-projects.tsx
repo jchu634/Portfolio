@@ -160,6 +160,10 @@ export default function FeaturedProjects({
       </div>
       <div
         className={cn("hidden md:block", intel_one_mono.className)}
+        onFocusCapture={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) pauseForInput(e.target);
+        }}
+        onPointerEnter={(e) => pauseForInput(e.target)}
         onPointerDownCapture={(e) => pauseForInput(e.target)}
         onKeyDownCapture={(e) => pauseForInput(e.target)}
       >
