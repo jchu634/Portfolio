@@ -19,19 +19,13 @@ import UnderlineToBackground from "@/components/fancy/text/underline-to-backgrou
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { projects, education } from "@/lib/homepageData";
+import FeaturedProjects from "@/components/featured-projects";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(
@@ -39,48 +33,48 @@ export default function Home() {
   ) as React.RefObject<HTMLDivElement>;
 
   const [container, setContainer] = useState<HTMLElement | null>(null);
-  const [mobContainer, setMobContainer] = useState<HTMLElement | null>(null);
   const { theme } = useTheme();
 
   return (
     <div className="h-fit w-full">
       <div
-        className="relative h-fit cursor-pointer items-center justify-center overflow-hidden rounded-lg px-2 pt-12 md:w-3/4 md:px-8"
+        className="sticky top-[var(--homepage-intro-top,auto)] grid w-full max-w-7xl items-end gap-8 px-8 pt-12 md:relative md:top-auto md:px-12 xl:grid-cols-[minmax(0,1fr)_22rem] xl:gap-12"
         ref={containerRef}
       >
-        <div className="items-left flex size-full flex-col gap-4 pl-5">
-          {isMobile ? (
-            <div
-              className={cn(
-                "items-left flex flex-col gap-4 text-5xl leading-none text-orange-500 dark:text-orange-400",
-                roboto_slab.className,
-              )}
-            >
-              <h1>Hi, I&apos;m Joshua:</h1>
-              <h1>I like making stuff.</h1>
-            </div>
-          ) : (
-            <div className="items-left flex flex-col gap-4">
-              {["Hi, I'm Joshua:", "I like making stuff."].map((text, i) => (
-                <VariableFontCursorProximity
-                  key={i}
-                  label={text}
-                  className={cn(
-                    "text-5xl leading-none text-orange-500 dark:text-orange-400",
-                    roboto_slab.className,
-                  )}
-                  fromFontVariationSettings="'wght' 500, 'slnt' 0"
-                  toFontVariationSettings="'wght' 200, 'slnt' -10"
-                  radius={200}
-                  containerRef={containerRef}
-                />
-              ))}
-            </div>
-          )}
+        <div className="min-w-0">
+          <div className="flex w-full flex-col items-start gap-6">
+            {isMobile ? (
+              <div
+                className={cn(
+                  "items-left flex flex-col gap-4 text-5xl leading-none text-orange-500 dark:text-orange-400",
+                  roboto_slab.className,
+                )}
+              >
+                <h1>Hi, I&apos;m Joshua:</h1>
+                <h1>I like making stuff.</h1>
+              </div>
+            ) : (
+              <div className="items-left flex flex-col gap-4">
+                {["Hi, I'm Joshua:", "I like making stuff."].map((text, i) => (
+                  <VariableFontCursorProximity
+                    key={i}
+                    label={text}
+                    className={cn(
+                      "text-5xl leading-none text-orange-500 dark:text-orange-400",
+                      roboto_slab.className,
+                    )}
+                    fromFontVariationSettings="'wght' 500, 'slnt' 0"
+                    toFontVariationSettings="'wght' 200, 'slnt' -10"
+                    radius={200}
+                    containerRef={containerRef}
+                  />
+                ))}
+              </div>
+            )}
 
-          {/* prettier-ignore */}
-          <p
-          className={cn("text-xl leading-10whitespace-pre-line text-black dark:text-white",  roboto_slab.className )}
+            {/* prettier-ignore */}
+            <p
+          className={cn("text-xl leading-relaxed text-black dark:text-white",  roboto_slab.className )}
         >
 
             Hi, I&apos;m currently studying a Masters of Cybersecurity at Monash University.<br />
@@ -88,92 +82,84 @@ export default function Home() {
             I write and maintain a couple of open-source projects in my spare time.
 
         </p>
-          <div className={cn("flex gap-x-2", roboto_slab.className)}>
-            <Link
-              href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKkdu7ihp3cS0OA7Y9ol3wj41TBUKtbVqDnuG5"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="outline"
-                className="d flex w-fit space-x-2 border-2 border-black not-only:items-center hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+            <div className={cn("flex flex-wrap gap-2", roboto_slab.className)}>
+              <Link
+                href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKkdu7ihp3cS0OA7Y9ol3wj41TBUKtbVqDnuG5"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <p>View CV</p>
-                <ExternalLinkIcon className="size-5" />
-              </Button>
-            </Link>
-            <Link
-              href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKwsEGZ5Anrj2vxehYfgo4bBtLNOZ6kAuiXRJE"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="outline"
-                className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                <Button
+                  variant="outline"
+                  className="d flex w-fit space-x-2 border-2 border-black not-only:items-center hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                >
+                  <p>View CV</p>
+                  <ExternalLinkIcon className="size-5" />
+                </Button>
+              </Link>
+              <Link
+                href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKwsEGZ5Anrj2vxehYfgo4bBtLNOZ6kAuiXRJE"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <p>View Resume</p>
-                <ExternalLinkIcon className="size-5" />
-              </Button>
-            </Link>
+                <Button
+                  variant="outline"
+                  className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                >
+                  <p>View Resume</p>
+                  <ExternalLinkIcon className="size-5" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="w-full px-16 pt-4 md:mb-12 md:px-24">
-        <Carousel
-          opts={{
-            align: "start",
-          }}
-        >
-          <CarouselContent>
-            {education.map((edu, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Card>
-                    <CardContent
-                      className={cn(
-                        "flex min-h-30 flex-col justify-center",
-                        intel_one_mono.className,
-                      )}
+        <section aria-labelledby="education-heading" className="min-w-0">
+          <h2
+            id="education-heading"
+            className={cn(
+              "mb-4 text-3xl font-bold text-orange-500 dark:text-orange-400",
+              roboto_slab.className,
+            )}
+          >
+            Education
+          </h2>
+          <div className="grid items-start gap-4 sm:grid-cols-2 xl:grid-cols-1">
+            {education.map((edu) => (
+              <Card key={edu.institution} className="w-full">
+                <CardContent
+                  className={cn(
+                    "flex flex-col items-start gap-2",
+                    intel_one_mono.className,
+                  )}
+                >
+                  <h3 className="text-lg font-bold">{edu.description}</h3>
+                  <p className="text-base font-bold text-orange-500 dark:text-orange-400">
+                    {edu.institution}
+                  </p>
+                  <p className="text-sm">{edu.timeframe}</p>
+                  {edu.link && (
+                    <Button
+                      variant="outline"
+                      className="mt-2 flex w-fit items-center gap-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
+                      asChild
                     >
-                      <span className="text-lg font-bold whitespace-pre-wrap">
-                        {edu.description}
-                      </span>
-                      <span className="text-base font-bold text-orange-500 dark:text-orange-400">
-                        {edu.institution} ({edu.timeframe})
-                      </span>
-                      <div className="pt-2">
-                        <Button
-                          variant="outline"
-                          className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
-                          asChild
-                        >
-                          {edu.link && (
-                            <Link
-                              href={edu.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Link2Icon className="size-5" />
-                              <p>Cert Link</p>
-                            </Link>
-                          )}
-                        </Button>
-                      </div>
-
-                      <div className="flex gap-x-2"></div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
+                      <Link
+                        href={edu.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Link2Icon className="size-5" />
+                        Cert Link
+                      </Link>
+                    </Button>
+                  )}
+                </CardContent>
+              </Card>
             ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+          </div>
+        </section>
       </div>
 
-      <div className="flex flex-col justify-between px-8 md:flex-row md:px-12">
+      <div className="hidden justify-between px-8 md:flex md:flex-row md:px-12">
         <div
           className={cn(
             "pt-10 text-4xl font-bold text-orange-500 dark:text-orange-400",
@@ -370,95 +356,7 @@ export default function Home() {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <div
-        className="h-[300px] overflow-auto md:hidden"
-        ref={(node) => setMobContainer(node)}
-      >
-        <StackingCards
-          totalCards={projects.length}
-          scrollOptons={{ container: { current: mobContainer } }}
-        >
-          <div className="flex h-[20px] w-full items-center pt-2 pl-8 text-xl font-bold whitespace-pre uppercase">
-            Scroll down↓
-          </div>
-          {projects.map((project, index) => {
-            return (
-              <StackingCardItem
-                key={index}
-                index={index}
-                className="h-[300px] md:h-100"
-              >
-                <Card
-                  className={cn(
-                    project.bgColor,
-                    "relative mx-auto h-fit min-h-[240px] w-[85svw] rounded-3xl",
-                  )}
-                >
-                  <CardContent
-                    className={cn(
-                      "flex h-full w-full justify-between",
-                      intel_one_mono.className,
-                    )}
-                  >
-                    <div className="flex w-full flex-col space-y-2">
-                      <span className="text-3xl font-bold whitespace-pre-wrap text-orange-300">
-                        {project.name}
-                      </span>
-                      <span className="text-base font-bold text-wrap whitespace-pre-wrap text-white">
-                        {project.description}
-                      </span>
-
-                      <div className="flex flex-col space-y-2 gap-x-2 pt-2">
-                        <div className="flex flex-row space-x-2">
-                          {project.website && (
-                            <Button
-                              variant="outline"
-                              className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
-                              asChild
-                            >
-                              <Link href={project.website}>
-                                <Link2Icon className="size-4" />
-                                <p>Website</p>
-                              </Link>
-                            </Button>
-                          )}
-                          {project.github && (
-                            <Button
-                              variant="outline"
-                              className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
-                              asChild
-                            >
-                              <Link href={project.github}>
-                                <SiGithub className="size-4" />
-                                <p>Github</p>
-                              </Link>
-                            </Button>
-                          )}
-                        </div>
-
-                        {project.download && (
-                          <Button
-                            variant="outline"
-                            className="flex w-fit items-center space-x-2 border-2 border-white hover:cursor-pointer hover:bg-gray-700 hover:text-white"
-                            asChild
-                          >
-                            <Link href={project.download}>
-                              <DownloadIcon className="size-4" />
-                              <p>Download</p>
-                            </Link>
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </StackingCardItem>
-            );
-          })}
-
-          <div className="pointer-events-none invisible relative h-80 w-full overflow-hidden" />
-        </StackingCards>
-      </div>
+      <FeaturedProjects introRef={containerRef} />
     </div>
   );
 }

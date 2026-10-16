@@ -28,27 +28,9 @@ export const education: EducationType[] = [
   },
   {
     institution: "University of Auckland",
-    description: "BSc: Majoring in Computer Science",
+    description: "BSc: Computer Science",
     timeframe: "2021-2024",
     link: "https://keshuac.com/extlink/ucert",
-  },
-  {
-    institution: "NVIDIA Deep Learning Institute",
-    description: "Fundamentals of Accelerated Data Science",
-    timeframe: "2025",
-    link: "https://keshuac.com/extlink/ncert3",
-  },
-  {
-    institution: "NVIDIA Deep Learning Institute",
-    description: "Fundamentals of Accelerated Computing\nwith CUDA Python",
-    timeframe: "2024",
-    link: "https://keshuac.com/extlink/ncert2",
-  },
-  {
-    institution: "NVIDIA Deep Learning Institute",
-    description: "Fundamentals of Deep Learning",
-    timeframe: "2023",
-    link: "https://keshuac.com/extlink/ncert1",
   },
 ];
 export const projects: ProjectCardType[] = [
