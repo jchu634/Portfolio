@@ -219,11 +219,11 @@ export default function FeaturedProjects({
             {active === index && (
               <div
                 className={cn(
-                  "relative grid min-h-84 grid-cols-2 items-center gap-6 rounded-b-2xl p-8 pb-16 text-white",
+                  "relative grid min-h-76 grid-cols-2 items-center gap-5 rounded-b-2xl p-6 pb-14 text-white",
                   project.bgColor,
                 )}
               >
-                <div className="min-w-0 space-y-4">
+                <div className="min-w-0 space-y-3">
                   <h3
                     className={cn(
                       "text-4xl font-bold text-orange-300",
@@ -232,7 +232,7 @@ export default function FeaturedProjects({
                   >
                     {project.name}
                   </h3>
-                  <p className="leading-relaxed whitespace-pre-line">
+                  <p className="leading-normal whitespace-pre-line">
                     {project.description}
                   </p>
                   <ul
@@ -251,17 +251,17 @@ export default function FeaturedProjects({
                   <ProjectLinks project={project} />
                 </div>
                 {image && (
-                  <div className="relative h-60 min-w-0">
+                  <div className="relative h-56 min-w-0">
                     <Image
                       src={image}
                       alt={project.image_alt || `${project.name} screenshot`}
                       fill
                       sizes="45vw"
-                      className="object-contain"
+                      className="object-contain object-right"
                     />
                   </div>
                 )}
-                <div className="absolute right-8 bottom-3 flex items-center gap-3">
+                <div className="absolute right-6 bottom-3 flex items-center gap-3">
                   <Button
                     variant="ghost"
                     size="icon"
