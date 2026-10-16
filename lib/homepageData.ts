@@ -104,7 +104,7 @@ export const projects: ProjectCardType[] = [
     image_alt: "CodeCritters Screenshot",
   },
   {
-    bgColor: "bg-[#122c23]",
+    bgColor: "bg-[#1e3a8a]",
     name: "Loopy-Desktop",
     type: ["Application"],
     technologies_and_frameworks: ["Electron", "HTML", "CSS", "VanillaJS"],
@@ -117,7 +117,7 @@ export const projects: ProjectCardType[] = [
     image_alt: "Loopy Desktop Screenshot",
   },
   {
-    bgColor: "bg-[#E41655]",
+    bgColor: "bg-[#78350f]",
     name: "Fakman",
     type: ["Game"],
     technologies_and_frameworks: ["Unity", "C#"],
