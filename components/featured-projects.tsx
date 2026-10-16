@@ -306,7 +306,7 @@ export default function FeaturedProjects({
         >
           <div
             ref={headingRef}
-            className="sticky z-10 bg-blue-200 pt-6 pb-6 dark:bg-slate-950"
+            className="sticky z-10 bg-blue-200 pt-6 pb-6 dark:bg-background"
             style={{ top: stack.top }}
           >
             <ProjectHeading />

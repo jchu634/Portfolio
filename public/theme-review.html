@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Background colour review</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: transparent; }
+    body { font-family: system-ui, sans-serif; }
+    #theme-review { --review-text: #e7eee9; color: var(--review-text); }
+    .picker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .picker button { background: #242426; color: #ededee; border: 1px solid #555558; border-radius: 8px; padding: 12px 18px; font: inherit; }
+    .picker button[aria-pressed="true"] { background: #ededee; color: #202022; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #ffc78e; outline-offset: 4px; }
+    /* Review palettes only; the site's active theme is unchanged. */
+    .screen {
+      --portfolio-background: #101e31;
+      --portfolio-surface: #0a0a0a;
+      --portfolio-foreground: #ffffff;
+      --portfolio-muted: #b3b3b3;
+      --portfolio-border: #404040;
+      --portfolio-primary: #ffffff;
+      --portfolio-primary-foreground: #171717;
+      --portfolio-accent: #ff8904;
+    }
+    .screen { background: var(--portfolio-background); color: var(--portfolio-foreground); border-radius: 14px; overflow: hidden; }
+    .topbar { padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; background: #122c23; border-bottom: 1px solid var(--portfolio-border); font-size: 13px; }
+    .topbar strong { margin-right: auto; letter-spacing: .08em; }
+    .topbar span { color: var(--portfolio-muted); }
+    .content { padding: 28px; }
+    .eyebrow { font: 12px ui-monospace, monospace; letter-spacing: .1em; color: var(--portfolio-primary); text-transform: uppercase; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font: bold clamp(26px, 5vw, 38px)/1.2 Georgia, serif; margin: 12px 0 16px; color: var(--portfolio-accent); }
+    .intro { max-width: 600px; font-size: 15px; line-height: 1.7; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 28px; }
+    .actions a { padding: 10px 16px; border: 1px solid var(--portfolio-primary); border-radius: 6px; color: var(--portfolio-primary); text-decoration: none; font: 13px ui-monospace, monospace; }
+
+    h2 { font: bold 23px Georgia, serif; color: var(--portfolio-accent); margin: 0 0 14px; }
+    .education { background: var(--portfolio-surface); border: 1px solid var(--portfolio-border); border-radius: 10px; padding: 18px; margin-bottom: 24px; }
+    h3 { font-size: 15px; margin-bottom: 8px; }
+    .education p { color: var(--portfolio-muted); font: 13px/1.7 ui-monospace, monospace; }
+    .project-tabs { display: flex; flex-wrap: wrap; gap: 3px; font: 11px ui-monospace, monospace; color: #fff; }
+    .project-tabs span { padding: 10px 8px; border-radius: 6px 6px 0 0; }
+    .project-tabs span:first-child { outline: 2px solid #ffd6a7; outline-offset: -2px; }
+    .project { background: #122c23; padding: 22px; border-radius: 0 10px 10px 10px; color: #edf5ef; }
+    .project h3 { color: #ffd6a7; font: bold 24px Georgia, serif; }
+    .project p { font-size: 14px; line-height: 1.6; }
+    .project small { display: block; margin-top: 14px; font: 12px ui-monospace, monospace; color: #b0c5b7; }
+    .palette { margin-top: 26px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .swatch { height: 38px; border: 1px solid var(--portfolio-border); border-radius: 6px; margin-bottom: 7px; }
+    .palette dt { font-size: 11px; color: var(--portfolio-muted); }
+    .palette dd { margin: 3px 0 0; font: 12px ui-monospace, monospace; }
+    .description { margin: 12px 0 0; color: var(--portfolio-muted); font-size: 13px; line-height: 1.6; }
+    @media (max-width: 440px) { .content { padding: 20px; } .topbar { padding: 16px 20px; } .palette { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  </style>
+</head>
+<body>
+  <main id="theme-review">
+    <div class="picker" role="group" aria-label="Background colour options"></div>
+    <section class="screen" aria-label="Portfolio colour preview">
+      <header class="topbar"><strong>JCHU634</strong><span>Home</span><span>Projects</span><span>Blog</span></header>
+      <div class="content">
+        <div class="eyebrow" id="palette-name" aria-live="polite">Deep ocean</div>
+        <h1>Hi, I'm Joshua:<br>I like making stuff.</h1>
+        <p class="intro">I'm currently studying a Masters of Cybersecurity at Monash University. I write and maintain a couple of open-source projects in my spare time.</p>
+        <div class="actions"><a href="/projects">View projects ↗</a><a href="/blog">Read the blog ↗</a></div>
+        <h2>Education</h2>
+        <div class="education"><h3>Masters in Cybersecurity</h3><p>Monash University · 2026–Current</p></div>
+        <h2>Featured Projects</h2>
+        <div class="project-tabs" aria-label="Project colour samples">
+          <span style="background:#122c23">Subtext</span><span style="background:#e41655">HA-Components</span><span style="background:#1f464d">Ryzen AI</span><span style="background:#56206f">CodeCritters</span><span style="background:#1e3a8a">Loopy</span><span style="background:#78350f">Fakman</span>
+        </div>
+        <article class="project"><h3>Subtext</h3><p>A local, easy to use, AI subtitling app.</p><small>Next.JS · Astro · Python · InnoSetup</small></article>
+        <dl class="palette" aria-label="Palette hex values"></dl>
+        <p class="description" id="palette-description"></p>
+      </div>
+    </section>
+  </main>
+  <script>
+    const review = document.getElementById('theme-review');
+    const screen = review.querySelector('.screen');
+    const themes = {
+      current: { name: 'Current navy', background: '#020618' },
+      ocean: { name: 'Deep ocean', background: '#101e31' },
+      indigo: { name: 'Indigo', background: '#1a1936' },
+      violet: { name: 'Dark violet', background: '#221630' },
+      plum: { name: 'Plum', background: '#2a172a' },
+      wine: { name: 'Burgundy', background: '#2e1620' },
+      rust: { name: 'Burnt umber', background: '#2a1c15' },
+      teal: { name: 'Deep teal', background: '#0d262b' },
+      petrol: { name: 'Petrol blue', background: '#122731' }
+    };
+    const picker = review.querySelector('.picker');
+    for (const [key, theme] of Object.entries(themes)) {
+      const button = document.createElement('button');
+      button.type = 'button'; button.dataset.theme = key;
+      button.textContent = theme.name;
+      button.setAttribute('aria-pressed', 'false');
+      picker.append(button);
+    }
+    const tokens = ['background', 'surface', 'foreground', 'accent'];
+    function selectTheme(key) {
+      if (!themes[key]) return;
+      screen.style.setProperty('--portfolio-background', themes[key].background);
+      review.querySelectorAll('[data-theme]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.theme === key)));
+      document.getElementById('palette-name').textContent = themes[key].name;
+      document.getElementById('palette-description').textContent = themes[key].name + ' · ' + themes[key].background + '. Only the page background changes. Navigation stays #122c23; orange headings, white controls, cards and project colours stay fixed.';
+      const style = getComputedStyle(screen);
+      review.querySelector('.palette').replaceChildren(...tokens.map(token => {
+        const value = style.getPropertyValue('--portfolio-' + token).trim();
+        const item = document.createElement('div');
+        const swatch = document.createElement('div');
+        swatch.className = 'swatch'; swatch.style.background = value;
+        const label = document.createElement('dt'); label.textContent = token;
+        const hex = document.createElement('dd'); hex.textContent = value;
+        item.append(swatch, label, hex); return item;
+      }));
+    }
+    review.querySelectorAll('[data-theme]').forEach(button => button.addEventListener('click', () => selectTheme(button.dataset.theme)));
+    selectTheme('ocean');
+  </script>
+</body>
+</html>
