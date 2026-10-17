@@ -17,24 +17,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ExternalLinkIcon, DownloadIcon, PlusIcon } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselCenteredContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { ImageGallery } from "@/components/image-gallery";
 
 import { projects } from "@/lib/projectData";
 
@@ -92,7 +75,7 @@ export default function Page() {
                       <AccordionContent>
                         <div className="font-lexend whitespace-pre-line">
                           {project.description}
-                          <div className="flex min-h-[40px] space-x-2 pt-2 sm:hidden">
+                          <div className="flex min-h-10 space-x-2 pt-2 sm:hidden">
                             {project.github && (
                               <Button
                                 className="group h-10 bg-black hover:cursor-pointer hover:bg-slate-200 dark:bg-white dark:hover:bg-indigo-800"
@@ -105,10 +88,11 @@ export default function Page() {
                                   aria-label={`Go to Github repository for ${project.name}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
+                                  className="space-x-2"
                                 >
                                   <p>Github</p>
 
-                                  <SiGithub className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                                  <SiGithub className="size-5 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                                 </Link>
                               </Button>
                             )}
@@ -125,9 +109,10 @@ export default function Page() {
                                   aria-label={`Go to website for ${project.name}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
+                                  className="space-x-2"
                                 >
                                   <p>Website</p>
-                                  <ExternalLinkIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                                  <ExternalLinkIcon className="size-6 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                                 </Link>
                               </Button>
                             )}
@@ -144,111 +129,20 @@ export default function Page() {
                                   aria-label={`Go to download page for ${project.name}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
+                                  className="space-x-2"
                                 >
                                   <p>Download</p>
-                                  <DownloadIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                                  <DownloadIcon className="size-6 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                                 </Link>
                               </Button>
                             )}
                           </div>
-                          <div className="hidden justify-center sm:flex md:w-full">
-                            {project.images && (
-                              <Dialog>
-                                <Carousel
-                                  className="relative max-h-fit w-4/5 px-8 sm:max-w-fit xl:max-w-fit"
-                                  opts={{
-                                    align: "start",
-                                    loop: true,
-                                  }}
-                                >
-                                  <CarouselContent>
-                                    {project.images.map(
-                                      (image, index: number) => {
-                                        return (
-                                          <DialogTrigger asChild key={index}>
-                                            <CarouselItem className="p-4 hover:cursor-pointer">
-                                              <Card className="dark:bg-opacity-40">
-                                                <CardContent className="flex items-center justify-center">
-                                                  <Image
-                                                    alt="Project Image"
-                                                    className="max-h-75 object-scale-down"
-                                                    src={image}
-                                                    width={400}
-                                                    height={400}
-                                                    layout="responsive"
-                                                    objectFit="contain"
-                                                  />
-                                                </CardContent>
-                                              </Card>
-                                            </CarouselItem>
-                                          </DialogTrigger>
-                                        );
-                                      },
-                                    )}
-                                  </CarouselContent>
-                                  {project.images.length > 2 && (
-                                    <>
-                                      <CarouselPrevious className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
-                                      <CarouselNext className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
-                                    </>
-                                  )}
-                                </Carousel>
-
-                                <DialogContent className="h-[90%] min-w-4/5">
-                                  <DialogHeader>
-                                    <DialogTitle>
-                                      {project.name} Gallery
-                                    </DialogTitle>
-                                    <DialogDescription>
-                                      Image Gallery for {project.name}
-                                    </DialogDescription>
-                                    <div className="flex h-full w-4/5 items-center justify-center md:w-full">
-                                      <Carousel
-                                        className="relative flex h-full w-4/5 items-center px-8"
-                                        opts={{
-                                          align: "start",
-                                          loop: true,
-                                        }}
-                                      >
-                                        <CarouselCenteredContent className="h-full">
-                                          {project.images.map(
-                                            (image, index: number) => {
-                                              return (
-                                                <CarouselItem
-                                                  className="flex h-full w-full items-center p-4"
-                                                  key={index}
-                                                >
-                                                  <Card className="dark:bg-opacity-40 h-fit w-full">
-                                                    <CardContent className="flex h-full items-center justify-center">
-                                                      <Image
-                                                        alt="Project Image"
-                                                        className="max-h-125 object-contain lg:max-h-175"
-                                                        src={image}
-                                                        width={600}
-                                                        height={600}
-                                                        layout="responsive"
-                                                        objectFit="contain"
-                                                      />
-                                                    </CardContent>
-                                                  </Card>
-                                                </CarouselItem>
-                                              );
-                                            },
-                                          )}
-                                        </CarouselCenteredContent>
-                                        {project.images.length > 2 && (
-                                          <>
-                                            <CarouselPrevious className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
-                                            <CarouselNext className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
-                                          </>
-                                        )}
-                                      </Carousel>
-                                    </div>
-                                  </DialogHeader>
-                                </DialogContent>
-                              </Dialog>
-                            )}
-                          </div>
+                          {project.images && (
+                            <ImageGallery
+                              label={`${project.name} gallery`}
+                              images={project.images}
+                            />
+                          )}
                         </div>
                       </AccordionContent>
                     </AccordionItem>
@@ -285,7 +179,7 @@ export default function Page() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <SiGithub className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                          <SiGithub className="size-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                         </Link>
                       </Button>
                     ) : (
