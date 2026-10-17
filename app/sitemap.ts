@@ -1,15 +1,12 @@
 // This file configures the sitemap for the Next.js application,
 // providing search engines with information about the site's pages.
 import type { MetadataRoute } from "next";
-import fs from "fs";
-import path from "path";
+import { getBlogPosts, importBlogPost } from "@/lib/blogPosts";
 
 // Helper function to dynamically import blog post metadata
 async function getPostMetadata(filePath: string) {
   try {
-    const postModule = await import(
-      `@/blogposts/${filePath.replace(/\.tsx$/, "")}`
-    );
+    const postModule = await importBlogPost(filePath.replace(/\.tsx$/, ""));
     return postModule.metadata;
   } catch (error) {
     console.error(`Error importing metadata for ${filePath}:`, error);
@@ -18,14 +15,9 @@ async function getPostMetadata(filePath: string) {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const postsDirectory = path.join(process.cwd(), "blogposts");
-  const filenames = fs.readdirSync(postsDirectory);
-
-  const postPromises = filenames
-    .filter((filename) => filename.endsWith(".tsx"))
-    .map(async (filename) => {
-      const slug = filename.replace(/\.tsx$/, "");
-      const metadata = await getPostMetadata(filename);
+  const postPromises = getBlogPosts({ includeDrafts: false }).map(
+    async ({ slug }) => {
+      const metadata = await getPostMetadata(slug);
       const lastModified = metadata?.lastUpdate
         ? new Date(metadata.lastUpdate)
         : new Date();
@@ -36,7 +28,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: "weekly" as unknown as "weekly",
         priority: 0.7,
       };
-    });
+    },
+  );
 
   const posts = await Promise.all(postPromises);
 

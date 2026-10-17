@@ -5,8 +5,7 @@ import { Button } from "@/components/ui/button";
 import CommentSection from "@/components/ui/comments";
 import Image from "next/image";
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
+import { getBlogPosts, importBlogPost } from "@/lib/blogPosts";
 
 interface PostData {
   slug: string;
@@ -21,26 +20,20 @@ export default async function BlogPost({
   const { slug } = await params;
 
   try {
-    const currentPostFileName = slug.replace(/\.tsx$/, "");
-
-    const postsDirectory = path.join(process.cwd(), "blogposts");
-    const allPostFiles = fs.readdirSync(postsDirectory);
+    const currentPostFileName = decodeURIComponent(slug).replace(/\.tsx$/, "");
 
     const allPostsData: PostData[] = [];
 
-    for (const file of allPostFiles) {
-      if (file.endsWith(".tsx")) {
-        const postSlug = file.replace(/\.tsx$/, "");
-        try {
-          const blogModule = await import(`@/blogposts/${postSlug}`);
-          allPostsData.push({
-            slug: postSlug,
-            title: blogModule.metadata?.title,
-          });
-        } catch (e) {
-          console.error(`Error importing metadata for ${postSlug}:`, e);
-          allPostsData.push({ slug: postSlug });
-        }
+    for (const { slug: postSlug } of getBlogPosts()) {
+      try {
+        const blogModule = await importBlogPost(postSlug);
+        allPostsData.push({
+          slug: postSlug,
+          title: blogModule.metadata?.title,
+        });
+      } catch (e) {
+        console.error(`Error importing metadata for ${postSlug}:`, e);
+        allPostsData.push({ slug: postSlug });
       }
     }
 
@@ -61,8 +54,7 @@ export default async function BlogPost({
         : null;
     const currentPostData: PostData = allPostsData[currentIndex];
 
-    const PostContent = (await import(`@/blogposts/${currentPostFileName}`))
-      .default;
+    const PostContent = (await importBlogPost(currentPostFileName)).default;
 
     return (
       <div className="font-slab h-full w-full p-10">
@@ -76,7 +68,7 @@ export default async function BlogPost({
               className="justify-start overflow-hidden bg-[#122c23] py-8 text-left text-ellipsis dark:bg-white"
             >
               <Link
-                href={`/blog/${chronologicallyPreviousPostData.slug}`}
+                href={`/blog/${encodeURIComponent(chronologicallyPreviousPostData.slug)}`}
                 className="text-blue-600 hover:underline dark:text-blue-800"
               >
                 &larr; Previous post:
@@ -95,7 +87,7 @@ export default async function BlogPost({
               className="justify-start overflow-hidden bg-[#122c23] py-8 text-left text-ellipsis dark:bg-white"
             >
               <Link
-                href={`/blog/${chronologicallyNextPostData.slug}`}
+                href={`/blog/${encodeURIComponent(chronologicallyNextPostData.slug)}`}
                 className="text-blue-600 hover:underline dark:text-blue-800"
               >
                 Next Post: &rarr;
