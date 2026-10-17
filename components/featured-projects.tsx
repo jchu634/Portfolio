@@ -150,7 +150,7 @@ export default function FeaturedProjects({
     <section
       ref={sectionRef}
       aria-label="Featured projects"
-      className="w-full px-8 pt-12 md:px-12 md:pb-12"
+      className="w-full max-w-250 px-8 pt-12 md:px-12 md:pb-12"
     >
       <div className="mb-6 hidden items-end justify-between gap-3 md:flex">
         <ProjectHeading />
@@ -306,7 +306,7 @@ export default function FeaturedProjects({
         >
           <div
             ref={headingRef}
-            className="sticky z-10 bg-blue-200 pt-6 pb-6 dark:bg-background"
+            className="dark:bg-background sticky z-10 bg-blue-200 pt-6 pb-6"
             style={{ top: stack.top }}
           >
             <ProjectHeading />

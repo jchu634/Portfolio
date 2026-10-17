@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <div className="h-fit w-full">
       <div
-        className="sticky top-[var(--homepage-intro-top,auto)] grid w-full max-w-7xl items-end gap-8 px-8 pt-12 md:relative md:top-auto md:px-12 xl:grid-cols-[minmax(0,1fr)_22rem] xl:gap-12"
+        className="sticky top-(--homepage-intro-top,auto) grid w-full max-w-7xl gap-8 px-8 pt-12 md:relative md:top-auto md:px-12 xl:gap-12"
         ref={containerRef}
       >
         <div className="min-w-0">
@@ -96,7 +96,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <section aria-labelledby="education-heading" className="min-w-0">
+        <section
+          aria-labelledby="education-heading"
+          className="w-full max-w-3xl min-w-0"
+        >
           <h2
             id="education-heading"
             className={cn(
@@ -106,7 +109,7 @@ export default function Home() {
           >
             Education
           </h2>
-          <div className="grid items-start gap-4 sm:grid-cols-2 sm:items-stretch xl:grid-cols-1 xl:items-start">
+          <div className="grid items-start gap-4 sm:grid-cols-2 sm:items-stretch">
             {education.map((edu) => (
               <Card key={edu.institution} className="w-full">
                 <CardContent
