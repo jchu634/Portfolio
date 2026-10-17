@@ -17,24 +17,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ExternalLinkIcon, DownloadIcon, PlusIcon } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselCenteredContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { ImageGallery } from "@/components/image-gallery";
 
 import { projects } from "@/lib/projectData";
 
@@ -151,104 +134,12 @@ export default function Page() {
                               </Button>
                             )}
                           </div>
-                          <div className="hidden justify-center sm:flex md:w-full">
-                            {project.images && (
-                              <Dialog>
-                                <Carousel
-                                  className="relative max-h-fit w-4/5 px-8 sm:max-w-fit xl:max-w-fit"
-                                  opts={{
-                                    align: "start",
-                                    loop: true,
-                                  }}
-                                >
-                                  <CarouselContent>
-                                    {project.images.map(
-                                      (image, index: number) => {
-                                        return (
-                                          <DialogTrigger asChild key={index}>
-                                            <CarouselItem className="p-4 hover:cursor-pointer">
-                                              <Card className="dark:bg-opacity-40">
-                                                <CardContent className="flex items-center justify-center">
-                                                  <Image
-                                                    alt="Project Image"
-                                                    className="max-h-75 object-scale-down"
-                                                    src={image}
-                                                    width={400}
-                                                    height={400}
-                                                    layout="responsive"
-                                                    objectFit="contain"
-                                                  />
-                                                </CardContent>
-                                              </Card>
-                                            </CarouselItem>
-                                          </DialogTrigger>
-                                        );
-                                      },
-                                    )}
-                                  </CarouselContent>
-                                  {project.images.length > 2 && (
-                                    <>
-                                      <CarouselPrevious className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
-                                      <CarouselNext className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
-                                    </>
-                                  )}
-                                </Carousel>
-
-                                <DialogContent className="h-[90%] min-w-4/5">
-                                  <DialogHeader>
-                                    <DialogTitle>
-                                      {project.name} Gallery
-                                    </DialogTitle>
-                                    <DialogDescription>
-                                      Image Gallery for {project.name}
-                                    </DialogDescription>
-                                    <div className="flex h-full w-4/5 items-center justify-center md:w-full">
-                                      <Carousel
-                                        className="relative flex h-full w-4/5 items-center px-8"
-                                        opts={{
-                                          align: "start",
-                                          loop: true,
-                                        }}
-                                      >
-                                        <CarouselCenteredContent className="h-full">
-                                          {project.images.map(
-                                            (image, index: number) => {
-                                              return (
-                                                <CarouselItem
-                                                  className="flex h-full w-full items-center p-4"
-                                                  key={index}
-                                                >
-                                                  <Card className="dark:bg-opacity-40 h-fit w-full">
-                                                    <CardContent className="flex h-full items-center justify-center">
-                                                      <Image
-                                                        alt="Project Image"
-                                                        className="max-h-125 object-contain lg:max-h-175"
-                                                        src={image}
-                                                        width={600}
-                                                        height={600}
-                                                        layout="responsive"
-                                                        objectFit="contain"
-                                                      />
-                                                    </CardContent>
-                                                  </Card>
-                                                </CarouselItem>
-                                              );
-                                            },
-                                          )}
-                                        </CarouselCenteredContent>
-                                        {project.images.length > 2 && (
-                                          <>
-                                            <CarouselPrevious className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
-                                            <CarouselNext className="bg-slate-500 text-white dark:bg-slate-50 dark:text-black" />
-                                          </>
-                                        )}
-                                      </Carousel>
-                                    </div>
-                                  </DialogHeader>
-                                </DialogContent>
-                              </Dialog>
-                            )}
-                          </div>
+                          {project.images && (
+                            <ImageGallery
+                              label={`${project.name} gallery`}
+                              images={project.images}
+                            />
+                          )}
                         </div>
                       </AccordionContent>
                     </AccordionItem>
