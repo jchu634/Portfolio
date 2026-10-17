@@ -3,8 +3,6 @@ import fs from "fs";
 
 import { Metadata } from "@/lib/blogType";
 
-import { roboto_slab } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
@@ -37,7 +35,7 @@ const BlogIndexPage = async () => {
   postData.reverse();
 
   return (
-    <div className={cn("p-10", roboto_slab.className)}>
+    <div className="font-slab p-10">
       <h1 className="text-4xl font-bold text-[#122c23] dark:text-orange-400">
         Blog Posts:
       </h1>

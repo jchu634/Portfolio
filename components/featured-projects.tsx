@@ -7,7 +7,6 @@ import { PauseIcon, PlayIcon, Link2Icon, DownloadIcon } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 
 import { projects } from "@/lib/homepageData";
-import { intel_one_mono, roboto_slab } from "@/lib/fonts";
 import { cn } from "cnfast";
 import { Button } from "@/components/ui/button";
 import StackingCards, {
@@ -159,7 +158,7 @@ export default function FeaturedProjects({
         </Link>
       </div>
       <div
-        className={cn("hidden md:block", intel_one_mono.className)}
+        className="font-intel hidden md:block"
         onFocusCapture={(e) => {
           if (!e.currentTarget.contains(e.relatedTarget))
             pauseForInput(e.target);
@@ -224,12 +223,7 @@ export default function FeaturedProjects({
                 )}
               >
                 <div className="min-w-0 space-y-3">
-                  <h3
-                    className={cn(
-                      "text-4xl font-bold text-orange-300",
-                      roboto_slab.className,
-                    )}
-                  >
+                  <h3 className="font-slab text-4xl font-bold text-orange-300">
                     {project.name}
                   </h3>
                   <p className="leading-normal whitespace-pre-line">
@@ -297,7 +291,7 @@ export default function FeaturedProjects({
           </div>
         ))}
       </div>
-      <div ref={mobile} className={cn("md:hidden", intel_one_mono.className)}>
+      <div ref={mobile} className="font-intel md:hidden">
         <StackingCards
           totalCards={projects.length}
           scrollOptons={{
@@ -367,12 +361,7 @@ export default function FeaturedProjects({
 }
 function ProjectHeading() {
   return (
-    <h2
-      className={cn(
-        "text-4xl font-bold text-orange-500 dark:text-orange-400",
-        roboto_slab.className,
-      )}
-    >
+    <h2 className="font-slab text-4xl font-bold text-orange-500 dark:text-orange-400">
       Featured Projects
     </h2>
   );

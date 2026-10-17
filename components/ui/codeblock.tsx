@@ -4,7 +4,6 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-import { intel_one_mono } from "@/lib/fonts";
 import { CheckIcon, CopyIcon } from "lucide-react";
 
 // Syntax Highlighting
@@ -63,15 +62,16 @@ function CodeBlock({
   return (
     <div
       className={cn(
-        "relative m-0 rounded-md bg-[#1e1e1e] p-2 text-gray-200",
+        "font-intel relative m-0 rounded-md bg-[#1e1e1e] p-2 text-gray-200",
         className,
       )}
     >
       <SyntaxHighlighter
         language={language}
         style={vscDarkPlus}
+        codeTagProps={{ style: { fontFamily: "inherit" } }}
         customStyle={{
-          fontFamily: `${intel_one_mono.style.fontFamily}, monospace`,
+          fontFamily: "inherit",
           margin: "0",
         }}
       >

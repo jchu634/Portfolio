@@ -1,8 +1,6 @@
 import { CodeBlock } from "@/components/ui/codeblock";
 import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
-import { intel_one_mono } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title:
@@ -121,21 +119,11 @@ export default function Post() {
           <br />
           This script then flagged <span className="italic">index.html </span>
           which showed that NGINX returned{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1.5 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1.5 text-white">
             <span className="italic">data-panel-id="Â«R6fbÂ»"</span>
           </code>{" "}
           while FastAPI returned{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1.5 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1.5 text-white">
             <span className="italic"> data-panel-group-id="«Rfb»"</span>
           </code>
         </p>
@@ -144,23 +132,13 @@ export default function Post() {
         <h3>Conclusion</h3>
         <p>
           Eventually, I found the root cause of the bug: In{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1.5 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1.5 text-white">
             open()
           </code>
           , if
           <span className="italic"> encoding</span> is not set to anything, by
           default Python will use the default system encoding:{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1.5 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1.5 text-white">
             locale.getencoding()
           </code>
           <br />
@@ -172,12 +150,7 @@ export default function Post() {
         <p>
           The upgrade to Next.js 15.2.x or 15.3.x is what triggered the bug as
           previously in 15.1.x, the exported html had a data-panel-group-id of{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1.5 text-white italic",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1.5 text-white italic">
             :R2ftb:
           </code>
           .<br />

@@ -1,9 +1,7 @@
 "use client";
 import { useRef } from "react";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-import { intel_one_mono, roboto_slab } from "@/lib/fonts";
 import { Link2Icon, ExternalLinkIcon } from "lucide-react";
 import { isMobile } from "react-device-detect";
 
@@ -28,12 +26,7 @@ export default function Home() {
         <div className="min-w-0">
           <div className="flex w-full flex-col items-start gap-6">
             {isMobile ? (
-              <div
-                className={cn(
-                  "items-left flex flex-col gap-4 text-5xl leading-none text-orange-500 dark:text-orange-400",
-                  roboto_slab.className,
-                )}
-              >
+              <div className="items-left font-slab flex flex-col gap-4 text-5xl leading-none text-orange-500 dark:text-orange-400">
                 <h1>Hi, I&apos;m Joshua:</h1>
                 <h1>I like making stuff.</h1>
               </div>
@@ -43,10 +36,7 @@ export default function Home() {
                   <VariableFontCursorProximity
                     key={i}
                     label={text}
-                    className={cn(
-                      "text-5xl leading-none text-orange-500 dark:text-orange-400",
-                      roboto_slab.className,
-                    )}
+                    className="font-slab text-5xl leading-none text-orange-500 dark:text-orange-400"
                     fromFontVariationSettings="'wght' 500, 'slnt' 0"
                     toFontVariationSettings="'wght' 200, 'slnt' -10"
                     radius={200}
@@ -58,7 +48,7 @@ export default function Home() {
 
             {/* prettier-ignore */}
             <p
-          className={cn("text-xl leading-relaxed text-black dark:text-white",  roboto_slab.className )}
+          className="text-xl leading-relaxed text-black dark:text-white font-slab"
         >
 
             Hi, I&apos;m currently studying a Masters of Cybersecurity at Monash University.<br />
@@ -66,7 +56,7 @@ export default function Home() {
             I write and maintain a couple of open-source projects in my spare time.
 
         </p>
-            <div className={cn("flex flex-wrap gap-2", roboto_slab.className)}>
+            <div className="font-slab flex flex-wrap gap-2">
               <Link
                 href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKkdu7ihp3cS0OA7Y9ol3wj41TBUKtbVqDnuG5"
                 target="_blank"
@@ -102,22 +92,14 @@ export default function Home() {
         >
           <h2
             id="education-heading"
-            className={cn(
-              "mb-4 text-3xl font-bold text-orange-500 dark:text-orange-400",
-              roboto_slab.className,
-            )}
+            className="font-slab mb-4 text-3xl font-bold text-orange-500 dark:text-orange-400"
           >
             Education
           </h2>
           <div className="grid items-start gap-4 sm:grid-cols-2 sm:items-stretch">
             {education.map((edu) => (
               <Card key={edu.institution} className="w-full">
-                <CardContent
-                  className={cn(
-                    "flex flex-col items-start",
-                    intel_one_mono.className,
-                  )}
-                >
+                <CardContent className="font-intel flex flex-col items-start">
                   <h3 className="text-lg font-bold">{edu.description}</h3>
                   <p className="text-base font-bold text-orange-500 dark:text-orange-400">
                     {edu.institution}
