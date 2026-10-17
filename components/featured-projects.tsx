@@ -7,7 +7,7 @@ import { PauseIcon, PlayIcon, Link2Icon, DownloadIcon } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 
 import { projects } from "@/lib/homepageData";
-import { cn } from "cnfast";
+import { cn } from "cn";
 import { Button } from "@/components/ui/button";
 import StackingCards, {
   StackingCardItem,

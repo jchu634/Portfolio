@@ -15,19 +15,17 @@ import {
   type UseScrollOptions,
 } from "motion/react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 interface StackingCardsProps
-  extends PropsWithChildren,
-    HTMLAttributes<HTMLDivElement> {
+  extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
   scrollOptons?: UseScrollOptions;
   scaleMultiplier?: number;
   totalCards: number;
 }
 
 interface StackingCardItemProps
-  extends HTMLAttributes<HTMLDivElement>,
-    PropsWithChildren {
+  extends HTMLAttributes<HTMLDivElement>, PropsWithChildren {
   index: number;
   topPosition?: string;
 }

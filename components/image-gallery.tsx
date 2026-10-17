@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
 import Image from "next/image";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Carousel,
   CarouselContent,
@@ -22,6 +23,35 @@ type ImageGalleryProps = {
   label?: string;
   images: string[];
 };
+
+function GalleryImage(
+  props: Pick<
+    ComponentProps<typeof Image>,
+    "src" | "alt" | "width" | "height" | "sizes" | "className"
+  >,
+) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <div
+      className="relative max-w-full overflow-hidden rounded-lg"
+      aria-busy={isLoading}
+    >
+      {isLoading && (
+        <Skeleton
+          className="absolute inset-0 rounded-none"
+          aria-hidden="true"
+        />
+      )}
+      <Image
+        {...props}
+        className={`${props.className ?? ""} ${isLoading ? "opacity-0" : "opacity-100"}`}
+        onLoad={() => setIsLoading(false)}
+        onError={() => setIsLoading(false)}
+      />
+    </div>
+  );
+}
 
 export function ImageGallery({
   label = "Image gallery",
@@ -52,7 +82,7 @@ export function ImageGallery({
                   onClick={() => setSelectedIndex(index)}
                   className="block cursor-zoom-in overflow-hidden rounded-lg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-orange-500"
                 >
-                  <Image
+                  <GalleryImage
                     src={image}
                     alt={`${label}, image ${index + 1}`}
                     width={600}
@@ -95,7 +125,7 @@ export function ImageGallery({
                 className="flex items-center justify-center"
                 aria-label={`${index + 1} of ${images.length}`}
               >
-                <Image
+                <GalleryImage
                   src={image}
                   alt={`${label}, image ${index + 1}`}
                   width={1600}
