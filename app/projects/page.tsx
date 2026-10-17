@@ -75,7 +75,7 @@ export default function Page() {
                       <AccordionContent>
                         <div className="font-lexend whitespace-pre-line">
                           {project.description}
-                          <div className="flex min-h-[40px] space-x-2 pt-2 sm:hidden">
+                          <div className="flex min-h-10 space-x-2 pt-2 sm:hidden">
                             {project.github && (
                               <Button
                                 className="group h-10 bg-black hover:cursor-pointer hover:bg-slate-200 dark:bg-white dark:hover:bg-indigo-800"
@@ -88,10 +88,11 @@ export default function Page() {
                                   aria-label={`Go to Github repository for ${project.name}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
+                                  className="space-x-2"
                                 >
                                   <p>Github</p>
 
-                                  <SiGithub className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                                  <SiGithub className="size-5 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                                 </Link>
                               </Button>
                             )}
@@ -108,9 +109,10 @@ export default function Page() {
                                   aria-label={`Go to website for ${project.name}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
+                                  className="space-x-2"
                                 >
                                   <p>Website</p>
-                                  <ExternalLinkIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                                  <ExternalLinkIcon className="size-6 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                                 </Link>
                               </Button>
                             )}
@@ -127,9 +129,10 @@ export default function Page() {
                                   aria-label={`Go to download page for ${project.name}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
+                                  className="space-x-2"
                                 >
                                   <p>Download</p>
-                                  <DownloadIcon className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                                  <DownloadIcon className="size-6 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                                 </Link>
                               </Button>
                             )}
@@ -176,7 +179,7 @@ export default function Page() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <SiGithub className="h-8 w-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
+                          <SiGithub className="size-8 text-white group-hover:text-zinc-700 dark:text-black group-hover:dark:text-zinc-200" />
                         </Link>
                       </Button>
                     ) : (
