@@ -1,5 +1,5 @@
 import Link from "next/link";
-import fs from "fs";
+import { getBlogPosts, importBlogPost } from "@/lib/blogPosts";
 
 import { Metadata } from "@/lib/blogType";
 
@@ -12,27 +12,20 @@ interface BlogPostData {
 }
 
 const BlogIndexPage = async () => {
-  const fileNames = fs.readdirSync("./blogposts");
-
   const postData: BlogPostData[] = [];
 
-  for (const file of fileNames) {
+  for (const { slug } of getBlogPosts()) {
     try {
-      // Remove the .tsx extension for the import
-      const fileName = file.replace(/\.tsx$/, "");
-
-      // Await the dynamic import
-      const blogModule = await import(`@/blogposts/${fileName}`);
+      const blogModule = await importBlogPost(slug);
 
       postData.push({
-        slug: fileName,
+        slug,
         metadata: blogModule.metadata,
       });
     } catch (error) {
-      console.error(`Error importing ${file}:`, error);
+      console.error(`Error importing ${slug}:`, error);
     }
   }
-  postData.reverse();
 
   return (
     <div className="font-slab p-10">
@@ -42,7 +35,7 @@ const BlogIndexPage = async () => {
       <div className="space-y-2 pt-4">
         {postData.map((post) => (
           <div key={post.slug}>
-            <Link href={`/blog/${post.slug}`}>
+            <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
               <h4 className="text-2xl font-semibold">{post.metadata?.title}</h4>
               <p>{post.metadata?.description}</p>
               <div className="flex">

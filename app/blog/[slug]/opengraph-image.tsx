@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { importBlogPost } from "@/lib/blogPosts";
 
 // Image metadata
 export let alt = "JCHU634 blog post";
@@ -20,12 +21,12 @@ export default async function Image({
   const { slug } = await params;
 
   // Load blog post metadata to get title
-  const currentPostFileName = slug.replace(/\.tsx$/, "");
+  const currentPostFileName = decodeURIComponent(slug).replace(/\.tsx$/, "");
   let blogTitle = "JCHU634 Blog";
   let blogDescription = "";
 
   try {
-    const blogModule = await import(`@/blogposts/${currentPostFileName}`);
+    const blogModule = await importBlogPost(currentPostFileName);
     blogTitle = blogModule.metadata?.title || "JCHU634 Blog";
     blogDescription = blogModule.metadata?.description || "";
   } catch (e) {
