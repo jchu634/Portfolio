@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 const FigureWithCaption = ({
   src,
@@ -17,9 +17,9 @@ const FigureWithCaption = ({
 }) => {
   return (
     <figure className={`my-3 block ${figureWidth} ${className}`}>
-      {/* 
+      {/*
         This inner div is crucial for Next.js Image with fill={true}
-        It provides the relative positioning and the defined aspect ratio 
+        It provides the relative positioning and the defined aspect ratio
       */}
       <div className={cn("relative", aspectRatio)}>
         <Image src={src} alt={caption} fill={true} />
