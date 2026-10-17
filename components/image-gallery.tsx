@@ -35,7 +35,7 @@ export function ImageGallery({
     <Dialog>
       <Carousel
         aria-label={label}
-        className="mt-4 w-full min-w-0 px-10"
+        className="mt-4 w-full min-w-0 sm:px-10"
         opts={{ align: "start", slidesToScroll: 1 }}
       >
         <CarouselContent className="-ml-3 items-center">
@@ -67,8 +67,8 @@ export function ImageGallery({
         </CarouselContent>
         {images.length > 1 && (
           <>
-            <CarouselPrevious className="left-0" />
-            <CarouselNext className="right-0" />
+            <CarouselPrevious className="left-0 hidden sm:inline-flex" />
+            <CarouselNext className="right-0 hidden sm:inline-flex" />
           </>
         )}
       </Carousel>
@@ -77,12 +77,15 @@ export function ImageGallery({
         <DialogHeader className="pr-8">
           <DialogTitle>{label}</DialogTitle>
           <DialogDescription>
-            Full-size images. Swipe or use the arrows to browse.
+            <span className="sm:hidden">Swipe to browse.</span>
+            <span className="hidden sm:inline">
+              Swipe or use the arrows to browse.
+            </span>
           </DialogDescription>
         </DialogHeader>
         <Carousel
           aria-label={`${label}, enlarged images`}
-          className="min-w-0 px-10"
+          className="min-w-0 sm:px-10"
           opts={{ startIndex: selectedIndex, loop: images.length > 1 }}
         >
           <CarouselContent>
@@ -105,8 +108,8 @@ export function ImageGallery({
           </CarouselContent>
           {images.length > 1 && (
             <>
-              <CarouselPrevious className="left-0" />
-              <CarouselNext className="right-0" />
+              <CarouselPrevious className="left-0 hidden sm:inline-flex" />
+              <CarouselNext className="right-0 hidden sm:inline-flex" />
             </>
           )}
         </Carousel>
