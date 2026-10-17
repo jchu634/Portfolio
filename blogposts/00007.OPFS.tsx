@@ -1,8 +1,6 @@
 import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
 import { CodeBlock } from "@/components/ui/codeblock";
-import { intel_one_mono } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
 import {
   Accordion,
   AccordionContent,
@@ -156,12 +154,7 @@ export default function Post() {
             <p>
               OPFS-Viewer is designed quite simply, it just has a Devtools Panel
               and Script and it uses the{" "}
-              <code
-                className={cn(
-                  "rounded-md bg-slate-800 p-1 text-white",
-                  intel_one_mono.className,
-                )}
-              >
+              <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
                 chrome.scripting.executeScript
               </code>{" "}
               api to be able to execute OPFS commands from the Content-Script
@@ -201,12 +194,7 @@ export default function Post() {
         <p>
           This immediately breaks OPFS-Viewer as its Devtools script loses
           access to all{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
             browser.scripting
           </code>{" "}
           apis.
@@ -221,12 +209,7 @@ export default function Post() {
         <p>
           When run from a content-script, most of the OPFS apis work perfectly
           and without issue, but crucially the exception is the{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
             FileSystemDirectoryHandle.values()
           </code>{" "}
           api which is needed to get the directory structure.
@@ -241,12 +224,7 @@ export default function Post() {
           access the OPFS directory listings as the other
           FileSystemDirectoryHandle APIs appear work fine (read, write, delete)
           and you can even check if a particular file exists through{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
             getFileHandle()
           </code>{" "}
         </p>
@@ -264,21 +242,11 @@ export default function Post() {
           eval()
         </CodeBlock>
         <p>
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
             eval()
           </code>{" "}
           acts very similarly to the{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
             tabs.executeScript()
           </code>{" "}
           used by OPFS-Viewer, but most importantly it reads the current state
@@ -286,36 +254,21 @@ export default function Post() {
           made to the page by page scripts.
           <br />
           This is most likely the reason why{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
             eval()
           </code>{" "}
           is uniquely able to access the OPFS correctly.
         </p>
         <p>
           However, an issue is that any script run by{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
             eval()
           </code>{" "}
           must return a JSON representable value.
           <br />
           This caused all sorts of headache, as the OPFS api is asynchronous and
           would return a JSON promise and not JSON, which I could not get{" "}
-          <code
-            className={cn(
-              "rounded-md bg-slate-800 p-1 text-white",
-              intel_one_mono.className,
-            )}
-          >
+          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
             eval()
           </code>{" "}
           to resolve at all.
@@ -327,12 +280,7 @@ export default function Post() {
         <ol>
           <li>
             Devpanel executes OPFS commands via{" "}
-            <code
-              className={cn(
-                "rounded-md bg-slate-800 p-1 text-white",
-                intel_one_mono.className,
-              )}
-            >
+            <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
               eval()
             </code>
           </li>

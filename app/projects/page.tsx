@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { ExternalLinkIcon, DownloadIcon, PlusIcon } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import Image from "next/image";
@@ -37,7 +36,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { intel_one_mono, lexend } from "@/lib/fonts";
 import { projects } from "@/lib/projectData";
 
 export default function Page() {
@@ -49,9 +47,7 @@ export default function Page() {
       <Table>
         <TableCaption>A list of projects I have done.</TableCaption>
         <TableHeader>
-          <TableRow
-            className={cn("border-black dark:border-white", lexend.className)}
-          >
+          <TableRow className="font-lexend border-black dark:border-white">
             <TableHead className="hidden text-black md:table-cell dark:text-white">
               Timeframe
             </TableHead>
@@ -71,10 +67,7 @@ export default function Page() {
             return (
               <TableRow
                 key={index}
-                className={cn(
-                  "border-black dark:border-white",
-                  lexend.className,
-                )}
+                className="font-lexend border-black dark:border-white"
               >
                 <TableCell className="hidden md:table-cell">
                   {project.timeframe}
@@ -85,17 +78,10 @@ export default function Page() {
                       <AccordionTriggerShell>
                         <div className="flex w-full items-center justify-between pr-5 hover:underline">
                           <div className="flex flex-col">
-                            <h2
-                              className={cn(
-                                "text-lg font-semibold text-orange-500 dark:text-orange-400",
-                                intel_one_mono.className,
-                              )}
-                            >
+                            <h2 className="font-intel text-lg font-semibold text-orange-500 dark:text-orange-400">
                               {project.name}
                             </h2>
-                            <span
-                              className={cn("inline-block", lexend.className)}
-                            >
+                            <span className="font-lexend inline-block">
                               {project.brief}
                             </span>
                           </div>
@@ -104,12 +90,7 @@ export default function Page() {
                         </div>
                       </AccordionTriggerShell>
                       <AccordionContent>
-                        <div
-                          className={cn(
-                            "whitespace-pre-line",
-                            lexend.className,
-                          )}
-                        >
+                        <div className="font-lexend whitespace-pre-line">
                           {project.description}
                           <div className="flex min-h-[40px] space-x-2 pt-2 sm:hidden">
                             {project.github && (

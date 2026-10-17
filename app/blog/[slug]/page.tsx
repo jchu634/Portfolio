@@ -1,6 +1,4 @@
 import React from "react";
-import { roboto_slab } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -67,7 +65,7 @@ export default async function BlogPost({
       .default;
 
     return (
-      <div className={cn("h-full w-full p-10", roboto_slab.className)}>
+      <div className="font-slab h-full w-full p-10">
         <PostContent />
 
         {/* Navigation Buttons */}
