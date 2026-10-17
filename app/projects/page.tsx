@@ -171,7 +171,7 @@ export default function Page() {
                                                 <CardContent className="flex items-center justify-center">
                                                   <Image
                                                     alt="Project Image"
-                                                    className="max-h-[300px] object-scale-down"
+                                                    className="max-h-75 object-scale-down"
                                                     src={image}
                                                     width={400}
                                                     height={400}
@@ -222,7 +222,7 @@ export default function Page() {
                                                     <CardContent className="flex h-full items-center justify-center">
                                                       <Image
                                                         alt="Project Image"
-                                                        className="max-h-[500px] object-contain lg:max-h-[700px]"
+                                                        className="max-h-125 object-contain lg:max-h-175"
                                                         src={image}
                                                         width={600}
                                                         height={600}
@@ -260,7 +260,7 @@ export default function Page() {
                       (technologies_and_frameworks: string, index: number) => {
                         return (
                           <span
-                            className="rounded-md bg-[#2B382E] p-1 px-2 text-xs font-bold text-lime-200 no-underline hover:no-underline dark:bg-emerald-950"
+                            className="rounded-md bg-[#2B382E] p-1 px-2 text-xs font-bold text-lime-200 no-underline hover:no-underline dark:bg-lime-200 dark:text-emerald-950"
                             key={index}
                           >
                             {technologies_and_frameworks}
@@ -270,7 +270,7 @@ export default function Page() {
                     )}
                 </TableCell>
                 <TableCell className="hidden sm:table-cell">
-                  <div className="flex min-h-[40px] space-x-2 pt-2">
+                  <div className="flex min-h-10 space-x-2 pt-2">
                     {project.github ? (
                       <Button
                         size="icon"
