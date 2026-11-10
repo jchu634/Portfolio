@@ -14,6 +14,30 @@ interface ProjectTypes {
 
 export const projects: ProjectTypes[] = [
   {
+    name: "Ounce-bt",
+    type: ["Application"],
+    timeframe: "2026-Ongoing",
+    technologies_and_frameworks: [
+      "Python",
+      "Typescript",
+      "Vite",
+      "Bumble",
+      "pywebview",
+    ],
+    github: "https://github.com/jchu634/ounce-bt",
+    download: "https://github.com/jchu634/ounce-bt/releases/latest",
+    brief: "Cross-platform Switch bluetooth controller emulator.",
+    description: `Ounce-bt uses the Bumble bluetooth framework to emulate a Nintendo Switch controller to create a remote "local" gaming solution.
+    `,
+    images: [
+      "/projects/ouncebt/Homepage.png",
+      "/projects/ouncebt/MacroEditor.png",
+      "/projects/ouncebt/AppearanceEditor.png",
+      "/projects/ouncebt/PresetEditor.png",
+      "/projects/ouncebt/CompactHomepage.png",
+    ],
+  },
+  {
     name: "EdGo",
     type: ["Mobile App"],
     timeframe: "2026-Ongoing",
@@ -76,7 +100,7 @@ export const projects: ProjectTypes[] = [
       "TailwindCSS",
       "InnoSetup",
       "Python",
-      "PyWebView",
+      "pywebview",
       "Whisper",
     ],
     github: "https://github.com/jchu634/subtext-app",
@@ -174,7 +198,7 @@ export const projects: ProjectTypes[] = [
       "TailwindCSS",
       "Python",
       "Ryzen AI Software",
-      "PyWebView",
+      "pywebview",
       "Whisper",
     ],
     github: "https://github.com/jchu634/SubtitleProject",
@@ -202,14 +226,14 @@ export const projects: ProjectTypes[] = [
       "FastAPI",
       "TensorFlow",
       "PyTorch",
-      "PyWebView",
+      "pywebview",
     ],
     brief: "A Application/Website for Insect identification using ML",
     description:
       "CodeCritters is an website and local application which uses Machine Learning to predict what an image submitted by an user contains based on the model chosen.\n" +
       "The frontend is built using React and integrates with Firebase Authentication and Databases.\n" +
       "The backend is an RestFul API built using FastAPI.\n" +
-      "The local app bundles the website and backend using PyWebView, compiles it via PyInstaller and finally bundles it using InnoSetup.",
+      "The local app bundles the website and backend using pywebview, compiles it via PyInstaller and finally bundles it using InnoSetup.",
 
     github:
       "https://github.com/uoa-compsci399-s2-2023/capstone-project-team-34-code-critters",

@@ -35,6 +35,20 @@ export const education: EducationType[] = [
 ];
 export const projects: ProjectCardType[] = [
   {
+    bgColor: "bg-[#841322]",
+    name: "Ounce-bt",
+    type: ["Application"],
+    technologies_and_frameworks: ["Python", "Typescript", "Bumble"],
+    github: "https://github.com/jchu634/ounce-bt",
+    description: "A cross-platform Switch bluetooth controller emulator.",
+    image: true,
+    download: "https://github.com/jchu634/ounce-bt/releases/latest",
+    priority: true,
+    image_light: "/projects/ouncebt/Homepage.png",
+    image_dark: "/projects/ouncebt/Homepage.png",
+    image_alt: "Ounce-bt App Screenshot",
+  },
+  {
     bgColor: "bg-[#122c23]",
     name: "Subtext",
     type: ["Application"],
