@@ -18,7 +18,10 @@
     "domains": { "next": "recommended", "react": "recommended" },
     "rules": {
       "preset": "recommended",
-      "nursery": { "useTailwindSortedClasses": "warn" }
+      "complexity": { "noUselessSwitchCase": "off" },
+      "nursery": {
+        "useTailwindSortedClasses": { "level": "warn", "fix": "safe" }
+      }
     }
   },
   "assist": { "actions": { "source": { "organizeImports": "on" } } },

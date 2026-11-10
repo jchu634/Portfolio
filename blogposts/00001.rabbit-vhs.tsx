@@ -53,7 +53,8 @@ export default function Post() {
             This should have been my end point, but I got a bit curious:
             <br />
             Since it will take a couple of weeks to fully digitise my VHS tapes,
-            I might as well look at what it takes to do it more &quot;properly&quot;
+            I might as well look at what it takes to do it more
+            &quot;properly&quot;
           </p>
         </div>
         <div>
@@ -78,7 +79,8 @@ export default function Post() {
             This should have been my end point, but I got a bit curious:
             <br />
             Since it will take a couple of weeks to fully digitise my VHS tapes,
-            I might as well look at what it takes to do it more &quot;properly&quot;
+            I might as well look at what it takes to do it more
+            &quot;properly&quot;
           </p>
         </div>
 
@@ -124,7 +126,8 @@ export default function Post() {
             </li>
             <li>
               Not all TBCs are built equal, there are &quot;Line TBC, frame TBC,
-              frame sync TBC, field TBCs, etc.&quot;, and different implementations{" "}
+              frame sync TBC, field TBCs, etc.&quot;, and different
+              implementations{" "}
               <a
                 href="https://www.digitalfaq.com/forum/video-capture/12537-tbc-how.html"
                 target="_blank"
@@ -165,8 +168,8 @@ export default function Post() {
           </p>
           <p>
             VHS-Decode is an interesting project, a fork of LD-Decode, it works
-            by bypassing the VHS&apos;s video capabilities althogether and taps into
-            the RF signals used internally by the VHS, before decoding and
+            by bypassing the VHS&apos;s video capabilities althogether and taps
+            into the RF signals used internally by the VHS, before decoding and
             processing via software.{" "}
             <a
               href="https://github.com/oyvindln/vhs-decode"

@@ -38,12 +38,12 @@ export const LabelButton = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const ButtonContent = (
-    <div
-      className="relative flex items-center"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className="relative flex items-center">
       <Button
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onFocus={() => setIsHovered(true)}
+        onBlur={() => setIsHovered(false)}
         variant={variant}
         size={buttonSize}
         asChild={asChild}
@@ -51,29 +51,23 @@ export const LabelButton = ({
         className={`flex items-center justify-center ${className}`}
       >
         {href ? (
-          <>
-            {extLink ? (
-              <Link
-                href={href}
-                aria-label={ariaLabel}
-                className="justify-center"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {children}
-              </Link>
-            ) : (
-              <Link
-                href={href}
-                aria-label={ariaLabel}
-                className="justify-center"
-              >
-                {children}
-              </Link>
-            )}
-          </>
+          extLink ? (
+            <Link
+              href={href}
+              aria-label={ariaLabel}
+              className="justify-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {children}
+            </Link>
+          ) : (
+            <Link href={href} aria-label={ariaLabel} className="justify-center">
+              {children}
+            </Link>
+          )
         ) : (
-          <>{children}</>
+          children
         )}
       </Button>
 

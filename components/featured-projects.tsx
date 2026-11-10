@@ -120,7 +120,9 @@ export default function FeaturedProjects({
     const observer = new ResizeObserver(measure);
     observer.observe(intro);
     observer.observe(heading);
-    cards.forEach(({ content }) => observer.observe(content));
+    cards.forEach(({ content }) => {
+      observer.observe(content);
+    });
     window.addEventListener("resize", measure);
     measure();
     return () => {
@@ -212,6 +214,7 @@ export default function FeaturedProjects({
             id={`project-panel-${index}`}
             aria-labelledby={`project-tab-${index}`}
             hidden={active !== index}
+            // biome-ignore lint/a11y/noNoninteractiveTabindex: WAI-ARIA tab panels need a tab stop when their first content is not focusable.
             tabIndex={0}
           >
             {active === index && (

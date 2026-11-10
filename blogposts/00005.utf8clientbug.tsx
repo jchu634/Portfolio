@@ -67,9 +67,13 @@ export default function Post() {
           and there would be three errors in the console
         </p>
         <blockquote>
-          <span className="italic">No group found for id &quot;«Rufb»&quot;</span>
+          <span className="italic">
+            No group found for id &quot;«Rufb»&quot;
+          </span>
           <br />
-          <span className="italic">No group found for id &quot;«Rfb»&quot;</span>
+          <span className="italic">
+            No group found for id &quot;«Rfb»&quot;
+          </span>
           <br />
           <span className="italic">
             Uncaught Error: No group found for id &quot;«Rufb»&quot;
@@ -122,7 +126,10 @@ export default function Post() {
           </code>{" "}
           while FastAPI returned{" "}
           <code className="rounded-md bg-slate-800 p-1.5 font-intel text-white">
-            <span className="italic"> data-panel-group-id=&quot;«Rfb»&quot;</span>
+            <span className="italic">
+              {" "}
+              data-panel-group-id=&quot;«Rfb»&quot;
+            </span>
           </code>
         </p>
       </div>

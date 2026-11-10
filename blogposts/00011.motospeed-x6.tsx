@@ -229,7 +229,8 @@ export default function Post() {
           When it is plugged in however, there are some changes.
           <br />
           Firstly the firmware reports the manufacturer as Motospeed instead of
-          Darmoshark and the device is reported as &quot;MOTOSPEED&apos; - &apos;X6&quot;
+          Darmoshark and the device is reported as &quot;MOTOSPEED&apos; -
+          &apos;X6&quot;
           <br />
           Secondly, although the USB device tree is identical to the dongle,
           while the VID is identical, the PID changes.
@@ -334,9 +335,11 @@ Plugged In            1010 0100
           reports its battery levels and if it is charging. <br />
           Based on this research I made a system tray utility that shows your
           current battery and charge status, available now{" "}
+          {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
           <a href="https://github.com/jchu634/motospeed-x6-Utilities">here.</a>
           <br />
           And for those who want to take a look at the POC code, it is available{" "}
+          {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
           <a href="https://github.com/jchu634/motospeed-x6-reverse-engineering">
             here
           </a>

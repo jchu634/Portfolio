@@ -45,9 +45,9 @@ export default function Post() {
         <h4>1. Skill Level</h4>
         Currently, I would say that I can generally understand the generated
         code, and can determine when it is bad and can fix/debug the code. But I
-        don&apos;t quite understand the systems enough to write the features myself
-        without significant effort, hence the use of LLMs as a POC reference
-        implementation and a learning scaffold.
+        don&apos;t quite understand the systems enough to write the features
+        myself without significant effort, hence the use of LLMs as a POC
+        reference implementation and a learning scaffold.
         <br />
         <h4>2. The Models</h4>
         There were four models used thoughout development (April - June 2026),
@@ -103,18 +103,19 @@ export default function Post() {
         </ul>
         I suspect Zed Agents underperformed with the GLM models because its
         system prompt made it use tools much less, leading to a lack of
-        &quot;understanding&quot; of the general codebase in its context, which caused it
-        to write worse code.
+        &quot;understanding&quot; of the general codebase in its context, which
+        caused it to write worse code.
         <h4>The Workflow (Complex Features)</h4>
-        If I didn&apos;t have a good concept of the technical pinnings of a feature,
-        the initial &quot;spec&quot; creation would be done with GPT-5.4, or rather a high
-        level concept with some implementation specifics (e.g. I want ___ to be
-        written to the DB, also create a Drizzle and Effect schema.)
+        If I didn&apos;t have a good concept of the technical pinnings of a
+        feature, the initial &quot;spec&quot; creation would be done with
+        GPT-5.4, or rather a high level concept with some implementation
+        specifics (e.g. I want ___ to be written to the DB, also create a
+        Drizzle and Effect schema.)
         <br />
         This was necessary as although GLM-5.1 has no problems with simple
-        feature requests, it generally has bad &quot;taste&quot; and struggles with
-        complex technical features. GLM 5.1 would be then tasked to create a
-        plan to implement that feature and with a reference to the important
+        feature requests, it generally has bad &quot;taste&quot; and struggles
+        with complex technical features. GLM 5.1 would be then tasked to create
+        a plan to implement that feature and with a reference to the important
         files.
         <br />
         <blockquote>

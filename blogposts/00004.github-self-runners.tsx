@@ -20,8 +20,8 @@ export default function Post() {
           development branch often had debug flags and features enabled which I
           kept forgetting to disable for production builds.
           <br /> A CI/CD pipeline would generate builds that were theoretically
-          production &quot;ready&quot; with the correct flags and require minimal effort
-          from me.
+          production &quot;ready&quot; with the correct flags and require
+          minimal effort from me.
         </p>
         <p>
           To answer a pre-empted question: Why not use Github&apos;s own hosted
@@ -149,12 +149,13 @@ export default function Post() {
           Run the config script as Administrator{" "}
         </p>
         <CodeBlock language="powershell">
-          config.cmd --url &quot;REPO URL HERE&quot; --token &quot;RUNNER TOKEN GOES HERE&quot;
+          config.cmd --url &quot;REPO URL HERE&quot; --token &quot;RUNNER TOKEN
+          GOES HERE&quot;
         </CodeBlock>
         <p>
           Additionally, to prevent permission issues running as &quot;NT
-          AUTHORITY\NETWORK SERVICE&quot;, when the script asks, set the runner to
-          run as &quot;NT AUTHORITY\SYSTEM&quot;.
+          AUTHORITY\NETWORK SERVICE&quot;, when the script asks, set the runner
+          to run as &quot;NT AUTHORITY\SYSTEM&quot;.
         </p>
         <h4>PATH Limitations</h4>
         <p>
@@ -187,8 +188,8 @@ export default function Post() {
           </div>
           <CodeBlock className="prose-pre:m-0" language="powershell">
             ./config.cmd --url https://github.com/jchu634/Subtext-app
-            --runasservice --windowslogonaccount &quot;NT AUTHORITY\SYSTEM&quot; --name
-            NAME --labels LABELS --replace --token TOKEN
+            --runasservice --windowslogonaccount &quot;NT AUTHORITY\SYSTEM&quot;
+            --name NAME --labels LABELS --replace --token TOKEN
           </CodeBlock>
         </blockquote>
       </div>
@@ -208,8 +209,8 @@ export default function Post() {
       </p>
       <ol>
         <li>
-          Set up a builds folder (&quot;C:\Builds\Subtext\&quot;) and then add a step to
-          the Github action to copy artifacts to that folder
+          Set up a builds folder (&quot;C:\Builds\Subtext\&quot;) and then add a
+          step to the Github action to copy artifacts to that folder
         </li>
         <li>
           Make a one-way send syncthing connection between that folder and the

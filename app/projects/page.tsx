@@ -46,10 +46,10 @@ export default function Page() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {projects.map((project, index) => {
+          {projects.map((project) => {
             return (
               <TableRow
-                key={index}
+                key={project.name}
                 className="border-black font-lexend dark:border-white"
               >
                 <TableCell className="hidden md:table-cell">
@@ -149,19 +149,18 @@ export default function Page() {
                   </Accordion>
                 </TableCell>
                 <TableCell className="hidden space-x-2 xl:table-cell">
-                  {project.technologies_and_frameworks &&
-                    project.technologies_and_frameworks.map(
-                      (technologies_and_frameworks: string, index: number) => {
-                        return (
-                          <span
-                            className="rounded-md bg-[#2B382E] p-1 px-2 text-xs font-bold text-lime-200 no-underline hover:no-underline dark:bg-lime-200 dark:text-emerald-950"
-                            key={index}
-                          >
-                            {technologies_and_frameworks}
-                          </span>
-                        );
-                      },
-                    )}
+                  {project.technologies_and_frameworks?.map(
+                    (technologies_and_frameworks: string) => {
+                      return (
+                        <span
+                          className="rounded-md bg-[#2B382E] p-1 px-2 text-xs font-bold text-lime-200 no-underline hover:no-underline dark:bg-lime-200 dark:text-emerald-950"
+                          key={technologies_and_frameworks}
+                        >
+                          {technologies_and_frameworks}
+                        </span>
+                      );
+                    },
+                  )}
                 </TableCell>
                 <TableCell className="hidden sm:table-cell">
                   <div className="flex min-h-10 space-x-2 pt-2">

@@ -1,3 +1,4 @@
+// biome-ignore-all lint/suspicious/noCommentText: Preserve literal comments in the published code examples.
 import { ChevronDownIcon } from "lucide-react";
 import {
   Accordion,
@@ -44,8 +45,8 @@ export default function Post() {
           more extension API, and... it worked.
           <br />
           So this article is an attempt to salvage the content from my original
-          article and to document what in the OPFS works or doesn&apos;t on Firefox
-          Addons.
+          article and to document what in the OPFS works or doesn&apos;t on
+          Firefox Addons.
         </p>
       </div>
       <div>
@@ -164,8 +165,8 @@ export default function Post() {
       <div>
         <h3>Why these don&apos;t work on Firefox</h3>
         <blockquote>
-          Note: Firefox uses &quot;browser&quot; and not &quot;chrome&quot; as their api keyword,
-          the rest of the article will reflect this
+          Note: Firefox uses &quot;browser&quot; and not &quot;chrome&quot; as
+          their api keyword, the rest of the article will reflect this
         </blockquote>
         <p>
           In Firefox, Content-Scripts are locked down to DOM apis and a subset
@@ -282,8 +283,8 @@ export default function Post() {
           Overall, the native Devtools should really get some native OPFS
           capabilities, but I don&apos;t think that is coming anytime soon.
           <br />
-          Here&apos;s hoping that day will come sooner than later, but until then,
-          3rd-party extensions work fine enough.
+          Here&apos;s hoping that day will come sooner than later, but until
+          then, 3rd-party extensions work fine enough.
         </p>
         <blockquote>
           Edit: My extension can now be downloaded here

@@ -69,9 +69,9 @@ export default function Post() {
         waiting on the API results. When offline, the API call would fail almost
         immediately which terminated the sync and unblocked the next page sync.{" "}
         <br />
-        This is still an issue, and my &quot;fix&quot; was adopting a hacky patch to
-        support asynchronous operations, while waiting for the Drizzle driver to
-        be updated to be asynchronous.
+        This is still an issue, and my &quot;fix&quot; was adopting a hacky
+        patch to support asynchronous operations, while waiting for the Drizzle
+        driver to be updated to be asynchronous.
         <a href="https://github.com/drizzle-team/drizzle-orm/issues/5240">
           (Github Issue).
         </a>
@@ -124,6 +124,7 @@ export default function Post() {
       <div>
         <h3>Thanks</h3>A special thanks to smartspot2 (Alec Li) for his work
         documenting most of the Ed Discussion API{" "}
+        {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
         <a href="https://github.com/smartspot2/edapi/blob/9199e1001eb04b86bb8f68d0c5f9042453cd1387/docs/api_docs.md">
           here.
         </a>
@@ -155,8 +156,8 @@ export default function Post() {
         <h3>WebSocket API</h3>
         <code>wss://edstem.org/api/stream</code>
         <br />
-        Ed&apos;s WebSocket API isn&apos;t particularly complex, but it has a couple of
-        things you need to get right.
+        Ed&apos;s WebSocket API isn&apos;t particularly complex, but it has a
+        couple of things you need to get right.
         <br />
         <h4>Authentication</h4>
         Similar to the HTTP endpoints, the WebSocket can be authenticated using

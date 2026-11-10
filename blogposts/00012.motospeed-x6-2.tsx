@@ -22,8 +22,8 @@ export default function Post() {
           After finding the battery request in Part 1, it got much easier as I
           now know what to do and where to look.
           <br />
-          Apologies about the relative dryness of the article, there isn&apos;t as
-          much interesting insights about the info or the reverse engineering
+          Apologies about the relative dryness of the article, there isn&apos;t
+          as much interesting insights about the info or the reverse engineering
           this time.
           <br />I promise the next part on Macros will be much more interesting.
         </div>
@@ -40,11 +40,12 @@ export default function Post() {
       <div>
         <div>
           <h2>Lighting</h2>
-          There are 4 lighting &apos;modes&apos;: (Nothing, Static, Breathing and
-          Rainbow), byte 3 communicates the mode.
-          <br /> Apart from that, there isn&apos;t particularly anything interesting
-          to say about lighting packets, as the mode byte is followed by the
-          brightness and speed bytes, and finally the RGB bytes and padding.
+          There are 4 lighting &apos;modes&apos;: (Nothing, Static, Breathing
+          and Rainbow), byte 3 communicates the mode.
+          <br /> Apart from that, there isn&apos;t particularly anything
+          interesting to say about lighting packets, as the mode byte is
+          followed by the brightness and speed bytes, and finally the RGB bytes
+          and padding.
           <br />
           <h4>No Lighting packet</h4>
           <CodeBlock
@@ -248,8 +249,8 @@ export default function Post() {
           software based, all it does is change the RGB values in the command,
           it does not have its own byte. <br />
           Additionally, as an aside, the colour reproduction for the RGB is
-          kinda crap, with a side-by-side for some colours, you wouldn&apos;t think
-          they are supposed to be identical.
+          kinda crap, with a side-by-side for some colours, you wouldn&apos;t
+          think they are supposed to be identical.
           <div className="flex w-150 items-center space-x-5">
             <FigureWithCaption
               src="/blogs/12/255.72.0.jpg"
@@ -286,6 +287,7 @@ export default function Post() {
           hopefully, I will see you then.
           <br />
           POC code is available{" "}
+          {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
           <a href="https://github.com/jchu634/motospeed-x6-reverse-engineering">
             here
           </a>

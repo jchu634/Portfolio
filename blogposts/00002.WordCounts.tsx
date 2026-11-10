@@ -1,3 +1,4 @@
+import Image from "next/image";
 import BlogHeader from "@/components/ui/blog-header";
 import {
   Table,
@@ -8,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Metadata } from "@/lib/blogType";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Word Counts are a mess",
@@ -46,36 +47,140 @@ export default function Post() {
       software: "Word (Desktop)",
       // biome-ignore format: Keep each word-count result row together.
       results: [
-        "❌", "❌", "✔️", "✔️", "✔️", "✔️", "✔️", "✔️", "❌", "✔️","One Word", "One Word", "One Word", "✔️", "✔️", "✔️", "✔️", "✔️","✔️", "❌", "❌", "One Word"
+        "❌",
+        "❌",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "❌",
+        "✔️",
+        "One Word",
+        "One Word",
+        "One Word",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "❌",
+        "❌",
+        "One Word",
       ],
     },
     {
       software: "Word (Online)",
       // biome-ignore format: Keep each word-count result row together.
       results: [
-        "❌", "❌", "✔️", "❌", "✔️", "✔️", "✔️", "✔️", "❌", "❌","One Word", "One Word", "One Word", "✔️", "❌", "✔️", "✔️", "❌","❌", "❌", "❌", "One Word"
+        "❌",
+        "❌",
+        "✔️",
+        "❌",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "❌",
+        "❌",
+        "One Word",
+        "One Word",
+        "One Word",
+        "✔️",
+        "❌",
+        "✔️",
+        "✔️",
+        "❌",
+        "❌",
+        "❌",
+        "❌",
+        "One Word",
       ],
     },
     {
       software: "Libre",
       // biome-ignore format: Keep each word-count result row together.
       results: [
-        "✔️", "✔️", "✔️", "✔️", "✔️", "✔️", "✔️", "✔️", "✔️", "❌","One Word", "One Word", "One Word", "✔️", "✔️", "✔️", "✔️", "✔️","✔️", "❌", "✔️", "One Word"
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "❌",
+        "One Word",
+        "One Word",
+        "One Word",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "❌",
+        "✔️",
+        "One Word",
       ],
     },
     {
       software: "Google Docs",
       // biome-ignore format: Keep each word-count result row together.
       results: [
-        "❌", "❌", "✔️", "✔️", "⭕ (No Bullets)", "⭕ (No Bullets)", 
-        "✔️", "✔️", "❌", "✔️", "Separate", "Separate", "Separate","✔️", "❌ (Not Imported)", "❌", "❌", "❌ (imported as drawing)","❌ (imported as drawing)", "❌", "❌", "One Word"
+        "❌",
+        "❌",
+        "✔️",
+        "✔️",
+        "⭕ (No Bullets)",
+        "⭕ (No Bullets)",
+        "✔️",
+        "✔️",
+        "❌",
+        "✔️",
+        "Separate",
+        "Separate",
+        "Separate",
+        "✔️",
+        "❌ (Not Imported)",
+        "❌",
+        "❌",
+        "❌ (imported as drawing)",
+        "❌ (imported as drawing)",
+        "❌",
+        "❌",
+        "One Word",
       ],
     },
     {
       software: "Apple Pages",
       // biome-ignore format: Keep each word-count result row together.
       results: [
-        "❌", "✔️", "✔️", "✔️", "⭕ (No Bullets)", "⭕ (No Bullets)","✔️/❌ (Only Title counts)", "✔️", "❌", "❌", "Separate","Separate", "Separate", "✔️", "✔️", "✔️", "✔️", "✔️", "✔️","❌", "❌", "One Word"
+        "❌",
+        "✔️",
+        "✔️",
+        "✔️",
+        "⭕ (No Bullets)",
+        "⭕ (No Bullets)",
+        "✔️/❌ (Only Title counts)",
+        "✔️",
+        "❌",
+        "❌",
+        "Separate",
+        "Separate",
+        "Separate",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "❌",
+        "❌",
+        "One Word",
       ],
     },
   ];
@@ -85,7 +190,28 @@ export default function Post() {
       software: "Word (Desktop)",
       // biome-ignore format: Keep each word-count result row together.
       results: [
-        "❌","❌","✔️","✔️","✔️","✔️","✔️","✔️","❌","N.A.","One Word","One Word","One Word","✔️","✔️","✔️","✔️","✔️","✔️","❌","❌","❌",
+        "❌",
+        "❌",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "❌",
+        "N.A.",
+        "One Word",
+        "One Word",
+        "One Word",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "❌",
+        "❌",
+        "❌",
       ],
     },
     {
@@ -97,21 +223,84 @@ export default function Post() {
       software: "Libre",
       // biome-ignore format: Keep each word-count result row together.
       results: [
-        "✔️","✔️","✔️","✔️","✔️","✔️","✔️","✔️","✔️","N.A.","One Word","One Word","One Word","","✔️","✔️","✔️","✔️","✔️","❌","✔️","❌",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "N.A.",
+        "One Word",
+        "One Word",
+        "One Word",
+        "",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "❌",
+        "✔️",
+        "❌",
       ],
     },
     {
       software: "Google Docs",
       // biome-ignore format: Keep each word-count result row together.
       results: [
-        "❌","❌","✔️","✔️","⭕ (No Bullets)","✔️ (Bullets Don't Count)","✔️","✔️","❌","N.A.","Separate","Separate","Separate","✔️","❌ (Imported, But with a quirk)","❌","❌","❌ (imported as drawing)","❌ (imported as drawing)","❌","❌","❌",
+        "❌",
+        "❌",
+        "✔️",
+        "✔️",
+        "⭕ (No Bullets)",
+        "✔️ (Bullets Don't Count)",
+        "✔️",
+        "✔️",
+        "❌",
+        "N.A.",
+        "Separate",
+        "Separate",
+        "Separate",
+        "✔️",
+        "❌ (Imported, But with a quirk)",
+        "❌",
+        "❌",
+        "❌ (imported as drawing)",
+        "❌ (imported as drawing)",
+        "❌",
+        "❌",
+        "❌",
       ],
     },
     {
       software: "Apple Pages",
       // biome-ignore format: Keep each word-count result row together.
       results: [
-        "❌","✔️","✔️","✔️","⭕ (No Bullets)","⭕ (No Bullets)","✔️/❌ (Only Title counts)","✔️","❌","❌","Separate","Separate","Separate","✔️","✔️","✔️","✔️","✔️","✔️","❌","❌","One Word",
+        "❌",
+        "✔️",
+        "✔️",
+        "✔️",
+        "⭕ (No Bullets)",
+        "⭕ (No Bullets)",
+        "✔️/❌ (Only Title counts)",
+        "✔️",
+        "❌",
+        "❌",
+        "Separate",
+        "Separate",
+        "Separate",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "✔️",
+        "❌",
+        "❌",
+        "One Word",
       ],
     },
   ];
@@ -444,7 +633,7 @@ export default function Post() {
                   The software with a .DOC compatibility quirk, it managed to
                   import the picture caption, but it imported it distorted and
                   incorrectly as shown below <br />
-                  <img
+                  <Image
                     src="/BlogImages/WordCountImage3.png"
                     alt="Distorted Picture Caption"
                     title="Distorted Picture Caption"
@@ -573,18 +762,22 @@ export default function Post() {
             <TableHeader>
               <TableRow>
                 <TableHead></TableHead>
-                {tableHeaders.map((header, index) => {
-                  return <TableHead key={index}>{header}</TableHead>;
+                {tableHeaders.map((header) => {
+                  return <TableHead key={header}>{header}</TableHead>;
                 })}
               </TableRow>
             </TableHeader>
             <TableBody>
-              {docxData.map((data, index) => {
+              {docxData.map((data) => {
                 return (
-                  <TableRow key={index}>
+                  <TableRow key={data.software}>
                     <TableCell>{data.software}</TableCell>
-                    {data.results.map((result, index2) => {
-                      return <TableCell key={index2}>{result}</TableCell>;
+                    {tableHeaders.map((header, column) => {
+                      return (
+                        <TableCell key={header}>
+                          {data.results[column]}
+                        </TableCell>
+                      );
                     })}
                   </TableRow>
                 );
@@ -597,18 +790,22 @@ export default function Post() {
             <TableHeader>
               <TableRow>
                 <TableHead></TableHead>
-                {tableHeaders.map((header, index) => {
-                  return <TableHead key={index}>{header}</TableHead>;
+                {tableHeaders.map((header) => {
+                  return <TableHead key={header}>{header}</TableHead>;
                 })}
               </TableRow>
             </TableHeader>
             <TableBody>
-              {docData.map((data, index) => {
+              {docData.map((data) => {
                 return (
-                  <TableRow key={index}>
+                  <TableRow key={data.software}>
                     <TableCell>{data.software}</TableCell>
-                    {data.results.map((result, index2) => {
-                      return <TableCell key={index2}>{result}</TableCell>;
+                    {tableHeaders.map((header, column) => {
+                      return (
+                        <TableCell key={header}>
+                          {data.results[column]}
+                        </TableCell>
+                      );
                     })}
                   </TableRow>
                 );

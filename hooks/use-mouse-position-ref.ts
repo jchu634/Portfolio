@@ -7,7 +7,7 @@ export const useMousePositionRef = (
 
   useEffect(() => {
     const updatePosition = (x: number, y: number) => {
-      if (containerRef && containerRef.current) {
+      if (containerRef?.current) {
         const rect = containerRef.current.getBoundingClientRect();
         const relativeX = x - rect.left;
         const relativeY = y - rect.top;

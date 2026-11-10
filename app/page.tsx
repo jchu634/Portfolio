@@ -31,9 +31,9 @@ export default function Home() {
               </div>
             ) : (
               <div className="items-left flex flex-col gap-4">
-                {["Hi, I'm Joshua:", "I like making stuff."].map((text, i) => (
+                {["Hi, I'm Joshua:", "I like making stuff."].map((text) => (
                   <VariableFontCursorProximity
-                    key={i}
+                    key={text}
                     label={text}
                     className="font-slab text-5xl leading-none text-orange-500 dark:text-orange-400"
                     fromFontVariationSettings="'wght' 500, 'slnt' 0"

@@ -151,5 +151,5 @@
 }
 .prose :where(:not(pre) > code)::before,
 .prose :where(:not(pre) > code)::after {
-  content: "" !important;
+  content: "";
 }

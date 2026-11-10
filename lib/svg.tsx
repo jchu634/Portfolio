@@ -1,5 +1,4 @@
 import type { SVGProps } from "react";
-import * as React from "react";
 export const FirefoxAddon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +12,7 @@ export const FirefoxAddon = (props: SVGProps<SVGSVGElement>) => (
     viewBox="0 0 172 60"
     {...props}
   >
-    <script />
+    <title>Get the Firefox add-on</title>
     <path
       d="M171 6.75c0-1.518-1.305-2.75-2.913-2.75H6.913C5.305 4 4 5.232 4 6.75v49.5C4 57.768 5.305 59 6.913 59h161.174c1.608 0 2.913-1.232 2.913-2.75V6.75Z"
       style={{
@@ -764,6 +763,9 @@ export const Blog7Diagram = (props: SVGProps<SVGSVGElement>) => (
     preserveAspectRatio="xMidYMid meet"
     {...props}
   >
+    <title>
+      Right triangle showing the height and angle of a skewed rectangle
+    </title>
     <path
       d="M130.052 178.958s31.753 17.141 15.174 51.142"
       style={{

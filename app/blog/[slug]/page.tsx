@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
 import { Button } from "@/components/ui/button";
 import CommentSection from "@/components/ui/comments";
 import { Separator } from "@/components/ui/separator";

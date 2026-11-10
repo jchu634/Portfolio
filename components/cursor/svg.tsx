@@ -1,9 +1,10 @@
 import type { SVGProps } from "react";
-import * as React from "react";
 
 // Generated with https://react-svgr.com/playground/
 export const PacmanDisabledSVGDark = (props: SVGProps<SVGSVGElement>) => (
   <svg
+    aria-hidden="true"
+    focusable="false"
     xmlns="http://www.w3.org/2000/svg"
     width={541.6}
     height={571.11}
@@ -27,6 +28,8 @@ export const PacmanDisabledSVGDark = (props: SVGProps<SVGSVGElement>) => (
 );
 export const PacmanDisabledSVGLight = (props: SVGProps<SVGSVGElement>) => (
   <svg
+    aria-hidden="true"
+    focusable="false"
     xmlns="http://www.w3.org/2000/svg"
     width={541.6}
     height={571.11}
@@ -52,6 +55,8 @@ export const PacmanDisabledSVGLight = (props: SVGProps<SVGSVGElement>) => (
 // Generated with https://react-svgr.com/playground/
 export const PacmanEnabledSVGDark = (props: SVGProps<SVGSVGElement>) => (
   <svg
+    aria-hidden="true"
+    focusable="false"
     xmlns="http://www.w3.org/2000/svg"
     width={541.6}
     height={571.11}
@@ -68,6 +73,8 @@ export const PacmanEnabledSVGDark = (props: SVGProps<SVGSVGElement>) => (
 );
 export const PacmanEnabledSVGLight = (props: SVGProps<SVGSVGElement>) => (
   <svg
+    aria-hidden="true"
+    focusable="false"
     xmlns="http://www.w3.org/2000/svg"
     width={541.6}
     height={571.11}

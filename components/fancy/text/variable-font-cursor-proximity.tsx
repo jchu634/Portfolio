@@ -25,7 +25,6 @@ const VariableFontCursorProximity = forwardRef<HTMLSpanElement, TextProps>(
       radius = 50,
       falloff = "linear",
       className,
-      onClick,
       ...props
     },
     ref,
@@ -135,14 +134,10 @@ const VariableFontCursorProximity = forwardRef<HTMLSpanElement, TextProps>(
     let letterIndex = 0;
 
     return (
-      <span
-        ref={ref}
-        className={`${className} inline`}
-        onClick={onClick}
-        {...props}
-      >
+      <span ref={ref} className={`${className} inline`} {...props}>
         {words.map((word, wordIndex) => (
           <span
+            // biome-ignore lint/suspicious/noArrayIndexKey: Words and letters are animated by their fixed position within this label, including repeated words.
             key={wordIndex}
             className="inline-block whitespace-nowrap"
             aria-hidden

@@ -103,8 +103,8 @@ export default function Post() {
           <p>
             Eventually I figured it out.
             <br />
-            When skew is applied, the div&apos;s original bounds are still present,
-            (Indicated by red borders). <br />
+            When skew is applied, the div&apos;s original bounds are still
+            present, (Indicated by red borders). <br />
             But the skewed rendered div edges (yellow) does not utilise the
             original bounds, it distorts and the distorted edge does not use the
             original width specified to it. <br />
@@ -241,8 +241,8 @@ export default function Post() {
           <div>
             <h2>Conclusion</h2>
             <p>
-              That&apos;s it, I couldn&apos;t completely replicate the button: the{" "}
-              <code>onhover </code>
+              That&apos;s it, I couldn&apos;t completely replicate the button:
+              the <code>onhover </code>
               is missing, but I didn&apos;t really think it was too necessary to
               replicate and it is relatively easy.
               <br />

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { type CSSProperties, useEffect, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useRef, useState } from "react";
 
 type Cursor = {
   Y: number;

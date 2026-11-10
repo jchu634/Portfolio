@@ -18,7 +18,7 @@ export function Switch1() {
         <div className="flex h-20 w-30 translate-y-[-25.5px] skew-y-[-24deg] items-center border-2 border-black dark:border-white">
           <p className="w-full text-center">test</p>
         </div>
-        <div className="h-20 w-15 translate-y-[-26px] skew-y-[50deg] border-2 border-black dark:border-white"></div>
+        <div className="h-20 w-15 -translate-y-6.5 skew-y-[50deg] border-2 border-black dark:border-white"></div>
       </div>
     </div>
   );
@@ -31,7 +31,7 @@ export function Switch2() {
         <div className="flex h-20 w-30 translate-y-[-25.5px] skew-y-[-23deg] items-center border-2 border-black dark:border-white">
           <p className="w-full text-center">test</p>
         </div>
-        <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-2 border-black dark:border-white"></div>
+        <div className="h-20 w-15 -translate-y-6.5 skew-y-[40.32deg] border-2 border-black dark:border-white"></div>
       </div>
     </div>
   );
@@ -44,7 +44,7 @@ export function Switch3() {
         <div className="flex h-20 w-30 translate-y-[-25.5px] skew-y-[-23deg] items-center border-y-2 border-r border-black dark:border-white">
           <p className="w-full text-center">Right Switch</p>
         </div>
-        <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-x border-y-2 border-black dark:border-white"></div>
+        <div className="h-20 w-15 -translate-y-6.5 skew-y-[40.32deg] border-x border-y-2 border-black dark:border-white"></div>
       </div>
     </div>
   );
@@ -57,7 +57,7 @@ export function Switch4() {
         <div className="flex h-20 w-30 translate-y-[-25.5px] skew-y-[-23deg] items-center border-y-2 border-r border-black bg-blue-200 dark:border-white dark:bg-slate-900">
           <p className="w-full text-center text-black">Right Switch</p>
         </div>
-        <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-x border-y-2 border-black bg-blue-200 dark:border-white dark:bg-slate-900"></div>
+        <div className="h-20 w-15 -translate-y-6.5 skew-y-[40.32deg] border-x border-y-2 border-black bg-blue-200 dark:border-white dark:bg-slate-900"></div>
       </div>
     </div>
   );
@@ -66,7 +66,7 @@ export function Switch4Flipped() {
   return (
     <div className="flex pt-10">
       <div className="flex border-y-2 border-r border-l-2 border-black dark:border-white">
-        <div className="h-20 w-15 translate-y-[-26px] skew-y-[-40.32deg] border-x border-y-2 border-black bg-blue-200 dark:border-white dark:bg-slate-900"></div>
+        <div className="h-20 w-15 -translate-y-6.5 skew-y-[-40.32deg] border-x border-y-2 border-black bg-blue-200 dark:border-white dark:bg-slate-900"></div>
         <div className="flex h-20 w-30 translate-y-[-25.5px] skew-y-[23deg] items-center border-y-2 border-r border-black bg-blue-200 dark:border-white dark:bg-slate-900">
           <p className="w-full text-center text-black">Left Switch</p>
         </div>
@@ -80,17 +80,19 @@ export function Switch4Logic() {
 
   return (
     <div>
-      {switchState == true ? (
+      {switchState === true ? (
         <div className="flex pt-10">
-          <div
+          <button
+            type="button"
+            aria-pressed={switchState}
             className="flex border-y-2 border-r border-l-2 border-black dark:border-white"
             onClick={() => setSwitchState(false)}
           >
-            <div className="h-20 w-15 translate-y-[-26px] -skew-y-[40.32deg] border-x border-y-2 border-black bg-blue-200 dark:border-white dark:bg-slate-900"></div>
+            <div className="h-20 w-15 -translate-y-6.5 -skew-y-[40.32deg] border-x border-y-2 border-black bg-blue-200 dark:border-white dark:bg-slate-900"></div>
             <div className="flex h-20 w-30 translate-y-[-25.5px] skew-y-[23deg] items-center border-y-2 border-r border-black bg-blue-200 dark:border-white dark:bg-slate-900">
               <p className="w-full text-center text-black">Left Switch</p>
             </div>
-          </div>
+          </button>
           <div className="flex h-21 w-40 items-center border-2 border-black dark:border-white">
             <p className="w-full text-center text-black">Right Switch</p>
           </div>
@@ -100,15 +102,17 @@ export function Switch4Logic() {
           <div className="flex h-21 w-40 items-center border-2 border-black dark:border-white">
             <p className="w-full text-center text-black">Left Switch</p>
           </div>
-          <div
+          <button
+            type="button"
+            aria-pressed={switchState}
             className="flex border-y-2 border-r border-l-2 border-black dark:border-white"
             onClick={() => setSwitchState(true)}
           >
             <div className="flex h-20 w-30 translate-y-[-25.5px] skew-y-[-23deg] items-center border-y-2 border-r border-black bg-blue-200 dark:border-white dark:bg-slate-900">
               <p className="w-full text-center text-black">Right Switch</p>
             </div>
-            <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-x border-y-2 border-black bg-blue-200 dark:border-white dark:bg-slate-900"></div>
-          </div>
+            <div className="h-20 w-15 -translate-y-6.5 skew-y-[40.32deg] border-x border-y-2 border-black bg-blue-200 dark:border-white dark:bg-slate-900"></div>
+          </button>
         </div>
       )}
     </div>
@@ -125,7 +129,7 @@ export function FinalSwitch() {
         <div className="flex h-20 w-30 translate-y-[-25.5px] skew-y-[-23deg] items-center border-y-2 border-r border-black dark:border-white">
           <p className="w-full text-center">Left Switc?h</p>
         </div>
-        <div className="h-20 w-15 translate-y-[-26px] skew-y-[40.32deg] border-x border-y-2 border-black dark:border-white"></div>
+        <div className="h-20 w-15 -translate-y-6.5 skew-y-[40.32deg] border-x border-y-2 border-black dark:border-white"></div>
       </div>
     </div>
   );

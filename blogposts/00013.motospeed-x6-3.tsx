@@ -55,8 +55,8 @@ export default function Post() {
 └ 0xb4 (Report ID)
 `}
           </CodeBlock>
-          The Settings byte&apos;s internal structure is as such (where 1 = On, 0 =
-          Off)
+          The Settings byte&apos;s internal structure is as such (where 1 = On,
+          0 = Off)
           <CodeBlock
             hideCopyButton={true}
             className="my-2 w-fit"
@@ -86,8 +86,8 @@ export default function Post() {
               instead.
               <br />
               What is strange is that this is a 64 byte packet, hence there
-              looks like there is plenty of space to add it, but IDK, I&apos;m not a
-              firmware developer/chipset designer.
+              looks like there is plenty of space to add it, but IDK, I&apos;m
+              not a firmware developer/chipset designer.
             </li>
           </ul>
         </div>
@@ -462,6 +462,7 @@ B3 71 03 3A 54 03 00 B2 00 01 01 00 00 00 2B 00 81 17 00 00 0F 5E 00 00 ... D2 2
               followed by a <code>u8</code> padding
               <br />
               You can find a really good list{" "}
+              {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
               <a href="https://gist.github.com/MightyPork/6da26e382a7ad91b5496ee55fdc73db2">
                 here
               </a>
@@ -507,8 +508,8 @@ B3 71 03 3A 54 03 00 B2 00 01 01 00 00 00 2B 00 81 17 00 00 0F 5E 00 00 ... D2 2
         <br />
         What is notable about the packets is that after each instruction, they
         have 2 bytes of padding, and in large packets, since the end of packet
-        indicator gets in the way of padding, the next packet&apos;s instruction area
-        will start with two bytes of padding before continuing.
+        indicator gets in the way of padding, the next packet&apos;s instruction
+        area will start with two bytes of padding before continuing.
       </div>
 
       <div>
@@ -531,6 +532,7 @@ B3 71 03 3A 54 03 00 B2 00 01 01 00 00 00 2B 00 81 17 00 00 0F 5E 00 00 ... D2 2
           <br />
           As an aside, I made a webHID utility based on this 3 part series, and
           it is available now{" "}
+          {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
           <a href="https://x6-utility.keshuac.com/"> here.</a>
           <br />
           <br />I really hope you try it out if you own this mouse.
