@@ -1,6 +1,6 @@
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
 import { CodeBlock } from "@/components/ui/codeblock";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Arbitary Bluetooth Address names with the TPLink UB500 using Bumble.",
@@ -78,6 +78,7 @@ export default function Post() {
               <li>
                 Or you can directly download the firmware from the linux kernel
                 git directly{" "}
+                {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
                 <a
                   href="
           https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/rtl_bt"

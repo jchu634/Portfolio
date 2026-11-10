@@ -1,5 +1,5 @@
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Down the rabbit-hole: VHS Digitisation",
@@ -53,7 +53,8 @@ export default function Post() {
             This should have been my end point, but I got a bit curious:
             <br />
             Since it will take a couple of weeks to fully digitise my VHS tapes,
-            I might as well look at what it takes to do it more "properly"
+            I might as well look at what it takes to do it more
+            &quot;properly&quot;
           </p>
         </div>
         <div>
@@ -78,7 +79,8 @@ export default function Post() {
             This should have been my end point, but I got a bit curious:
             <br />
             Since it will take a couple of weeks to fully digitise my VHS tapes,
-            I might as well look at what it takes to do it more "properly"
+            I might as well look at what it takes to do it more
+            &quot;properly&quot;
           </p>
         </div>
 
@@ -123,8 +125,9 @@ export default function Post() {
               </a>
             </li>
             <li>
-              Not all TBCs are built equal, there are "Line TBC, frame TBC,
-              frame sync TBC, field TBCs, etc.", and different implementations{" "}
+              Not all TBCs are built equal, there are &quot;Line TBC, frame TBC,
+              frame sync TBC, field TBCs, etc.&quot;, and different
+              implementations{" "}
               <a
                 href="https://www.digitalfaq.com/forum/video-capture/12537-tbc-how.html"
                 target="_blank"
@@ -136,7 +139,7 @@ export default function Post() {
             <li>
               The capture card device is also important, though choosing a
               capture card is more like not purchasing a bad capture card and
-              choosing an option from the "good" models.
+              choosing an option from the &quot;good&quot; models.
             </li>
             <li>
               Finally there is the capture software, which is documented well at{" "}
@@ -152,21 +155,21 @@ export default function Post() {
 
           <p>
             At this point, the sheer amount of research I had done to try make a
-            "optimal" end-to-end system was rather overwhelming.
+            &quot;optimal&quot; end-to-end system was rather overwhelming.
             <br />
             It was at this point, where I heard of a project named VHS-Decode
           </p>
 
           <h4 className="text-3xl">Level-3 VHS-Decode</h4>
-          <blockquote>I've gone too far</blockquote>
+          <blockquote>I&apos;ve gone too far</blockquote>
           <p>
             When I was trawling through forums, reddit and YouTube, an
             interesting comment somewhere showed up, talking about VHS-Decode.
           </p>
           <p>
             VHS-Decode is an interesting project, a fork of LD-Decode, it works
-            by bypassing the VHS's video capabilities althogether and taps into
-            the RF signals used internally by the VHS, before decoding and
+            by bypassing the VHS&apos;s video capabilities althogether and taps
+            into the RF signals used internally by the VHS, before decoding and
             processing via software.{" "}
             <a
               href="https://github.com/oyvindln/vhs-decode"
@@ -207,8 +210,7 @@ export default function Post() {
           <p>
             But my rational was quite simple, any digitised video, as long as it
             is watchable, is better than no digitised video.
-            <br />
-            I might build a VHS-Decode setup one day, or I might build a
+            <br />I might build a VHS-Decode setup one day, or I might build a
             traditional digitising pipeline one day.
             <br />
             But until I do, I at least have a digitised backup of my VHS

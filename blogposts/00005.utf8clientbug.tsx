@@ -1,6 +1,6 @@
-import { CodeBlock } from "@/components/ui/codeblock";
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
+import { CodeBlock } from "@/components/ui/codeblock";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title:
@@ -37,7 +37,7 @@ export default function Post() {
           .<br />
           Subtext uses a custom Python FastAPI setup for hosting the Frontend
           which is a static Next.js site. <br />
-          Until this bug I hadn't had any issues with this setup.
+          Until this bug I hadn&apos;t had any issues with this setup.
         </p>
       </div>
       <div>
@@ -67,12 +67,16 @@ export default function Post() {
           and there would be three errors in the console
         </p>
         <blockquote>
-          <span className="italic">No group found for id "«Rufb»"</span>
-          <br />
-          <span className="italic">No group found for id "«Rfb»"</span>
+          <span className="italic">
+            No group found for id &quot;«Rufb»&quot;
+          </span>
           <br />
           <span className="italic">
-            Uncaught Error: No group found for id "«Rufb»"
+            No group found for id &quot;«Rfb»&quot;
+          </span>
+          <br />
+          <span className="italic">
+            Uncaught Error: No group found for id &quot;«Rufb»&quot;
           </span>
         </blockquote>
       </div>
@@ -109,22 +113,23 @@ export default function Post() {
         </p>
         <p>
           This meant that it was my FastAPI backend which caused this error.
-          <br />
-          I first compared the FastAPI and NGINX requests against the same file
-          in the network tab, and there were no obvious differences, no file
-          fetches failed and each file fetched was the same size.
-          <br />
-          I then spun up a script which queried the same file from both servers
-          and diffed them.
+          <br />I first compared the FastAPI and NGINX requests against the same
+          file in the network tab, and there were no obvious differences, no
+          file fetches failed and each file fetched was the same size.
+          <br />I then spun up a script which queried the same file from both
+          servers and diffed them.
           <br />
           This script then flagged <span className="italic">index.html </span>
           which showed that NGINX returned{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1.5 text-white">
-            <span className="italic">data-panel-id="Â«R6fbÂ»"</span>
+          <code className="rounded-md bg-slate-800 p-1.5 font-intel text-white">
+            <span className="italic">data-panel-id=&quot;Â«R6fbÂ»&quot;</span>
           </code>{" "}
           while FastAPI returned{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1.5 text-white">
-            <span className="italic"> data-panel-group-id="«Rfb»"</span>
+          <code className="rounded-md bg-slate-800 p-1.5 font-intel text-white">
+            <span className="italic">
+              {" "}
+              data-panel-group-id=&quot;«Rfb»&quot;
+            </span>
           </code>
         </p>
       </div>
@@ -132,13 +137,13 @@ export default function Post() {
         <h3>Conclusion</h3>
         <p>
           Eventually, I found the root cause of the bug: In{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1.5 text-white">
+          <code className="rounded-md bg-slate-800 p-1.5 font-intel text-white">
             open()
           </code>
           , if
           <span className="italic"> encoding</span> is not set to anything, by
           default Python will use the default system encoding:{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1.5 text-white">
+          <code className="rounded-md bg-slate-800 p-1.5 font-intel text-white">
             locale.getencoding()
           </code>
           <br />
@@ -150,19 +155,19 @@ export default function Post() {
         <p>
           The upgrade to Next.js 15.2.x or 15.3.x is what triggered the bug as
           previously in 15.1.x, the exported html had a data-panel-group-id of{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1.5 text-white italic">
+          <code className="rounded-md bg-slate-800 p-1.5 font-intel text-white italic">
             :R2ftb:
           </code>
           .<br />
         </p>
         <h4>Buggy Code</h4>
         <CodeBlock hideCopyButton={true} className="prose-pre:m-0">
-          return HTMLResponse(open(static_file_path, "r").read())
+          return HTMLResponse(open(static_file_path, &quot;r&quot;).read())
         </CodeBlock>
         <h4>Fixed Code</h4>
         <CodeBlock hideCopyButton={true} className="prose-pre:m-0">
-          return HTMLResponse(open(static_file_path, "r",
-          encoding="utf-8").read())
+          return HTMLResponse(open(static_file_path, &quot;r&quot;,
+          encoding=&quot;utf-8&quot;).read())
         </CodeBlock>
 
         <p></p>

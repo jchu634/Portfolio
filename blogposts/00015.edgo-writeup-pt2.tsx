@@ -1,6 +1,6 @@
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
 import { CodeBlock } from "@/components/ui/codeblock";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "EdGo Writeup Pt 2.",
@@ -51,9 +51,7 @@ export default function Post() {
         should be local-first, where the local DB results are treated as the
         source of truth, and API calls are used to sync the DB.
         <br />
-        In practice, this means a heavy use of the <code>
-          useLiveQuery
-        </code>{" "}
+        In practice, this means a heavy use of the <code>useLiveQuery</code>{" "}
         hook, which returns data from a query and automatically retriggers a
         rerender when query results change. <br />
         So when a user opens a screen, it triggers a API fetch, in the meantime,
@@ -63,7 +61,7 @@ export default function Post() {
         To prevent extremely large queries, data fetches are paginated, which
         showed a significant flaw, as when loading a new chunk of data, the UI
         would be stuck waiting for API queries to resolve despite only fetching
-        data. This didn't occur when the user was offline.
+        data. This didn&apos;t occur when the user was offline.
         <br />
         This was eventually root-caused to be a limitation in DrizzleORM itself
         as its Expo-Sqlite driver is synchronous, and it turns out that the new
@@ -71,9 +69,9 @@ export default function Post() {
         waiting on the API results. When offline, the API call would fail almost
         immediately which terminated the sync and unblocked the next page sync.{" "}
         <br />
-        This is still an issue, and my "fix" was adopting a hacky patch to
-        support asynchronous operations, while waiting for the Drizzle driver to
-        be updated to be asynchronous.
+        This is still an issue, and my &quot;fix&quot; was adopting a hacky
+        patch to support asynchronous operations, while waiting for the Drizzle
+        driver to be updated to be asynchronous.
         <a href="https://github.com/drizzle-team/drizzle-orm/issues/5240">
           (Github Issue).
         </a>
@@ -126,6 +124,7 @@ export default function Post() {
       <div>
         <h3>Thanks</h3>A special thanks to smartspot2 (Alec Li) for his work
         documenting most of the Ed Discussion API{" "}
+        {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
         <a href="https://github.com/smartspot2/edapi/blob/9199e1001eb04b86bb8f68d0c5f9042453cd1387/docs/api_docs.md">
           here.
         </a>
@@ -157,8 +156,8 @@ export default function Post() {
         <h3>WebSocket API</h3>
         <code>wss://edstem.org/api/stream</code>
         <br />
-        Ed's WebSocket API isn't particularly complex, but it has a couple of
-        things you need to get right.
+        Ed&apos;s WebSocket API isn&apos;t particularly complex, but it has a
+        couple of things you need to get right.
         <br />
         <h4>Authentication</h4>
         Similar to the HTTP endpoints, the WebSocket can be authenticated using
@@ -178,7 +177,7 @@ export default function Post() {
 ) => WebSocket;`}
         </CodeBlock>
         <h4>API Request Formatting</h4>
-        Ed's WebSocket API works by sending a key-value pair{" "}
+        Ed&apos;s WebSocket API works by sending a key-value pair{" "}
         <code>{`{ id: 1, type: "" },`}</code>, where ID is a incremental
         identifier which resets on every WebSocket connection and type is the
         WebSocket API request type.
@@ -186,7 +185,7 @@ export default function Post() {
       <div>
         <h4>Unread Message Counts (WebSocket)</h4>
         Note: This is the only WebSocket request type I reverse engineered,
-        there are more, I just didn't need them. <br />
+        there are more, I just didn&apos;t need them. <br />
         <code>{`{ id: {ID}, type: "thread.unreadCounts" },`}</code>
         <br />
         It returns the unread counts in this format

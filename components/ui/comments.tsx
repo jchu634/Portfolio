@@ -16,7 +16,7 @@ export default function CommentSection({ blogtitle }: { blogtitle: string }) {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme={theme == "dark" ? "purple_dark" : "light_tritanopia"}
+      theme={theme === "dark" ? "purple_dark" : "light_tritanopia"}
       lang="en"
       loading="lazy"
     />

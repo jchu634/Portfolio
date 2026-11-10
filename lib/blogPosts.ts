@@ -10,7 +10,9 @@ interface BlogPostModule {
 
 export function getBlogPosts({
   includeDrafts = process.env.NODE_ENV === "development",
-}: { includeDrafts?: boolean } = {}) {
+}: {
+  includeDrafts?: boolean;
+} = {}) {
   const postsDirectory = path.join(process.cwd(), "blogposts");
   const directories = includeDrafts ? ["", "drafts"] : [""];
   const posts = new Map<string, { slug: string; importPath: string }>();

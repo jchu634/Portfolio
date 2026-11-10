@@ -1,10 +1,10 @@
-import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { ImageResponse } from "next/og";
 import { importBlogPost } from "@/lib/blogPosts";
 
 // Image metadata
-export let alt = "JCHU634 blog post";
+export const alt = "JCHU634 blog post";
 export const size = {
   width: 1200,
   height: 630,
@@ -45,50 +45,48 @@ export default async function Image({
   );
 
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          justifyContent: "center",
-          backgroundColor: "#0f172b",
-        }}
-      >
-        <div tw="flex flex-col pl-8 text-white">
-          <div style={{ fontSize: 80, fontFamily: "Roboto Slab" }}>
-            JCHU634's Blog
-          </div>
-          <div style={{ fontSize: 60, fontFamily: "Intel One Mono Semi Bold" }}>
-            {blogTitle}
-          </div>
-          <blockquote
-            style={{
-              borderLeft: "8px solid #64748b",
-              marginTop: "20px",
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "center",
+        backgroundColor: "#0f172b",
+      }}
+    >
+      <div tw="flex flex-col pl-8 text-white">
+        <div style={{ fontSize: 80, fontFamily: "Roboto Slab" }}>
+          JCHU634&apos;s Blog
+        </div>
+        <div style={{ fontSize: 60, fontFamily: "Intel One Mono Semi Bold" }}>
+          {blogTitle}
+        </div>
+        <blockquote
+          style={{
+            borderLeft: "8px solid #64748b",
+            marginTop: "20px",
 
-              color: "#cbd5e1",
-              marginLeft: "4px",
+            color: "#cbd5e1",
+            marginLeft: "4px",
+          }}
+        >
+          <div
+            className="ml-10 pl-8"
+            style={{
+              fontSize: 40,
+              fontFamily: "Intel One Mono",
+              marginLeft: "16px",
+
+              fontStyle: "italic",
             }}
           >
-            <div
-              className="ml-10 pl-8"
-              style={{
-                fontSize: 40,
-                fontFamily: "Intel One Mono",
-                marginLeft: "16px",
-
-                fontStyle: "italic",
-              }}
-            >
-              {blogDescription}
-            </div>
-          </blockquote>
-        </div>
+            {blogDescription}
+          </div>
+        </blockquote>
       </div>
-    ),
+    </div>,
     {
       ...size,
       fonts: [

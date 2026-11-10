@@ -1,5 +1,5 @@
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Interesting Blogposts/videos",
@@ -25,8 +25,7 @@ export default function Post() {
             </a>
           </h4>
           <p>
-            A great introduction into HID, USB and their web API
-            counterparts.{" "}
+            A great introduction into HID, USB and their web API counterparts.{" "}
           </p>
         </li>
         <li>

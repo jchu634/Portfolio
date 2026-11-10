@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, type ComponentProps } from "react";
 import Image from "next/image";
-import { Skeleton } from "@/components/ui/skeleton";
+import { type ComponentProps, useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -18,6 +17,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type ImageGalleryProps = {
   label?: string;

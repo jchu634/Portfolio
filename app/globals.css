@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
-@plugin '@tailwindcss/typography';
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -151,5 +151,5 @@
 }
 .prose :where(:not(pre) > code)::before,
 .prose :where(:not(pre) > code)::after {
-  content: "" !important;
+  content: "";
 }

@@ -1,13 +1,12 @@
-import { Metadata } from "@/lib/blogType";
-import BlogHeader from "@/components/ui/blog-header";
-import { CodeBlock } from "@/components/ui/codeblock";
-import FigureWithCaption from "@/components/ui/captioned-image";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTriggerShell,
 } from "@/components/ui/accordion";
+import BlogHeader from "@/components/ui/blog-header";
+import { CodeBlock } from "@/components/ui/codeblock";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Motospeed X6 Reverse engineering - Mouse Remapping",
@@ -24,7 +23,7 @@ export default function Post() {
           <h2>Intro</h2>
           This is the 3rd and final part of reverse engineering the Motospeed
           X6, where I am covering how it handles macros and how it fetches the
-          mouse's current settings.
+          mouse&apos;s current settings.
         </div>
       </div>
       <div>
@@ -56,8 +55,8 @@ export default function Post() {
 └ 0xb4 (Report ID)
 `}
           </CodeBlock>
-          The Settings byte's internal structure is as such (where 1 = On, 0 =
-          Off)
+          The Settings byte&apos;s internal structure is as such (where 1 = On,
+          0 = Off)
           <CodeBlock
             hideCopyButton={true}
             className="my-2 w-fit"
@@ -87,8 +86,8 @@ export default function Post() {
               instead.
               <br />
               What is strange is that this is a 64 byte packet, hence there
-              looks like there is plenty of space to add it, but IDK, I'm not a
-              firmware developer/chipset designer.
+              looks like there is plenty of space to add it, but IDK, I&apos;m
+              not a firmware developer/chipset designer.
             </li>
           </ul>
         </div>
@@ -319,7 +318,7 @@ export default function Post() {
         Heres where we get into the most complex feature of the mouse.
         <br />
         There are two different packet structures for small and large macros
-        respectively and frankly, I don't still fully understand the large
+        respectively and frankly, I don&apos;t still fully understand the large
         packet structure.
         <h4>Short Packet</h4>
         <CodeBlock hideCopyButton={true} className="my-2 w-fit" language="bash">
@@ -463,6 +462,7 @@ B3 71 03 3A 54 03 00 B2 00 01 01 00 00 00 2B 00 81 17 00 00 0F 5E 00 00 ... D2 2
               followed by a <code>u8</code> padding
               <br />
               You can find a really good list{" "}
+              {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
               <a href="https://gist.github.com/MightyPork/6da26e382a7ad91b5496ee55fdc73db2">
                 here
               </a>
@@ -508,15 +508,14 @@ B3 71 03 3A 54 03 00 B2 00 01 01 00 00 00 2B 00 81 17 00 00 0F 5E 00 00 ... D2 2
         <br />
         What is notable about the packets is that after each instruction, they
         have 2 bytes of padding, and in large packets, since the end of packet
-        indicator gets in the way of padding, the next packet's instruction area
-        will start with two bytes of padding before continuing.
+        indicator gets in the way of padding, the next packet&apos;s instruction
+        area will start with two bytes of padding before continuing.
       </div>
 
       <div>
         <div>
-          <h3>Conclusion</h3>
-          I apologise for the relatively short explanation and the lack of
-          details.
+          <h3>Conclusion</h3>I apologise for the relatively short explanation
+          and the lack of details.
           <br />
           Nearing the end of the large packet analysis, I started to lose a bit
           of steam as I started getting a bit bored and distracted, and had to
@@ -527,13 +526,13 @@ B3 71 03 3A 54 03 00 B2 00 01 01 00 00 00 2B 00 81 17 00 00 0F 5E 00 00 ... D2 2
           It is really fascinating how they engineered the macros, but it is
           unfortunately really tedious to understand and reverse engineer it.
           <br />
-          <br />
-          I may come back in the future and modify this blogpost with better
-          information if I ever get the motivation to research this again, but I
-          am quite tired of messing around with this mouse for now.
+          <br />I may come back in the future and modify this blogpost with
+          better information if I ever get the motivation to research this
+          again, but I am quite tired of messing around with this mouse for now.
           <br />
           As an aside, I made a webHID utility based on this 3 part series, and
           it is available now{" "}
+          {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
           <a href="https://x6-utility.keshuac.com/"> here.</a>
           <br />
           <br />I really hope you try it out if you own this mouse.

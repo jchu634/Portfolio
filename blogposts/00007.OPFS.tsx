@@ -1,13 +1,14 @@
-import { Metadata } from "@/lib/blogType";
-import BlogHeader from "@/components/ui/blog-header";
-import { CodeBlock } from "@/components/ui/codeblock";
+// biome-ignore-all lint/suspicious/noCommentText: Preserve literal comments in the published code examples.
+import { ChevronDownIcon } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTriggerShell,
 } from "@/components/ui/accordion";
-import { ChevronDownIcon } from "lucide-react";
+import BlogHeader from "@/components/ui/blog-header";
+import { CodeBlock } from "@/components/ui/codeblock";
+import type { Metadata } from "@/lib/blogType";
 import { FirefoxAddon } from "@/lib/svg";
 
 export const metadata: Metadata = {
@@ -17,23 +18,6 @@ export const metadata: Metadata = {
   lastUpdate: "2025-09-30",
 };
 export default function Post() {
-  const code = `
-    listDirectoryContents = async (directoryHandle, depth) => {
-        depth = depth || 1;
-        directoryHandle = directoryHandle || await navigator.storage.getDirectory();
-        const entries = await directoryHandle.values();
-
-        for await (const entry of entries) {
-            const indentation = '    '.repeat(depth);
-            if (entry.kind === 'directory') {
-                console.log(\`\${indentation}\${entry.name}/\`);
-                await listDirectoryContents(entry, depth + 1);
-            } else {
-                console.log(\`\${indentation}\${entry.name}\`);
-            }
-        }
-    }
-    `;
   return (
     <article className="prose lg:prose-xl dark:prose-invert prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100 prose-p:text-zinc-800 dark:prose-p:text-zinc-200 prose-blockquote:border-zinc-700 dark:prose-blockquote:border-zinc-200 prose-blockquote:border-l-4 prose-blockquote:pl-4 prose-blockquote:text-zinc-700 dark:prose-blockquote:text-zinc-300 prose-li:text-zinc-800 dark:prose-li:text-zinc-200 prose-li:marker:text-zinc-600 dark:prose-li:marker:text-zinc-400 prose-ul:list-disc prose-ol:list-decimal prose-a:text-blue-600 dark:prose-a:text-blue-400 max-w-none pb-10">
       <BlogHeader header_metadata={metadata} />
@@ -56,14 +40,13 @@ export default function Post() {
         <p>
           That is where my things diverge from my original draft of this
           article.
-          <br />
-          I was originally stuck and unable to get anything to work, and was
-          frustrated enough to write an article, but I decided to try one more
-          extension API, and... it worked.
+          <br />I was originally stuck and unable to get anything to work, and
+          was frustrated enough to write an article, but I decided to try one
+          more extension API, and... it worked.
           <br />
           So this article is an attempt to salvage the content from my original
-          article and to document what in the OPFS works or doesn't on Firefox
-          Addons.
+          article and to document what in the OPFS works or doesn&apos;t on
+          Firefox Addons.
         </p>
       </div>
       <div>
@@ -106,7 +89,7 @@ export default function Post() {
                 Hence Content Scripts are immensely powerful.
                 <br />
                 Devtool Scripts are incredibly specialised, intended to run on a
-                page in the browser's devtools.
+                page in the browser&apos;s devtools.
               </p>
               <br />
               <p>
@@ -154,7 +137,7 @@ export default function Post() {
             <p>
               OPFS-Viewer is designed quite simply, it just has a Devtools Panel
               and Script and it uses the{" "}
-              <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
+              <code className="rounded-md bg-slate-800 p-1 font-intel text-white">
                 chrome.scripting.executeScript
               </code>{" "}
               api to be able to execute OPFS commands from the Content-Script
@@ -180,10 +163,10 @@ export default function Post() {
         </div>
       </div>
       <div>
-        <h3>Why these don't work on Firefox</h3>
+        <h3>Why these don&apos;t work on Firefox</h3>
         <blockquote>
-          Note: Firefox uses "browser" and not "chrome" as their api keyword,
-          the rest of the article will reflect this
+          Note: Firefox uses &quot;browser&quot; and not &quot;chrome&quot; as
+          their api keyword, the rest of the article will reflect this
         </blockquote>
         <p>
           In Firefox, Content-Scripts are locked down to DOM apis and a subset
@@ -194,7 +177,7 @@ export default function Post() {
         <p>
           This immediately breaks OPFS-Viewer as its Devtools script loses
           access to all{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
+          <code className="rounded-md bg-slate-800 p-1 font-intel text-white">
             browser.scripting
           </code>{" "}
           apis.
@@ -209,7 +192,7 @@ export default function Post() {
         <p>
           When run from a content-script, most of the OPFS apis work perfectly
           and without issue, but crucially the exception is the{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
+          <code className="rounded-md bg-slate-800 p-1 font-intel text-white">
             FileSystemDirectoryHandle.values()
           </code>{" "}
           api which is needed to get the directory structure.
@@ -224,7 +207,7 @@ export default function Post() {
           access the OPFS directory listings as the other
           FileSystemDirectoryHandle APIs appear work fine (read, write, delete)
           and you can even check if a particular file exists through{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
+          <code className="rounded-md bg-slate-800 p-1 font-intel text-white">
             getFileHandle()
           </code>{" "}
         </p>
@@ -242,11 +225,11 @@ export default function Post() {
           eval()
         </CodeBlock>
         <p>
-          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
+          <code className="rounded-md bg-slate-800 p-1 font-intel text-white">
             eval()
           </code>{" "}
           acts very similarly to the{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
+          <code className="rounded-md bg-slate-800 p-1 font-intel text-white">
             tabs.executeScript()
           </code>{" "}
           used by OPFS-Viewer, but most importantly it reads the current state
@@ -254,21 +237,21 @@ export default function Post() {
           made to the page by page scripts.
           <br />
           This is most likely the reason why{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
+          <code className="rounded-md bg-slate-800 p-1 font-intel text-white">
             eval()
           </code>{" "}
           is uniquely able to access the OPFS correctly.
         </p>
         <p>
           However, an issue is that any script run by{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
+          <code className="rounded-md bg-slate-800 p-1 font-intel text-white">
             eval()
           </code>{" "}
           must return a JSON representable value.
           <br />
           This caused all sorts of headache, as the OPFS api is asynchronous and
           would return a JSON promise and not JSON, which I could not get{" "}
-          <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
+          <code className="rounded-md bg-slate-800 p-1 font-intel text-white">
             eval()
           </code>{" "}
           to resolve at all.
@@ -280,7 +263,7 @@ export default function Post() {
         <ol>
           <li>
             Devpanel executes OPFS commands via{" "}
-            <code className="font-intel rounded-md bg-slate-800 p-1 text-white">
+            <code className="rounded-md bg-slate-800 p-1 font-intel text-white">
               eval()
             </code>
           </li>
@@ -298,10 +281,10 @@ export default function Post() {
           Although I wish I could have gotten the devpanels only architecture
           working, ultimately the extension does work. <br />
           Overall, the native Devtools should really get some native OPFS
-          capabilities, but I don't think that is coming anytime soon.
+          capabilities, but I don&apos;t think that is coming anytime soon.
           <br />
-          Here's hoping that day will come sooner than later, but until then,
-          3rd-party extensions work fine enough.
+          Here&apos;s hoping that day will come sooner than later, but until
+          then, 3rd-party extensions work fine enough.
         </p>
         <blockquote>
           Edit: My extension can now be downloaded here

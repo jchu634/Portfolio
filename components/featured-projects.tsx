@@ -1,17 +1,16 @@
 "use client";
-import { useEffect, useRef, useState, type RefObject } from "react";
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import { cn } from "cn";
+import { DownloadIcon, Link2Icon, PauseIcon, PlayIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { PauseIcon, PlayIcon, Link2Icon, DownloadIcon } from "lucide-react";
-import { SiGithub } from "@icons-pack/react-simple-icons";
-
-import { projects } from "@/lib/homepageData";
-import { cn } from "cn";
-import { Button } from "@/components/ui/button";
+import { type RefObject, useEffect, useRef, useState } from "react";
 import StackingCards, {
   StackingCardItem,
 } from "@/components/fancy/blocks/stacking-cards";
+import { Button } from "@/components/ui/button";
+import { projects } from "@/lib/homepageData";
 
 const DURATION = 20000;
 
@@ -121,7 +120,9 @@ export default function FeaturedProjects({
     const observer = new ResizeObserver(measure);
     observer.observe(intro);
     observer.observe(heading);
-    cards.forEach(({ content }) => observer.observe(content));
+    cards.forEach(({ content }) => {
+      observer.observe(content);
+    });
     window.addEventListener("resize", measure);
     measure();
     return () => {
@@ -158,7 +159,7 @@ export default function FeaturedProjects({
         </Link>
       </div>
       <div
-        className="font-intel hidden md:block"
+        className="hidden font-intel md:block"
         onFocusCapture={(e) => {
           if (!e.currentTarget.contains(e.relatedTarget))
             pauseForInput(e.target);
@@ -213,6 +214,7 @@ export default function FeaturedProjects({
             id={`project-panel-${index}`}
             aria-labelledby={`project-tab-${index}`}
             hidden={active !== index}
+            // biome-ignore lint/a11y/noNoninteractiveTabindex: WAI-ARIA tab panels need a tab stop when their first content is not focusable.
             tabIndex={0}
           >
             {active === index && (
@@ -300,7 +302,7 @@ export default function FeaturedProjects({
         >
           <div
             ref={headingRef}
-            className="dark:bg-background sticky z-10 bg-blue-200 pt-6 pb-6"
+            className="sticky z-10 bg-blue-200 pt-6 pb-6 dark:bg-background"
             style={{ top: stack.top }}
           >
             <ProjectHeading />

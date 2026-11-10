@@ -1,9 +1,8 @@
-import { MailIcon, CodeIcon, NotebookTextIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import Link from "next/link";
+import { CodeIcon, MailIcon, NotebookTextIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function MobileFooter() {
   return (

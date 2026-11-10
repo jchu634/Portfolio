@@ -1,6 +1,6 @@
-import { CodeBlock } from "@/components/ui/codeblock";
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
+import { CodeBlock } from "@/components/ui/codeblock";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Setting up Proxmox self-hosted Github runners for Subtext",
@@ -20,11 +20,11 @@ export default function Post() {
           development branch often had debug flags and features enabled which I
           kept forgetting to disable for production builds.
           <br /> A CI/CD pipeline would generate builds that were theoretically
-          production "ready" with the correct flags and require minimal effort
-          from me.
+          production &quot;ready&quot; with the correct flags and require
+          minimal effort from me.
         </p>
         <p>
-          To answer a pre-empted question: Why not use Github's own hosted
+          To answer a pre-empted question: Why not use Github&apos;s own hosted
           runners instead of a self-hosted runner? <br />
           Ans: The built application executable is extremely sizable.
           Downloading these executables for testing even with a fast internet
@@ -109,7 +109,7 @@ export default function Post() {
           <li>
             WinGet <br />
             Once the Microsoft Store has been installed, WinGet can be installed
-            with the "App Installer" System App within the store.
+            with the &quot;App Installer&quot; System App within the store.
           </li>
           <li>
             Windows Terminal
@@ -149,12 +149,13 @@ export default function Post() {
           Run the config script as Administrator{" "}
         </p>
         <CodeBlock language="powershell">
-          config.cmd --url "REPO URL HERE" --token "RUNNER TOKEN GOES HERE"
+          config.cmd --url &quot;REPO URL HERE&quot; --token &quot;RUNNER TOKEN
+          GOES HERE&quot;
         </CodeBlock>
         <p>
-          Additionally, to prevent permission issues running as "NT
-          AUTHORITY\NETWORK SERVICE", when the script asks, set the runner to
-          run as "NT AUTHORITY\SYSTEM".
+          Additionally, to prevent permission issues running as &quot;NT
+          AUTHORITY\NETWORK SERVICE&quot;, when the script asks, set the runner
+          to run as &quot;NT AUTHORITY\SYSTEM&quot;.
         </p>
         <h4>PATH Limitations</h4>
         <p>
@@ -187,8 +188,8 @@ export default function Post() {
           </div>
           <CodeBlock className="prose-pre:m-0" language="powershell">
             ./config.cmd --url https://github.com/jchu634/Subtext-app
-            --runasservice --windowslogonaccount "NT AUTHORITY\SYSTEM" --name
-            NAME --labels LABELS --replace --token TOKEN
+            --runasservice --windowslogonaccount &quot;NT AUTHORITY\SYSTEM&quot;
+            --name NAME --labels LABELS --replace --token TOKEN
           </CodeBlock>
         </blockquote>
       </div>
@@ -208,8 +209,8 @@ export default function Post() {
       </p>
       <ol>
         <li>
-          Set up a builds folder ("C:\Builds\Subtext\") and then add a step to
-          the Github action to copy artifacts to that folder
+          Set up a builds folder (&quot;C:\Builds\Subtext\&quot;) and then add a
+          step to the Github action to copy artifacts to that folder
         </li>
         <li>
           Make a one-way send syncthing connection between that folder and the
@@ -247,7 +248,7 @@ export default function Post() {
       <blockquote>
         Edit:
         <div className="not-italic">
-          The cause of this issue was due to the VM's incorrect time.
+          The cause of this issue was due to the VM&apos;s incorrect time.
           <br />I do not leave the VM on 24/7 (Electricity is expensive) so when
           I actually turn on the VM
           <br />

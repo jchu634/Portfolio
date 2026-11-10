@@ -1,21 +1,19 @@
 "use client";
-import * as React from "react";
-import { useState } from "react";
 import { cn } from "cn";
-import { Button } from "@/components/ui/button";
-
 import { CheckIcon, CopyIcon } from "lucide-react";
-
+import type * as React from "react";
+import { useState } from "react";
 // Syntax Highlighting
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
-import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
-import javascript from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
-import python from "react-syntax-highlighter/dist/esm/languages/prism/python";
-import powershell from "react-syntax-highlighter/dist/esm/languages/prism/powershell";
 import bash from "react-syntax-highlighter/dist/esm/languages/prism/bash";
 import ini from "react-syntax-highlighter/dist/esm/languages/prism/ini";
+import javascript from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
+import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
+import powershell from "react-syntax-highlighter/dist/esm/languages/prism/powershell";
+import python from "react-syntax-highlighter/dist/esm/languages/prism/python";
+import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Button } from "@/components/ui/button";
 
 type Languages =
   | "jsx"
@@ -32,7 +30,6 @@ function CodeBlock({
   code,
   hideCopyButton,
   language = "jsx",
-  ...props
 }: React.ComponentProps<"div"> & {
   children?: React.ReactNode;
   code?: string;
@@ -62,7 +59,7 @@ function CodeBlock({
   return (
     <div
       className={cn(
-        "font-intel relative m-0 rounded-md bg-[#1e1e1e] p-2 text-gray-200",
+        "relative m-0 rounded-md bg-[#1e1e1e] p-2 font-intel text-gray-200",
         className,
       )}
     >

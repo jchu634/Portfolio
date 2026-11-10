@@ -1,6 +1,5 @@
-import Image from "next/image";
-import React from "react";
 import { cn } from "cn";
+import Image from "next/image";
 
 const FigureWithCaption = ({
   src,

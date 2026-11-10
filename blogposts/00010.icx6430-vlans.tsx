@@ -1,6 +1,6 @@
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
 import { CodeBlock } from "@/components/ui/codeblock";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Setting up Vlans by port on the ICX6430-C12",
@@ -72,6 +72,7 @@ configure terminal`}
             That&apos;s it, if you want to read more in depth, the documentation
             in the Fastiron Ethernet Switch Platform and Layer 2 Switching guide
             is quite good, you can find it in Foodeesha&apos; Master Zip
+            {/* biome-ignore lint/a11y/noAmbiguousAnchorText: Preserve the published blog wording. */}
             <a href="https://fohdeesha.com/docs/brocade-overview.html">
               {" "}
               here.

@@ -1,31 +1,32 @@
 "use client";
 
+import { cn } from "cn";
 import {
-  createContext,
-  useContext,
-  useRef,
-  type HTMLAttributes,
-  type PropsWithChildren,
-} from "react";
-import {
+  type MotionValue,
   motion,
+  type UseScrollOptions,
   useScroll,
   useTransform,
-  type MotionValue,
-  type UseScrollOptions,
 } from "motion/react";
-
-import { cn } from "cn";
+import {
+  createContext,
+  type HTMLAttributes,
+  type PropsWithChildren,
+  useContext,
+  useRef,
+} from "react";
 
 interface StackingCardsProps
-  extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
+  extends PropsWithChildren,
+    HTMLAttributes<HTMLDivElement> {
   scrollOptons?: UseScrollOptions;
   scaleMultiplier?: number;
   totalCards: number;
 }
 
 interface StackingCardItemProps
-  extends HTMLAttributes<HTMLDivElement>, PropsWithChildren {
+  extends HTMLAttributes<HTMLDivElement>,
+    PropsWithChildren {
   index: number;
   topPosition?: string;
 }

@@ -1,5 +1,5 @@
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "EdGo Writeup Pt 1.",
@@ -45,9 +45,9 @@ export default function Post() {
         <h4>1. Skill Level</h4>
         Currently, I would say that I can generally understand the generated
         code, and can determine when it is bad and can fix/debug the code. But I
-        don't quite understand the systems enough to write the features myself
-        without significant effort, hence the use of LLMs as a POC reference
-        implementation and a learning scaffold.
+        don&apos;t quite understand the systems enough to write the features
+        myself without significant effort, hence the use of LLMs as a POC
+        reference implementation and a learning scaffold.
         <br />
         <h4>2. The Models</h4>
         There were four models used thoughout development (April - June 2026),
@@ -81,14 +81,13 @@ export default function Post() {
             <br />
             Used to refine architecture decisions and to critique functions
             given to it.
-            <br />
-            I had to use other models for general programming, as this was used
-            through my chat subscription (t3.chat).
+            <br />I had to use other models for general programming, as this was
+            used through my chat subscription (t3.chat).
             <br />
           </li>
         </ol>
-        <h4>Harnesses</h4>
-        I used Zed agents and OpenCode as my harnesses of choice.
+        <h4>Harnesses</h4>I used Zed agents and OpenCode as my harnesses of
+        choice.
         <br />
         <ul>
           <li>
@@ -104,18 +103,19 @@ export default function Post() {
         </ul>
         I suspect Zed Agents underperformed with the GLM models because its
         system prompt made it use tools much less, leading to a lack of
-        "understanding" of the general codebase in its context, which caused it
-        to write worse code.
+        &quot;understanding&quot; of the general codebase in its context, which
+        caused it to write worse code.
         <h4>The Workflow (Complex Features)</h4>
-        If I didn't have a good concept of the technical pinnings of a feature,
-        the initial "spec" creation would be done with GPT-5.4, or rather a high
-        level concept with some implementation specifics (e.g. I want ___ to be
-        written to the DB, also create a Drizzle and Effect schema.)
+        If I didn&apos;t have a good concept of the technical pinnings of a
+        feature, the initial &quot;spec&quot; creation would be done with
+        GPT-5.4, or rather a high level concept with some implementation
+        specifics (e.g. I want ___ to be written to the DB, also create a
+        Drizzle and Effect schema.)
         <br />
         This was necessary as although GLM-5.1 has no problems with simple
-        feature requests, it generally has bad "taste" and struggles with
-        complex technical features. GLM 5.1 would be then tasked to create a
-        plan to implement that feature and with a reference to the important
+        feature requests, it generally has bad &quot;taste&quot; and struggles
+        with complex technical features. GLM 5.1 would be then tasked to create
+        a plan to implement that feature and with a reference to the important
         files.
         <br />
         <blockquote>
@@ -145,13 +145,13 @@ export default function Post() {
         <h2>Conclusion</h2>
         Open models like GLM-5.1 are exceptionally capable, especially compared
         to the early GPT-3 days, however they are still lacking in certain ways
-        that proprietary models by frontier labs aren't. <br />
+        that proprietary models by frontier labs aren&apos;t. <br />
         Although the experience is much worse, I would say that is better for
         developping my skills and understanding as each solution requires a
         thorough code review to find mistakes or edge cases it forgot to handle.
         <br />
-        Overall I would say that open models tend to more heavily embody "
-        garbage in garbage out", where the quality of its output is more
+        Overall I would say that open models tend to more heavily embody &quot;
+        garbage in garbage out&quot;, where the quality of its output is more
         dependant on the skills of the user, whereas more frontier models can
         generate better code with less skills.
         <br />
