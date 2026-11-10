@@ -56,34 +56,6 @@ export default function Home() {
             I write and maintain a couple of open-source projects in my spare time.
 
         </p>
-            <div className="font-slab flex flex-wrap gap-2">
-              <Link
-                href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKkdu7ihp3cS0OA7Y9ol3wj41TBUKtbVqDnuG5"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant="outline"
-                  className="d flex w-fit space-x-2 border-2 border-black not-only:items-center hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
-                >
-                  <p>View CV</p>
-                  <ExternalLinkIcon className="size-5" />
-                </Button>
-              </Link>
-              <Link
-                href="https://m3ml4l3qi1.ufs.sh/f/NQ2gjwtsCGtKwsEGZ5Anrj2vxehYfgo4bBtLNOZ6kAuiXRJE"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant="outline"
-                  className="d flex w-fit items-center space-x-2 border-2 border-black hover:cursor-pointer hover:bg-gray-700 hover:text-white dark:border-white"
-                >
-                  <p>View Resume</p>
-                  <ExternalLinkIcon className="size-5" />
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
         <section
