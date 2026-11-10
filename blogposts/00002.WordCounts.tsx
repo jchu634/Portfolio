@@ -1,4 +1,4 @@
-import { Metadata } from "@/lib/blogType";
+import BlogHeader from "@/components/ui/blog-header";
 import {
   Table,
   TableBody,
@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import BlogHeader from "@/components/ui/blog-header";
+import { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Word Counts are a mess",
@@ -44,28 +44,28 @@ export default function Post() {
   const docxData = [
     {
       software: "Word (Desktop)",
-      // prettier-ignore
+      // biome-ignore format: Keep each word-count result row together.
       results: [
         "❌", "❌", "✔️", "✔️", "✔️", "✔️", "✔️", "✔️", "❌", "✔️","One Word", "One Word", "One Word", "✔️", "✔️", "✔️", "✔️", "✔️","✔️", "❌", "❌", "One Word"
       ],
     },
     {
       software: "Word (Online)",
-      // prettier-ignore
+      // biome-ignore format: Keep each word-count result row together.
       results: [
         "❌", "❌", "✔️", "❌", "✔️", "✔️", "✔️", "✔️", "❌", "❌","One Word", "One Word", "One Word", "✔️", "❌", "✔️", "✔️", "❌","❌", "❌", "❌", "One Word"
       ],
     },
     {
       software: "Libre",
-      // prettier-ignore
+      // biome-ignore format: Keep each word-count result row together.
       results: [
         "✔️", "✔️", "✔️", "✔️", "✔️", "✔️", "✔️", "✔️", "✔️", "❌","One Word", "One Word", "One Word", "✔️", "✔️", "✔️", "✔️", "✔️","✔️", "❌", "✔️", "One Word"
       ],
     },
     {
       software: "Google Docs",
-      // prettier-ignore
+      // biome-ignore format: Keep each word-count result row together.
       results: [
         "❌", "❌", "✔️", "✔️", "⭕ (No Bullets)", "⭕ (No Bullets)", 
         "✔️", "✔️", "❌", "✔️", "Separate", "Separate", "Separate","✔️", "❌ (Not Imported)", "❌", "❌", "❌ (imported as drawing)","❌ (imported as drawing)", "❌", "❌", "One Word"
@@ -73,7 +73,7 @@ export default function Post() {
     },
     {
       software: "Apple Pages",
-      // prettier-ignore
+      // biome-ignore format: Keep each word-count result row together.
       results: [
         "❌", "✔️", "✔️", "✔️", "⭕ (No Bullets)", "⭕ (No Bullets)","✔️/❌ (Only Title counts)", "✔️", "❌", "❌", "Separate","Separate", "Separate", "✔️", "✔️", "✔️", "✔️", "✔️", "✔️","❌", "❌", "One Word"
       ],
@@ -83,7 +83,7 @@ export default function Post() {
   const docData = [
     {
       software: "Word (Desktop)",
-      // prettier-ignore
+      // biome-ignore format: Keep each word-count result row together.
       results: [
         "❌","❌","✔️","✔️","✔️","✔️","✔️","✔️","❌","N.A.","One Word","One Word","One Word","✔️","✔️","✔️","✔️","✔️","✔️","❌","❌","❌",
       ],
@@ -95,21 +95,21 @@ export default function Post() {
 
     {
       software: "Libre",
-      // prettier-ignore
+      // biome-ignore format: Keep each word-count result row together.
       results: [
         "✔️","✔️","✔️","✔️","✔️","✔️","✔️","✔️","✔️","N.A.","One Word","One Word","One Word","","✔️","✔️","✔️","✔️","✔️","❌","✔️","❌",
       ],
     },
     {
       software: "Google Docs",
-      // prettier-ignore
+      // biome-ignore format: Keep each word-count result row together.
       results: [
         "❌","❌","✔️","✔️","⭕ (No Bullets)","✔️ (Bullets Don't Count)","✔️","✔️","❌","N.A.","Separate","Separate","Separate","✔️","❌ (Imported, But with a quirk)","❌","❌","❌ (imported as drawing)","❌ (imported as drawing)","❌","❌","❌",
       ],
     },
     {
       software: "Apple Pages",
-      // prettier-ignore
+      // biome-ignore format: Keep each word-count result row together.
       results: [
         "❌","✔️","✔️","✔️","⭕ (No Bullets)","⭕ (No Bullets)","✔️/❌ (Only Title counts)","✔️","❌","❌","Separate","Separate","Separate","✔️","✔️","✔️","✔️","✔️","✔️","❌","❌","One Word",
       ],
@@ -143,9 +143,8 @@ export default function Post() {
           <p>
             My testing was not quite scientific, but I tried to at least be
             consistent.
-            <br />
-            I standardised using document formats .DOCX and .DOC as it is quite
-            popular due to Microsoft Office&apos;s dominance and is well
+            <br />I standardised using document formats .DOCX and .DOC as it is
+            quite popular due to Microsoft Office&apos;s dominance and is well
             supported by most software.
             <br />I then chose a selection of popular office document software
             then tested each software (Word Desktop, Word Online, Libre Office,
@@ -498,8 +497,8 @@ export default function Post() {
           </p>
           <ul>
             <li>
-              What this means is that 🥡🦪, 🐈‍⬛ is counted as 3 words with Apple
-              pages and 2 words in other software.
+              What this means is that 🥡🦪, 🐈‍⬛ is counted as 3 words with
+              Apple pages and 2 words in other software.
             </li>
           </ul>
 
@@ -516,9 +515,9 @@ export default function Post() {
           <p>
             Now that this exercise is finished, I don&apos;t know quite what to
             feel about the results.
-            <br />
-            I don&apos;t know which software is the most correct, as ultimately
-            many of the decision on what is or isn&apos;t a word is debatable.
+            <br />I don&apos;t know which software is the most correct, as
+            ultimately many of the decision on what is or isn&apos;t a word is
+            debatable.
             <br />
           </p>
 

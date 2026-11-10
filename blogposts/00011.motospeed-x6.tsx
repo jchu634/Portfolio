@@ -1,7 +1,7 @@
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
-import { CodeBlock } from "@/components/ui/codeblock";
 import FigureWithCaption from "@/components/ui/captioned-image";
+import { CodeBlock } from "@/components/ui/codeblock";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Motospeed X6 Reverse engineering - Battery",
@@ -27,18 +27,17 @@ export default function Post() {
           My only nitpick is that I don&apos;t like having to open their
           software to check the battery level.
           <br />I also hated this with the Razer Basilisk, but I tolerated that
-          as I needed Razer's Synapse software to have working keybinds.
+          as I needed Razer&apos;s Synapse software to have working keybinds.
           <br />
-          The motospeed however doesn't need the software to operate the
+          The motospeed however doesn&apos;t need the software to operate the
           keybinds once set, so I now what can I do?
         </div>
         <div>
           <h2>The solution</h2>
           Reverse engineer the mouse communications and write my own app. So off
           I went.
-          <br />
-          I first did some preliminary research, there doesn&apos;t seem to be
-          anyone else reverse engineering these things.
+          <br />I first did some preliminary research, there doesn&apos;t seem
+          to be anyone else reverse engineering these things.
           <br />
           Taking a look at the official software with DIE (Detect It Easy), it
           appears to be written in C++, and with a quick look at the machine
@@ -201,7 +200,7 @@ export default function Post() {
         </div>
         <div>
           <h3>Charging</h3>
-          There aren't many changes when the mouse is charging, but still
+          There aren&apos;t many changes when the mouse is charging, but still
           connected wirelessly, you still send the <code>SET_REPORT</code> and
           the packet received is almost identical. <br />
           The only difference is that it sets the first bit to indicate
@@ -230,7 +229,7 @@ export default function Post() {
           When it is plugged in however, there are some changes.
           <br />
           Firstly the firmware reports the manufacturer as Motospeed instead of
-          Darmoshark and the device is reported as "MOTOSPEED' - 'X6"
+          Darmoshark and the device is reported as &quot;MOTOSPEED&apos; - &apos;X6&quot;
           <br />
           Secondly, although the USB device tree is identical to the dongle,
           while the VID is identical, the PID changes.

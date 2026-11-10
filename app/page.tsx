@@ -1,16 +1,15 @@
 "use client";
-import { useRef } from "react";
-import Link from "next/link";
 
-import { Link2Icon, ExternalLinkIcon } from "lucide-react";
+import { Link2Icon } from "lucide-react";
+import Link from "next/link";
+import { useRef } from "react";
 import { isMobile } from "react-device-detect";
 
 import VariableFontCursorProximity from "@/components/fancy/text/variable-font-cursor-proximity";
-
+import FeaturedProjects from "@/components/featured-projects";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { education } from "@/lib/homepageData";
-import FeaturedProjects from "@/components/featured-projects";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(
@@ -26,7 +25,7 @@ export default function Home() {
         <div className="min-w-0">
           <div className="flex w-full flex-col items-start gap-6">
             {isMobile ? (
-              <div className="items-left font-slab flex flex-col gap-4 text-5xl leading-none text-orange-500 dark:text-orange-400">
+              <div className="items-left flex flex-col gap-4 font-slab text-5xl leading-none text-orange-500 dark:text-orange-400">
                 <h1>Hi, I&apos;m Joshua:</h1>
                 <h1>I like making stuff.</h1>
               </div>
@@ -46,16 +45,15 @@ export default function Home() {
               </div>
             )}
 
-            {/* prettier-ignore */}
-            <p
-          className="text-xl leading-relaxed text-black dark:text-white font-slab"
-        >
-
-            Hi, I&apos;m currently studying a Masters of Cybersecurity at Monash University.<br />
-            I previously graduated with a (BSc Computer Science) from the University of Auckland.<br />
-            I write and maintain a couple of open-source projects in my spare time.
-
-        </p>
+            {/* biome-ignore format: Preserve the introduction line breaks. */}
+            <p className="font-slab text-xl leading-relaxed text-black dark:text-white">
+              Hi, I&apos;m currently studying a Masters of Cybersecurity at
+              Monash University.
+              <br />I previously graduated with a (BSc Computer Science) from
+              the University of Auckland.
+              <br />I write and maintain a couple of open-source projects in my
+              spare time.
+            </p>
           </div>
         </div>
         <section
@@ -64,14 +62,14 @@ export default function Home() {
         >
           <h2
             id="education-heading"
-            className="font-slab mb-4 text-3xl font-bold text-orange-500 dark:text-orange-400"
+            className="mb-4 font-slab text-3xl font-bold text-orange-500 dark:text-orange-400"
           >
             Education
           </h2>
           <div className="grid items-start gap-4 sm:grid-cols-2 sm:items-stretch">
             {education.map((edu) => (
               <Card key={edu.institution} className="w-full">
-                <CardContent className="font-intel flex flex-col items-start">
+                <CardContent className="flex flex-col items-start font-intel">
                   <h3 className="text-lg font-bold">{edu.description}</h3>
                   <p className="text-base font-bold text-orange-500 dark:text-orange-400">
                     {edu.institution}

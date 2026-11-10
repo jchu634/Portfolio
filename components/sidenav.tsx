@@ -1,19 +1,18 @@
 "use client"; // This is a client component
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import { MailIcon, CodeIcon, NotebookTextIcon } from "lucide-react";
-import { LabelButton } from "@/components/ui/label-button";
-import { useState, useEffect } from "react";
-
-// Cursor trail
-import { PacmanDisabledSVGLight, PacmanEnabledSVGLight } from "./cursor/svg";
-import CursorTrailWithGif from "@/components/cursor/cursorTrail";
 
 import {
   SiGithub,
   SiPrintables,
   SiPrintablesHex,
 } from "@icons-pack/react-simple-icons";
+import { CodeIcon, MailIcon, NotebookTextIcon } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import CursorTrailWithGif from "@/components/cursor/cursorTrail";
+import { LabelButton } from "@/components/ui/label-button";
+import { ModeToggle } from "@/components/ui/mode-toggle";
+// Cursor trail
+import { PacmanDisabledSVGLight, PacmanEnabledSVGLight } from "./cursor/svg";
 
 export default function SideNav() {
   const [showCursor, setShowCursor] = useState<boolean | null>(null);

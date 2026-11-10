@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
-import { useState, MouseEventHandler } from "react";
 import Link from "next/link";
+import { type MouseEventHandler, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 interface ProximityButtonProps {
   children: React.ReactNode;

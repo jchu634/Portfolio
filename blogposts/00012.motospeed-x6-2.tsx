@@ -1,7 +1,7 @@
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
-import { CodeBlock } from "@/components/ui/codeblock";
 import FigureWithCaption from "@/components/ui/captioned-image";
+import { CodeBlock } from "@/components/ui/codeblock";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "Motospeed X6 Reverse engineering - Lighting, Settings",
@@ -17,12 +17,12 @@ export default function Post() {
         <div>
           <h2>Intro</h2>
           After writing the first article, I got pretty nerdsniped into reverse
-          engineering the rest of the mouse's features.
+          engineering the rest of the mouse&apos;s features.
           <br />
           After finding the battery request in Part 1, it got much easier as I
           now know what to do and where to look.
           <br />
-          Apologies about the relative dryness of the article, there isn't as
+          Apologies about the relative dryness of the article, there isn&apos;t as
           much interesting insights about the info or the reverse engineering
           this time.
           <br />I promise the next part on Macros will be much more interesting.
@@ -40,9 +40,9 @@ export default function Post() {
       <div>
         <div>
           <h2>Lighting</h2>
-          There are 4 lighting 'modes': (Nothing, Static, Breathing and
+          There are 4 lighting &apos;modes&apos;: (Nothing, Static, Breathing and
           Rainbow), byte 3 communicates the mode.
-          <br /> Apart from that, there isn't particularly anything interesting
+          <br /> Apart from that, there isn&apos;t particularly anything interesting
           to say about lighting packets, as the mode byte is followed by the
           brightness and speed bytes, and finally the RGB bytes and padding.
           <br />
@@ -248,7 +248,7 @@ export default function Post() {
           software based, all it does is change the RGB values in the command,
           it does not have its own byte. <br />
           Additionally, as an aside, the colour reproduction for the RGB is
-          kinda crap, with a side-by-side for some colours, you wouldn't think
+          kinda crap, with a side-by-side for some colours, you wouldn&apos;t think
           they are supposed to be identical.
           <div className="flex w-150 items-center space-x-5">
             <FigureWithCaption
@@ -274,10 +274,9 @@ export default function Post() {
           <h3>Conclusion</h3>
           Compared to part 1, I found this significantly easier to research as I
           learnt a lot during the process.
-          <br />
-          I find this stuff facinating, the amount of stuff they were able to
-          achieve without custom drivers just by using SET_REPORT as a private
-          channel to communicate configuration info.
+          <br />I find this stuff facinating, the amount of stuff they were able
+          to achieve without custom drivers just by using SET_REPORT as a
+          private channel to communicate configuration info.
           <br />
           Maybe one day I will write a virtual HID driver for controlling the
           RGB lights, of which I would argue hardly deserves that name, given

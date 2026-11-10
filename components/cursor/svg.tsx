@@ -1,5 +1,5 @@
+import type { SVGProps } from "react";
 import * as React from "react";
-import { SVGProps } from "react";
 
 // Generated with https://react-svgr.com/playground/
 export const PacmanDisabledSVGDark = (props: SVGProps<SVGSVGElement>) => (

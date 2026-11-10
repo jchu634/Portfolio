@@ -1,9 +1,14 @@
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import { DownloadIcon, ExternalLinkIcon, PlusIcon } from "lucide-react";
+import Link from "next/link";
+import { ImageGallery } from "@/components/image-gallery";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTriggerShell,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -13,11 +18,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { ExternalLinkIcon, DownloadIcon, PlusIcon } from "lucide-react";
-import { SiGithub } from "@icons-pack/react-simple-icons";
-import { ImageGallery } from "@/components/image-gallery";
 
 import { projects } from "@/lib/projectData";
 
@@ -30,7 +30,7 @@ export default function Page() {
       <Table>
         <TableCaption>A list of projects I have done.</TableCaption>
         <TableHeader>
-          <TableRow className="font-lexend border-black dark:border-white">
+          <TableRow className="border-black font-lexend dark:border-white">
             <TableHead className="hidden text-black md:table-cell dark:text-white">
               Timeframe
             </TableHead>
@@ -50,7 +50,7 @@ export default function Page() {
             return (
               <TableRow
                 key={index}
-                className="font-lexend border-black dark:border-white"
+                className="border-black font-lexend dark:border-white"
               >
                 <TableCell className="hidden md:table-cell">
                   {project.timeframe}
@@ -64,12 +64,12 @@ export default function Page() {
                             <h2 className="font-intel text-lg font-semibold text-orange-500 dark:text-orange-400">
                               {project.name}
                             </h2>
-                            <span className="font-lexend inline-block">
+                            <span className="inline-block font-lexend">
                               {project.brief}
                             </span>
                           </div>
 
-                          <PlusIcon className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" />
+                          <PlusIcon className="pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200" />
                         </div>
                       </AccordionTriggerShell>
                       <AccordionContent>

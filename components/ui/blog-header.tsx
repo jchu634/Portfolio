@@ -1,5 +1,6 @@
-import { Metadata } from "@/lib/blogType";
 import { Separator } from "@/components/ui/separator";
+import type { Metadata } from "@/lib/blogType";
+
 interface BlogHeaderProps {
   header_metadata: Metadata;
 }

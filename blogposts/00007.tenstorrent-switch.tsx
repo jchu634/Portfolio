@@ -1,16 +1,16 @@
-import { Metadata } from "@/lib/blogType";
-import BlogHeader from "@/components/ui/blog-header";
-import { CodeBlock } from "@/components/ui/codeblock";
+import { EqualIcon, PlusIcon } from "lucide-react";
 import {
-  TextExperiment,
   Switch1,
   Switch2,
   Switch3,
   Switch4,
   Switch4Flipped,
   Switch4Logic,
+  TextExperiment,
 } from "@/components/blog/00007/switches";
-import { PlusIcon, EqualIcon } from "lucide-react";
+import BlogHeader from "@/components/ui/blog-header";
+import { CodeBlock } from "@/components/ui/codeblock";
+import type { Metadata } from "@/lib/blogType";
 import { Blog7Diagram } from "@/lib/svg";
 
 export const metadata: Metadata = {
@@ -103,12 +103,12 @@ export default function Post() {
           <p>
             Eventually I figured it out.
             <br />
-            When skew is applied, the div's original bounds are still present,
+            When skew is applied, the div&apos;s original bounds are still present,
             (Indicated by red borders). <br />
             But the skewed rendered div edges (yellow) does not utilise the
             original bounds, it distorts and the distorted edge does not use the
             original width specified to it. <br />
-            Hence the distorted edge's length can be calculated to be a
+            Hence the distorted edge&apos;s length can be calculated to be a
             hypothenuse of a theoretical triangle.
           </p>
           <div className="flex space-x-2 p-2 pt-4 md:pt-8 lg:space-x-8 lg:p-8">
@@ -174,7 +174,7 @@ export default function Post() {
           </div>
           <p>
             Note: This is using my specific background, adjust to your own
-            site's colours
+            site&apos;s colours
           </p>
           <div className="space-y-14 p-4 lg:flex lg:space-x-8 lg:p-10">
             <div>
@@ -241,9 +241,9 @@ export default function Post() {
           <div>
             <h2>Conclusion</h2>
             <p>
-              That's it, I couldn't completely replicate the button: the{" "}
+              That&apos;s it, I couldn&apos;t completely replicate the button: the{" "}
               <code>onhover </code>
-              is missing, but I didn't really think it was too necessary to
+              is missing, but I didn&apos;t really think it was too necessary to
               replicate and it is relatively easy.
               <br />
               What I got stuck on and forced me to stop was the animation.

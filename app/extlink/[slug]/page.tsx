@@ -1,4 +1,4 @@
-import { redirect, notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 const redirects: { [key: string]: string } = {
   ncert1:
@@ -10,7 +10,7 @@ const redirects: { [key: string]: string } = {
 };
 
 function sanitizeString(str: string) {
-  str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim, "");
+  str = str.replace(/[^a-z0-9áéíóúñü .,_-]/gim, "");
   return str.trim();
 }
 

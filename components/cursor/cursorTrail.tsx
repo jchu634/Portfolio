@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef, CSSProperties } from "react";
 import Image from "next/image";
+import React, { type CSSProperties, useEffect, useRef, useState } from "react";
 
 type Cursor = {
   Y: number;
@@ -41,8 +41,8 @@ function CursorTrailWithGif() {
       // Calculate distance from the last *added* trail point
       const distance = lastCursorPos.current
         ? Math.sqrt(
-            Math.pow(potentialNewCursor.X - lastCursorPos.current.X, 2) +
-              Math.pow(potentialNewCursor.Y - lastCursorPos.current.Y, 2),
+            (potentialNewCursor.X - lastCursorPos.current.X) ** 2 +
+              (potentialNewCursor.Y - lastCursorPos.current.Y) ** 2,
           )
         : Infinity;
 

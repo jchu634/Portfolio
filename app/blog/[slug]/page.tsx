@@ -1,10 +1,10 @@
-import React from "react";
-import { notFound } from "next/navigation";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import CommentSection from "@/components/ui/comments";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import React from "react";
+import { Button } from "@/components/ui/button";
+import CommentSection from "@/components/ui/comments";
+import { Separator } from "@/components/ui/separator";
 import { getBlogPosts, importBlogPost } from "@/lib/blogPosts";
 
 interface PostData {
@@ -57,7 +57,7 @@ export default async function BlogPost({
     const PostContent = (await importBlogPost(currentPostFileName)).default;
 
     return (
-      <div className="font-slab h-full w-full p-10">
+      <div className="h-full w-full p-10 font-slab">
         <PostContent />
 
         {/* Navigation Buttons */}

@@ -1,10 +1,8 @@
-import Link from "next/link";
-import { getBlogPosts, importBlogPost } from "@/lib/blogPosts";
-
-import { Metadata } from "@/lib/blogType";
-
-import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
+import { getBlogPosts, importBlogPost } from "@/lib/blogPosts";
+import type { Metadata } from "@/lib/blogType";
 
 interface BlogPostData {
   slug: string;
@@ -28,7 +26,7 @@ const BlogIndexPage = async () => {
   }
 
   return (
-    <div className="font-slab p-10">
+    <div className="p-10 font-slab">
       <h1 className="text-4xl font-bold text-[#122c23] dark:text-orange-400">
         Blog Posts:
       </h1>

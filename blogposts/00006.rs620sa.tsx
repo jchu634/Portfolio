@@ -1,6 +1,6 @@
-import { Metadata } from "@/lib/blogType";
 import BlogHeader from "@/components/ui/blog-header";
 import FigureWithCaption from "@/components/ui/captioned-image";
+import type { Metadata } from "@/lib/blogType";
 
 export const metadata: Metadata = {
   title: "ASUS RS620SA-E10-RS12 2U6N EPYC Server Review?",
@@ -19,7 +19,7 @@ export default function Post() {
           I found a great deal on a great condition and rather unique server on
           eBay. The server appeared to be new/old stock with upgraded config.
           <br />
-          Afterwards, I was curious and did a bit of searching but didn't find
+          Afterwards, I was curious and did a bit of searching but didn&apos;t find
           basically any coverage about this server anywhere.
           <br />
           So here is my overview/review.
@@ -28,8 +28,8 @@ export default function Post() {
         <p>
           The ASUS RS620SA-E10-RS12 is a extremely high density 2u 6 node EPYC
           SP3 server. It supports EPYC Rome/Milan. <br />
-          According to its press release, it is world's first 2U6N Server and to
-          be fair, I haven't been able to find any other 2U6N servers.{" "}
+          According to its press release, it is world&apos;s first 2U6N Server and to
+          be fair, I haven&apos;t been able to find any other 2U6N servers.{" "}
           <sup>
             <a
               href="https://www.asus.com/nz/news/8zde5ol1snpde80o/"
@@ -52,7 +52,7 @@ export default function Post() {
         <h3>Server Exterior</h3>
         <div className="items-start lg:flex">
           <div>
-            The front of the chassis hosts two 1U nodes, and a cage for 12 2.5'
+            The front of the chassis hosts two 1U nodes, and a cage for 12 2.5&apos;
             inch SAS/SATA/NVME Drives, two for each node. These are not toolless
             caddies.
             <br />
@@ -122,7 +122,7 @@ export default function Post() {
             className="not-prose"
             caption={"ASUS RS620SA-E10-RS12 Cable Management"}
           />
-          My particular unit's cable management was equipped with two SFP28 male
+          My particular unit&apos;s cable management was equipped with two SFP28 male
           to female cables.
           <FigureWithCaption
             src={"/blogs/6/ASUS RS620SA Cable Management Cable.jpg"}
@@ -132,7 +132,7 @@ export default function Post() {
             caption={"ASUS RS620SA-E10-RS12 Custom SFP28 Cables"}
           />
           These cables are quite interesting as I have been unable to find any
-          other similar male to female SFP28 cables. Additionally, I don't know
+          other similar male to female SFP28 cables. Additionally, I don&apos;t know
           if these come stock, as my unit does not appear to be the base config.
         </div>
       </div>
@@ -198,10 +198,9 @@ export default function Post() {
               />
             </div>
             As for expansion slots, each node has a PCIE Gen4 x16 OCP 3.0
-            expansion slot for networking, <br />
-            a PCIE Gen4 x16 half length low profile expansion slot through a
-            riser card.(Since the nodes do not supply any additional PCIE power,
-            cards are limited to 75W.)
+            expansion slot for networking, <br />a PCIE Gen4 x16 half length low
+            profile expansion slot through a riser card.(Since the nodes do not
+            supply any additional PCIE power, cards are limited to 75W.)
             <br /> and finally a riser card with 2 M.2 slots, with each slot
             supporting up to 22110, with SATA or a PCIE Gen 4x4 link.
             <div className="sm:flex sm:space-x-2">
@@ -244,7 +243,7 @@ export default function Post() {
         </div>
         <div>
           <h2>Management</h2>
-          Each node has a ASPEED AST2500 BMC running ASUS's management solution
+          Each node has a ASPEED AST2500 BMC running ASUS&apos;s management solution
           which appears to be based on MegaRAC SP-X.
           <br />
           Note the LANNCSI Jumper on the right of the AST2500, which controls if
@@ -256,7 +255,7 @@ export default function Post() {
             className="not-prose"
             caption={"ASUS RS620SA-E10-RS12 Node ASPEED AST2500"}
           />
-          I won't review or show the IPMI interface as it has been extensively
+          I won&apos;t review or show the IPMI interface as it has been extensively
           covered by STH{" "}
           <a
             href="https://www.servethehome.com/asus-esc4000a-e10-2u-amd-epyc-nvidia-gpu-server-review/3/"
@@ -289,13 +288,13 @@ export default function Post() {
           <h3>Performance</h3>
           Now Lets talk about performance numbers:
           <br />
-          ...I don't have any.
-          <br />I can't stress test this system in any scenario.
+          ...I don&apos;t have any.
+          <br />I can&apos;t stress test this system in any scenario.
           <br />
           <ul>
             <li>
               This system is designed for high density usage. <br />
-              But I can't run more than 4 nodes as I don't have access to a 16A
+              But I can&apos;t run more than 4 nodes as I don&apos;t have access to a 16A
               outlet.
               <blockquote>
                 For those curious on how I run this server without 16A despite
@@ -307,7 +306,7 @@ export default function Post() {
               Each node was seemingly designed for GPU inference or significant
               CPU compute.
               <br />
-              But, simply put, I don't have the CPU or GPU hardware to test a
+              But, simply put, I don&apos;t have the CPU or GPU hardware to test a
               node properly and do it justice as its expensive.
               <br />
               If I ever get the hardware to give it a proper shot, I may update
@@ -315,9 +314,9 @@ export default function Post() {
             </li>
           </ul>
           <h3>Power Usage/Efficiency</h3>
-          Sorry, I can't test this either.
+          Sorry, I can&apos;t test this either.
           <br />
-          None of my PDUs have power-monitoring and I can't use a standard power
+          None of my PDUs have power-monitoring and I can&apos;t use a standard power
           meter as I use a C19 to C14 cable.
           <br />
           At release, ASUS did claim this to have world’s highest SPEC Power
@@ -340,7 +339,7 @@ export default function Post() {
             </a>
           </sup>
           <br />
-          Although I can't verify this, I don't see any reason why this would be
+          Although I can&apos;t verify this, I don&apos;t see any reason why this would be
           wrong given their careful wording, but time passes and a newer
           Rome/Milan server may have beaten their title.
         </div>
@@ -357,10 +356,10 @@ export default function Post() {
           >
             (Link).
           </a>
-          <br />
-          I strongly suspect the reason was due to the much larger SP5 socket.
+          <br />I strongly suspect the reason was due to the much larger SP5
+          socket.
           <br /> Although in my opinion, one of the possible factors is that I
-          don't think the RS620SA sold particularly well considering that there
+          don&apos;t think the RS620SA sold particularly well considering that there
           is the lack of BIOS/BMC updates since 2022 despite other ASUS EPYC
           servers released in the same timeframe getting updates.
           <br />
